@@ -70,3 +70,15 @@ Normal gameplay created a fresh Alabama Dynasty. Fifteen structural checks passe
 The game automatically loaded the bundled CFBR23V21 roster. An initial check expecting the built-in roster failed on team 230: the save contains James Madison, while the built-in roster says FIUtest. The auto-load log identifies the actual roster source; the corrected check passes. Future installers and tests must pin roster input as well as archives and executable.
 
 After the test, the development profile redirect was rolled back. All 48 protected stock working-save files were unchanged; original preservation passed 58 checks. No expansion patch was applied to CFBR. Its ranking recipe still needs controlled runtime tests, and the combined mod still needs remapping, season progression and playoff implementation.
+
+## Season control and first reversible patch - 2026-10-09
+
+The unmodified CFBR control completed normal 2013 simulation and rollover into 2014. Regular-season and postseason snapshots each passed 28 checks. All 126 FBS teams completed 12 regular games, and every saved team record agreed with completed scores. Alabama finished 11-3 and won the Gator Bowl. Saved national-title metadata changed for Ohio State.
+
+Rollover passed 30 checks: all 131 saved team identities and 126 FBS teams remained; each FBS team received 12 next-year regular games without weekly collisions; player/depth and stadium links were valid; checked bowl/conference histories and national-title metadata persisted. Ten Alabama recruits matched the next-year roster on eight identity fields.
+
+A guarded four-word ranking-storage patch was then installed, observed in the emulator log and verified in live memory. The 2014 save loaded normally and its career-statistics screen opened. After removing the patch, another cold load and live probe confirmed restored instructions. All four save files stayed byte-identical through both cold runs. The original patch configuration and profile redirects were restored; 48 protected stock save files and the 58 original-preservation checks passed.
+
+This patch test establishes installation, live-byte and cold-load compatibility only. It does not yet establish execution coverage of the ranking producer, a patched full season, or expanded active membership. Those tests remain required before combining it with the wider port. The unpatched full-season result must not be reported as a patched-season result.
+
+One checker initially expected stored week 15 at the conference-championship screen; the save stores 16. That failed report was preserved and the corrected expectation passed. No game crash or manual save edit occurred.

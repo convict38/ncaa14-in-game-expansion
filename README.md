@@ -30,4 +30,4 @@ This is an independent community project. No affiliation with EA, the NCAA, RPCS
 
 ## Revamped integration
 
-CFBR v21 is now a documented compatibility target. An isolated unmodified CFBR baseline now passes executable identity, fresh Dynasty and cold save/load checks; the combined mod is not yet implemented. [Measured conflicts and integration gates](docs/CFBR_COMPATIBILITY.md) cover its different executable, archives and five team-slot replacements.
+CFBR v21 is now a documented compatibility target. An isolated unmodified CFBR baseline now passes a full season, rollover and cold reload. The first four-word patch passed installation, live-memory and cold-load/rollback checks; patched-season and expanded-membership tests remain pending. The combined mod is not yet implemented. [Measured conflicts and integration gates](docs/CFBR_COMPATIBILITY.md) cover its different executable, archives and five team-slot replacements.

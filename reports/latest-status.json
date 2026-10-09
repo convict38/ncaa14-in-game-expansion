@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-09T20:15:57.250239+00:00",
+  "updated": "2026-10-09T20:56:24.947709+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -101,7 +101,7 @@
     "History constructors, pruning and full-membership capacity need tracing"
   ],
   "cfbr_integration": {
-    "status": "unmodified baseline passed fresh Dynasty and cold reload; expansion port unfinished",
+    "status": "unmodified season/rollover passed; four-word patch passed bounded install/load/rollback",
     "upstream_commit": "9b9674a0de6102cec90ea64c2cf155ecf4752437",
     "release": "v21 PC disc, PS3 buttons, older scorebug",
     "app_version": "01.02",
@@ -116,7 +116,7 @@
     "unresolved_port_sites": 74,
     "ranking_storage_recipe_words": 4,
     "ranking_storage_offline_checks": 17,
-    "ranking_storage_runtime_tested": false,
+    "ranking_storage_runtime_tested": true,
     "private_package_files_extracted": 2421,
     "combined_mod_runtime_tested": false,
     "baseline_fbs_teams": 126,
@@ -127,7 +127,14 @@
     "baseline_profile_redirect_rolled_back": true,
     "protected_stock_save_files_unchanged": 48,
     "baseline_roster": "automatically loaded CFBR23V21",
-    "baseline_season_rollover_tested": false,
-    "ppu_key": "PPU-62e25ebc1957382b34f2778554943e40d6d84e3c"
+    "baseline_season_rollover_tested": true,
+    "ppu_key": "PPU-62e25ebc1957382b34f2778554943e40d6d84e3c",
+    "baseline_season_checks": 28,
+    "baseline_rollover_checks": 30,
+    "baseline_recruits_matched": 10,
+    "ranking_runtime_scope": "install/live code/cold load/rollback only; producer execution coverage and patched season pending",
+    "ranking_patched_season_tested": false,
+    "ranking_producer_execution_traced": false,
+    "ranking_trial_rolled_back": true
   }
 }
