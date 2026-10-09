@@ -2,7 +2,7 @@
 
 An [offline archive adapter](ARCHIVE_ADAPTER.md) now handles the differing index layouts and preserves CFBR content in a serialized-reserve candidate. Its 34 offline checks pass; membership remains 126 FBS and the candidate has not been installed. The engine port and bundled-roster coordination remain separate prerequisites.
 
-Status: isolated unmodified CFBR season/rollover passed; the first four-word patch passed a bounded install/load/rollback test. Expansion integration remains unfinished. This project is independent of the CFBR team. The latest validated expansion remains the stock-build v6 trial at 127 active FBS teams.
+Status: the four-word ranking patch now passes a normal season, rollover and cold load at 126 CFBR teams; see the latest section below. Expansion integration remains unfinished. This project is independent of the CFBR team. The latest validated expansion remains the stock-build v6 trial at 127 active FBS teams.
 
 ## Upstream and intended scope
 
@@ -27,7 +27,7 @@ This records our download identity; no publisher-provided checksum was available
 
 The bundled 2023 roster confirms these occupied-ID conflicts:
 
-| Original school retained by our project | TGID | CFBR school using that ID |
+| Historical stock school | TGID | CFBR school using that ID |
 | --- | ---: | --- |
 | Idaho | 34 | Appalachian State |
 | New Mexico State | 61 | Coastal Carolina |
@@ -35,12 +35,12 @@ The bundled 2023 roster confirms these occupied-ID conflicts:
 | UMass | 181 | Georgia Southern |
 | FIU | 230 | James Madison |
 
-CFBR's built-in roster has `FIUtest` at 230, while its bundled 2023 roster has James Madison. Loading different roster sources therefore changes identity. New destination IDs are not assigned yet.
+CFBR's built-in roster has `FIUtest` at 230, while its bundled 2023 roster has James Madison. Loading different roster sources therefore changes identity. New destination IDs are not assigned yet. Under the current 138-school scope, Idaho is deferred to future FCS support; the other four original schools require distinct active identities. The Idaho/Appalachian State mapping remains documented rather than silently treated as original-school preservation.
 
 ## Integration gates
 
 1. Analyze the separately identified 1.02 executable and port each storage/count patch with verified preimages and consumers. Preserve the tested stock target.
-2. Merge archive entries and database rows with format-aware tools. Preserve all original teams; remap added schools, assets, uniforms, stadiums, logos and roster associations to distinct IDs.
+2. Merge archive entries and database rows with format-aware tools. Preserve all original schools in the target current-FBS field; remap identities and roster associations to distinct IDs. Idaho is deferred. Use borrowed presentation during system validation, then complete school-specific graphics.
 3. Validate both original and added schools on the field, with correct home/away uniforms, venues and presentation. Test playbooks and gameplay changes separately.
 4. Repeat fresh Dynasty, recruiting, stats/history, save/load and multiple season rollovers on the combined build. Then validate every playoff round and championship recording.
 5. Publish an installer that requires a supported user-owned dump and an identified CFBR package. Keep third-party files with their upstream distribution; publish our reviewed adapter and instructions with attribution and applicable permissions settled.
@@ -86,3 +86,15 @@ A requested breakpoint was acknowledged but never hit under LLVM. Matching RPCS3
 A separate Interpreter (static) configuration allowed normal save loading and viewing Championship Contenders but did not obtain the requested execution stops. A subsequent early-attach attempt stayed at the title/attract screens. Normal shutdown with a pending debugger continue hung; the emulator's termination and fatal-error dialogs were handled. These diagnostic failures are retained in the private evidence. No positive breakpoint coverage, patched full season or expanded CFBR membership is claimed.
 
 The four-word experiment and profile redirect were rolled back. All four working Dynasty save files match before and after the interpreter experiments; 48 protected stock save files are unchanged and 58 original-preservation checks passed. The Dynasty had advanced normally to Week 1 of 2014 before those experiments. Next work prioritizes the LLVM patched-season regression; debugger compatibility will not block independent port work. A minimal positive-control trace or reversible execution marker needs separate validation.
+
+## Patched season and cold reload - 2026-10-09
+
+The four-word ranking-storage patch completed the normal 2014 season and stock postseason, then rolled into preseason 2015 at unchanged 126 FBS teams. Regular-season and postseason checks each passed 28; rollover passed 30. All team records agreed with completed scores, all teams retained complete next-year schedules without weekly collisions, and checked player/depth/stadium links and championship histories survived. Alabama finished 12-2, winning the SEC championship and Sugar Bowl; 12 committed recruits matched its next-year roster on eight fields.
+
+A separate cold run loaded the 2015 Dynasty normally and opened the depth chart. All four save files stayed byte-identical. Six live comparisons passed after rollover and after cold load, covering the four patched words, entry/OPD and control bytes. Simulation ran without a debugger attached. Both isolated processes exited, the ranking patch and profile redirect were rolled back, all 48 protected stock save files were unchanged, and all 58 original-preservation checks passed. No restored-code cold run was repeated in this milestone.
+
+This closes the bounded patched-season/rollover/cold-load gate. It does not prove ranking-producer execution coverage, larger active CFBR membership, repeated patched seasons, complete history or a custom playoff. The archive reserve candidate remains uninstalled.
+
+A parallel static audit found that CFBR uses 126 twelve-byte entries in its first recruiting array, whereas stock uses eight-byte entries. This explains a 504-byte layout shift without implying any additional team capacity. Sixty static checks support the observed layout and seven tentative normalized-context leads; all seven remain hypotheses, and 67 other source sites lack a lead. A CFBR-specific consumer/relocation map is required before an expanded-team recipe.
+
+The proposed 138-school input map passes ten reconciliation checks against hash-pinned stock, built-in CFBR and automatically loaded CFBR23V21 sources. There are 12 missing active identities in the auto-loaded roster, 47 existing conference-ID changes, and no newly assigned IDs. Both roster inputs have 141 total rows (126 FBS and 15 others), with a 146-row TEAM reserve. Keeping those 15 other rows at 138 FBS requires 153 rows. A separate leading-TDB auto-load reserve candidate passes 19 checks preserving decoded records and coordinating capacities with the offline BOOT candidate. The source has 113,440 trailing bytes outside its declared leading TDB; outer save packaging remains unverified. The output is not a loadable roster save.

@@ -23,8 +23,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "2c88d862fd61b74586e610b6430dd478685b97014ab5fa642b4765358b97de94",
-      "bytes": 9381
+      "sha256": "6524ddee3ecc253d76a62d14a25f5bc8cd371e0c07983dd208c8f3dd09559f8f",
+      "bytes": 10338
     },
     {
       "path": "CONTRIBUTING.md",
@@ -33,13 +33,13 @@
     },
     {
       "path": "README.md",
-      "sha256": "b757900b0aee7ea993ca88bf7c5d0b19e0a65e85ddb0d1c068157f919a6bcd7c",
-      "bytes": 3613
+      "sha256": "8d7b0f30d822172ab5fd6de6a31cb66f412185a0e9504f22ba84614edf946741",
+      "bytes": 3942
     },
     {
       "path": "ROADMAP.md",
-      "sha256": "4da29a03e7f9c8287d7e7236fb88f4141c80ca881135b099e6318007af1ebdd6",
-      "bytes": 3020
+      "sha256": "b2ec65447e6b088edf03caedcdec3bda2698db17e1e4b9fe059eadf8cc176894",
+      "bytes": 3419
     },
     {
       "path": "docs/ARCHIVE_ADAPTER.md",
@@ -48,8 +48,13 @@
     },
     {
       "path": "docs/CFBR_COMPATIBILITY.md",
-      "sha256": "5f212370de76eec961da6bdac771bc7244452c19ee1addaa7a5fb92aa14e3c00",
-      "bytes": 11318
+      "sha256": "58c35a55c63a8d3f8f5c4066ce66674b0d8a151be66dfd4b18f722cb541a00ac",
+      "bytes": 14330
+    },
+    {
+      "path": "docs/DEVELOPER_HANDOFF.md",
+      "sha256": "388628883453345599c3a1d4afa89e3ae8af5ee7d916016fdf29c51aa0d44980",
+      "bytes": 5951
     },
     {
       "path": "docs/INSTALLATION.md",
@@ -58,8 +63,8 @@
     },
     {
       "path": "docs/RESEARCH_LOG.md",
-      "sha256": "380e72abf6831c326dedc4f857305970bc14f012bea38c1bfc4d6a1578fb43a4",
-      "bytes": 14053
+      "sha256": "b4499b1ec13319439786d86ddf0e0d341b7d7d1b1b40eb17ba5785b31bf3ce23",
+      "bytes": 16708
     },
     {
       "path": "docs/SUPPORTED_BUILDS.md",
@@ -68,13 +73,13 @@
     },
     {
       "path": "docs/TESTING.md",
-      "sha256": "35de4de12026104d8658b06bacb42a8cf18d77a8e5052d9a980b08ddbb3ab66c",
-      "bytes": 2825
+      "sha256": "79eed3e1172c719794fa7b11b9bc6585b8e6352bb23ba8fd1a377b1d365ea9c0",
+      "bytes": 3313
     },
     {
       "path": "reports/latest-status.json",
-      "sha256": "a655e1d725064d3b47b974fd1ae2bca37204a1e769f727c84b439576d2671f9a",
-      "bytes": 5723
+      "sha256": "8258f96a155d12b33afdd1cc98d9e9258051a1bdc077bd8d46473f9086b473a3",
+      "bytes": 7538
     },
     {
       "path": "tools/bgfa_archive.py",

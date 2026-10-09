@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-09T22:28:14.469024+00:00",
+  "updated": "2026-10-09T22:57:54.050241+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -101,7 +101,7 @@
     "History constructors, pruning and full-membership capacity need tracing"
   ],
   "cfbr_integration": {
-    "status": "unmodified season/rollover passed; four-word patch passed bounded install/load/rollback",
+    "status": "four-word ranking season/rollover/cold load passed at126; engine/data expansion port incomplete",
     "upstream_commit": "9b9674a0de6102cec90ea64c2cf155ecf4752437",
     "release": "v21 PC disc, PS3 buttons, older scorebug",
     "app_version": "01.02",
@@ -132,8 +132,8 @@
     "baseline_season_checks": 28,
     "baseline_rollover_checks": 30,
     "baseline_recruits_matched": 10,
-    "ranking_runtime_scope": "install/live code/cold load/rollback only; producer execution coverage and patched season pending",
-    "ranking_patched_season_tested": false,
+    "ranking_runtime_scope": "normal2014 season/postseason,2015 rollover,cold load,live bytes,rollback; no producer trace or expanded membership",
+    "ranking_patched_season_tested": true,
     "ranking_producer_execution_traced": false,
     "ranking_trial_rolled_back": true,
     "execution_trace_attempts": {
@@ -143,7 +143,7 @@
       "shutdown_hang_recovered": true,
       "four_save_files_unchanged": true,
       "original_preservation_checks": 58,
-      "next": "LLVM patched-season regression; trace workflow separately requires positive control"
+      "next": "trace remains unproven; prioritize CFBR-specific engine/data integration"
     },
     "archive_adapter": {
       "offline_checks_passed": true,
@@ -163,6 +163,59 @@
       "four_save_files_unchanged": true,
       "patched_season_completed": false,
       "configuration_rolled_back": true
+    },
+    "ranking_season_regression": {
+      "active_fbs": 126,
+      "regular_checks": 28,
+      "postseason_checks": 28,
+      "rollover_checks": 30,
+      "recruits_matched": 12,
+      "live_reads_per_run": 6,
+      "live_runs": 2,
+      "cold_save_files_unchanged": 4,
+      "protected_stock_files_unchanged": 48,
+      "original_preservation_checks": 58,
+      "aggregate_checks": 19,
+      "trial_rolled_back": true
+    },
+    "current_fbs_identity_conflicts": 4,
+    "historical_idaho_mapping_deferred": true,
+    "input_map": {
+      "checks": 10,
+      "proposed_identities": 138,
+      "matched_stock": 125,
+      "stock_additions": 13,
+      "missing_autoload_identities": 12,
+      "conference_id_changes": 47,
+      "new_ids_assigned": false,
+      "required_roster_rows_with15_nonfbs": 153,
+      "current_TEAM_max_records": 146
+    },
+    "autoload_reserves": {
+      "offline_checks": 19,
+      "active_fbs": 126,
+      "installed": false,
+      "output_is_loadable_roster_save": false,
+      "outer_packaging_validated": false
+    },
+    "recruiting_layout_audit": {
+      "static_checks": 60,
+      "current_first_array_records": 126,
+      "cfbr_record_bytes": 12,
+      "stock_record_bytes": 8,
+      "paired_context_hypotheses": 7,
+      "unresolved_without_hypothesis": 67,
+      "complete_port_accepted": false
     }
+  },
+  "target": {
+    "season": 2026,
+    "active_fbs": 138,
+    "retained_stock_current_fbs": 125,
+    "additions_to_stock": 13,
+    "Idaho_active": false,
+    "priority": "Playable identities, football conferences, schedules, recruiting and persistence; borrowed graphics acceptable; graphics/UI polish last",
+    "membership_research_reconciled": true,
+    "eligibility_and_conference_rules_complete": false
   }
 }

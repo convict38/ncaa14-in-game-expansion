@@ -1,6 +1,6 @@
 # NCAA Football 14: In-Game Expansion
 
-An experimental PS3/RPCS3 project to add every FBS school while retaining existing teams, and build a 12-team playoff that runs entirely through normal gameplay.
+An experimental PS3/RPCS3 project targeting 138 active 2026 FBS schools and a 12-team playoff that runs entirely through normal gameplay. Preserve the 125 original schools still in the target FBS field; Idaho is deferred to future FCS support. Playable teams, conferences and persistence come first, with borrowed graphics until the systems work.
 
 **Development project — no public installable mod release yet.** The current prototype has 127 active FBS teams. It does not include all intended schools, finished presentation, or a custom playoff.
 
@@ -23,6 +23,7 @@ The prototype borrows Idaho presentation. A separate stadium identity with the d
 - [Installation status](docs/INSTALLATION.md): supported setup and what remains before distribution.
 - [Testing](docs/TESTING.md) and [build identities](docs/SUPPORTED_BUILDS.md).
 - [Machine-readable status](reports/latest-status.json).
+- [Developer handoff](docs/DEVELOPER_HANDOFF.md): current scope, mapped systems, blockers and next steps for any contributor or coding agent.
 
 The repository contains project-authored documentation and tools. Game images, executables, game archives, assets, firmware, saves, emulator caches, raw memory dumps and decompiled game code are not included. Players will supply their own game dump.
 
@@ -32,4 +33,4 @@ This is an independent community project. No affiliation with EA, the NCAA, RPCS
 
 The [archive adapter](docs/ARCHIVE_ADAPTER.md) now handles stock and CFBR archive layouts, with 16 public synthetic tests and a private reserve candidate that passes 34 offline checks. It is a development library; the candidate has not been installed or runtime-tested.
 
-CFBR v21 is now a documented compatibility target. An isolated unmodified CFBR baseline now passes a full season, rollover and cold reload. The first four-word patch passed installation, live-memory and cold-load/rollback checks; patched-season and expanded-membership tests remain pending. The combined mod is not yet implemented. [Measured conflicts and integration gates](docs/CFBR_COMPATIBILITY.md) cover its different executable, archives and five team-slot replacements.
+CFBR v21 is a documented compatibility target. Its four-word ranking-storage patch now passes a normal 2014 season, stock postseason, 2015 rollover and separate cold reload at unchanged 126-team membership. The trial is rolled back. Expanded membership remains blocked on the CFBR-specific engine port and coordinated data inputs. [Measured conflicts and integration gates](docs/CFBR_COMPATIBILITY.md) cover its different executable, archives and historical team-slot replacements.
