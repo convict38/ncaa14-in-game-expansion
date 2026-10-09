@@ -43,8 +43,8 @@
     },
     {
       "path": "docs/CFBR_COMPATIBILITY.md",
-      "sha256": "eca49e2a79bd7fb9067ae7912b894b77e4fc483d112340ee809bd1f32cb93602",
-      "bytes": 4550
+      "sha256": "05f150e3c08d2420220c4c36c0245de5976ea8eb3f53d4e4f367ac5b2dc82304",
+      "bytes": 5888
     },
     {
       "path": "docs/INSTALLATION.md",
@@ -53,8 +53,8 @@
     },
     {
       "path": "docs/RESEARCH_LOG.md",
-      "sha256": "52e353067cf79c5e185b67538eab028667719fd932247385282a9f5b7350f875",
-      "bytes": 7340
+      "sha256": "fcc31b6fc60fd771990bc26e93d2cb9212db47c29b611b6777e52f9febbce6ee",
+      "bytes": 8143
     },
     {
       "path": "docs/SUPPORTED_BUILDS.md",
@@ -68,8 +68,8 @@
     },
     {
       "path": "reports/latest-status.json",
-      "sha256": "bc245bd6912b95288573e4f5032eb892c83ba98cfcfd87c1dd59abe181de692c",
-      "bytes": 3456
+      "sha256": "1cf45241ed7237923ffb33344e17888bd45c0dbf3066cbd21f3d29f33b396424",
+      "bytes": 3749
     },
     {
       "path": "tools/verify_game_identity.py",

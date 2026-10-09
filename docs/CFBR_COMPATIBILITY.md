@@ -44,3 +44,13 @@ CFBR's built-in roster has `FIUtest` at 230, while its bundled 2023 roster has J
 5. Publish an installer that requires a supported user-owned dump and an identified CFBR package. Keep third-party files with their upstream distribution; publish our reviewed adapter and instructions with attribution and applicable permissions settled.
 
 No CFBR assets, executable, roster saves or decompiled code are included in this repository. No combined installable release exists yet.
+
+## Port progress: static checks only
+
+Full Ghidra analysis of the identified 1.02 executable completed. Signature comparison found 443 candidate locations for the 517 source patch words: 441 decoded instructions and two data constants. Of those candidates, 416 preimages match and 27 differ; 74 source sites remain unresolved. Function and data-reference review is still required before accepting any mapping.
+
+A four-word ranking-storage recipe passed 17 offline checks. It pairs a larger caller stack frame with the array capacity pointer for 160 records, while leaving active membership unchanged. It is not installed or runtime-tested, and no executable or installable patch was emitted.
+
+All 2,421 package files have now been extracted into private staging and hashed. Five selected files match between independent Python and Java readers. No CFBR files are published here. A separate runtime baseline with protected saves remains the next integration gate.
+
+We currently track the pinned upstream distribution as a dependency of this repository. Forking the installer repository can help maintain installer changes later, but Git merging cannot reconcile compiled executables, archive contents or conflicting team IDs. The intended installer will combine identified local inputs using our reviewed compatibility recipes.

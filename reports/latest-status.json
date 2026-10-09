@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-09T19:32:05.539689+00:00",
+  "updated": "2026-10-09T19:50:30.403720+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -110,6 +110,13 @@
     "team_id_conflicts": 5,
     "runtime_tested": false,
     "documentation": "docs/CFBR_COMPATIBILITY.md",
-    "separate_ghidra_import_validated": true
+    "separate_ghidra_import_validated": true,
+    "full_ghidra_analysis_completed": true,
+    "signature_candidate_sites": 443,
+    "unresolved_port_sites": 74,
+    "ranking_storage_recipe_words": 4,
+    "ranking_storage_offline_checks": 17,
+    "ranking_storage_runtime_tested": false,
+    "private_package_files_extracted": 2421
   }
 }

@@ -54,3 +54,9 @@ Saved TEAM rank fields sampled here are unsigned eight-bit values; sampled runti
 The official v21 package was inventoried and selected files extracted privately. Static checks identify update 1.02, incompatible existing patch addresses, 22 changed BOOT payloads, 331 changed MISC payloads and five occupied team IDs requiring remapping. The staged rosters retain 126 active FBS entries. [Details and source links](CFBR_COMPATIBILITY.md). No integration runtime test was performed.
 
 Separately, executable instruction tracing confirms a four-row draft-history initializer for years -4 through -1 and a rollover routine that deletes year-minus-four before inserting current-year counts. These static findings guide the next prototype-history repair; they do not establish that the missing history rows are fixed.
+
+## Initial CFBR port component - 2026-10-09
+
+Completed the separate 1.02 Ghidra analysis and produced a provisional 443/517 site map. Four reviewed ranking-storage words now have a non-installable recipe with 17 offline checks. A capacity-end pointer still describing 126 records must change along with the larger frame. Membership is unchanged. Complete package extraction passed nine inventory/cross-reader checks. No combined runtime test or expansion-port acceptance is claimed. See [compatibility progress](CFBR_COMPATIBILITY.md#port-progress-static-checks-only).
+
+Original asset table labels also establish RBKS/SRRC type 0 as game records, type 1 as season records and type 2 as career records. The prototype lacks seed rows in SRRC; history initialization remains an implementation task.
