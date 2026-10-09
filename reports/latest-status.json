@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-09T21:50:31.309950+00:00",
+  "updated": "2026-10-09T22:28:14.469024+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -144,6 +144,25 @@
       "four_save_files_unchanged": true,
       "original_preservation_checks": 58,
       "next": "LLVM patched-season regression; trace workflow separately requires positive control"
+    },
+    "archive_adapter": {
+      "offline_checks_passed": true,
+      "synthetic_tests": 16,
+      "candidate_checks": 34,
+      "compared_archives": 4,
+      "compared_entries": 4840,
+      "unchanged_boot_entries": 825,
+      "candidate_active_fbs_teams": 126,
+      "candidate_installed": false,
+      "candidate_runtime_tested": false,
+      "nested_template_trailer_bytes": 0,
+      "documentation": "docs/ARCHIVE_ADAPTER.md"
+    },
+    "interrupted_ranking_season": {
+      "process_absent_on_resume": true,
+      "four_save_files_unchanged": true,
+      "patched_season_completed": false,
+      "configuration_rolled_back": true
     }
   }
 }

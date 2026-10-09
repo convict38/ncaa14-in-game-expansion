@@ -9,6 +9,8 @@
 !/docs/*.md
 !/tools/
 !/tools/verify_game_identity.py
+!/tools/bgfa_archive.py
+!/tools/test_bgfa_archive.py
 !/reports/
 !/reports/latest-status.json
 !/reports/export-manifest.json

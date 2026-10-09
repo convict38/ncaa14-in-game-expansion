@@ -18,13 +18,13 @@
     },
     {
       "path": ".gitignore",
-      "sha256": "dd3c09eabd41ea0c52a93cd88cb71188c6c7b4141a9687508e1135da812033cb",
-      "bytes": 348
+      "sha256": "b8daf4bf151777e12d87e25723f9a5078fd68f8a3e1f8f892f6bd6ebc4449c7f",
+      "bytes": 401
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "c3dc92bf3ff5802160691843aaf4d634535c2fcf03ac8b125466a0305b93e641",
-      "bytes": 8463
+      "sha256": "2c88d862fd61b74586e610b6430dd478685b97014ab5fa642b4765358b97de94",
+      "bytes": 9381
     },
     {
       "path": "CONTRIBUTING.md",
@@ -33,18 +33,23 @@
     },
     {
       "path": "README.md",
-      "sha256": "c61511048a7c60c65f9e260528517a4b7552d1830ac904efa4b90ed292518a1c",
-      "bytes": 3344
+      "sha256": "b757900b0aee7ea993ca88bf7c5d0b19e0a65e85ddb0d1c068157f919a6bcd7c",
+      "bytes": 3613
     },
     {
       "path": "ROADMAP.md",
-      "sha256": "febc4f93c2a4b495b35d9ff6c80cc755961562677e4a5072d2616425613bce29",
-      "bytes": 2631
+      "sha256": "4da29a03e7f9c8287d7e7236fb88f4141c80ca881135b099e6318007af1ebdd6",
+      "bytes": 3020
+    },
+    {
+      "path": "docs/ARCHIVE_ADAPTER.md",
+      "sha256": "5afa4d350ebbe19b0e3affdd02002400e79fee37ec64aecfc467696ea1c4619b",
+      "bytes": 3235
     },
     {
       "path": "docs/CFBR_COMPATIBILITY.md",
-      "sha256": "82e8993f694c742463b94cb4a56dd9288ffd9c387685651416ba785def997b01",
-      "bytes": 10992
+      "sha256": "5f212370de76eec961da6bdac771bc7244452c19ee1addaa7a5fb92aa14e3c00",
+      "bytes": 11318
     },
     {
       "path": "docs/INSTALLATION.md",
@@ -53,8 +58,8 @@
     },
     {
       "path": "docs/RESEARCH_LOG.md",
-      "sha256": "e6d20623f815ab05d08e7a76421e9748d83f3793f84e8683f0e1e6ade7936d6a",
-      "bytes": 13076
+      "sha256": "380e72abf6831c326dedc4f857305970bc14f012bea38c1bfc4d6a1578fb43a4",
+      "bytes": 14053
     },
     {
       "path": "docs/SUPPORTED_BUILDS.md",
@@ -63,13 +68,23 @@
     },
     {
       "path": "docs/TESTING.md",
-      "sha256": "ecd57e0e8bfe4aab7a108cd0bcfaf91ed1c6fa89464e11589d399e972baac4c1",
-      "bytes": 2472
+      "sha256": "35de4de12026104d8658b06bacb42a8cf18d77a8e5052d9a980b08ddbb3ab66c",
+      "bytes": 2825
     },
     {
       "path": "reports/latest-status.json",
-      "sha256": "5871df27d2221f4e92f7d458431b703e94bdafd7a02b991a6e264d589fe5ed4e",
-      "bytes": 5063
+      "sha256": "a655e1d725064d3b47b974fd1ae2bca37204a1e769f727c84b439576d2671f9a",
+      "bytes": 5723
+    },
+    {
+      "path": "tools/bgfa_archive.py",
+      "sha256": "7f4ff873bfdf5b3482da19b946fb29e68eb281ffebbb5355ad405862800f81dd",
+      "bytes": 6442
+    },
+    {
+      "path": "tools/test_bgfa_archive.py",
+      "sha256": "463503ce2bfc76be0dbefd147468bb89f469a7f5782e51d5c80ca8d91c57ea8a",
+      "bytes": 7837
     },
     {
       "path": "tools/verify_game_identity.py",

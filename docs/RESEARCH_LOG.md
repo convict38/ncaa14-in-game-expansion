@@ -2,6 +2,12 @@
 
 Evidence is classified as **static**, **runtime-tested**, or **hypothesis**. Detailed local fixtures and raw logs are retained privately in the development workspace; they are not uploaded with game data.
 
+## CFBR archive framing and reserves - static/offline tested
+
+The format-aware archive adapter matches 4,840 decoded entries across four stock/CFBR archives. Sixteen synthetic tests and 34 private candidate checks pass. CFBR uses different field widths and a nested payload offset of 121; its decoded GAMEMODE has no stock-style 4,200-byte trailer. An initial stock-only trailer assertion correctly stopped construction and was then corrected for the pinned CFBR input. The candidate preserves all 825 unrelated BOOT entries and database row payloads while enlarging selected reserves at unchanged 126 FBS membership. No installation, engine capacity, roster auto-load or season acceptance is claimed. See [details](ARCHIVE_ADAPTER.md).
+
+At resumption the previously recorded ranking-season process was absent. The four working save files still matched the preserved Week 1 of 2014 fixture. Patch and profile redirects were rolled back; the patched-season test remains pending.
+
 ## Executable baseline — runtime-tested
 
 The analyzed decrypted ELF matches the emulator's loaded module and sampled live memory, including entry code, OPD and TOC. A diagnostic thread-name patch was observed in an A/B/A run. This establishes the analysis target and controlled patching, not team or playoff functionality.

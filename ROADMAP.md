@@ -2,6 +2,8 @@
 
 ## Next development work
 
+CFBR prerequisites: complete the pending four-word ranking patched-season/rollover regression; review the remaining executable port sites; coordinate the new offline archive adapter with engine allocations and the auto-loaded roster before any candidate installation. The archive adapter passes static preservation checks only. Resolve the five occupied team IDs before combined expansion.
+
 1. Extend the passed v6 reserve regression at 127 active teams to repeated seasons. Resolve missing prototype TPHS/RBKS initialization, record-type coverage and their full-membership bounds. Resolve remaining recruiting-reference semantics: commitment status plus board membership does not establish the destination team; position changes must be accounted for in identity matching.
 2. Resolve coach-selection filtering and remaining presentation consumers. Audit dependent consumers and repeated-season/full-FBS capacities, including contract lifetime, history tables and the opaque save-container trailer. Larger serialized reserves alone do not establish larger active counts.
 3. Add the complete target FBS membership while retaining existing teams. Implement realistic conferences, schedules, uniforms, names and team presentation. Freeze a documented target season and membership list before final content validation. Integrate [CFBR presentation and other updates](docs/CFBR_COMPATIBILITY.md) through a separately verified 1.02 executable port and team-ID remapping; retain all original schools.

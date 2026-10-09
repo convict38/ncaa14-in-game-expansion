@@ -30,4 +30,6 @@ This is an independent community project. No affiliation with EA, the NCAA, RPCS
 
 ## Revamped integration
 
+The [archive adapter](docs/ARCHIVE_ADAPTER.md) now handles stock and CFBR archive layouts, with 16 public synthetic tests and a private reserve candidate that passes 34 offline checks. It is a development library; the candidate has not been installed or runtime-tested.
+
 CFBR v21 is now a documented compatibility target. An isolated unmodified CFBR baseline now passes a full season, rollover and cold reload. The first four-word patch passed installation, live-memory and cold-load/rollback checks; patched-season and expanded-membership tests remain pending. The combined mod is not yet implemented. [Measured conflicts and integration gates](docs/CFBR_COMPATIBILITY.md) cover its different executable, archives and five team-slot replacements.

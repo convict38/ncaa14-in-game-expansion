@@ -1,5 +1,7 @@
 # College Football Revamped compatibility
 
+An [offline archive adapter](ARCHIVE_ADAPTER.md) now handles the differing index layouts and preserves CFBR content in a serialized-reserve candidate. Its 34 offline checks pass; membership remains 126 FBS and the candidate has not been installed. The engine port and bundled-roster coordination remain separate prerequisites.
+
 Status: isolated unmodified CFBR season/rollover passed; the first four-word patch passed a bounded install/load/rollback test. Expansion integration remains unfinished. This project is independent of the CFBR team. The latest validated expansion remains the stock-build v6 trial at 127 active FBS teams.
 
 ## Upstream and intended scope
