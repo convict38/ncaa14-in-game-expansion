@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-09T18:00:31Z",
-  "candidate": "active127-v5",
+  "updated": "2026-10-09T19:06:08Z",
+  "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
   "active_fbs_teams": 127,
@@ -9,7 +9,7 @@
   "tests": {
     "fresh_dynasty": {
       "passed": true,
-      "checks": 28
+      "checks": 35
     },
     "exact_initial_schedule": {
       "passed": true,
@@ -25,7 +25,7 @@
     },
     "completed_season": {
       "passed": true,
-      "checks": 34
+      "checks": 41
     },
     "live_executable_and_indexes": {
       "passed": true,
@@ -33,7 +33,7 @@
     },
     "normal_rollover": {
       "passed": true,
-      "checks": 39
+      "checks": 46
     },
     "cold_load_after_rollover": {
       "passed": true,
@@ -41,14 +41,14 @@
     },
     "lifecycle_and_preservation": {
       "passed": true,
-      "checks": 35
+      "checks": 39
     }
   },
   "prototype_season_record": [
-    0,
-    12
+    1,
+    11
   ],
-  "prototype_commitments": 9,
+  "prototype_commitments": 13,
   "latest_candidate_rollover_tested": true,
   "previous_candidate_rollover_tested": true,
   "all_fbs_content_complete": false,
@@ -57,11 +57,11 @@
   "trial_rolled_back": true,
   "identities": {
     "elf_sha256": "a486a9467c740637892df1fc407d8fea9d92d83cf11ff0de3fe464f934e47abe",
-    "v5_manifest_sha256": "c16b6724a42b07de9f17233d9703c89c9a818d8a27ae8175f2ba2ef5a8ffdb54",
-    "boot_candidate_sha256": "25f91dead51d5326958cb1d9b12ee993750d045daa6e1d620ca153e58f507e7e",
-    "misc_candidate_sha256": "665c6c5e29958650bfbd7c36a9bf6028bd314ca76f0d1e752c3bfe2f0621a2c4"
+    "boot_candidate_sha256": "a0cdd4e48e909ab600d1904fe67f99f6413a7a0e184d7dca0bf0d5e164674925",
+    "misc_candidate_sha256": "665c6c5e29958650bfbd7c36a9bf6028bd314ca76f0d1e752c3bfe2f0621a2c4",
+    "v6_manifest_sha256": "f0bdec2c9a7313b9c27e07ac84972d40d832b466c161af9d39d7b06c3a4972a3"
   },
-  "prototype_recruits_matched_after_rollover": 8,
+  "prototype_recruits_matched_after_rollover": 13,
   "prototype_second_year_opponents": {
     "fbs": 11,
     "fcs": 1
@@ -70,26 +70,34 @@
   "cold_roster_ui_verified": true,
   "serialized_occupancy_after_rollover": {
     "CONT": {
-      "records": 542,
+      "records": 539,
       "max_records": 960
     },
     "COCH": {
-      "records": 405,
-      "max_records": 512
+      "records": 403,
+      "max_records": 768
     },
     "DCHT": {
       "records": 11176,
-      "max_records": 11464
+      "max_records": 14080
     },
     "PLAY": {
-      "records": 8842,
-      "max_records": 9100
+      "records": 8852,
+      "max_records": 12600
     },
     "STAD": {
       "records": 198,
-      "max_records": 200
+      "max_records": 240
     }
   },
-  "prototype_additional_identity_match_with_position_change": 1,
-  "recruit_matching_note": "Eight exact eight-field matches; Caleb Wilson matches seven fields with LG-to-RG change. Board commitment flags do not identify destination team."
+  "prototype_additional_identity_match_with_position_change": 0,
+  "recruit_matching_note": "Thirteen exact eight-field matches in this v6 trial. Board commitment status alone still does not prove destination team.",
+  "record_history_complete": false,
+  "larger_active_count_validated": false,
+  "serialized_reserve_regression_active_count": 127,
+  "remaining_history_gaps": [
+    "Fresh prototype has no TPHS/RBKS rows",
+    "Postseason prototype record-type coverage differs from original teams",
+    "History constructors, pruning and full-membership capacity need tracing"
+  ]
 }

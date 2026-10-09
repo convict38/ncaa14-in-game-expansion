@@ -9,8 +9,9 @@ An experimental PS3/RPCS3 project to add every FBS school while retaining existi
 - The analyzed executable matches the module running in RPCS3. A controlled diagnostic patch passed an unpatched/patched/restored test.
 - One additional active Dynasty team coexists with all original teams, with roster, recruiting, schedules, statistics and save/load evidence.
 - The latest schedule experiment gives the added team 12 distinct FBS opponents, six home and six away. Every original FBS team still has 12 games; existing FBS-versus-FBS matchups and weeks are retained.
-- A fresh Dynasty, cold reload, regular season and stock postseason completed under this experiment. The prototype finished 0–12 and received nine recruiting commitments.
-- The same v5 schedule/unique-stadium combination now passed normal 2013-to-2014 rollover and cold reload: all 127 FBS teams have complete schedules without weekly collisions, championship history persisted, and eight committed recruits matched prototype players. A freshman was independently verified in the cold-loaded depth chart.
+- Candidate v6 enlarges selected save capacities at unchanged 127-team membership. It passed fresh creation, cold load, a simulated regular season and stock postseason, normal 2013-to-2014 rollover, and a separate cold reload. The prototype finished 1-11 with 13 class commitments; 13 recruits matched its next-year roster.
+- All 127 FBS teams retained complete next-year schedules without weekly collisions, and the checked championship metadata persisted. A recruited freshman was independently verified in the cold-loaded depth chart.
+- Separate record-history initialization and capacity gaps remain under repair. Passing these bounded tests does not establish complete history, larger active counts or repeated-season safety.
 
 The prototype borrows Idaho presentation. A separate stadium identity with the donor's stadium model passed field loading and a Super Sim game in an earlier candidate. These are bounded tests, not a finished release.
 

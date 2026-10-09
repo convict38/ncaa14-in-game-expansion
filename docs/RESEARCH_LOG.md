@@ -32,6 +32,14 @@ A separate cold run loaded preseason 2014 normally. All four save files were unc
 
 Observed occupancy: PLAY 8,842/9,100; DCHT 11,176/11,464; STAD 198/200; COCH 405/512; CONT 542/960. These are rows/capacities, not guarantees of safe expansion. The prototype's 2014 schedule has 11 FBS games and one FCS game.
 
+## V6 serialized reserves - static and runtime-tested
+
+Selected table capacities were enlarged without changing membership or the 517 executable patch words. The builder preserved prior row payloads, schemas and unrelated archive entries. Fresh creation, normal simulation through postseason/offseason, and cold reload passed bounded checks at 127 active FBS teams. All 17 expected reserve values persisted. After rollover PLAY contains 8,852/12,600 rows; DCHT 11,176/14,080; STAD 198/240; COCH 403/768; CONT 539/960. These reserves do not prove safe operation at 160 active teams.
+
+Fresh v5 and v6 lack prototype TPHS and RBKS rows. After v5 rollover TPHS remains 572/572: the prototype gains one row while preexisting ID 412, outside the saved FBS set, has three rather than four. RBKS contains 18 prototype rows with types 1/2; original teams have 27 with types 0/1/2. The observed group IDs match active FBS IDs after simulation. Per-team draft history and game/season/career record interpretations are hypotheses pending constructor/pruning tracing. Full membership at 27 records per team would exceed the current RBKS limit. This is a remaining history gap, not a failure of the separately checked bowl/conference championship tables.
+
+Saved TEAM rank fields sampled here are unsigned eight-bit values; sampled runtime rank stores are 16- or 32-bit. A universal seven-bit/127-team rank ceiling is not supported by those observations. Other consumers and sentinels remain unproved. The fixed save-container length also does not establish that opaque trailing bytes are free space.
+
 ## Known limits and failures
 
 - The prototype uses borrowed Idaho presentation; coach-selection filtering remains unresolved.

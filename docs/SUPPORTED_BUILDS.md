@@ -16,3 +16,11 @@
 The PPU patch key is a module identity, not the whole-file ELF SHA-1. Ghidra's output is checked against raw PowerPC instructions because some compiler helpers and query out-parameters decompile incorrectly.
 
 These identities describe the tested development build. No compatibility claim is made for other versions or an installable public release.
+
+## Candidate v6 identities
+
+- Manifest SHA-256: `f0bdec2c9a7313b9c27e07ac84972d40d832b466c161af9d39d7b06c3a4972a3`
+- Generated BOOT SHA-256: `a0cdd4e48e909ab600d1904fe67f99f6413a7a0e184d7dca0bf0d5e164674925`
+- Generated MISC SHA-256: `665c6c5e29958650bfbd7c36a9bf6028bd314ca76f0d1e752c3bfe2f0621a2c4`
+
+Same 517 executable words as v5; selected serialized capacities enlarged. These are reproducibility identifiers, not redistributed game files or a public release.
