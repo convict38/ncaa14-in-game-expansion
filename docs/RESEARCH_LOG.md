@@ -26,7 +26,7 @@ Candidate v5 changes only selected packaged matchups while retaining all origina
 
 ## Combined v5 lifecycle — runtime-tested
 
-Normal offseason simulation reached preseason 2014. Thirty-nine saved-system checks passed: all 132 teams/127 FBS retained; every FBS team has 12 games without weekly collisions; roster/depth references, 198 unique stadium identities, one venue link per FBS, championship history and serialized reserves passed bounded checks. Eight of nine end-season commitments matched prototype players; the ninth is not explained by this test.
+Normal offseason simulation reached preseason 2014. Thirty-nine saved-system checks passed: all 132 teams/127 FBS retained; every FBS team has 12 games without weekly collisions; roster/depth references, 198 unique stadium identities, one venue link per FBS, championship history and serialized reserves passed bounded checks. Eight recruits matched prototype players on all eight checked identity fields. A broader read-only comparison found Caleb Wilson on the prototype with seven matching fields and a position change from LG (6) to RG (8). This supports a ninth recruit progressing onto its roster. The board also contains two committed recruits matching players on other teams. Therefore RECB membership plus RCPT.RCCM=1 does not prove which team secured a commitment; the earlier strict checker remains bounded and its raw report is preserved.
 
 A separate cold run loaded preseason 2014 normally. All four save files were unchanged. The depth chart independently showed recruited freshman Blake Vogel on Expansion Test with the saved identity and attributes. Both live probes passed 526 checks. This establishes one rollover for the exact candidate, not repeated-season or full-FBS acceptance.
 

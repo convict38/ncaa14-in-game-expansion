@@ -6,7 +6,7 @@ Entries describe the observed test scope. Candidate numbers are development iter
 
 - The same 517-word/BOOT/MISC candidate completed normal offseason simulation into 2014 without save edits.
 - Thirty-nine saved-system checks passed: all 132 teams/127 FBS retained, complete schedules without weekly collisions, roster/depth references, unique stadium links, history and serialized reserves.
-- Eight of nine end-season commitments matched prototype players. The ninth recruit's fate and all recruiting-reference semantics are not established.
+- Eight recruits matched prototype players on all checked identity fields. A ninth, Caleb Wilson, matched name, hometown, height, weight, tendency and class with a position change from LG to RG. Two other committed recruits on the prototype's board matched players on different teams; board membership plus commitment status does not identify the destination team.
 - The prototype has 11 FBS opponents and one FCS opponent in 2014.
 - Cold reload passed five checks with all four files unchanged. The in-game depth chart confirmed Blake Vogel, freshman TE #87, 6 ft 6 in, 265 lb, OVR 64.
 - Both live probes passed 526 checks; aggregate lifecycle/preservation passed 35; original preservation passed 58. All four trial files were rolled back.
