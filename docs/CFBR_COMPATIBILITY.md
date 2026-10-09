@@ -1,6 +1,6 @@
 # College Football Revamped compatibility
 
-Status: investigated and staged privately; not integrated or runtime-tested. This project is independent of the CFBR team. The latest validated expansion remains the stock-build v6 trial at 127 active FBS teams.
+Status: isolated unmodified CFBR baseline passed fresh Dynasty and cold save/load; expansion integration remains unfinished. This project is independent of the CFBR team. The latest validated expansion remains the stock-build v6 trial at 127 active FBS teams.
 
 ## Upstream and intended scope
 
@@ -16,7 +16,7 @@ The locally staged official linked package is 7,823,052,432 bytes and contains 2
 
 `837afea6338d4796251e6f70ad3fa296bb429204e9ccc2fd69803a996ce22065`
 
-This records our download identity; no publisher-provided checksum was available for comparison. We extracted selected files into a private flat staging directory. Nothing was installed.
+This records our download identity; no publisher-provided checksum was available for comparison. Package files were extracted into private staging and assembled into an isolated development profile for the baseline described below.
 
 - The included update metadata says BLUS31159, APP_VER 01.02. Its decrypted executable SHA-256 is `144dee9040da9cb1e8337844fbb685a0f06e560b8fee8d9ba1eac87b9e300c1c`.
 - None of the current 517 expansion preimages match at their existing addresses in this executable. Existing patches are incompatible; a separate analysis and port are required. A separate Ghidra project now imports this exact ELF with PowerPC big-endian decoding, a 32-bit pointer model, verified entry/TOC and successful entry-function decompilation. This is static workflow validation, not a runtime test.
@@ -51,6 +51,16 @@ Full Ghidra analysis of the identified 1.02 executable completed. Signature comp
 
 A four-word ranking-storage recipe passed 17 offline checks. It pairs a larger caller stack frame with the array capacity pointer for 160 records, while leaving active membership unchanged. It is not installed or runtime-tested, and no executable or installable patch was emitted.
 
-All 2,421 package files have now been extracted into private staging and hashed. Five selected files match between independent Python and Java readers. No CFBR files are published here. A separate runtime baseline with protected saves remains the next integration gate.
+All 2,421 package files have now been extracted into private staging and hashed. Five selected files match between independent Python and Java readers. No CFBR files are published here. The separate runtime baseline is recorded below; ported patches remain untested.
 
 We currently track the pinned upstream distribution as a dependency of this repository. Forking the installer repository can help maintain installer changes later, but Git merging cannot reconcile compiled executables, archive contents or conflicting team IDs. The intended installer will combine identified local inputs using our reviewed compatibility recipes.
+
+## Isolated runtime baseline - 2026-10-09
+
+An unmodified CFBR v21/update 1.02 baseline now boots in a separate development profile. The emulator's loaded ELF matches the analyzed ELF byte for byte. Six live memory comparisons passed in each of two runs, including the entry, OPD/TOC and proposed ranking-patch sites. The observed PPU key is `PPU-62e25ebc1957382b34f2778554943e40d6d84e3c`.
+
+Normal gameplay created a fresh Alabama Dynasty. Fifteen structural checks passed: 126 FBS teams, complete 12-game regular schedules without weekly collisions, valid roster/depth references and recruiting initialization. A separate emulator run loaded the save normally; all four save files remained byte-identical. This establishes a fresh-save baseline, not full-season or expansion compatibility.
+
+The game automatically loaded the bundled CFBR23V21 roster. An initial check expecting the built-in roster failed on team 230: the save contains James Madison, while the built-in roster says FIUtest. The auto-load log identifies the actual roster source; the corrected check passes. Future installers and tests must pin roster input as well as archives and executable.
+
+After the test, the development profile redirect was rolled back. All 48 protected stock working-save files were unchanged; original preservation passed 58 checks. No expansion patch was applied to CFBR. Its ranking recipe still needs controlled runtime tests, and the combined mod still needs remapping, season progression and playoff implementation.

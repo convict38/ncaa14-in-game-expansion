@@ -60,3 +60,13 @@ Separately, executable instruction tracing confirms a four-row draft-history ini
 Completed the separate 1.02 Ghidra analysis and produced a provisional 443/517 site map. Four reviewed ranking-storage words now have a non-installable recipe with 17 offline checks. A capacity-end pointer still describing 126 records must change along with the larger frame. Membership is unchanged. Complete package extraction passed nine inventory/cross-reader checks. No combined runtime test or expansion-port acceptance is claimed. See [compatibility progress](CFBR_COMPATIBILITY.md#port-progress-static-checks-only).
 
 Original asset table labels also establish RBKS/SRRC type 0 as game records, type 1 as season records and type 2 as career records. The prototype lacks seed rows in SRRC; history initialization remains an implementation task.
+
+## Isolated runtime baseline - 2026-10-09
+
+An unmodified CFBR v21/update 1.02 baseline now boots in a separate development profile. The emulator's loaded ELF matches the analyzed ELF byte for byte. Six live memory comparisons passed in each of two runs, including the entry, OPD/TOC and proposed ranking-patch sites. The observed PPU key is `PPU-62e25ebc1957382b34f2778554943e40d6d84e3c`.
+
+Normal gameplay created a fresh Alabama Dynasty. Fifteen structural checks passed: 126 FBS teams, complete 12-game regular schedules without weekly collisions, valid roster/depth references and recruiting initialization. A separate emulator run loaded the save normally; all four save files remained byte-identical. This establishes a fresh-save baseline, not full-season or expansion compatibility.
+
+The game automatically loaded the bundled CFBR23V21 roster. An initial check expecting the built-in roster failed on team 230: the save contains James Madison, while the built-in roster says FIUtest. The auto-load log identifies the actual roster source; the corrected check passes. Future installers and tests must pin roster input as well as archives and executable.
+
+After the test, the development profile redirect was rolled back. All 48 protected stock working-save files were unchanged; original preservation passed 58 checks. No expansion patch was applied to CFBR. Its ranking recipe still needs controlled runtime tests, and the combined mod still needs remapping, season progression and playoff implementation.

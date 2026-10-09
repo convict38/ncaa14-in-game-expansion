@@ -28,3 +28,5 @@ Same 517 executable words as v5; selected serialized capacities enlarged. These 
 ## Investigated, not supported: CFBR v21 / update 1.02
 
 The CFBR executable differs from the validated baseline; all 517 existing same-address preimages mismatch. Do not apply the current candidate to it. See [CFBR compatibility](CFBR_COMPATIBILITY.md) for measured identities and the required port.
+
+The unmodified CFBR baseline now passes fresh creation and cold save/load. Loaded ELF SHA-256 is `144dee9040da9cb1e8337844fbb685a0f06e560b8fee8d9ba1eac87b9e300c1c`; observed PPU key is `PPU-62e25ebc1957382b34f2778554943e40d6d84e3c`. This does not establish expansion-patch compatibility.
