@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-09T20:56:24.947709+00:00",
+  "updated": "2026-10-09T21:50:31.309950+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -135,6 +135,15 @@
     "ranking_runtime_scope": "install/live code/cold load/rollback only; producer execution coverage and patched season pending",
     "ranking_patched_season_tested": false,
     "ranking_producer_execution_traced": false,
-    "ranking_trial_rolled_back": true
+    "ranking_trial_rolled_back": true,
+    "execution_trace_attempts": {
+      "passed": false,
+      "llvm_breakpoints_rejected_despite_ok_reply": true,
+      "interpreter_positive_control_passed": false,
+      "shutdown_hang_recovered": true,
+      "four_save_files_unchanged": true,
+      "original_preservation_checks": 58,
+      "next": "LLVM patched-season regression; trace workflow separately requires positive control"
+    }
   }
 }

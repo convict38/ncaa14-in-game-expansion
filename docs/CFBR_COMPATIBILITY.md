@@ -76,3 +76,11 @@ A guarded four-word ranking-storage patch was then installed, observed in the em
 This patch test establishes installation, live-byte and cold-load compatibility only. It does not yet establish execution coverage of the ranking producer, a patched full season, or expanded active membership. Those tests remain required before combining it with the wider port. The unpatched full-season result must not be reported as a patched-season result.
 
 One checker initially expected stored week 15 at the conference-championship screen; the save stores 16. That failed report was preserved and the corrected expectation passed. No game crash or manual save edit occurred.
+
+## Execution tracing limitation - 2026-10-09
+
+A requested breakpoint was acknowledged but never hit under LLVM. Matching RPCS3 source explicitly rejects LLVM PPU breakpoints; the GDB command handler does not propagate that failure. A successful protocol reply therefore does not prove breakpoint installation. See [PPU breakpoint implementation](https://github.com/RPCS3/rpcs3/blob/304d544b/rpcs3/Emu/Cell/PPUThread.cpp#L1155) and [GDB handler](https://github.com/RPCS3/rpcs3/blob/304d544b/rpcs3/Emu/GDB.cpp).
+
+A separate Interpreter (static) configuration allowed normal save loading and viewing Championship Contenders but did not obtain the requested execution stops. A subsequent early-attach attempt stayed at the title/attract screens. Normal shutdown with a pending debugger continue hung; the emulator's termination and fatal-error dialogs were handled. These diagnostic failures are retained in the private evidence. No positive breakpoint coverage, patched full season or expanded CFBR membership is claimed.
+
+The four-word experiment and profile redirect were rolled back. All four working Dynasty save files match before and after the interpreter experiments; 48 protected stock save files are unchanged and 58 original-preservation checks passed. The Dynasty had advanced normally to Week 1 of 2014 before those experiments. Next work prioritizes the LLVM patched-season regression; debugger compatibility will not block independent port work. A minimal positive-control trace or reversible execution marker needs separate validation.
