@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-09T19:06:08Z",
+  "updated": "2026-10-09T19:32:05.539689+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -99,5 +99,17 @@
     "Fresh prototype has no TPHS/RBKS rows",
     "Postseason prototype record-type coverage differs from original teams",
     "History constructors, pruning and full-membership capacity need tracing"
-  ]
+  ],
+  "cfbr_integration": {
+    "status": "staged and statically audited, not installed",
+    "upstream_commit": "9b9674a0de6102cec90ea64c2cf155ecf4752437",
+    "release": "v21 PC disc, PS3 buttons, older scorebug",
+    "app_version": "01.02",
+    "same_address_patch_preimages_matching": 0,
+    "patch_words_checked": 517,
+    "team_id_conflicts": 5,
+    "runtime_tested": false,
+    "documentation": "docs/CFBR_COMPATIBILITY.md",
+    "separate_ghidra_import_validated": true
+  }
 }

@@ -48,3 +48,9 @@ Saved TEAM rank fields sampled here are unsigned eight-bit values; sampled runti
 - Full-FBS and repeated-season capacities remain under audit.
 - A checker initially assumed conference championship week was stored as15; the captured save stores16. The failed report was retained and rerun with the corrected observation. This was a test expectation error, not an emulator failure.
 - No custom 12-team playoff is implemented yet.
+
+## CFBR compatibility investigation - 2026-10-09
+
+The official v21 package was inventoried and selected files extracted privately. Static checks identify update 1.02, incompatible existing patch addresses, 22 changed BOOT payloads, 331 changed MISC payloads and five occupied team IDs requiring remapping. The staged rosters retain 126 active FBS entries. [Details and source links](CFBR_COMPATIBILITY.md). No integration runtime test was performed.
+
+Separately, executable instruction tracing confirms a four-row draft-history initializer for years -4 through -1 and a rollover routine that deletes year-minus-four before inserting current-year counts. These static findings guide the next prototype-history repair; they do not establish that the missing history rows are fixed.

@@ -24,3 +24,7 @@ These identities describe the tested development build. No compatibility claim i
 - Generated MISC SHA-256: `665c6c5e29958650bfbd7c36a9bf6028bd314ca76f0d1e752c3bfe2f0621a2c4`
 
 Same 517 executable words as v5; selected serialized capacities enlarged. These are reproducibility identifiers, not redistributed game files or a public release.
+
+## Investigated, not supported: CFBR v21 / update 1.02
+
+The CFBR executable differs from the validated baseline; all 517 existing same-address preimages mismatch. Do not apply the current candidate to it. See [CFBR compatibility](CFBR_COMPATIBILITY.md) for measured identities and the required port.

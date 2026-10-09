@@ -27,3 +27,7 @@ The prototype borrows Idaho presentation. A separate stadium identity with the d
 The repository contains project-authored documentation and tools. Game images, executables, game archives, assets, firmware, saves, emulator caches, raw memory dumps and decompiled game code are not included. Players will supply their own game dump.
 
 This is an independent community project. No affiliation with EA, the NCAA, RPCS3, or other NCAA Football mod projects is claimed. Public availability of the repository does not imply a tested installer or a completed mod.
+
+## Revamped integration
+
+CFBR v21 is now a documented compatibility target. Its graphics and other updates are staged for analysis; the combined mod is not yet implemented. [Measured conflicts and integration gates](docs/CFBR_COMPATIBILITY.md) cover its different executable, archives and five team-slot replacements.
