@@ -23,8 +23,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "02a00eeb92e2ae2aaf5fc212dc0954611f46e2bd7fde9e096f569ce3f5075597",
-      "bytes": 3515
+      "sha256": "70f08b63ac952c87110f55baddfe2ba8b3c820d4bd7b1c378ef5549a6cae945e",
+      "bytes": 4569
     },
     {
       "path": "CONTRIBUTING.md",
@@ -33,23 +33,23 @@
     },
     {
       "path": "README.md",
-      "sha256": "955cebfa5b8e290bd4d95af4535b46e00118e7ec6431d94dc1735788b68c5a6c",
-      "bytes": 2400
+      "sha256": "e8c02d144df9b2e4567736fcda46eb83240e99feee47c1561d75d493f337e8d2",
+      "bytes": 2584
     },
     {
       "path": "ROADMAP.md",
-      "sha256": "f9b69f6beaecc6ead617e098c5420b78a0863e4a0c54fdfb2cbde659a76b21b5",
-      "bytes": 2137
+      "sha256": "f4b8b26c74d1c3defe7846368db5652c1e454bd111a3afe2c0bad9ef2812eac1",
+      "bytes": 2163
     },
     {
       "path": "docs/INSTALLATION.md",
-      "sha256": "b56ea5cf1c512ffea7aa924e62a5721f4a66aa96525f9d87c405503b10dddfb8",
-      "bytes": 2427
+      "sha256": "c2f96e470ffe8e4d796f8f699b3c936890c20099f7265537caee7f3ae6fbd160",
+      "bytes": 2461
     },
     {
       "path": "docs/RESEARCH_LOG.md",
-      "sha256": "045c91b63ac42b3328ba07475a620b6ee28bfd8a74eb2f3463b8dc1abf7534cf",
-      "bytes": 3385
+      "sha256": "74392f064e1482d012eb8eac34b9fb36fb582c021fd40ee5bd109efcd94e3e90",
+      "bytes": 4497
     },
     {
       "path": "docs/SUPPORTED_BUILDS.md",
@@ -58,13 +58,13 @@
     },
     {
       "path": "docs/TESTING.md",
-      "sha256": "5fe2019e8cb213dfe1813507c576ba3be619f35b33846e173cbbfb3889eb438a",
-      "bytes": 2008
+      "sha256": "023dd160f0e298f0703f421aaa8a2ce01eeb895f3d4da0764041a6117854d012",
+      "bytes": 2265
     },
     {
       "path": "reports/latest-status.json",
-      "sha256": "e6abb505c8f593f0b949636901854c3bac00a011094a52ed9eb8bfec0da0e198",
-      "bytes": 1420
+      "sha256": "d701d19e73b548a647745851dff0534c875a6e1d09a3bd35bf2fd201c3ac2ca9",
+      "bytes": 2265
     },
     {
       "path": "tools/verify_game_identity.py",

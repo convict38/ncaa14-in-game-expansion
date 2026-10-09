@@ -6,7 +6,7 @@
 
 A user's own NCAA Football 14 PS3 dump, title BLUS31159, application version 01.00, with the exact executable identity in [SUPPORTED_BUILDS.md](SUPPORTED_BUILDS.md). The current development baseline uses RPCS3 0.0.43-20250-304d544b and firmware 4.93. This is a tested configuration, not a recommendation to upgrade or downgrade an existing setup. Other title versions, updates, platforms and combinations with other mods are untested.
 
-If you already have the decrypted executable, the included tool can check its identity without modifying it:
+If you already have the decrypted executable, the included tool can check its identity without modifying it. Python 3.11 or newer is required:
 
 ```powershell
 python tools/verify_game_identity.py "PATH_TO_YOUR_DECRYPTED_EBOOT.elf"
