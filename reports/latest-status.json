@@ -1,0 +1,52 @@
+{
+  "updated": "2026-10-09",
+  "candidate": "active127-v5",
+  "release_available": false,
+  "full_mod_acceptance": false,
+  "active_fbs_teams": 127,
+  "original_fbs_retained": 126,
+  "prototype": "Expansion Test (borrowed Idaho presentation)",
+  "tests": {
+    "fresh_dynasty": {
+      "passed": true,
+      "checks": 28
+    },
+    "exact_initial_schedule": {
+      "passed": true,
+      "checks": 12
+    },
+    "stadium_identity": {
+      "passed": true,
+      "checks": 12
+    },
+    "cold_load": {
+      "passed": true,
+      "checks": 5
+    },
+    "completed_season": {
+      "passed": true,
+      "checks": 34
+    },
+    "live_executable_and_indexes": {
+      "passed": true,
+      "checks": 526
+    }
+  },
+  "prototype_season_record": [
+    0,
+    12
+  ],
+  "prototype_commitments": 9,
+  "latest_candidate_rollover_tested": false,
+  "previous_candidate_rollover_tested": true,
+  "all_fbs_content_complete": false,
+  "custom_playoff_implemented": false,
+  "manual_save_edits_used": false,
+  "trial_rolled_back": true,
+  "identities": {
+    "elf_sha256": "a486a9467c740637892df1fc407d8fea9d92d83cf11ff0de3fe464f934e47abe",
+    "v5_manifest_sha256": "c16b6724a42b07de9f17233d9703c89c9a818d8a27ae8175f2ba2ef5a8ffdb54",
+    "boot_candidate_sha256": "25f91dead51d5326958cb1d9b12ee993750d045daa6e1d620ca153e58f507e7e",
+    "misc_candidate_sha256": "665c6c5e29958650bfbd7c36a9bf6028bd314ca76f0d1e752c3bfe2f0621a2c4"
+  }
+}

@@ -1,0 +1,18 @@
+# Tested development build
+
+| Component | Recorded identity |
+| --- | --- |
+| Platform/title | PS3 BLUS31159; APP_VER 01.00 |
+| RPCS3 | 0.0.43-20250-304d544b Alpha |
+| Firmware | 4.93 |
+| Ghidra analysis | 12.1.4; PowerPC:BE:64:64-32addr; 4-byte pointers |
+| JDK | Temurin 21.0.12.1+1 |
+| Development Python | 3.13.9 |
+| Decrypted ELF SHA-256 | `a486a9467c740637892df1fc407d8fea9d92d83cf11ff0de3fe464f934e47abe` |
+| Original SELF SHA-256 | `27fb330ac0134ed94ae3a7eb4f0096fc398e8752ed6d23ee41b32aa3cefe117a` |
+| RPCS3 executable SHA-256 | `132bcad1ec9acffa800d5e1d7afeb9b8180e457a37f66408f35c4c69a6cb2a89` |
+| RPCS3 PPU patch key | `PPU-011a5e6caad2e7361265a9a230cf385f805671fb` |
+
+The PPU patch key is a module identity, not the whole-file ELF SHA-1. Ghidra's output is checked against raw PowerPC instructions because some compiler helpers and query out-parameters decompile incorrectly.
+
+These identities describe the tested development build. No compatibility claim is made for other versions or an installable public release.

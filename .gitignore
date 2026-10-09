@@ -1,0 +1,17 @@
+# Deny by default: explicitly permit only the reviewed public source tree.
+*
+!/.gitignore
+!/README.md
+!/CHANGELOG.md
+!/ROADMAP.md
+!/CONTRIBUTING.md
+!/docs/
+!/docs/*.md
+!/tools/
+!/tools/verify_game_identity.py
+!/reports/
+!/reports/latest-status.json
+!/reports/export-manifest.json
+!/.github/
+!/.github/ISSUE_TEMPLATE/
+!/.github/ISSUE_TEMPLATE/*.yml

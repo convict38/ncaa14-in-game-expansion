@@ -1,0 +1,15 @@
+name: Feature or research proposal
+description: Propose a change or investigation tied to the roadmap.
+title: "[Proposal] "
+body:
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior and motivation
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: How would we demonstrate it works in-game?
+      description: Include save/load and season progression where applicable.

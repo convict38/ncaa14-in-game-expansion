@@ -1,0 +1,75 @@
+{
+  "scope": "Explicit text-only public export. No game data, saves, raw logs or private paths.",
+  "files": [
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "sha256": "aeee576a4261eb155e85442658be4a4b6480e60239eb12e8deaea953f2e06590",
+      "bytes": 1020
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "sha256": "13064e7bea658e01e718b414fbb7b3b244f36411fe25ee2055c151f7b534547a",
+      "bytes": 27
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "sha256": "39a6af9dcc9acb279e79f2d6b5d8eebe4f86143480614304ca9f884f10c73ed0",
+      "bytes": 454
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "dd3c09eabd41ea0c52a93cd88cb71188c6c7b4141a9687508e1135da812033cb",
+      "bytes": 348
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "02a00eeb92e2ae2aaf5fc212dc0954611f46e2bd7fde9e096f569ce3f5075597",
+      "bytes": 3515
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "sha256": "dddaa43e1255983bcd8c76a8078fb08209841ac8bbff4e0fd9b77ea2cf56b786",
+      "bytes": 1102
+    },
+    {
+      "path": "README.md",
+      "sha256": "955cebfa5b8e290bd4d95af4535b46e00118e7ec6431d94dc1735788b68c5a6c",
+      "bytes": 2400
+    },
+    {
+      "path": "ROADMAP.md",
+      "sha256": "f9b69f6beaecc6ead617e098c5420b78a0863e4a0c54fdfb2cbde659a76b21b5",
+      "bytes": 2137
+    },
+    {
+      "path": "docs/INSTALLATION.md",
+      "sha256": "b56ea5cf1c512ffea7aa924e62a5721f4a66aa96525f9d87c405503b10dddfb8",
+      "bytes": 2427
+    },
+    {
+      "path": "docs/RESEARCH_LOG.md",
+      "sha256": "045c91b63ac42b3328ba07475a620b6ee28bfd8a74eb2f3463b8dc1abf7534cf",
+      "bytes": 3385
+    },
+    {
+      "path": "docs/SUPPORTED_BUILDS.md",
+      "sha256": "a5f8d0e8de15e7e367e489dcc1c4e6efad8cc1d66cee8412b646b8d25ba26f7c",
+      "bytes": 1030
+    },
+    {
+      "path": "docs/TESTING.md",
+      "sha256": "5fe2019e8cb213dfe1813507c576ba3be619f35b33846e173cbbfb3889eb438a",
+      "bytes": 2008
+    },
+    {
+      "path": "reports/latest-status.json",
+      "sha256": "e6abb505c8f593f0b949636901854c3bac00a011094a52ed9eb8bfec0da0e198",
+      "bytes": 1420
+    },
+    {
+      "path": "tools/verify_game_identity.py",
+      "sha256": "4407f3cfdc94da43bdf2388cf17601910bd28c59bb2f450cc559d2eabfe57978",
+      "bytes": 1280
+    }
+  ]
+}

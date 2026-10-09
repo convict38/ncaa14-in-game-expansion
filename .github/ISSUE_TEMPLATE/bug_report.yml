@@ -1,0 +1,36 @@
+name: Bug or test result
+description: Report a reproducible finding for a documented candidate or release.
+title: "[Test] "
+body:
+  - type: markdown
+    attributes:
+      value: "No installable release exists yet. Report evidence without attaching game files, saves, firmware, memory dumps, or personal paths."
+  - type: input
+    id: version
+    attributes:
+      label: Candidate or release version
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Build and environment
+      description: Title/update version, executable SHA-256, RPCS3 version, and new or migrated Dynasty.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps, expected result, and observed result
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence
+    attributes:
+      label: Evidence type
+      options:
+        - Runtime-tested
+        - Static analysis
+        - Hypothesis
+    validations:
+      required: true
