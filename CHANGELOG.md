@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-10 - Correction: 138-team BCS rankings were wrong; real 2026 lineup plays a full season
+
+Correction to the 138-team entry below: that run completed a season and rollover without crashing, but its BCS rankings were silently wrong. The BCS scorer turns each poll rank into points as 127 minus the rank, using constants stored next to the function. They were never updated for more than 127 teams, so teams ranked 128th or worse wrapped around to huge scores and the worst teams took the top BCS spots (the 2013 title game paired 1-12 Rutgers and 4-9 Eastern Michigan). The 127-team and stock builds are unaffected. A v3 engine recipe (551 words) scales these constants with the team count and is under runtime test.
+
+The real 2026 FBS lineup (125 retained schools plus 13 additions in the 2026 conferences, with Idaho moved out of FBS) has now played a full 2013 season in a fresh Dynasty: season start, regular season, conference championship games and bowls, all checks passing. Two problems were found and root-caused along the way.
+- Idaho was kept as a non-FBS team that still had players. Its players overflowed a 138-entry rating cache at season start. Removing its players fixed that.
+- A stale conference membership table scheduled 2013 conference lineups. Clearing it fixed the schedules.
+
+The rollover to 2014 then crashed. Idaho, now with no players, was used as a filler opponent; its games produced placeholder player rows that an unbounded write in the redshirt step turned into heap corruption. The v3 data removes Idaho from the Dynasty entirely, and v3 adds a bound check. Still open: the 17-team ACC gets no conference games and the 18-team Big Ten gets ten.
+
 ## 2026-10-10 - Native in-game 12-team playoff runs a full season and records the champion (stock build)
 
 A native College Football Playoff now runs inside normal Dynasty play on the stock build (126 teams): no external tools or save editing. A small code hook replaces the stock BCS tie-in filler. At the end of championship week it seeds 12 teams (the five highest-ranked conference champions plus seven at-large, straight seeding by rank). It fills four first-round games (5 vs 12, 6 vs 11, 7 vs 10, 8 vs 9) at bowl sites on Dec 11, and after each round it writes the winners into the fixed bracket: quarterfinals Dec 25 (seeds 1-4 with byes), semifinals Jan 1, then the title game. The bowl calendar and CFP round names come from the Dynasty template's BOWL table.

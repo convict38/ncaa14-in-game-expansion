@@ -2,6 +2,10 @@
 
 Evidence is classified as **static**, **runtime-tested**, or **hypothesis**. Detailed local fixtures and raw logs are retained privately in the development workspace; they are not uploaded with game data.
 
+## Count-dependent data constants and real-2026 lineup - runtime-tested
+
+The BCS function at 0x4ca8a0 scores poll ranks as 127 - rank with constants stored as data (0x4ca874, 0x4ca878, 0x4ca88c); a similar pattern exists at 0x4c62fc/0x4c6300. Raising the team count past 127 inverts the BCS order. Constants stored as data next to code are a class the earlier immediate-value audit did not cover. Real-2026 runtime: a non-FBS team with players overflowed the Play Time cache (sized for the FBS count, filled by the all-team index, no bound check at 0x50c518). The SCRT template table drives conference membership for the first-season conference scheduler. The redshirt step (0x47bbec) writes a flag per player ID without a bound check, so placeholder player ID 0xffff corrupts the heap.
+
 ## Native 12-team playoff - runtime-tested (stock build)
 
 Stock pre-creates all postseason games as placeholders at season start; conference championship and bowl games are filled from standings and rankings, and nothing is results-driven afterwards. Week stage is the highest stage code of that week's games (16 conference championship, 30-32 bowls, 40 title). New Dynasties copy BOWL rows from the BOOT entry 354 template, not MISC. The recorders for bowl history (0x4ed948) and the national title (0x4e9b30) find "the team's bowl game" as its first postseason game. The playoff hook at 0x4cea84 plus two recorder call-site redirects (0x4edb0c, 0x4e9fd4), with a code cave in the obsolete BCS tie-in filler (0x459e24-0x45a604), produced a correct bracket, results-driven advancement and a recorded champion through rollover in a fresh Dynasty.

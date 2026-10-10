@@ -23,8 +23,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "a0831761b1caf766babe7c11f61d7aafeb00ceefacb55c7d2c14eedad50aa5d9",
-      "bytes": 18402
+      "sha256": "2d23058606fa24532b35dc28d2fef03bb88a791287afb9fca306b07132e52386",
+      "bytes": 20100
     },
     {
       "path": "CONTRIBUTING.md",
@@ -53,8 +53,8 @@
     },
     {
       "path": "docs/DEVELOPER_HANDOFF.md",
-      "sha256": "a531de2399bd9c77e6176d5a1234643aa0a5f0b14e52a0f8dabd6f533767bce6",
-      "bytes": 14282
+      "sha256": "c1a80cc871fa47c2d906c04433f735f7e460ef2f8140dd4ec72841ceae87ffcf",
+      "bytes": 14849
     },
     {
       "path": "docs/INSTALLATION.md",
@@ -63,8 +63,8 @@
     },
     {
       "path": "docs/RESEARCH_LOG.md",
-      "sha256": "81d3902a2c229a6e6649e5c08ef06910122dcb1c280b043e8dadcada61ec92b1",
-      "bytes": 22215
+      "sha256": "472e13946ecb8ce40ee338c4983260f89a693e61dd10a4d551e18f799f3dca38",
+      "bytes": 23007
     },
     {
       "path": "docs/ROSTER_PIPELINE.md",
@@ -83,8 +83,8 @@
     },
     {
       "path": "reports/latest-status.json",
-      "sha256": "eaae725c618507a3b6696513b78471056fbbc6a1f02d03d9c4d5211143fcf075",
-      "bytes": 13867
+      "sha256": "4f7cc31664c515f8a3a75470acde5f0ea9783e3d69c013fe048f65cec13b6638",
+      "bytes": 14399
     },
     {
       "path": "tools/bgfa_archive.py",
