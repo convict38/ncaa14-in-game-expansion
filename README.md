@@ -23,6 +23,8 @@ The first added team identity inside the 138-team reserve now survives Dynasty c
 
 **New:** all 138 2026 FBS schools in their 2026 conferences completed a full Dynasty season, bowls and rollover on the stock build (borrowed graphics for the 13 additions). See the [changelog](CHANGELOG.md).
 
+**New:** the 138 real 2026 FBS teams and the native 12-team playoff now run together in one Dynasty on the stock build (full season, playoff, recorded champion, rollover). Multi-season testing, the CFBR port, graphics for the 13 added schools and an installer remain.
+
 ## Follow development
 
 - [Changelog](CHANGELOG.md): dated changes and validation results.

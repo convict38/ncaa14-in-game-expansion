@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-10 - 138 real 2026 FBS teams + native 12-team playoff together in one Dynasty (stock build)
+
+The two core goals now run together in normal Dynasty play on the stock build. All 138 2026 FBS schools play in their 2026 conferences, and the native 12-team College Football Playoff decides the title. A fresh Dynasty showed CFP bowl names in the game's own bowl tie-in screen before the season, and its cold reload was byte-identical.
+
+After a CPU-simulated 2013 season and conference championships, the playoff seeded twelve teams: Virginia Tech, Alabama, Georgia Tech, Boston College, Ohio State, Clemson, Texas A&M, Stanford, Texas, Wake Forest, Kansas State, and C-USA champion FIU. It played first-round games on Dec 11 and advanced winners through upsets: Stanford over top seed Virginia Tech, and Texas A&M over Alabama 21-18. Georgia Tech (15-0) beat Boston College for the title. The game's news and poll showed Georgia Tech as champion, and the save recorded the title once with one bowl-history row per playoff win. The rollover to 2014 kept the playoff calendar. All playoff, integrity and season checks passed. A live probe confirmed all 551 engine words and 510 playoff words with 138 FBS teams in memory (1,073 checks). There were no crashes.
+
+The remaining failed checks are the known ACC and Big Ten conference-schedule counts. A v4 data update (ACC and Big Ten back to their table-driven schedule style, plus enlarged season-history tables) is now in a multi-season test.
+
 ## 2026-10-10 - Real 2026 FBS lineup: 138 teams in 2026 conferences complete a full Dynasty season and rollover (stock build)
 
 All 138 2026 FBS schools now play natively in Dynasty on the stock build: the 125 original schools still in FBS plus 13 additions, in the 2026 conferences. Idaho is out of the Dynasty, with its data preserved for future FCS support. The additions use borrowed presentation from similar donor schools.

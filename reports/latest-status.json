@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-10T22:24:24.919649+00:00",
+  "updated": "2026-10-10T23:15:49.774016+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -425,6 +425,38 @@
       "borrowed graphics",
       "combine with playoff",
       "CFBR port"
+    ]
+  },
+  "combined_status": {
+    "runtime_passed": true,
+    "date": "2026-10-10",
+    "build": "stock BLUS31159 01.00",
+    "active_fbs": 138,
+    "playoff": "native 12-team (v2)",
+    "field_2013": [
+      "Virginia Tech",
+      "Alabama",
+      "Georgia Tech",
+      "Boston College",
+      "Ohio State",
+      "Clemson",
+      "Texas A&M",
+      "Stanford",
+      "Texas",
+      "Wake Forest",
+      "Kansas State",
+      "FIU"
+    ],
+    "champion_2013": "Georgia Tech (15-0)",
+    "live_probe_checks": 1073,
+    "crashes": 0,
+    "open": [
+      "ACC/Big Ten conference schedule counts (v4 under test)",
+      "auto bids use conference standings leader, not title-game winner",
+      "multi-season",
+      "CFBR port",
+      "graphics",
+      "installer"
     ]
   }
 }
