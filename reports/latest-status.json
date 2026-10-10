@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-10T14:31:04.720765+00:00",
+  "updated": "2026-10-10T15:03:48.555802+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -290,6 +290,36 @@
       "trial_rolled_back": true,
       "scope": "capacity-only Dynasty creation, cold reload, simulated season, postseason and rollover with grown tables; no added identities, engine limits, played games or repeated seasons",
       "documentation": "docs/ROSTER_PIPELINE.md"
+    },
+    "first_added_identity_trial": {
+      "passed": true,
+      "date": "2026-10-10",
+      "active_fbs": 126,
+      "dynasty_teams": 132,
+      "added_identity": {
+        "tgid": 165,
+        "name": "FCS Test",
+        "pattern": "generic FCS row (TTYP 1) cloned from TGID 164",
+        "added_coaches": 3
+      },
+      "boot_entries_changed": [
+        355
+      ],
+      "offline_checks": 36,
+      "fresh_dynasty_checks": 20,
+      "cold_save_files_unchanged": 4,
+      "regular_season_checks": 28,
+      "postseason_checks": 28,
+      "rollover_checks": 30,
+      "grown_capacity_checks_per_snapshot": 7,
+      "engine_scheduled_added_identity_games_2014": 7,
+      "live_probe_runs_passed": 2,
+      "checker_corrections": [
+        "Dynasty creation sets TVIS=1 on all generic FCS rows; identity check now compares with native TGID 164",
+        "season checker team count now taken from the prior fixture instead of a fixed 131"
+      ],
+      "documentation": "docs/ROSTER_PIPELINE.md",
+      "scope": "One added non-FBS identity inside the 138-team reserve at unchanged 126 FBS. No FBS membership change, engine patch or playoff."
     }
   },
   "target": {

@@ -81,3 +81,19 @@ At Pre-Season 2014 the used rows were TEAM 131, PLAY 8,694, DCHT 11,088, COCH 39
 No identities were added, no code changed and no save was edited by hand. This completes the capacity-only ladder: roster save and reload, fresh Dynasty, cold reload, season and rollover. It does not establish engine-side team limits, use of the reserve rows, played games, recruiting signings with added teams, or repeated seasons.
 
 Next, add the first identity rows inside the reserve. Keep the BOOT355 roster and BOOT354 template coordinated, with unique TEAM, PLAY, DCHT, COCH, CSKL and STAD rows, and start with inactive rows. Do this before combining them with a complete CFBR-specific engine recipe. Keep recruiting array width, allocation, clear lengths, indexing, temporary vectors and save capacities consistent. Active expansion still requires fresh-Dynasty, gameplay, scheduling, recruiting, postseason, rollover and cold-load validation. Graphics remain a later priority.
+
+## First added identity inside the reserve (runtime-tested)
+
+The next rung appended one non-FBS identity to the auto-loaded roster (BOOT entry 355) inside the minimal 138-team reserve: TGID 165 "FCS Test", cloned field-for-field from the shipped generic FCS row TGID 164 (TTYP 1, TORD 433, coach link equal to its own ID), plus three coach rows with new coach IDs. Like the five shipped generic FCS rows, it has no players, depth chart, coach skills or stadium. The Dynasty template (entry 354) was not changed. Team lists filter on team ID and the FBS list additionally on TTYP 0, so a non-FBS identity grows the all-team list without touching the engine's fixed 126-FBS loops. This is also the first step toward FCS support.
+
+| Step | Checks |
+| --- | --- |
+| Offline candidate (only entry 355 changed; size unchanged) | 36 |
+| Fresh Dynasty: 132 teams, 126 FBS, new identity exactly once, capacities grown | 20 |
+| Cold reload: four save files byte-identical | 4 |
+| 2013 regular season / postseason / rollover to 2014 | 28 / 28 / 30 |
+| Grown capacities per snapshot | 7 |
+
+Dynasty creation sets the visibility flag on all generic FCS rows and moves their coaches into the free coach pool; the added identity behaved identically to the native rows. It had no games in the preset 2013 schedule, but the game's own 2014 schedule generator scheduled it seven times. Both live code probes passed and the profile was rolled back. This does not test added FBS teams, engine count limits, players on an added team or recruiting by an added team.
+
+Next: added identities with rosters, and added FBS membership, which requires the engine count recipe.

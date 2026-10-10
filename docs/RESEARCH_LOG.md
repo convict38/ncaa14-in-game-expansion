@@ -2,6 +2,10 @@
 
 Evidence is classified as **static**, **runtime-tested**, or **hypothesis**. Detailed local fixtures and raw logs are retained privately in the development workspace; they are not uploaded with game data.
 
+## CFBR first added identity - runtime-tested
+
+One non-FBS identity (TGID 165, generic-FCS pattern, three coaches) appended inside the 138-team reserve passed fresh Dynasty creation (132 teams, 20 checks), byte-identical cold reload, 2013 season and postseason (28/28) and 2014 rollover (30), with grown capacities intact. The engine's own 2014 schedule generator gave it seven games. Static: in the runtime-validated stock 127-team recipe (517 words), only 71 words appear to depend on the active count (126 to N, 125 to N-1, 1008 to 8N); the rest relocate storage sized for 160 teams. An active-N generalization toward 138 is being built offline and is not yet tested.
+
 ## CFBR grown Dynasty tables through season and rollover - runtime-tested
 
 The roster-only reserve BOOT produced Dynasties with unchanged baseline capacities (16 checks), so the Dynasty template entry 354 controls Dynasty table sizes. A coordinated BOOT354 + BOOT355 candidate (16 offline checks) grew both. A fresh offline Dynasty at 126 FBS and 131 teams saved TEAM 153, PLAY 9,660, DCHT 12,144, COCH 439, CSKL 414 and STAD 210, and cold-reloaded byte-identically (21 checks). It then simulated the regular season (28 checks), postseason (28) and rollover to 2014 (30), with seven grown-capacity checks on every snapshot. The coaching carousel used extra coach rows inside the grown tables. After rollback, 48 protected stock files and 58 preservation checks passed. This shows the stock season lifecycle tolerates enlarged tables at the current team count. It does not show that the engine accepts more active teams. See [roster pipeline](ROSTER_PIPELINE.md).

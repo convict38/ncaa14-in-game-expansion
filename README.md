@@ -15,6 +15,8 @@ An experimental PS3/RPCS3 project targeting 138 active 2026 FBS schools and a 12
 
 The prototype borrows Idaho presentation. A separate stadium identity with the donor's stadium model passed field loading and a Super Sim game in an earlier candidate. These are bounded tests, not a finished release.
 
+The first added team identity inside the 138-team reserve now survives Dynasty creation, cold reload, a full season and rollover in the CFBR build (still 126 FBS); see the [changelog](CHANGELOG.md).
+
 ## Follow development
 
 - [Changelog](CHANGELOG.md): dated changes and validation results.
