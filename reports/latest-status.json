@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-10T16:29:11.273974+00:00",
+  "updated": "2026-10-10T19:19:36.380329+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -369,9 +369,36 @@
     ]
   },
   "playoff_status": {
-    "implemented_in_game": false,
-    "offline_validated_patch": true,
-    "words": 482,
-    "runtime_test": "in progress (stock, 126 teams)"
+    "implemented_in_game": true,
+    "build": "stock BLUS31159 01.00, 126 FBS",
+    "version": "playoff-proto-v2",
+    "words": 510,
+    "format": "12 teams: 5 highest-ranked conference champions + 7 at-large, straight seeding, fixed bracket, top-4 byes",
+    "calendar": {
+      "first_round": "Dec 11 (week 17)",
+      "quarterfinals": "Dec 25 (week 19)",
+      "semifinals": "Jan 1 (week 20)",
+      "final": "week 21"
+    },
+    "runtime_result": {
+      "champion": "Alabama 38-17 Notre Dame",
+      "title_recorded": true,
+      "bowl_history_one_row_per_win": true,
+      "rollover": true,
+      "crashes": 0,
+      "simulation": "CPU sim (Advance)"
+    },
+    "open": [
+      "Super Sim of a playoff game crashed once in v0 (unexplained)",
+      "trophy popup/news text names first playoff bowl",
+      "2024-25 seeding variant does not fit",
+      "combine with 138-team build",
+      "CFBR port"
+    ]
+  },
+  "real2026_lineup": {
+    "built_offline": true,
+    "runtime": "crashed at Start Season (data-driven; root cause in progress)",
+    "identities": "125 retained + 13 additions, Idaho non-FBS"
   }
 }

@@ -2,6 +2,10 @@
 
 Evidence is classified as **static**, **runtime-tested**, or **hypothesis**. Detailed local fixtures and raw logs are retained privately in the development workspace; they are not uploaded with game data.
 
+## Native 12-team playoff - runtime-tested (stock build)
+
+Stock pre-creates all postseason games as placeholders at season start; conference championship and bowl games are filled from standings and rankings, and nothing is results-driven afterwards. Week stage is the highest stage code of that week's games (16 conference championship, 30-32 bowls, 40 title). New Dynasties copy BOWL rows from the BOOT entry 354 template, not MISC. The recorders for bowl history (0x4ed948) and the national title (0x4e9b30) find "the team's bowl game" as its first postseason game. The playoff hook at 0x4cea84 plus two recorder call-site redirects (0x4edb0c, 0x4e9fd4), with a code cave in the obsolete BCS tie-in filler (0x459e24-0x45a604), produced a correct bracket, results-driven advancement and a recorded champion through rollover in a fresh Dynasty.
+
 ## 138 active FBS teams on the stock build - runtime-tested
 
 Active-N recipe: the 127-team stock recipe has 72 count-dependent words (126 to N, 125 to N-1, 8N logical ends, float 1/N); the rest is 160-team storage. At N=138 a fresh Dynasty and cold load passed, but season start crashed. Root cause (from the log, thread context and a memory dump of the frozen process): fixed 126-record stack sort arrays (126 x 20 bytes) in the TV Exposure (0x4b1f3c), Pro Potential (0x4fc830) and Program Tradition (0x4f85bc) rating functions overflowed into saved registers; a coach list (0x4be4f4) has the same latent limit. The 19-word v2 fix enlarged those frames. v2 passed cold load, a full simulated 2013 season including a simulated game against an added team, the postseason and the 2014 rollover (59/59), with 138 FBS live (546 probe checks). Open: TPHS/RBKS history capacity, unreviewed heap or in-object 126-sized arrays, added teams missing from the "Choose Your First Job" list, and a CFBR port.

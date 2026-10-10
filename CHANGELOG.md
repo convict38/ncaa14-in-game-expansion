@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-10 - Native in-game 12-team playoff runs a full season and records the champion (stock build)
+
+A native College Football Playoff now runs inside normal Dynasty play on the stock build (126 teams): no external tools or save editing. A small code hook replaces the stock BCS tie-in filler. At the end of championship week it seeds 12 teams (the five highest-ranked conference champions plus seven at-large, straight seeding by rank). It fills four first-round games (5 vs 12, 6 vs 11, 7 vs 10, 8 vs 9) at bowl sites on Dec 11, and after each round it writes the winners into the fixed bracket: quarterfinals Dec 25 (seeds 1-4 with byes), semifinals Jan 1, then the title game. The bowl calendar and CFP round names come from the Dynasty template's BOWL table.
+
+Three runtime iterations: v0 built a correct field but its BOWL changes went to an archive new Dynasties do not read, so stock dates broke the bracket. v1 moved the data and displayed CFP names and dates and played every round, but the national title was not recorded. The game's history and champion recorders look up a team's first postseason game, which is the quarterfinal for a finalist. v2 makes those two lookups use the game's team pair instead. Final run: fresh Dynasty, CPU-simulated season and every playoff round. Alabama, seeded first, beat Notre Dame 38-17. National title count rose by one with the correct year, and every playoff win was recorded once under its own bowl. The 2014 rollover recreated the CFP rows. All checker boundaries passed, with no crashes. The patch is 510 instruction words and is verified offline by an instruction encoder, Ghidra decoding and emulation with a write-watch.
+
+Known limits: Super Sim of a playoff game crashed once in v0 (cause unconfirmed; stock Super Sim of a bowl game works), so CPU simulation is the tested path. Trophy popup and some news text still name a team's first playoff bowl. Only straight seeding fits. Not yet combined with the 138-team build or ported to CFBR.
+
 ## 2026-10-10 - 138 active FBS teams through a full season and rollover (stock build)
 
 For the first time the game ran with 138 active FBS teams: the 126 originals plus 12 placeholder Independents ("Expansion 01-12", Idaho-based copies). The stock-build engine recipe was generalized to a team count N. Of the 127-team recipe's 517 instruction words, 72 depend on N: 126 to N, 125 to N-1, the logical end 1008 to 8N, and one float 1/N. The rest is storage already reserved for 160 teams. A first-season schedule gives all 138 teams 12 games with no collisions, and every original FBS-vs-FBS game keeps its week.

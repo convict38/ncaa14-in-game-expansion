@@ -19,6 +19,8 @@ The first added team identity inside the 138-team reserve now survives Dynasty c
 
 **New:** the stock build has run 138 active FBS teams (126 originals + 12 placeholders) through a full simulated season, postseason and rollover; see the [changelog](CHANGELOG.md). Real 2026 schools and conferences, the CFBR port and the playoff are next.
 
+**New:** a native 12-team College Football Playoff now runs in normal Dynasty play on the stock build: seeding, byes, fixed bracket, CFP round names and dates, and a recorded national champion through rollover. Combining it with the 138-team build is next.
+
 ## Follow development
 
 - [Changelog](CHANGELOG.md): dated changes and validation results.
