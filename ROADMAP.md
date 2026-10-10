@@ -2,6 +2,8 @@
 
 ## Next development work
 
+Update 2026-10-10 (later): 138 active FBS teams passed a full season and rollover on the stock build with the active-N v2 recipe (placeholder identities). Next: (a) enlarge TPHS/RBKS and run repeated seasons; (b) replace the 12 placeholders with real 2026 schools and realign the 47 conference changes; (c) port the recipe to CFBR; (d) native 12-team playoff, whose first in-game test is starting (offline-validated code hook, BOWL data and checker).
+
 Update 2026-10-10: the first added identity (a non-FBS team inside the 138-team reserve) passed fresh Dynasty, cold reload, a full season and rollover in the CFBR build, and the engine scheduled it on its own. The immediate engine step is a 138-team proof: the runtime-validated stock 127-team recipe appears to have only 71 count-dependent words, with storage already reserved for 160 teams. An active-N version is being built offline for a stock 138-team trial; the same recipe is then ported to CFBR.
 
 The four-word CFBR ranking patch has passed a season, rollover and cold reload at 126 teams. The immediate path is a CFBR-specific recruiting/storage port, coordinated BOOT and auto-loaded roster edits, then distinct team identities and football conferences. CFBR recruiting entries are 12 bytes where stock entries are 8; copying stock relocation values is unsafe. Offline archive and roster reserves do not close the engine or save-packaging gates. See [developer handoff](docs/DEVELOPER_HANDOFF.md).

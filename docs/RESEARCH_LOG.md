@@ -2,6 +2,10 @@
 
 Evidence is classified as **static**, **runtime-tested**, or **hypothesis**. Detailed local fixtures and raw logs are retained privately in the development workspace; they are not uploaded with game data.
 
+## 138 active FBS teams on the stock build - runtime-tested
+
+Active-N recipe: the 127-team stock recipe has 72 count-dependent words (126 to N, 125 to N-1, 8N logical ends, float 1/N); the rest is 160-team storage. At N=138 a fresh Dynasty and cold load passed, but season start crashed. Root cause (from the log, thread context and a memory dump of the frozen process): fixed 126-record stack sort arrays (126 x 20 bytes) in the TV Exposure (0x4b1f3c), Pro Potential (0x4fc830) and Program Tradition (0x4f85bc) rating functions overflowed into saved registers; a coach list (0x4be4f4) has the same latent limit. The 19-word v2 fix enlarged those frames. v2 passed cold load, a full simulated 2013 season including a simulated game against an added team, the postseason and the 2014 rollover (59/59), with 138 FBS live (546 probe checks). Open: TPHS/RBKS history capacity, unreviewed heap or in-object 126-sized arrays, added teams missing from the "Choose Your First Job" list, and a CFBR port.
+
 ## CFBR first added identity - runtime-tested
 
 One non-FBS identity (TGID 165, generic-FCS pattern, three coaches) appended inside the 138-team reserve passed fresh Dynasty creation (132 teams, 20 checks), byte-identical cold reload, 2013 season and postseason (28/28) and 2014 rollover (30), with grown capacities intact. The engine's own 2014 schedule generator gave it seven games. Static: in the runtime-validated stock 127-team recipe (517 words), only 71 words appear to depend on the active count (126 to N, 125 to N-1, 1008 to 8N); the rest relocate storage sized for 160 teams. An active-N generalization toward 138 is being built offline and is not yet tested.

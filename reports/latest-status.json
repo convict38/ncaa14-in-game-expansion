@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-10T15:03:48.555802+00:00",
+  "updated": "2026-10-10T16:29:11.273974+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -331,5 +331,47 @@
     "priority": "Playable identities, football conferences, schedules, recruiting and persistence; borrowed graphics acceptable; graphics/UI polish last",
     "membership_research_reconciled": true,
     "eligibility_and_conference_rules_complete": false
+  },
+  "active_fbs_engine_proof": {
+    "passed": true,
+    "date": "2026-10-10",
+    "build": "stock BLUS31159 01.00",
+    "active_fbs": 138,
+    "dynasty_teams": 143,
+    "added_identities": "12 placeholder Independents (Idaho-based)",
+    "recipe": {
+      "words": 536,
+      "count_dependent": 72,
+      "crash_fix_words": 19
+    },
+    "fresh_checks": {
+      "fixture": 90,
+      "schedule": 25,
+      "stadium": 34
+    },
+    "cold_save_files_unchanged": 4,
+    "season": {
+      "user_team_record": "14-0",
+      "added_team_game": "Alabama 38-14 Expansion Test"
+    },
+    "rollover_checks": 59,
+    "live_probe_checks": 546,
+    "history_capacity": {
+      "TPHS": "572/572",
+      "RBKS": "3618/3643"
+    },
+    "v1_failure": "season-start crash: 126-record stack sort arrays in team-rating functions",
+    "open": [
+      "real 2026 identities and conferences",
+      "TPHS/RBKS growth and repeated seasons",
+      "CFBR port",
+      "added teams absent from Choose Your First Job list"
+    ]
+  },
+  "playoff_status": {
+    "implemented_in_game": false,
+    "offline_validated_patch": true,
+    "words": 482,
+    "runtime_test": "in progress (stock, 126 teams)"
   }
 }

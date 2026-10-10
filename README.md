@@ -2,7 +2,7 @@
 
 An experimental PS3/RPCS3 project targeting 138 active 2026 FBS schools and a 12-team playoff that runs entirely through normal gameplay. Preserve the 125 original schools still in the target FBS field; Idaho is deferred to future FCS support. Playable teams, conferences and persistence come first, with borrowed graphics until the systems work.
 
-**Development project — no public installable mod release yet.** The current prototype has 127 active FBS teams. It does not include all intended schools, finished presentation, or a custom playoff.
+**Development project — no public installable mod release yet.** The latest engine prototype (stock build) runs 138 active FBS teams, 12 of them placeholders. It does not yet include the real added schools, finished presentation, or a custom playoff.
 
 ## What has been tested
 
@@ -16,6 +16,8 @@ An experimental PS3/RPCS3 project targeting 138 active 2026 FBS schools and a 12
 The prototype borrows Idaho presentation. A separate stadium identity with the donor's stadium model passed field loading and a Super Sim game in an earlier candidate. These are bounded tests, not a finished release.
 
 The first added team identity inside the 138-team reserve now survives Dynasty creation, cold reload, a full season and rollover in the CFBR build (still 126 FBS); see the [changelog](CHANGELOG.md).
+
+**New:** the stock build has run 138 active FBS teams (126 originals + 12 placeholders) through a full simulated season, postseason and rollover; see the [changelog](CHANGELOG.md). Real 2026 schools and conferences, the CFBR port and the playoff are next.
 
 ## Follow development
 
