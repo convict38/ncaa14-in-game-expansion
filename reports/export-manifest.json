@@ -23,8 +23,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "6524ddee3ecc253d76a62d14a25f5bc8cd371e0c07983dd208c8f3dd09559f8f",
-      "bytes": 10338
+      "sha256": "b2bdc034e93d889a79251188fa165f861d9238aad25450aa861d22e0b5c4ff94",
+      "bytes": 12175
     },
     {
       "path": "CONTRIBUTING.md",
@@ -33,13 +33,13 @@
     },
     {
       "path": "README.md",
-      "sha256": "8d7b0f30d822172ab5fd6de6a31cb66f412185a0e9504f22ba84614edf946741",
-      "bytes": 3942
+      "sha256": "ae3cb020414529257fc4b1d0e5100f69e113e8a18a907467ff1be3a750defdf2",
+      "bytes": 4476
     },
     {
       "path": "ROADMAP.md",
-      "sha256": "b2ec65447e6b088edf03caedcdec3bda2698db17e1e4b9fe059eadf8cc176894",
-      "bytes": 3419
+      "sha256": "6b6ac81e8acbd21d57da0321832b252623f55c0d4c78555770dd55c1b9cf6e5e",
+      "bytes": 3964
     },
     {
       "path": "docs/ARCHIVE_ADAPTER.md",
@@ -48,13 +48,13 @@
     },
     {
       "path": "docs/CFBR_COMPATIBILITY.md",
-      "sha256": "58c35a55c63a8d3f8f5c4066ce66674b0d8a151be66dfd4b18f722cb541a00ac",
-      "bytes": 14330
+      "sha256": "50606b70e7fbfc455ff85914eef6e94b4311da47c67bbe4bbb771d5c3909f626",
+      "bytes": 15406
     },
     {
       "path": "docs/DEVELOPER_HANDOFF.md",
-      "sha256": "388628883453345599c3a1d4afa89e3ae8af5ee7d916016fdf29c51aa0d44980",
-      "bytes": 5951
+      "sha256": "a9684489558e342ee06a63002c79700dfed53bfc90cc81cf4eb94b09d4d92952",
+      "bytes": 10648
     },
     {
       "path": "docs/INSTALLATION.md",
@@ -63,8 +63,13 @@
     },
     {
       "path": "docs/RESEARCH_LOG.md",
-      "sha256": "b4499b1ec13319439786d86ddf0e0d341b7d7d1b1b40eb17ba5785b31bf3ce23",
-      "bytes": 16708
+      "sha256": "a987de9b9ee0496423bf8fc216ad5e9f09685d8dfe6681ecf08766832359b9ed",
+      "bytes": 18719
+    },
+    {
+      "path": "docs/ROSTER_PIPELINE.md",
+      "sha256": "bfa7bcc63af021a8f9c33fbfc272d69f1ad7d888c30338e752864c14229a3d46",
+      "bytes": 6236
     },
     {
       "path": "docs/SUPPORTED_BUILDS.md",
@@ -73,13 +78,13 @@
     },
     {
       "path": "docs/TESTING.md",
-      "sha256": "79eed3e1172c719794fa7b11b9bc6585b8e6352bb23ba8fd1a377b1d365ea9c0",
-      "bytes": 3313
+      "sha256": "6d0f9225bfb8f47b40700c0f38d2874455c0e043a99680717a6c89b512a74080",
+      "bytes": 4385
     },
     {
       "path": "reports/latest-status.json",
-      "sha256": "8258f96a155d12b33afdd1cc98d9e9258051a1bdc077bd8d46473f9086b473a3",
-      "bytes": 7538
+      "sha256": "da9327ea7cb81579ae30e43c6593ed69f994b5f69783bb9d2070663b4c28f989",
+      "bytes": 8873
     },
     {
       "path": "tools/bgfa_archive.py",

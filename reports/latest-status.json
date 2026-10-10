@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-09T22:57:54.050241+00:00",
+  "updated": "2026-10-10T03:50:27.073186+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -206,6 +206,44 @@
       "paired_context_hypotheses": 7,
       "unresolved_without_hypothesis": 67,
       "complete_port_accepted": false
+    },
+    "roster_capacity_trial": {
+      "passed": true,
+      "checks": 48,
+      "active_fbs": 126,
+      "non_fbs_team_rows": 15,
+      "boot_candidate_sha256": "39420929ea9423c52a15aed6b0213f0d483c3ba6b4601f77b3f10f937d017a2b",
+      "boot_candidate_offline_checks": 40,
+      "native_saved_usr_sha256": "9d92f57c3203c239eff2373f81c0115d938094f6faed0ec3068bacc680f9958a",
+      "native_written_capacities": {
+        "TEAM": 153,
+        "PLAY": 9660,
+        "DCHT": 12144,
+        "COCH": 439,
+        "CSKL": 414,
+        "STAD": 210,
+        "CONF": 26,
+        "DIVI": 22
+      },
+      "first_boot_roster_autoload": false,
+      "cold_autoload": true,
+      "cold_save_files_unchanged": 4,
+      "live_reads_per_run": 6,
+      "live_runs": 2,
+      "protected_stock_files_unchanged": 48,
+      "original_preservation_checks": 58,
+      "membership_changes": false,
+      "code_changes": false,
+      "manual_save_edits": false,
+      "trial_rolled_back": true,
+      "scope": "native roster save and cold auto-load of grown reserves only; no added identities, engine limits, Dynasty or season",
+      "documentation": "docs/ROSTER_PIPELINE.md"
+    },
+    "source_only_roster_trial": {
+      "passed": true,
+      "checks": 32,
+      "active_fbs": 126,
+      "capacity_changes": false
     }
   },
   "target": {

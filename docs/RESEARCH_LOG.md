@@ -2,6 +2,16 @@
 
 Evidence is classified as **static**, **runtime-tested**, or **hypothesis**. Detailed local fixtures and raw logs are retained privately in the development workspace; they are not uploaded with game data.
 
+## CFBR grown roster capacities - runtime-tested
+
+A capacity-only BOOT355 candidate (40 offline checks) installed the minimal 138-team reserve database while keeping 126 FBS and 15 other team rows. It ran in a new clean profile. The first boot auto-loaded no roster. The native File Management save kept TEAM 153, PLAY 9,660, DCHT 12,144, COCH 439, CSKL 414 and STAD 210; the serializer did not shrink them. Cold auto-load in a separate process left all four save files byte-identical. Both runs passed six baseline code reads. After rollback, the 48-check report and 58 preservation checks pass. This shows that serialized reserves survive the roster lifecycle. It does not show that the engine accepts more active teams, or that Dynasty, recruiting or season code tolerates the grown tables. See [roster pipeline](ROSTER_PIPELINE.md).
+
+## CFBR BOOT roster routing and native serialization - runtime-tested
+
+A source-only BOOT355 replacement in a clean copied profile produced a native roster save whose entire USR equals the original CFBR23V21 source. All ten tables match; James Madison230 and Generic162 distinguish it from the prior built-in input. Cold auto-load and the roster UI succeeded, all four save files stayed unchanged, and both runs passed six baseline code reads. The completed 32-check report and 58 preservation checks pass after rollback. No counts, capacities or code changed. The premature rollback/state-check failure was retained and resolved after process exit.
+
+The native HED differs despite identical USR, leaving opaque metadata unresolved. A strict pinned recognizer passes 13 checks including nine rejection cases, but writes no changed containers. A minimal 138-team planning candidate adds 78,600 bytes to six reserves, leaving 34,840 bytes within the current USR size; ten offline checks pass. This is not evidence that padding is usable or engine/lifecycle capacity is sufficient. Both reserve routes remain uninstalled. See [roster pipeline](ROSTER_PIPELINE.md).
+
 ## CFBR archive framing and reserves - static/offline tested
 
 The format-aware archive adapter matches 4,840 decoded entries across four stock/CFBR archives. Sixteen synthetic tests and 34 private candidate checks pass. CFBR uses different field widths and a nested payload offset of 121; its decoded GAMEMODE has no stock-style 4,200-byte trailer. An initial stock-only trailer assertion correctly stopped construction and was then corrected for the pinned CFBR input. The candidate preserves all 825 unrelated BOOT entries and database row payloads while enlarging selected reserves at unchanged 126 FBS membership. No installation, engine capacity, roster auto-load or season acceptance is claimed. See [details](ARCHIVE_ADAPTER.md).
