@@ -2,6 +2,10 @@
 
 Evidence is classified as **static**, **runtime-tested**, or **hypothesis**. Detailed local fixtures and raw logs are retained privately in the development workspace; they are not uploaded with game data.
 
+## CFBR grown Dynasty tables through season and rollover - runtime-tested
+
+The roster-only reserve BOOT produced Dynasties with unchanged baseline capacities (16 checks), so the Dynasty template entry 354 controls Dynasty table sizes. A coordinated BOOT354 + BOOT355 candidate (16 offline checks) grew both. A fresh offline Dynasty at 126 FBS and 131 teams saved TEAM 153, PLAY 9,660, DCHT 12,144, COCH 439, CSKL 414 and STAD 210, and cold-reloaded byte-identically (21 checks). It then simulated the regular season (28 checks), postseason (28) and rollover to 2014 (30), with seven grown-capacity checks on every snapshot. The coaching carousel used extra coach rows inside the grown tables. After rollback, 48 protected stock files and 58 preservation checks passed. This shows the stock season lifecycle tolerates enlarged tables at the current team count. It does not show that the engine accepts more active teams. See [roster pipeline](ROSTER_PIPELINE.md).
+
 ## CFBR grown roster capacities - runtime-tested
 
 A capacity-only BOOT355 candidate (40 offline checks) installed the minimal 138-team reserve database while keeping 126 FBS and 15 other team rows. It ran in a new clean profile. The first boot auto-loaded no roster. The native File Management save kept TEAM 153, PLAY 9,660, DCHT 12,144, COCH 439, CSKL 414 and STAD 210; the serializer did not shrink them. Cold auto-load in a separate process left all four save files byte-identical. Both runs passed six baseline code reads. After rollback, the 48-check report and 58 preservation checks pass. This shows that serialized reserves survive the roster lifecycle. It does not show that the engine accepts more active teams, or that Dynasty, recruiting or season code tolerates the grown tables. See [roster pipeline](ROSTER_PIPELINE.md).

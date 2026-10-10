@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-10T03:50:27.073186+00:00",
+  "updated": "2026-10-10T14:31:04.720765+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -244,6 +244,52 @@
       "checks": 32,
       "active_fbs": 126,
       "capacity_changes": false
+    },
+    "dynasty_capacity_trial": {
+      "passed": true,
+      "active_fbs": 126,
+      "dynasty_teams": 131,
+      "roster_only_boot_dynasty_capacities_unchanged": true,
+      "roster_only_boot_dynasty_checks": 16,
+      "coordinated_boot_entries": [
+        354,
+        355
+      ],
+      "coordinated_boot_offline_checks": 16,
+      "written_dynasty_capacities": {
+        "TEAM": 153,
+        "PLAY": 9660,
+        "DCHT": 12144,
+        "COCH": 439,
+        "CSKL": 414,
+        "STAD": 210
+      },
+      "fresh_cold_checks": 21,
+      "cold_save_files_unchanged": 4,
+      "regular_season_checks": 28,
+      "postseason_checks": 28,
+      "rollover_checks": 30,
+      "grown_capacity_checks_per_snapshot": 7,
+      "rollover_year": 2014,
+      "preseason2014_usr_sha256": "7a7a434f1a763fb5cbc590e7208a6f13a83f03adb6c8f3c66a801d013536cc0f",
+      "preseason2014_used_rows": {
+        "TEAM": 131,
+        "PLAY": 8694,
+        "DCHT": 11088,
+        "COCH": 398,
+        "CSKL": 383,
+        "STAD": 198
+      },
+      "live_reads_per_run": 6,
+      "protected_stock_files_unchanged": 48,
+      "original_preservation_checks": 58,
+      "draft_class_save_skipped": true,
+      "membership_changes": false,
+      "code_changes": false,
+      "manual_save_edits": false,
+      "trial_rolled_back": true,
+      "scope": "capacity-only Dynasty creation, cold reload, simulated season, postseason and rollover with grown tables; no added identities, engine limits, played games or repeated seasons",
+      "documentation": "docs/ROSTER_PIPELINE.md"
     }
   },
   "target": {

@@ -55,4 +55,29 @@ The first boot auto-loaded only the profile save, not a roster. A roster was the
 
 No identities were added, no code changed and no save was edited by hand. This establishes only that grown serialized reserves survive native roster saving and cold auto-load. It does not establish engine-side team limits, use of the reserve rows, Dynasty creation, seasons, recruiting or rollover with the grown tables.
 
-Next, create a fresh Dynasty on this BOOT at 126 teams and confirm that its creation, save and reload keep the grown tables. Then add the first identity rows within the reserve before combining them with a complete CFBR-specific engine recipe. Keep recruiting array width, allocation, clear lengths, indexing, temporary vectors and save capacities consistent. Active expansion still requires fresh-Dynasty, gameplay, scheduling, recruiting, postseason, rollover and cold-load validation. Graphics remain a later priority.
+## Runtime result: grown Dynasty tables through a season and rollover
+
+A Dynasty created on the roster-only BOOT above had the **unchanged** CFBR Dynasty capacities (TEAM 146, PLAY 9,100, DCHT 11,464, COCH 409, CSKL 409, STAD 200), the same as the unmodified baseline. This trial passed 16 checks. Dynasty table sizes come from the BOOT354 Dynasty template, not from the loaded roster.
+
+A coordinated BOOT then grew template entry 354 to the same six capacities and kept entry 355 as the minimal-reserve roster (16 offline checks). It ran in a new clean profile at 126 FBS and 131 Dynasty teams:
+
+| Stage | Result |
+| --- | --- |
+| Fresh offline Dynasty (Alabama, existing coach) | The autosave written by the game has TEAM 153, PLAY 9,660, DCHT 12,144, COCH 439, CSKL 414 and STAD 210 |
+| Cold restart and Dynasty load | All four save files byte-identical; 21-check report passes |
+| Regular season simulated (Alabama 6-6) | 28 season checks; 809 games |
+| Postseason (bowl loss, 6-7) | 28 checks; 850 games |
+| Off-season advanced to Pre-Season 2014 | 30 rollover checks; year advanced, 126 complete 12-game schedules, no collisions |
+| Every snapshot | 7 grown-capacity checks; capacities never shrank |
+
+At Pre-Season 2014 the used rows were TEAM 131, PLAY 8,694, DCHT 11,088, COCH 398, CSKL 383 and STAD 198, all within the grown tables. The coaching carousel added coach rows during the off-season. Each run passed six live code reads. After the final run, the profile redirect was rolled back; 48 protected stock files and 58 original-preservation checks passed. The draft-class save prompt was skipped.
+
+| Identity | SHA-256 |
+| --- | --- |
+| Fresh and cold Dynasty USR | `b3c8ef7485cb70bf4cf60d8bcb7d71809b6cc4ee13b8f7fd84bbacb5b1d9ec18` |
+| End of 2013 USR | `a7938fdc607cc474701e005a30bbf2bfa61f6bb437f834d6828232f09b102921` |
+| Pre-Season 2014 USR | `7a7a434f1a763fb5cbc590e7208a6f13a83f03adb6c8f3c66a801d013536cc0f` |
+
+No identities were added, no code changed and no save was edited by hand. This completes the capacity-only ladder: roster save and reload, fresh Dynasty, cold reload, season and rollover. It does not establish engine-side team limits, use of the reserve rows, played games, recruiting signings with added teams, or repeated seasons.
+
+Next, add the first identity rows inside the reserve. Keep the BOOT355 roster and BOOT354 template coordinated, with unique TEAM, PLAY, DCHT, COCH, CSKL and STAD rows, and start with inactive rows. Do this before combining them with a complete CFBR-specific engine recipe. Keep recruiting array width, allocation, clear lengths, indexing, temporary vectors and save capacities consistent. Active expansion still requires fresh-Dynasty, gameplay, scheduling, recruiting, postseason, rollover and cold-load validation. Graphics remain a later priority.
