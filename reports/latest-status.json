@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-10T21:43:49.716046+00:00",
+  "updated": "2026-10-10T22:24:24.919649+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -398,14 +398,33 @@
     ]
   },
   "real2026_lineup": {
-    "built_offline": true,
-    "runtime": "v2: fresh Dynasty, Start Season, full 2013 season, conference championships and bowls passed; crashed at 2014 rollover (root-caused). v3 data+engine under test",
-    "identities": "125 retained + 13 additions; Idaho removed from the Dynasty in v3 (rows preserved for future FCS)",
+    "runtime_passed": true,
+    "date": "2026-10-10",
+    "build": "stock BLUS31159 01.00",
+    "active_fbs": 138,
+    "dynasty_teams": 143,
+    "identities": "125 retained + 13 additions in 2026 conferences; Idaho removed from the Dynasty (data preserved)",
+    "engine": {
+      "recipe": "activeN-proto-138-v3",
+      "words": 551
+    },
+    "checks": {
+      "fresh": 118,
+      "cold_reloads_identical": 2,
+      "season_sewn17": 15,
+      "season_end": 15,
+      "live_probe": 563
+    },
+    "title_game": "Ohio State 45-14 Miami",
+    "bcs_rank_correlation": 0.999,
+    "crashes": 0,
     "open": [
-      "ACC 0 conference games / Big Ten 10",
-      "RBKS history near capacity",
-      "13 additions absent from Choose Your First Job list",
-      "presentation borrowed from donor teams"
+      "ACC (17) 0 conference games, Big Ten (18) 10",
+      "TPHS history at capacity",
+      "additions absent from Choose Your First Job list",
+      "borrowed graphics",
+      "combine with playoff",
+      "CFBR port"
     ]
   }
 }

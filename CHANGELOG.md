@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-10 - Real 2026 FBS lineup: 138 teams in 2026 conferences complete a full Dynasty season and rollover (stock build)
+
+All 138 2026 FBS schools now play natively in Dynasty on the stock build: the 125 original schools still in FBS plus 13 additions, in the 2026 conferences. Idaho is out of the Dynasty, with its data preserved for future FCS support. The additions use borrowed presentation from similar donor schools.
+
+A fresh Dynasty passed 118 creation checks and a byte-identical cold reload. It then completed season start, a full CPU-simulated 2013 regular season, conference championship games and bowls (season checks 15/15 at both boundaries). Ohio State 14-0 beat Miami 45-14 for the title, and BCS order matched the media poll (rank correlation 0.999). The rollover to 2014 and a second byte-identical cold reload followed. A live probe passed 563 checks with 138 FBS teams in memory. There were no crashes or hangs.
+
+This took the v3 engine recipe (551 words: active-N count changes, enlarged rating-sort frames, BCS constants scaled with the team count, and a bounded redshirt flag write) plus v3 data. The v3 data clears the 2013 conference membership slots used by the first-season scheduler and removes Idaho from the Dynasty.
+
+Still open: the 17-team ACC gets no conference games and the 18-team Big Ten gets ten (the game's realignment schedule styles do not handle these sizes). Rolling history table TPHS is full, so multi-season play needs it enlarged. The new schools do not appear in the Choose Your First Job list. Graphics are borrowed. Next: conference scheduling, history capacity, combining with the playoff, then the CFBR port.
+
 ## 2026-10-10 - Correction: 138-team BCS rankings were wrong; real 2026 lineup plays a full season
 
 Correction to the 138-team entry below: that run completed a season and rollover without crashing, but its BCS rankings were silently wrong. The BCS scorer turns each poll rank into points as 127 minus the rank, using constants stored next to the function. They were never updated for more than 127 teams, so teams ranked 128th or worse wrapped around to huge scores and the worst teams took the top BCS spots (the 2013 title game paired 1-12 Rutgers and 4-9 Eastern Michigan). The 127-team and stock builds are unaffected. A v3 engine recipe (551 words) scales these constants with the team count and is under runtime test.

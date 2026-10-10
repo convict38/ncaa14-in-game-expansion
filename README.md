@@ -21,6 +21,8 @@ The first added team identity inside the 138-team reserve now survives Dynasty c
 
 **New:** a native 12-team College Football Playoff now runs in normal Dynasty play on the stock build: seeding, byes, fixed bracket, CFP round names and dates, and a recorded national champion through rollover. Combining it with the 138-team build is next.
 
+**New:** all 138 2026 FBS schools in their 2026 conferences completed a full Dynasty season, bowls and rollover on the stock build (borrowed graphics for the 13 additions). See the [changelog](CHANGELOG.md).
+
 ## Follow development
 
 - [Changelog](CHANGELOG.md): dated changes and validation results.

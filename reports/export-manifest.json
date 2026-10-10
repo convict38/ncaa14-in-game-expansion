@@ -23,8 +23,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "2d23058606fa24532b35dc28d2fef03bb88a791287afb9fca306b07132e52386",
-      "bytes": 20100
+      "sha256": "e1de642968dea4622ef6a2372b72d378f1b7054c0051811d1bd3014dc2cab9c5",
+      "bytes": 21777
     },
     {
       "path": "CONTRIBUTING.md",
@@ -33,13 +33,13 @@
     },
     {
       "path": "README.md",
-      "sha256": "5a4fa850029495276a0312c4e726da6ca75f2f42f37a66f4a87ff469bdde7140",
-      "bytes": 5456
+      "sha256": "5c04bb8ed92bb7d3a15f41a92b7821d57319824522b385953959154588c8ec75",
+      "bytes": 5667
     },
     {
       "path": "ROADMAP.md",
-      "sha256": "a91fa2371095436e217c619a47be866361cb02c4a94852ea259627d832612213",
-      "bytes": 5520
+      "sha256": "ec2501bd9ca56978cd70dd3a719054bf3915410cc931c2c6dff7dd17af7c593f",
+      "bytes": 5973
     },
     {
       "path": "docs/ARCHIVE_ADAPTER.md",
@@ -53,8 +53,8 @@
     },
     {
       "path": "docs/DEVELOPER_HANDOFF.md",
-      "sha256": "c1a80cc871fa47c2d906c04433f735f7e460ef2f8140dd4ec72841ceae87ffcf",
-      "bytes": 14849
+      "sha256": "2f4d113aa959639976102aa2e4451375b20854c4e6bfd3a32669393f082425d0",
+      "bytes": 15361
     },
     {
       "path": "docs/INSTALLATION.md",
@@ -83,8 +83,8 @@
     },
     {
       "path": "reports/latest-status.json",
-      "sha256": "4f7cc31664c515f8a3a75470acde5f0ea9783e3d69c013fe048f65cec13b6638",
-      "bytes": 14399
+      "sha256": "9231e60c7b4c7d4cf944605ba3dad9198dd5379f754df0c954d79c15d3365711",
+      "bytes": 14717
     },
     {
       "path": "tools/bgfa_archive.py",

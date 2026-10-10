@@ -2,6 +2,8 @@
 
 ## Next development work
 
+Update 2026-10-10 (night): milestones 3 and 4 are runtime-proven separately on the stock build: the real 2026 lineup (138 FBS, 2026 conferences) through a full season and rollover, and the native 12-team playoff (at 126 teams). Next: fix ACC/Big Ten conference schedule counts, enlarge history tables for multi-season play, combine the playoff with the 138-team lineup, port to CFBR, then presentation (logos for additions, CFP UI) and an installer.
+
 Update 2026-10-10 (evening): the native 12-team playoff passed a full in-game season on the stock build (v2). The real 2026 lineup (125 retained + 13 additions, 2026 conferences) is built but crashed at season start; root-causing is in progress. Next: fix the real-2026 data issues, combine playoff + 138 teams, then port to CFBR and begin presentation assets (team logos and CFP UI).
 
 Update 2026-10-10 (later): 138 active FBS teams passed a full season and rollover on the stock build with the active-N v2 recipe (placeholder identities). Next: (a) enlarge TPHS/RBKS and run repeated seasons; (b) replace the 12 placeholders with real 2026 schools and realign the 47 conference changes; (c) port the recipe to CFBR; (d) native 12-team playoff, whose first in-game test is starting (offline-validated code hook, BOWL data and checker).
