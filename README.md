@@ -27,6 +27,8 @@ The first added team identity inside the 138-team reserve now survives Dynasty c
 
 **New:** a four-season Dynasty (2013-2016) ran with all 138 real 2026 FBS teams and the 12-team playoff, champion recorded each year, no crashes. CFB Revamped port and start-in-2026 are next.
 
+**New:** conference champions now take automatic playoff bids. Next fix: letting your own team play its playoff games (today they are CPU-simmed).
+
 ## Follow development
 
 - [Changelog](CHANGELOG.md): dated changes and validation results.

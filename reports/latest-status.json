@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-11T00:46:10.782889+00:00",
+  "updated": "2026-10-11T02:55:10.081107+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -489,10 +489,27 @@
     "crashes": 0
   },
   "next": [
-    "playoff v3 (CCG-winner auto bids) runtime",
+    "user-played playoff games (fix U)",
     "CFB Revamped port runtime",
     "start year 2026 (keep 60 seasons)",
     "graphics for additions and CFP UI",
-    "installer"
-  ]
+    "Choose Your First Job additions",
+    "Super Sim and sim stat realism",
+    "realistic names and appearance",
+    "stretch goals",
+    "installer (last)"
+  ],
+  "playoff_v3": {
+    "runtime_passed": true,
+    "auto_bids": "conference championship game winners (standings leader where no CCG)",
+    "champion": "Alabama",
+    "crashes": 0
+  },
+  "open_blockers": [
+    "user team cannot play its own playoff games (fix U in test)"
+  ],
+  "side_tracks": {
+    "c_cave_toolchain": "working offline",
+    "native_windows_recomp": "spike positive (93.5% functions lift clean, compiles); boot-to-menu in progress"
+  }
 }

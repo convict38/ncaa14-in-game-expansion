@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-11 - Champion-based playoff bids pass; user-played playoff games are the next fix
+
+Playoff v3 passed a full in-game season with all 138 real 2026 FBS teams (fresh Dynasty, CPU sim). Conference championship game winners now take the automatic bids (Ohio State, Stanford, Texas and Oklahoma State won their title games; Oregon State took the Pac-12 bid as standings leader since that conference has no title game). Every bid matched the game's own conference-champion history. First-round upsets (Oklahoma State over Nebraska, Oregon State over Wisconsin) and a semifinal upset (Texas over Ohio State) advanced correctly. Alabama beat Texas for the title, which was recorded once, and the rollover to 2014 was clean. There were no crashes. An earlier attempt was invalid because the playoff patch file failed to load silently; installers now check patch files before installing and a post-boot check confirms every expected patch applied.
+
+New blocker found by playtesting: a user team that makes the playoff is never offered its playoff games. The stock game treats all of bowl season as one hub week, and every lookup of "the user's game" takes the team's first postseason game, played or not. A team with several playoff games is therefore stuck on its first one, and a bye seed (whose first game has a TBD opponent) sees "Bye Week". Advance then CPU-sims the whole bracket. A 133-word fix (earliest unplayed game, Advance stops before each user round) is built and in testing.
+
+Tooling: patch logic can now be written in C and compiled into PowerPC code caves (clang via zig, ELFv1, no TOC use, with build guards). A re-implemented playoff helper matched its hand-written version word-for-word in size and behaviour. A feasibility spike also tested statically recompiling the game to native Windows with ps3recomp: about 93.5% of functions translate cleanly and the output compiles; a boot-to-menu attempt is running as a side track. No game code or data is published.
+
 ## 2026-10-11 - Four-season Dynasty with 138 real 2026 teams and the 12-team playoff (stock build)
 
 The combined mod ran four consecutive seasons (2013-2016) in one fresh Dynasty, each with conference championships, the 12-team playoff, a recorded champion and a rollover, then cold-reloaded byte-identical at Pre-Season 2017. Champions: Alabama (2013 and 2014, both 16-0), Georgia Tech (2015), South Carolina (2016). Alabama went 6-6 in 2015 and 2016 and missed the playoff, so selection follows results. There were no crashes.

@@ -2,6 +2,8 @@
 
 ## Next development work
 
+Update 2026-10-11: priority order is a complete game first, distribution last. (1) Let users play their own playoff games (fix in test). (2) CFB Revamped port: 126-team storage, then 138 real 2026 teams, then the playoff. (3) Dynasty starting in 2026 with all 60 seasons. (4) Logos and art for the 13 additions and College Football Playoff UI branding. (5) "Choose Your First Job" showing the additions. (6) Super Sim fixes and a review of sim stat realism. (7) Realistic player names with matching appearance, for rosters and generated recruits. (8) Stretch goals: FCS alongside FBS, playoff format toggles, longer Dynasties and larger saves; 105-man rosters and the transfer portal after a brainstorm. (9) Last: licensing and attribution, installer and uninstaller, clean-machine test. Side track: native Windows build via static recompilation (feasibility spike positive, boot-to-menu attempt in progress).
+
 Update 2026-10-10 (late): goals 1 and 2 run together on the stock build (138 real 2026 FBS teams + native 12-team playoff, one full season and rollover). In progress: v4 data with ACC/Big Ten conference schedules and enlarged history tables, under a multi-season test. Then: the CFBR port, graphics for the 13 additions and CFP UI, champion-based auto bids, and a portable installer.
 
 Update 2026-10-10 (night): milestones 3 and 4 are runtime-proven separately on the stock build: the real 2026 lineup (138 FBS, 2026 conferences) through a full season and rollover, and the native 12-team playoff (at 126 teams). Next: fix ACC/Big Ten conference schedule counts, enlarge history tables for multi-season play, combine the playoff with the 138-team lineup, port to CFBR, then presentation (logos for additions, CFP UI) and an installer.
@@ -20,7 +22,7 @@ The source-only roster trial now proves BOOT selection, native saving and cold a
 2. Resolve coach-selection filtering and remaining presentation consumers. Audit dependent consumers and repeated-season/full-FBS capacities, including contract lifetime, history tables and the opaque save-container trailer. Larger serialized reserves alone do not establish larger active counts.
 3. Add the target 138 active 2026 FBS identities: 125 original current-FBS schools plus 13 additions. Idaho is deferred to future FCS mechanics; preserve its original backups and historical mapping. Restore distinct New Mexico State, UConn, UMass and FIU identities alongside CFBR's replacement schools. Prioritize football conferences, schedules, recruiting, actual games and persistence; borrowed uniforms/logos/venues are acceptable during these tests. Complete school-specific graphics after the systems work. Membership, transition eligibility and conference rules require separate validation.
 4. Implement the in-game 12-team playoff: selection, seeding/byes, first-round sites, legal dates, four rounds/11 games, results-driven advancement, championship history, awards and normal season rollover.
-5. Package and validate a portable installer and uninstaller against a clean supported user dump and isolated saves.
+5. Last, after the game is complete: package and validate a portable installer and uninstaller against a clean supported user dump and isolated saves.
 
 ## Release acceptance
 
@@ -35,6 +37,9 @@ The source-only roster trial now proves BOOT selection, native saving and cold a
 
 ## Later extensions
 
+- Super Sim reliability and realistic simulated stats (box scores and season totals against real college football averages).
+- Realistic player names, with skin tone and face matched to the name, for rosters and generated recruits.
+- Native Windows build via static recompilation (ps3recomp), as a side track or in collaboration with related projects.
 - Dynasty starting in 2026 while keeping all 60 seasons (two base-year constants identified; test pending). Optional: unlimited Dynasty length (grow history tables, widen season fields, roll off old history) and a larger save file.
 - Brainstorm before implementing: 105-man rosters (players are currently allocated about 70 per team), transfer portal and other modern-CFB rules.
 Configurable playoff formats, FCS league support and custom stadium work. These remain separate from the initial acceptance scope.
