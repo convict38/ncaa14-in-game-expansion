@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-11 - Users can play their own playoff games
+
+A user team in the 12-team playoff is now offered each of its playoff games. Previously the stock game treated bowl season as one week and took a team's first postseason game as "its" game, so later rounds were CPU-simmed. The new patch (U2, 252 words) makes Advance step through bowl weeks one at a time with normal end-of-week processing, so the bracket fills in as it goes, and stop only when the current week holds the user's next unplayed game.
+
+Runtime test (fresh Dynasty, all 138 real 2026 FBS teams, user Alabama as the 9 seed after losing the SEC title game): Advance stopped at each round with Play Game against the right opponent. Alabama won 34-18 at Miami in the first round, upset top seed Ohio State 27-24 in the Rose Bowl quarterfinal, then lost 27-24 to Missouri in the Peach Bowl semifinal. Advance then simmed the rest; Missouri beat Notre Dame 19-17 and the title was recorded once. Games were played through the in-game Super Sim with no crashes, the ticker showed earlier-round finals, and bowl presentation (Rose Bowl field art, "CFP Quarterfinal/Semifinal" headers) appeared. Regular-season Advance is unchanged.
+
+Known cosmetic issues: a "WEEK 256" hub header before the first-round game, trophy popups that name the stock bowl, and news text that treats the first-round win as a season-ending bowl. First-round games are played at bowl stadiums instead of the higher seed's home, a deliberate workaround for an earlier Super Sim crash at campus sites; moving them on campus is on the list.
+
+The native Windows recompilation side track now links and runs the game's own code: DirectX 12 starts and the game issues real draw calls before stopping at its one coprocessor (SPU) job, which is the next piece to implement. No game code or data is published.
+
 ## 2026-10-11 - Champion-based playoff bids pass; user-played playoff games are the next fix
 
 Playoff v3 passed a full in-game season with all 138 real 2026 FBS teams (fresh Dynasty, CPU sim). Conference championship game winners now take the automatic bids (Ohio State, Stanford, Texas and Oklahoma State won their title games; Oregon State took the Pac-12 bid as standings leader since that conference has no title game). Every bid matched the game's own conference-champion history. First-round upsets (Oklahoma State over Nebraska, Oregon State over Wisconsin) and a semifinal upset (Texas over Ohio State) advanced correctly. Alabama beat Texas for the title, which was recorded once, and the rollover to 2014 was clean. There were no crashes. An earlier attempt was invalid because the playoff patch file failed to load silently; installers now check patch files before installing and a post-boot check confirms every expected patch applied.

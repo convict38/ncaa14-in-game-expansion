@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-11T02:55:10.081107+00:00",
+  "updated": "2026-10-11T04:46:35.000545+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -489,7 +489,7 @@
     "crashes": 0
   },
   "next": [
-    "user-played playoff games (fix U)",
+    "playoff polish (campus first round, CFP naming)",
     "CFB Revamped port runtime",
     "start year 2026 (keep 60 seasons)",
     "graphics for additions and CFP UI",
@@ -505,11 +505,21 @@
     "champion": "Alabama",
     "crashes": 0
   },
-  "open_blockers": [
-    "user team cannot play its own playoff games (fix U in test)"
-  ],
+  "open_blockers": [],
   "side_tracks": {
     "c_cave_toolchain": "working offline",
-    "native_windows_recomp": "spike positive (93.5% functions lift clean, compiles); boot-to-menu in progress"
+    "native_windows_recomp": "links and runs: D3D12 init and real draw calls; blocked on SPU job (cellSpurs) completion"
+  },
+  "user_played_playoff": {
+    "runtime_passed": true,
+    "patch": "playoff user-play U2 (252 words)",
+    "user_team": "Alabama",
+    "results": {
+      "first_round": "W 34-18 at Miami",
+      "quarterfinal": "W 27-24 vs Ohio State (Rose Bowl)",
+      "semifinal": "L 24-27 vs Missouri (Peach Bowl)"
+    },
+    "champion": "Missouri",
+    "crashes": 0
   }
 }
