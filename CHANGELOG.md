@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-11 - Two full seasons from 2026 on CFB Revamped with everything enabled
+
+A fresh Dynasty on CFB Revamped with the whole stack (138 real 2026 FBS teams, 12-team playoff with champion auto bids, user-played postseason games, the 2026 start year and the coach-contract fix) ran 2026 and 2027 and rolled over to Pre-Season 2028 with no crashes. Florida won the 2026 title and Georgia the 2027 title, each recorded once. After each rollover all 138 FBS teams were present and no team was without a head coach or coordinator. The 2027 playoff ran in weeks 17/19/20/21 as the calendar model predicts. The user team's Texas Bowl stopped Advance for a user-played game as intended.
+
+Still to check for the start year: the 2028 calendar shift, the 2085 end of a 60-season Dynasty, and the national-title trophy year display.
+
 ## 2026-10-11 - Dynasty starts in 2026; added schools keep their coaches
 
 **Start year 2026.** Moving the Dynasty to 2026 took 47 code words, not the two base-year constants first identified: calendar anchors, championship history encoding and on-screen years all derive from the base year. On CFB Revamped with the full stack (138 teams, 12-team playoff, champion auto bids, user-played games), a fresh Dynasty showed Pre-Season 2026, its schedule matched real 2026 dates (opening Saturdays Aug 29 and Sep 5, conference title games Dec 5), the playoff landed in weeks 17/19/20/21 and Arkansas's title was recorded as 2026. The calendar model shows that in some later seasons (2028-2030 among them) the whole bracket shifts one week later, which the engine already handles. A follow-up fixes the national-title trophy year.

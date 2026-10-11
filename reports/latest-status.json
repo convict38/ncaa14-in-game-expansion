@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-11T09:54:45.398510+00:00",
+  "updated": "2026-10-11T10:47:50.971585+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -535,7 +535,7 @@
     "first_season_runtime_passed": true,
     "words": 47,
     "champion_2026": "Arkansas",
-    "multi_season": "pending"
+    "multi_season": "2026 and 2027 passed on CFBR full stack (champions Florida, Georgia); 2028 shift and 2085 end pending"
   },
   "coach_contract_cap": {
     "runtime_passed": true,
