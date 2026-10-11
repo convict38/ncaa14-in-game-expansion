@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-10-11 - Own uniforms, fields and stadiums for added schools; CFP news fix; more code room
+
+**Team art (CFB Revamped), runtime-tested:**
+- Delaware: community uniform pack (7 combinations including Midnight and Blackout), its own field and Delaware Stadium, re-homed so Eastern Michigan is untouched.
+- Kennesaw State: uniforms built from community textures (Home black, Away white, Black, Grey and Yellow alternates) and its own field.
+- North Dakota State: its own field in a Fargodome stand-in, plus CFB Revamped's NDSU uniform pack (green and gold), with Northern Illinois unchanged.
+- FIU, New Mexico State, UConn and UMass: their original NCAA 14 uniforms and art restored under new codes, so they no longer show the schools CFB Revamped repainted over them.
+- Real team colours for all 17 added and restored schools (menus, matchup panels, scorebugs).
+- Exhibition team list now sorts the added schools alphabetically, and the new stadiums appear in Select Stadium.
+
+Thanks to clmzntyger (Kennesaw State) and FootballGamer42 (North Dakota State field) for community art; the Delaware pack author is being confirmed. Community and game art stay out of this repository.
+
+**CFP news fix:** wins in the first round, quarterfinals and semifinals no longer generate "season over" stories. It is the first code placed in newly found free space after the game's code segment (about 54 KB on CFB Revamped, 3.75 KB on stock), which gives room for larger features such as playoff format options and modern rules.
+
 ## 2026-10-11 - Added schools selectable as your first job and playable on the field
 
 - **Choose Your First Job** now lists all 138 schools. The job list was built in a 126-row table and the added schools were cut off; a one-word fix raises the cap. North Dakota State was picked and run as a user team.
