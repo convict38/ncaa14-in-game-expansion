@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-10-11 - 138 teams and the playable 12-team playoff run on CFB Revamped
+
+The CFB Revamped (v21) port passed every runtime stage, each in a fresh Dynasty with a CPU-simmed season and a rollover, then rolled back cleanly:
+
+- Engine only at 126 teams: 15/15 fresh-Dynasty checks against an unmodified control, byte-identical cold reload, 28/28 season checks, 26/26 rollover checks.
+- All 138 real 2026 FBS teams in CFB Revamped's database: 138 FBS present with the 2026 conferences and additions (Idaho excluded), byte-identical cold reload, ACC 8 / Big Ten 9 conference games, seven conference championship games, rollover to 2014, and a live memory probe of the patched code.
+- 138 teams plus the 12-team playoff: CFP names on the bowl screens; Ohio State won the title, recorded once.
+- 138 teams plus champion-based auto bids and user-played playoff games: Advance stopped at each of the user team's games (a first-round win, then a quarterfinal loss to Michigan); Washington won the title, recorded once.
+
+The playoff and user-play patches were mapped onto CFB Revamped's executable word by word (515 and 250 words, every original instruction checked), alongside the 552-word engine change. No crashes in any stage.
+
+The native Windows recompilation side track is parked with the game running under D3D12 but showing a black screen; the remaining blocker is one coprocessor job, likely the archive decompressor. Notes are kept for a later session.
+
 ## 2026-10-11 - Users can play their own playoff games
 
 A user team in the 12-team playoff is now offered each of its playoff games. Previously the stock game treated bowl season as one week and took a team's first postseason game as "its" game, so later rounds were CPU-simmed. The new patch (U2, 252 words) makes Advance step through bowl weeks one at a time with normal end-of-week processing, so the bracket fills in as it goes, and stop only when the current week holds the user's next unplayed game.

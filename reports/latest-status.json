@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-11T04:46:35.000545+00:00",
+  "updated": "2026-10-11T07:07:32.980040+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -490,7 +490,6 @@
   },
   "next": [
     "playoff polish (campus first round, CFP naming)",
-    "CFB Revamped port runtime",
     "start year 2026 (keep 60 seasons)",
     "graphics for additions and CFP UI",
     "Choose Your First Job additions",
@@ -508,7 +507,7 @@
   "open_blockers": [],
   "side_tracks": {
     "c_cave_toolchain": "working offline",
-    "native_windows_recomp": "links and runs: D3D12 init and real draw calls; blocked on SPU job (cellSpurs) completion"
+    "native_windows_recomp": "parked: D3D12 running, black screen; blocked on one SPU job (likely archive decompressor)"
   },
   "user_played_playoff": {
     "runtime_passed": true,
@@ -520,6 +519,16 @@
       "semifinal": "L 24-27 vs Missouri (Peach Bowl)"
     },
     "champion": "Missouri",
+    "crashes": 0
+  },
+  "cfbr_port": {
+    "runtime_passed": true,
+    "stages": {
+      "storage126": "pass",
+      "real2026_138": "pass",
+      "real2026_playoff_v2": "pass, champion Ohio State",
+      "real2026_playoff_v3_u2": "pass, champion Washington, user games stopped"
+    },
     "crashes": 0
   }
 }

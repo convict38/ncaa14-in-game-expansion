@@ -29,6 +29,8 @@ The first added team identity inside the 138-team reserve now survives Dynasty c
 
 **New:** your own team now plays its playoff games: Advance stops at each round with Play Game against the right opponent.
 
+**New:** everything above also runs on CFB Revamped: 138 teams, the 12-team playoff and user-played playoff games.
+
 ## Follow development
 
 - [Changelog](CHANGELOG.md): dated changes and validation results.
