@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-11 - Dynasty starts in 2026; added schools keep their coaches
+
+**Start year 2026.** Moving the Dynasty to 2026 took 47 code words, not the two base-year constants first identified: calendar anchors, championship history encoding and on-screen years all derive from the base year. On CFB Revamped with the full stack (138 teams, 12-team playoff, champion auto bids, user-played games), a fresh Dynasty showed Pre-Season 2026, its schedule matched real 2026 dates (opening Saturdays Aug 29 and Sep 5, conference title games Dec 5), the playoff landed in weeks 17/19/20/21 and Arkansas's title was recorded as 2026. The calendar model shows that in some later seasons (2028-2030 among them) the whole bracket shifts one week later, which the engine already handles. A follow-up fixes the national-title trophy year.
+
+**Coachless schools.** Rolling over exposed a bug: five schools (FIU, New Mexico State, UConn, Kennesaw State and Sam Houston) lost their head coaches and a recruiting step then crashed. Root cause: the end-of-season contract step only processed the first 378 coaching contracts (126 teams x 3); the 36 contracts of the added schools were never aged or renewed, and on CFB Revamped they were released without the jobs being reopened. A 14-word fix resizes that step and two related loops, and a separate 4-word guard keeps the recruiting-board lookup in range. Retest from a saved conference-championship week: all contracts processed, no team without a head, offensive or defensive coordinator, no crash, rollover to the next season clean.
+
 ## 2026-10-11 - 138 teams and the playable 12-team playoff run on CFB Revamped
 
 The CFB Revamped (v21) port passed every runtime stage, each in a fresh Dynasty with a CPU-simmed season and a rollover, then rolled back cleanly:
