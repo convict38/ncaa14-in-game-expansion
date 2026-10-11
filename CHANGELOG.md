@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-11 - Added schools selectable as your first job and playable on the field
+
+- **Choose Your First Job** now lists all 138 schools. The job list was built in a 126-row table and the added schools were cut off; a one-word fix raises the cap. North Dakota State was picked and run as a user team.
+- **Bowl-week header** no longer reads "WEEK 256"; it shows "BOWL WEEKS, 2026". ESPN headlines name the CFP rounds ("Cotton Bowl CFP Semifinal ...").
+- **Sam Houston's logo** was mapped to Sacred Heart's; it now uses the Bearkats "SH" mark from CFB Revamped's library. The other 16 mapped logos were audited and are correct.
+- **Rendered games with added schools**: exhibition games with North Dakota State (home and away), Sam Houston, Kennesaw State and Delaware (including two additions against each other), and three Dynasty weeks played from the hub plus a full Dynasty season, all loaded and played with no hangs. An earlier freeze while loading a bowl game did not reproduce.
+- Added schools still use borrowed stadiums, fields and uniforms (for example Air Force's Falcon Stadium or Northern Illinois's field); their own art is the next graphics step.
+
+Also built, not yet runtime-tested: a fix that stops CFP first-round, quarterfinal and semifinal wins from producing "season over" news. It is the first patch placed in newly found free code space after the game's code segment (about 54 KB on CFB Revamped), which gives room for larger features.
+
 ## 2026-10-11 - Added schools show their own logos
 
 The 13 added schools and the restored ones now use their own logos from CFB Revamped's logo library instead of borrowed ones. In a fresh 2026 Dynasty with the full stack, the schedule and scores screens showed the right logo for North Dakota State, Sam Houston, Missouri State, Kennesaw State, Delaware, Liberty, Jacksonville State, UConn, FIU and New Mexico State. The season and rollover ran with no crash and all checks passed. Playoff trophies were also renamed to CFP names (data only; on-screen confirmation pending). Uniforms, fields, banners and 3D logos for the additions are the next art steps; only a few additions have uniform art in CFB Revamped.

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-11T12:19:36.152484+00:00",
+  "updated": "2026-10-11T15:33:13.910225+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -546,6 +546,16 @@
     "logos_runtime_passed": true,
     "schools": 17,
     "cfp_trophy_names": "built, on-screen check pending",
-    "uniforms": "pending"
+    "uniforms": "pending",
+    "sam_houston_logo": "fixed"
+  },
+  "ui_fixes_v1": {
+    "runtime_passed": true,
+    "first_job_list": "all 138",
+    "bowl_week_header": "fixed"
+  },
+  "addition_render_test": {
+    "runtime_passed": true,
+    "hangs": 0
   }
 }
