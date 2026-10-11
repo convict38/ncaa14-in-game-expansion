@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-11 - Added schools show their own logos
+
+The 13 added schools and the restored ones now use their own logos from CFB Revamped's logo library instead of borrowed ones. In a fresh 2026 Dynasty with the full stack, the schedule and scores screens showed the right logo for North Dakota State, Sam Houston, Missouri State, Kennesaw State, Delaware, Liberty, Jacksonville State, UConn, FIU and New Mexico State. The season and rollover ran with no crash and all checks passed. Playoff trophies were also renamed to CFP names (data only; on-screen confirmation pending). Uniforms, fields, banners and 3D logos for the additions are the next art steps; only a few additions have uniform art in CFB Revamped.
+
+Found along the way: added schools are not offered in the "Choose Your First Job" list, and with user-played postseason games enabled, Advance also stops at a user team's regular bowl game.
+
 ## 2026-10-11 - Two full seasons from 2026 on CFB Revamped with everything enabled
 
 A fresh Dynasty on CFB Revamped with the whole stack (138 real 2026 FBS teams, 12-team playoff with champion auto bids, user-played postseason games, the 2026 start year and the coach-contract fix) ran 2026 and 2027 and rolled over to Pre-Season 2028 with no crashes. Florida won the 2026 title and Georgia the 2027 title, each recorded once. After each rollover all 138 FBS teams were present and no team was without a head coach or coordinator. The 2027 playoff ran in weeks 17/19/20/21 as the calendar model predicts. The user team's Texas Bowl stopped Advance for a user-played game as intended.

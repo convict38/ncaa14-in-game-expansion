@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-11T10:47:50.971585+00:00",
+  "updated": "2026-10-11T12:19:36.152484+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -541,5 +541,11 @@
     "runtime_passed": true,
     "words": 14,
     "coachless_after_rollover": 0
+  },
+  "team_art": {
+    "logos_runtime_passed": true,
+    "schools": 17,
+    "cfp_trophy_names": "built, on-screen check pending",
+    "uniforms": "pending"
   }
 }
