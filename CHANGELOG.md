@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-11 - Four-season Dynasty with 138 real 2026 teams and the 12-team playoff (stock build)
+
+The combined mod ran four consecutive seasons (2013-2016) in one fresh Dynasty, each with conference championships, the 12-team playoff, a recorded champion and a rollover, then cold-reloaded byte-identical at Pre-Season 2017. Champions: Alabama (2013 and 2014, both 16-0), Georgia Tech (2015), South Carolina (2016). Alabama went 6-6 in 2015 and 2016 and missed the playoff, so selection follows results. There were no crashes.
+
+The v4 data fixes held in every season: the 17-team ACC played 8 conference games and the 18-team Big Ten played 9, and enlarged history tables stayed within capacity (TPHS 576/720, RBKS 3609/4320, PLAC 3476/4100, TPRC 589/900). The save peaked around 7.01 MB of its fixed 8.28 MB. A live probe at Pre-Season 2017 passed 1,073 checks with 138 FBS teams.
+
+Also built offline since the last update: playoff v3 (automatic bids to the conference championship game winner, in test now), a port of both the 138-team engine recipe and the playoff to the CFB Revamped executable (all words mapped and preimage-checked), and the CFB Revamped version of the 2026 lineup. Research found that the Dynasty start year comes from two code constants. Moving them to start in 2026 should keep the full 60 seasons (2026-2085); this is queued for testing.
+
 ## 2026-10-10 - 138 real 2026 FBS teams + native 12-team playoff together in one Dynasty (stock build)
 
 The two core goals now run together in normal Dynasty play on the stock build. All 138 2026 FBS schools play in their 2026 conferences, and the native 12-team College Football Playoff decides the title. A fresh Dynasty showed CFP bowl names in the game's own bowl tie-in screen before the season, and its cold reload was byte-identical.

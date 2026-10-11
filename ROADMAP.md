@@ -35,4 +35,6 @@ The source-only roster trial now proves BOOT selection, native saving and cold a
 
 ## Later extensions
 
+- Dynasty starting in 2026 while keeping all 60 seasons (two base-year constants identified; test pending). Optional: unlimited Dynasty length (grow history tables, widen season fields, roll off old history) and a larger save file.
+- Brainstorm before implementing: 105-man rosters (players are currently allocated about 70 per team), transfer portal and other modern-CFB rules.
 Configurable playoff formats, FCS league support and custom stadium work. These remain separate from the initial acceptance scope.

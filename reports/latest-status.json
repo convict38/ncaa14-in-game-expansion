@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-10T23:15:49.774016+00:00",
+  "updated": "2026-10-11T00:46:10.782889+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -458,5 +458,41 @@
       "graphics",
       "installer"
     ]
-  }
+  },
+  "multi_season": {
+    "runtime_passed": true,
+    "seasons": [
+      2013,
+      2014,
+      2015,
+      2016
+    ],
+    "champions": {
+      "2013": "Alabama",
+      "2014": "Alabama",
+      "2015": "Georgia Tech",
+      "2016": "South Carolina"
+    },
+    "conference_games": {
+      "ACC": 8,
+      "Big Ten": 9
+    },
+    "history_capacity": {
+      "TPHS": "576/720",
+      "RBKS": "3609/4320",
+      "PLAC": "3476/4100",
+      "TPRC": "589/900"
+    },
+    "max_save_bytes": 7010000,
+    "save_limit_bytes": 8278016,
+    "live_probe_checks": 1073,
+    "crashes": 0
+  },
+  "next": [
+    "playoff v3 (CCG-winner auto bids) runtime",
+    "CFB Revamped port runtime",
+    "start year 2026 (keep 60 seasons)",
+    "graphics for additions and CFP UI",
+    "installer"
+  ]
 }

@@ -25,6 +25,8 @@ The first added team identity inside the 138-team reserve now survives Dynasty c
 
 **New:** the 138 real 2026 FBS teams and the native 12-team playoff now run together in one Dynasty on the stock build (full season, playoff, recorded champion, rollover). Multi-season testing, the CFBR port, graphics for the 13 added schools and an installer remain.
 
+**New:** a four-season Dynasty (2013-2016) ran with all 138 real 2026 FBS teams and the 12-team playoff, champion recorded each year, no crashes. CFB Revamped port and start-in-2026 are next.
+
 ## Follow development
 
 - [Changelog](CHANGELOG.md): dated changes and validation results.
