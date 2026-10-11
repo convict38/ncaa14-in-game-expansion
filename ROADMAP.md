@@ -37,6 +37,7 @@ The source-only roster trial now proves BOOT selection, native saving and cold a
 
 ## Later extensions
 
+- Faster in-game simulation: a multi-week Advance takes about 10 minutes of emulation today. Investigate emulator settings, skipping presentation during sims, and profiling where sim time goes.
 - Super Sim reliability and realistic simulated stats (box scores and season totals against real college football averages).
 - Realistic player names, with skin tone and face matched to the name, for rosters and generated recruits.
 - Native Windows build via static recompilation (ps3recomp), as a side track or in collaboration with related projects.
