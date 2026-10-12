@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-12 - Full 60-season Dynasty from 2026 through 2085
+
+- **The stock game only plays 59 seasons.** A built-in check refuses Start Season at the 60th pre-season (2072 in stock, 2085 with our 2026 start). A two-word fix moves that end to Pre-Season 2086, so all 60 seasons (2026-2085) are playable.
+- **Menus show 2026-based years.** Every UI screen derived its years from a hard-coded 2013, including a copy inside CFB Revamped's update archive. Patched to 2026, so the season tile reads 2026 and the career chart runs from 2023.
+- **Long-Dynasty crash fixed.** Late in a 60-year Dynasty, the Coach Contract screen's chart (one column per season) ran the UI out of memory, a stock defect that only shows in very long Dynasties. The chart now shows the most recent 20 seasons.
+- **History tables enlarged** for 138 teams over 60+ seasons (team, bowl and conference-championship history and coaching records), at a fixed cost of about 23 KB in a save that still has over 1.2 MB free.
+
+Runtime test: a Dynasty moved to 2085 played the regular season, conference title game and 12-team playoff (national title 42-31), accepted a contract extension and reached Pre-Season 2086, where the "60 Year Dynasty Complete" screen appears as the intended end.
+
 ## 2026-10-12 - Modern overtime and clock rules; native build reaches the Dynasty hub
 
 **Modern rules (CFB Revamped), runtime-tested:** after a touchdown from the second overtime a two-point try is required, and from the third overtime each possession is a two-point play from the 3-yard line. The first runtime test showed the CPU could still kick an extra point, because the original change only filtered the play-call menu; the fix scores a kicked try as zero and steers the CPU to a two-point play. Retest: three overtime games, every try worth 0 or 2, the CPU attempting two-point conversions, no crashes. The two-minute timeout at 2:00 of each half works; the running clock after first downs is in place and still being verified in isolation. Simulated games and Dynasty weeks ran without problems.

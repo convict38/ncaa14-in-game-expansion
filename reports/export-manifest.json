@@ -23,8 +23,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "bcbad52785df338e1f6c75029b62c3c850b6aea43d0ee69c9f6cd39afcb44408",
-      "bytes": 39332
+      "sha256": "7731f034c8c546748eb676512e09d261efb621446cc4a8d0fe94ff94596b9f02",
+      "bytes": 40595
     },
     {
       "path": "CONTRIBUTING.md",
@@ -38,8 +38,8 @@
     },
     {
       "path": "ROADMAP.md",
-      "sha256": "2ffac0492a456211559d5e46bcd0903c87a49c810d0d6cecbbd15a403eeac65d",
-      "bytes": 8957
+      "sha256": "7caa8a4c3d12ced5eaa5a14a91d5d0f40227b312174bea44c63dd105d3df9600",
+      "bytes": 8877
     },
     {
       "path": "docs/ARCHIVE_ADAPTER.md",
@@ -83,8 +83,8 @@
     },
     {
       "path": "reports/latest-status.json",
-      "sha256": "215d6a99befaaf629bcc87430edf41c9c51c381b05cf5e6683f588609ae2d596",
-      "bytes": 19110
+      "sha256": "b1e418818fe96a6ad454d874a12e648330febfbe47cb1089bbf5b4c585f82f80",
+      "bytes": 19017
     },
     {
       "path": "tools/bgfa_archive.py",
