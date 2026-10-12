@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-11 - Native Windows build side track: first real frames
+
+The experimental native Windows build (static recompilation with ps3recomp, run against the owner's own game files) now draws the game's intro movie through DirectX 12, with no emulator involved. Getting there took fixes to system-call coverage (memory containers, SPU event ports, the default GCM command buffer, the system cache mount, network sign-in state), SPU interpreter correctness (verified against a reference opcode by opcode), SPU code speed (about 2.3x faster), and RSX command-stream handling. Input reaches the game, profiles load, and sound plays but is mostly silent until SPU speed improves. The next blocker is a graphics command corruption right after the main-menu movie. This remains a side track; no game code or data is published.
+
 ## 2026-10-11 - Own uniforms, fields and stadiums for added schools; CFP news fix; more code room
 
 **Team art (CFB Revamped), runtime-tested:**

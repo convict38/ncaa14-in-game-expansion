@@ -23,8 +23,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "ce1e221b75ff1ed2eb1d27a2ed05617c0fec9e00ad0af2c3fa2b5fde47f6731d",
-      "bytes": 36285
+      "sha256": "76c6dc4f697a0452e82561d79a22e64076f2adae6295edb6f83d0d6b8837d5f2",
+      "bytes": 37113
     },
     {
       "path": "CONTRIBUTING.md",
@@ -83,8 +83,8 @@
     },
     {
       "path": "reports/latest-status.json",
-      "sha256": "ca93685eccc847a522483b2ae9ab1943ed6bd6dfa44e8d10f2a0cf5e0c09fdf5",
-      "bytes": 18641
+      "sha256": "b8c11f5c24ac2244861d52c89d1de4b7021f57d55b178ed65e821653abec8e82",
+      "bytes": 18669
     },
     {
       "path": "tools/bgfa_archive.py",

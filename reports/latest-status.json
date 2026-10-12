@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-11T22:15:49.776797+00:00",
+  "updated": "2026-10-12T02:35:17.362562+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -507,7 +507,7 @@
   "open_blockers": [],
   "side_tracks": {
     "c_cave_toolchain": "working offline",
-    "native_windows_recomp": "parked: D3D12 running, black screen; blocked on one SPU job (likely archive decompressor)"
+    "native_windows_recomp": "first real frames (intro movie via D3D12); input, profiles and audio path working; next blocker after main-menu movie"
   },
   "user_played_playoff": {
     "runtime_passed": true,
