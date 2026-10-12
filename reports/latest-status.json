@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-12T02:35:17.362562+00:00",
+  "updated": "2026-10-12T05:30:24.233269+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -568,5 +568,21 @@
   "code_room": {
     "cfbr_bytes": 55552,
     "stock_bytes": 3840
+  },
+  "cfp_projection": {
+    "runtime_passed": true
+  },
+  "campus_first_round": {
+    "runtime_passed": true
+  },
+  "stand_in_stadiums": {
+    "runtime_passed": true
+  },
+  "sim_stats_review": {
+    "points_pass_rush_within_pct": 3,
+    "home_win_pct": {
+      "mod": 54.6,
+      "real": 63.4
+    }
   }
 }

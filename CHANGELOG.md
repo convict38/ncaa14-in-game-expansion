@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-12 - Weekly CFP projection, campus first round, stand-in stadiums
+
+Runtime-tested together on CFB Revamped in a fresh Dynasty through a full season, playoff and rollover with no crashes:
+- **Weekly CFP projection:** from week 8 the playoff selection runs every week, so ESPN > Bowl Projections shows an "if the season ended today" bracket (CFP First Round 5 vs 12 ... 8 vs 9, quarterfinal byes for seeds 1-4). The old placeholder bowl teams are gone, and the real field replaces the projection after championship week.
+- **First-round games at the higher seed's stadium,** as in the real CFP, with normal home-game presentation. Four campus first-round games were simmed without problems.
+- **Stand-in stadiums:** FIU, New Mexico State and UConn have their own stadiums again; other added schools use unbranded stadiums of a fitting size (Sam Houston about 14,000 instead of 47,000).
+
+Also from this round: the CPU-sim stat review found scoring, passing and rushing averages within about 3 percent of real FBS figures. Home-field advantage is weaker than real (about 55 percent home wins versus 63), the same as in the stock game. Modern overtime and clock rules are built and in runtime testing.
+
 ## 2026-10-11 - Native Windows build side track: first real frames
 
 The experimental native Windows build (static recompilation with ps3recomp, run against the owner's own game files) now draws the game's intro movie through DirectX 12, with no emulator involved. Getting there took fixes to system-call coverage (memory containers, SPU event ports, the default GCM command buffer, the system cache mount, network sign-in state), SPU interpreter correctness (verified against a reference opcode by opcode), SPU code speed (about 2.3x faster), and RSX command-stream handling. Input reaches the game, profiles load, and sound plays but is mostly silent until SPU speed improves. The next blocker is a graphics command corruption right after the main-menu movie. This remains a side track; no game code or data is published.
