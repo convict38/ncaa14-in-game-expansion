@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-12T13:25:29.276271+00:00",
+  "updated": "2026-10-12T16:58:21.707508+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -507,7 +507,7 @@
   "open_blockers": [],
   "side_tracks": {
     "c_cave_toolchain": "working offline",
-    "native_windows_recomp": "title screen, main menu and Dynasty hub render; game start hangs"
+    "native_windows_recomp": "title screen/menu/Dynasty hub render; field texture now renders correctly (Step 33); on-field players not drawn yet"
   },
   "user_played_playoff": {
     "runtime_passed": true,
@@ -551,7 +551,16 @@
     "fields": "Delaware, Kennesaw State, North Dakota State",
     "team_colors": "all 17 fixed",
     "picker_order": "fixed",
-    "stadium_picker": "fixed"
+    "stadium_picker": "fixed",
+    "cfp_logo": {
+      "first_round_installed": true,
+      "national_championship_installed": true,
+      "art_source": "original, drawn from scratch",
+      "open": [
+        "results-list bowl badge still shows donor bowl",
+        "main logo screen not yet checked in-game"
+      ]
+    }
   },
   "ui_fixes_v1": {
     "runtime_passed": true,
@@ -588,6 +597,6 @@
   "modern_rules": {
     "overtime": "runtime_passed (v2)",
     "two_minute_timeout": "runtime_passed",
-    "running_clock_first_downs": "built, partial verification"
+    "running_clock_first_downs": "runtime_passed (Exhibition and Dynasty, v24, no code change)"
   }
 }

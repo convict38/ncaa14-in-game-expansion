@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-12 - Modern clock rule confirmed at runtime; CFP logo installed; PC port renders the field
+
+**Modern clock rule (CFB Revamped), runtime-tested on the installed v24 stage, no code changed.** Stock stops the game clock on every first down (verified against an old-rule baseline, frozen at 2:34 mid-second-quarter). With modern-rules v2, a first down outside the final two minutes of a half now lets the clock keep running through the pre-snap sequence; inside the final two minutes it stays stopped until right at the snap. Confirmed in an Exhibition game and separately in a fresh Dynasty game advanced to 2027. Modern overtime and the two-minute timeout, both already runtime-tested, are unaffected.
+
+**CFP logo.** Our own original College Football Playoff artwork (First Round and National Championship marks, drawn from scratch, no traced or game-derived art) is installed, and the four first-round playoff rows now point at it in place of the donor bowls' marks. Two items are still open: a small results-list bowl badge still shows the donor bowl, since it reads a different field than the one that was changed; and the main 256x256 logo screen itself still needs an in-game visual check, since no playoff participant has reached that screen yet in this project.
+
+**PC port (ps3recomp) side track, Step 33.** The field previously rendered as a black, speckled texture because a GPU-to-main-memory readback was being resolved into VRAM instead of main memory; with that fixed, the field now renders correctly (grass, yard lines, logos, end zones). On-field players are not drawn yet (only shadows, the HUD and a referee render); that and general image quality are the next items. Remains a side track: no game code or data is published.
+
 ## 2026-10-12 - Full 60-season Dynasty from 2026 through 2085
 
 - **The stock game only plays 59 seasons.** A built-in check refuses Start Season at the 60th pre-season (2072 in stock, 2085 with our 2026 start). A two-word fix moves that end to Pre-Season 2086, so all 60 seasons (2026-2085) are playable.

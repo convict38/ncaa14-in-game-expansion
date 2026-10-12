@@ -31,6 +31,8 @@ The first added team identity inside the 138-team reserve now survives Dynasty c
 
 **New:** everything above also runs on CFB Revamped: 138 teams, the 12-team playoff and user-played playoff games.
 
+**New:** the modern clock rule is confirmed at runtime on CFB Revamped (Exhibition and Dynasty): the clock keeps running after first downs outside the final two minutes of a half and stays stopped until the snap inside it. Our own original CFP logo artwork is installed on the first-round playoff games; a bowl-results badge and the main logo screen still need a look.
+
 ## Follow development
 
 - [Changelog](CHANGELOG.md): dated changes and validation results.
