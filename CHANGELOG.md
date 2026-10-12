@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-12 - Modern overtime and clock rules; native build reaches the Dynasty hub
+
+**Modern rules (CFB Revamped), runtime-tested:** after a touchdown from the second overtime a two-point try is required, and from the third overtime each possession is a two-point play from the 3-yard line. The first runtime test showed the CPU could still kick an extra point, because the original change only filtered the play-call menu; the fix scores a kicked try as zero and steers the CPU to a two-point play. Retest: three overtime games, every try worth 0 or 2, the CPU attempting two-point conversions, no crashes. The two-minute timeout at 2:00 of each half works; the running clock after first downs is in place and still being verified in isolation. Simulated games and Dynasty weeks ran without problems.
+
+**Native Windows build (side track):** the title screen, main menu and a Dynasty hub (loaded from one of our playoff test saves) now render correctly. Starting a game is the next blocker.
+
 ## 2026-10-12 - Weekly CFP projection, campus first round, stand-in stadiums
 
 Runtime-tested together on CFB Revamped in a fresh Dynasty through a full season, playoff and rollover with no crashes:

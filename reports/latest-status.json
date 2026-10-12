@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-12T05:30:24.233269+00:00",
+  "updated": "2026-10-12T07:54:42.514433+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -507,7 +507,7 @@
   "open_blockers": [],
   "side_tracks": {
     "c_cave_toolchain": "working offline",
-    "native_windows_recomp": "first real frames (intro movie via D3D12); input, profiles and audio path working; next blocker after main-menu movie"
+    "native_windows_recomp": "title screen, main menu and Dynasty hub render; game start hangs"
   },
   "user_played_playoff": {
     "runtime_passed": true,
@@ -584,5 +584,10 @@
       "mod": 54.6,
       "real": 63.4
     }
+  },
+  "modern_rules": {
+    "overtime": "runtime_passed (v2)",
+    "two_minute_timeout": "runtime_passed",
+    "running_clock_first_downs": "built, partial verification"
   }
 }
