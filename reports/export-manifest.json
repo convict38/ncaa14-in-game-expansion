@@ -23,8 +23,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "933851ebea7c5ed22b487d26b8c4f54d43c914ebd1843d9e30414d249830bba9",
-      "bytes": 42355
+      "sha256": "2837c176f763617fdf4c94c78459347d1f3153b6a138fcdc0fa0fe4dc7f58dbf",
+      "bytes": 44808
     },
     {
       "path": "CONTRIBUTING.md",
@@ -33,13 +33,13 @@
     },
     {
       "path": "README.md",
-      "sha256": "f9a5d0cbb1bdd38398896e54d484376b1731f507cf45bea6016b13833f6c506c",
-      "bytes": 6749
+      "sha256": "ccfdf3369a2efc91f440696746a88142b62185aba72b7104b683ff6b397fe170",
+      "bytes": 7026
     },
     {
       "path": "ROADMAP.md",
-      "sha256": "a685c2ea0aab733ef62f3b33b1aeb9398fc2e34f81c8f5745989ef9c697c0f63",
-      "bytes": 9350
+      "sha256": "9654f906260745f916c00c6262e70a2d6429ca44bfc93a301b7e44a40d227929",
+      "bytes": 9869
     },
     {
       "path": "docs/ARCHIVE_ADAPTER.md",
@@ -83,8 +83,8 @@
     },
     {
       "path": "reports/latest-status.json",
-      "sha256": "d6b024aef0fc1112b12eef9457f0231443ff9c2d035f0e0f4b6fcfd92e870d3e",
-      "bytes": 19404
+      "sha256": "ac9a1b8f897a951b9dab940015d40401fe08ba3adf442f382394f3e1f4af82f2",
+      "bytes": 19595
     },
     {
       "path": "tools/bgfa_archive.py",

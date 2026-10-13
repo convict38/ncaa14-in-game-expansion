@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-12T16:58:21.707508+00:00",
+  "updated": "2026-10-13T19:24:50.769078+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -489,11 +489,11 @@
     "crashes": 0
   },
   "next": [
+    "PC build frame rate (side track)",
     "playoff polish (campus first round, CFP naming)",
     "start year 2026 (keep 60 seasons)",
     "graphics for additions and CFP UI",
     "Choose Your First Job additions",
-    "Super Sim and sim stat realism",
     "realistic names and appearance",
     "stretch goals",
     "installer (last)"
@@ -507,7 +507,7 @@
   "open_blockers": [],
   "side_tracks": {
     "c_cave_toolchain": "working offline",
-    "native_windows_recomp": "title screen/menu/Dynasty hub render; field texture now renders correctly (Step 33); on-field players not drawn yet"
+    "native_windows_recomp": "full modded stack (CFBR 1.02 + all project patches) runs: 2026 Dynasty season, CCGs, 12-team CFP, rollover to 2027 (15/15 checks); Super Sim score bug fixed (13 VMX integer emitters were byte-order wrong); boots 16-34 s; open: frame rate ~2-4 fps, intermittent week-advance hang, user-played game testing"
   },
   "user_played_playoff": {
     "runtime_passed": true,

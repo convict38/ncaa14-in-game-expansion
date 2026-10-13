@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-13 - PC build: a full modded Dynasty season runs natively; Super Sim scores fixed; faster boots
+
+Side track (native Windows build via static recompilation). No game code, data or executables are published; everything below runs against the owner's own game files.
+
+**The whole mod runs on the PC build.** The recompiled build now uses CFB Revamped's own executable with every code change this project makes (138 teams, 12-team playoff, user-played playoff games, 2026 start year, modern rules, 60-season Dynasty, UI and news fixes), reading the modded game data through a read-only overlay. A fresh Dynasty played a full 2026 season on it: all 14 regular-season weeks, conference title games, the 12-team CFP (Texas beat USC 34-13 in the final, champion recorded and in the ESPN news), the coaching carousel and other off-season stages, and rollover to Pre-Season 2027. The season checker passed all 15 structural checks, and the 2027 schedules were complete. Exhibition games between added schools (Kennesaw State at Delaware) load with the correct stadium, field, uniforms and conference banner.
+
+**Super Sim scores fixed.** Super Sim games on the PC build had been ending 60-80 points a side with every extra point missed, on the stock game and the modded one alike (Dynasty week sims were normal). The cause was in the recompiler, not the mod: 13 vector integer instructions read the PS3's big-endian vector lanes in the PC's byte order. The game computes its rating-weighted sim chances with those instructions, so a kick-block chance came out around 227 % instead of about 2 %. With the instructions corrected (checked against a reference implementation on random inputs: 13 failing before, 0 after), a Super Simmed Mississippi State at Alabama ended 7-38 with every kick good and realistic team stats (526 vs 175 total yards).
+
+**Faster, steadier boots.** Most long boots and apparent freezes at the coin toss came from the frame clock waiting on environment-variable lookups and on shader compiles. A lock-free cached lookup, a persistent shader cache and a cheaper surface search fixed them: the title screen appears in about 16-34 seconds instead of several minutes, and New Dynasty reaches the pre-season hub.
+
+Still open on the PC build: speed (gameplay runs at roughly 2-4 frames per second; real play needs about 30), an occasional hang during a Dynasty week advance, and full playtesting of user-controlled games.
+
 ## 2026-10-12 - Modern clock rule confirmed at runtime; CFP logo installed; PC port renders the field
 
 **Modern clock rule (CFB Revamped), runtime-tested on the installed v24 stage, no code changed.** Stock stops the game clock on every first down (verified against an old-rule baseline, frozen at 2:34 mid-second-quarter). With modern-rules v2, a first down outside the final two minutes of a half now lets the clock keep running through the pre-snap sequence; inside the final two minutes it stays stopped until right at the snap. Confirmed in an Exhibition game and separately in a fresh Dynasty game advanced to 2027. Modern overtime and the two-minute timeout, both already runtime-tested, are unaffected.
