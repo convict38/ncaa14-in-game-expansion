@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-13 (later) - PC build frame rate roughly tripled
+
+Side track (native Windows build via static recompilation). No game code, data or executables are published; everything below runs against the owner's own game files.
+
+**From about 3 to about 9 frames per second in gameplay on the modded build.** Three changes did most of it: fixes in the graphics thread (a faster surface lookup and a cache for converted vertex data, which now reuses roughly 4 in 10 vertex fetches), two CFB Revamped SPU jobs that now run as native code instead of being interpreted, and letting the CPU and GPU work on different frames at the same time.
+
+**An idle sleep was spinning a CPU core.** The game polls with very short sleeps, and the recompiled version of that sleep busy-waited and pinned two cores. It now waits on a timer; those threads dropped from about 97% to 16-25% CPU. Speed did not change, so it was not the limit, but it frees the machine.
+
+Still well short of 30 frames per second (real play needs about 30). The GPU is now the limit, because each frame sends far too much vertex data; sending much less per frame is next (a first step, indexed drawing, is in).
+
+**Two long-standing rendering bugs fixed.** The sky above the stadium was never drawn and showed as a black hole; the face-culling defaults did not match the PS3's power-on state, and with that and two smaller fixes the night sky, clouds and light towers now render. The post-game menu tiles also draw in team colours again instead of grey. A Super Sim check after these changes still gives a normal score (Houston 18, Sam Houston 26).
+
 ## 2026-10-13 - PC build: a full modded Dynasty season runs natively; Super Sim scores fixed; faster boots
 
 Side track (native Windows build via static recompilation). No game code, data or executables are published; everything below runs against the owner's own game files.

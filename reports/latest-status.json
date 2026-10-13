@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13T19:24:50.769078+00:00",
+  "updated": "2026-10-13T22:00:00+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -507,7 +507,7 @@
   "open_blockers": [],
   "side_tracks": {
     "c_cave_toolchain": "working offline",
-    "native_windows_recomp": "full modded stack (CFBR 1.02 + all project patches) runs: 2026 Dynasty season, CCGs, 12-team CFP, rollover to 2027 (15/15 checks); Super Sim score bug fixed (13 VMX integer emitters were byte-order wrong); boots 16-34 s; open: frame rate ~2-4 fps, intermittent week-advance hang, user-played game testing"
+    "native_windows_recomp": "full modded stack (CFBR 1.02 + all project patches) runs: 2026 Dynasty season, CCGs, 12-team CFP, rollover to 2027 (15/15 checks); Super Sim score bug fixed (13 VMX integer emitters were byte-order wrong); boots 16-34 s; open: frame rate now ~9 fps (was ~2-4; graphics-thread fixes, two native SPU jobs, CPU/GPU overlap; GPU-bound, needs 30), intermittent week-advance hang, user-played game testing"
   },
   "user_played_playoff": {
     "runtime_passed": true,

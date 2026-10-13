@@ -33,7 +33,7 @@ The first added team identity inside the 138-team reserve now survives Dynasty c
 
 **New:** the modern clock rule is confirmed at runtime on CFB Revamped (Exhibition and Dynasty): the clock keeps running after first downs outside the final two minutes of a half and stays stopped until the snap inside it. Our own original CFP logo artwork is installed on the first-round playoff games; a bowl-results badge and the main logo screen still need a look.
 
-**New:** side track: the native PC build (static recompilation, run against your own game files) now plays a full modded Dynasty season, 12-team playoff and rollover, and its Super Sim scores are fixed. Speed (about 2-4 fps today) is the next big job before it is playable.
+**New:** side track: the native PC build (static recompilation, run against your own game files) now plays a full modded Dynasty season, 12-team playoff and rollover, and its Super Sim scores are fixed. Speed has roughly tripled to about 9 fps (real play needs about 30), and is still the next big job before it is playable.
 
 ## Follow development
 
