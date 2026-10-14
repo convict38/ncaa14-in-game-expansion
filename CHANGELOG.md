@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-14 - PC build: players drawn correctly; freeze-causing code found; Super Sim correction
+
+Side track (native Windows build via static recompilation). No game code, data or executables are published.
+
+**Players are no longer bunched in one line.** Everyone used to be drawn stacked in a single line down the middle of the field. The graphics translator was treating one GPU command as matrix data, which wiped each player's sideways position. Formations, pre-snap and live plays now render correctly.
+
+**Freeze culprits found.** Two of the background game-engine code pieces (SPU programs) that froze games just after kickoff are identified and excluded. More of the game's background work can now run as fast native code instead of slow emulation.
+
+**Correction on Super Sim.** The earlier note that Super Sim scores were fixed was premature. Simulated plays still sometimes give impossible results, such as an 80-yard run with no touchdown or "3rd & -65". That bug is being hunted. It does not depend on the earlier memory speed option, and graphics, CPU vector math, SPU float math and the game clock have been ruled out.
+
+**Speed.** A frame-pacing tweak was measured and made no difference, so it stays off. Gameplay is still about 9-10 frames per second. The next big step is splitting rendering across two threads (estimated +25-40%).
+
 ## 2026-10-13 (night) - PC build: sound works, analog controls, measured speed gains
 
 Side track (native Windows build via static recompilation). No game code, data or executables are published.

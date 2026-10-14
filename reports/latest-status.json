@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-14T01:48:21.253361+00:00",
+  "updated": "2026-10-14T17:27:04.910713+00:00",
   "candidate": "active127-v6",
   "release_available": false,
   "full_mod_acceptance": false,
@@ -489,11 +489,13 @@
     "crashes": 0
   },
   "next": [
-    "PC build frame rate (side track)",
+    "Super Sim correctness (PC build)",
+    "render worker thread (PC build, est. +25-40% fps)",
+    "re-enable larger native SPU set once sim verified",
+    "controller playtest (PC build)",
+    "packaging",
     "playoff polish (campus first round, CFP naming)",
-    "start year 2026 (keep 60 seasons)",
     "graphics for additions and CFP UI",
-    "Choose Your First Job additions",
     "realistic names and appearance",
     "stretch goals",
     "installer (last)"
@@ -507,7 +509,7 @@
   "open_blockers": [],
   "side_tracks": {
     "c_cave_toolchain": "working offline",
-    "native_windows_recomp": "full modded stack runs (season, CFP, rollover); Super Sim fixed; gameplay ~9 fps; audio real-time; analog input; sky/menu colour fixed; open: 30 fps, new SPU image set freezes after kickoff, midfield yardage anomaly in Super Sim, controller playtest, packaging"
+    "native_windows_recomp": "full modded stack runs (season, CFP, rollover); player formations render correctly; audio real-time; analog input; sky/menu colour fixed; gameplay ~9-10 fps; open: Super Sim correctness (impossible plays, earlier fix premature), render worker thread (+25-40% est.), re-enable larger native SPU set after sim verified (2 freeze-causing images excluded), controller playtest, packaging"
   },
   "user_played_playoff": {
     "runtime_passed": true,

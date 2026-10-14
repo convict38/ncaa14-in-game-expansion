@@ -2,6 +2,8 @@
 
 ## Next development work
 
+Update 2026-10-14: next on the native PC build, in order: (1) Super Sim correctness (impossible plays such as an 80-yard run with no touchdown still happen; the earlier fix note was premature), (2) a render worker thread to split rendering across two threads (estimated +25-40% frame rate, gameplay is about 9-10 fps today), (3) re-enabling the larger set of native SPU programs once the sim is verified, (4) a controller playtest, (5) packaging.
+
 Update 2026-10-13: the native PC build is now the main side track. It runs the complete mod stack (138 teams, playoff, 2026 start, modern rules) through a full Dynasty season and rollover, and the Super Sim score bug (a recompiler vector byte-order fault) is fixed. Next on the PC build: frame rate (about 2-4 fps today, target 30), the occasional week-advance hang, then playtesting user-controlled games. Feature work continues to land in the shared patch set, which feeds both the RPCS3 install and the PC build.
 
 Update 2026-10-12: the modern clock rule (item 8) is now runtime-confirmed in both Exhibition and Dynasty on CFB Revamped, no code changes needed. CFP first-round logo art (item 4) is installed and the first-round rows point at it; a small results-list bowl badge and an in-game check of the main logo screen remain open. Side track: the ps3recomp PC port fixed a GPU-to-main-memory readback bug so the field now renders correctly; on-field players are still not drawn.
