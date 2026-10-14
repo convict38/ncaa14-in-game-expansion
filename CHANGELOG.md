@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-13 (night) - PC build: sound works, analog controls, measured speed gains
+
+Side track (native Windows build via static recompilation). No game code, data or executables are published.
+
+**Sound works.** Game audio on the PC build used to be about 90% silent; it now keeps real time with only normal pauses (7-15% quiet in tests).
+
+**Analog controls.** Full analog stick and trigger support for real controllers, and the automated test harness can now use the sticks too, so it performed its first kickoff with the kick meter.
+
+**Speed measured change by change.** A new live switch turns each speed fix off mid-game on the same scene: the vertex cache and the surface lookup index are each worth about a quarter of the frame rate, indexed drawing about a tenth, and CPU/GPU overlap about 5%. Gameplay is about 9 frames per second; a larger batch of newly translated co-processor code looked faster but froze the game after kickoff, so it is disabled until fixed.
+
+Also: a fix for a likely cause of an occasional hang when advancing a Dynasty week (not yet confirmed), and one odd Super Sim play (a 50-yard loss right as the ball reached midfield) that is being investigated.
+
 ## 2026-10-13 (later) - PC build frame rate roughly tripled
 
 Side track (native Windows build via static recompilation). No game code, data or executables are published; everything below runs against the owner's own game files.
