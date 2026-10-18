@@ -20,6 +20,16 @@ Side track (native Windows build via static recompilation). No game code, data o
 
 **Main mod: v25** adds community-made team art for Jacksonville State, Sam Houston, Liberty and Sacramento State, credited by handle in the project's community credits list (clmzntyger, mdotjenkins and FTk Ray). No asset files are included in this repository.
 
+## 2026-10-18 (later) - PC build: frame rate up to about 30-36 fps
+
+Side track (native Windows build via static recompilation). No game code, data or executables are published.
+
+**Frame rate: about 30-36 fps in heavy gameplay,** up from the about-28 fps figure earlier today. Three changes are now on by default: the texture-slot lookup cache noted earlier as still in testing; an adaptive skip of render-target write-back for targets nothing ends up reading; and a matching skip of the CPU-side image copy that write-back would otherwise have fed.
+
+**The write-back skip passed a wide visual check.** Menus, the Play Now intro, gameplay, replays, pause, box scores and Dynasty pages were all compared frozen-frame, 22 frames in total, with 0 pixel differences from before the skip was enabled.
+
+**Logged as open, not fixed:** a pre-existing Super Sim overhead-view shading glitch in the second quarter.
+
 ## 2026-10-14 - PC build: players drawn correctly; freeze-causing code found; Super Sim correction
 
 Side track (native Windows build via static recompilation). No game code, data or executables are published.
