@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-10-18 - PC build: Super Sim and freeze fixed; picture and frame rate gains; game modes validated
+
+Side track (native Windows build via static recompilation). No game code, data or executables are published.
+
+**Super Sim results corruption fixed.** The 10-14 note calling the earlier Super Sim fix premature was right to be cautious, but the bug itself (an 80-yard run with no touchdown, "3rd & -65") is now closed. The cause was a mismatch in SPU floating-point behaviour: the real hardware (and RPCS3) flushes denormal numbers to zero on the SPUs, and the port was not doing that, so an SPU-side sim calculation diverged. With denormal flushing turned on for SPU threads, the corruption is gone (repeated clean runs, downs and distance advancing normally, game clock running).
+
+**Kickoff freeze fixed.** The freeze right after kickoff, reported in the 10-14 note as "culprits found" but not yet resolved, is now fixed. The real cause was a background game-engine code check that should have required a function's own code to still match, but under one of its two verification modes it was accepting any function at all, so execution could wander into unrelated translated code and corrupt a loaded game module. The check is now tightened and validated clean across all test runs.
+
+**Audio is solid.** Silent audio blocks in gameplay dropped from about 90% to about 25%, and the game audio producer is now able to keep its buffer filled enough that the choppiness is gone. The user reports it sounds good.
+
+**Picture fixes.** Several rendering bugs were tracked down and fixed: dark, crushed-looking 3D scenes are fixed by correcting the colour space of the rendered frame; crowd popping and sparse, nearly-empty stands are fixed by making colour-clear operations respect the game's intended clip region (they were wiping the crowd image data each time instead of only the part meant to be cleared); 2x supersampling is now on by default, at no measured performance cost; helmet colour is fixed (helmets were rendering orange instead of crimson because eight of the sixteen texture inputs were not being colour-corrected); a shadow-comparison direction bug is fixed; and the daytime sky and main-menu background now visually match a reference RPCS3 session.
+
+**Frame rate: from about 9-10 fps to about 28 fps.** Heavy gameplay was about 9-10 frames per second as of the 10-14 note; it is now about 28. The contributors, each measured by itself: a cache that reuses already-converted vertex data across frames (about +63%); fixing a texture-change-tracking feature that had never actually been active (+17%, once it was working); narrowing that same tracking's scan window instead of checking everything; a shorter idle sleep in the per-frame wait loop (+6%); a faster path through the graphics command queue (+3%); and a texture-slot lookup cache (about +4%, still in testing).
+
+**Intermittent Super Sim freeze under CPU load fixed.** A second, separate freeze showed up specifically when the host machine was under heavy CPU load during a Super Sim. The game's background job system assumes a given piece of background work will finish within two rounds of game logic, which is always true on real hardware; under our emulation, with the host machine busy, that assumption could break, and the game would re-initialize a work slot and erase a "done" signal before anything had read it, leaving two threads waiting on each other forever. The fix holds that re-initialization back until the signal has actually been read. Under artificial CPU load, this went from about 3 of every 4 runs stalling to 8 of 8 clean runs. A related, smaller correctness gap (some processor-to-coprocessor memory writes not being properly synchronized) was also closed as a precaution, though it was not the cause of this particular freeze.
+
+**Game modes validated on the native modded build.** With the above fixes in place, a validation pass exercised the modded build directly (not just the emulator): a Dynasty from Pre-Season 2026 all the way through a season, conference championships, the 12-team playoff, the Heisman race, the full off-season, and rollover into Pre-Season 2027, including loading the history pages; a brand-new Dynasty started from scratch; Road to Glory, from creating a player through a high-school season, recruiting, signing with a school, playing college games, and checking pages and save/reload; and Play Now with Super Sim. One cosmetic bug was found and logged: the School Records page labels current-season (2026) records as "2013".
+
+**Main mod: v25** adds community-made team art for Jacksonville State, Sam Houston, Liberty and Sacramento State, credited by handle in the project's community credits list (clmzntyger, mdotjenkins and FTk Ray). No asset files are included in this repository.
+
 ## 2026-10-14 - PC build: players drawn correctly; freeze-causing code found; Super Sim correction
 
 Side track (native Windows build via static recompilation). No game code, data or executables are published.
