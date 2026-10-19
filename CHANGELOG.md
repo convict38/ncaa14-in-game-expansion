@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-10-19 - PC build: Q2 field stripes and the "2013" label fixed; smoothness measured directly; shadows matched
+
+Side track (native Windows build via static recompilation). No game code, data or executables are published.
+
+**Q2 field stripes in the Super Sim overhead view fixed.** A graphics readback was copying the field's wear-and-tear image before the game had finished drawing it, leaving visible stripes in the second-quarter overhead camera. A reference run on RPCS3 confirmed the stripes were specific to the port, not something the original game does. Fixed by waiting for the draw to finish before the copy runs.
+
+**School Records "2013" year label fixed (main mod v26).** The root cause was a packed record-date value that had 2013 baked into it instead of the dynasty's actual year. Existing v25-era save records keep the old "2013" label, since the bad value is already written into those saves; new records write the correct year. The PC build was rebuilt against v26.
+
+**Smoothness, now measured directly.** The user reported choppy play even though the on-screen counter read 25-30 fps, so this round measures frame times and input lag instead of only an average:
+- **Frames over 50 ms dropped from about 13.6% to about 6-7%,** from a bigger pool of render-target memory with least-recently-used eviction (so targets are not thrashed out and rebuilt), and from fixing dropped vertical-blank ticks so the game holds its intended 30 Hz pace instead of drifting.
+- **Pipeline prewarm at boot** (preparing graphics pipelines in advance instead of on first use) cut the pipeline-creation stall on play transitions from about 1 second to 0.05-0.3 seconds, and frames over 100 ms fell by about 27%.
+- **The ANT animation background job now runs mostly as native code** instead of being stepped in software, cutting that interpreted work by about 75% and shortening play-transition stalls by about 20%.
+- **Input latency measured at 150-180 ms,** including the game's own 2-3 frame input pipeline (not an emulation-only figure).
+
+**Player shadows checked against RPCS3.** A matched day game on both the PC build and a reference RPCS3 session shows the shadows match.
+
+**Still open:** some choppiness remains from CPU-bound rendering and play-transition hitches, and an optional multi-threaded renderer change is still on the table as a further fix for both.
+
 ## 2026-10-18 - PC build: Super Sim and freeze fixed; picture and frame rate gains; game modes validated
 
 Side track (native Windows build via static recompilation). No game code, data or executables are published.
