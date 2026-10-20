@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-20 - PC port: two more smoothness defaults
+
+Side track (native Windows build via static recompilation). No game code, data or executables are published.
+
+**Higher process priority.** The game now runs at "above normal" Windows process priority, so other programs on the PC cannot starve it. With 8 busy background processes, frame rate rose 10-14% and the 3-4 second stutters (SPU jobs starved of CPU) disappeared; it is also slightly faster with nothing else running. `RSX_PCLS=0` reverts it.
+
+**Cached render-target lookup.** A lookup the renderer did for every texture it samples (a scan of up to 160 render targets) is now cached: about 3 ms less renderer work per frame, about 15% higher average frame rate and half as many frames over 50 ms in same-session tests. `RSX_RTFIND_MEMO=0` reverts it.
+
+**Validation:** automated gameplay runs (no corruption, no hangs) and visual checks for both.
+
 ## 2026-10-20 - PC port: smoother gameplay from finer host timer resolution
 
 Side track (native Windows build via static recompilation). No game code, data or executables are published.
