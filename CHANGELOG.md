@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-20 - PC port: a character-physics SPU job now runs as native code
+
+Side track (native Windows build via static recompilation). No game code, data or executables are published.
+
+**Character setup job recompiled.** One of the game's SPU physics jobs (character setup, part of the character physics library) had never been recompiled, so it ran in the slow SPU interpreter and was the single largest source of interpreted SPU work in live play. It is now recompiled ahead of time like the other job binaries (the code the game loads was checked to be byte-identical to what was recompiled). In same-session tests, average frame rate rose 5-13% and the share of frames over 50 ms fell (8.2% -> 3.1% and 9.6% -> 6.5%), in both test orders.
+
+**Also measured, not adopted:** faster SPU code lookup/verification caches (lookup work dropped from about 7% to 2% of SPU time, but frame rate was not consistently better), a tuned SPU idle backoff, and a looser verification of older recompiled SPU code (rejected: it ran wrong code and froze the game). Separately, the player launcher now pauses the automated test queue while you play, and a halftime soak found no rendering problems from the write-back optimisation.
+
+**Validation:** automated gameplay runs (no corruption, no hangs) and visual checks.
+
 ## 2026-10-20 - PC port: two more smoothness defaults
 
 Side track (native Windows build via static recompilation). No game code, data or executables are published.
