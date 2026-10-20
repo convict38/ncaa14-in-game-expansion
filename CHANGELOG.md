@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-20 - PC port: smoother gameplay from finer host timer resolution
+
+Side track (native Windows build via static recompilation). No game code, data or executables are published.
+
+**PC port: smoother gameplay from finer host timer resolution.** The game's polling threads sleep for 50-1000 microseconds at a time, but on Windows every such sleep was rounded up to the 1 ms timer tick (1000 us requests took about 2 ms), so the game was often late producing frames. The port now raises the timer resolution to 0.5 ms for guest sleeps (default on; `PS3_USLEEP_PREC=0` reverts).
+
+**Measured, same-session A/B tests:** average frame rate about 25 -> about 30 fps, 99th-percentile frame time about 170 -> about 90 ms, frames over 100 ms roughly halved; slow frames caused by the game thread idling dropped sharply. Input latency is unchanged or slightly better. CPU cost is about a quarter of a core.
+
+**Validation:** an automated gameplay run (no corruption, no hangs) and a visual check.
+
 ## 2026-10-20 - PC build: kickoff hitch reduced; threaded renderer rejected; sleep granularity is the new lead
 
 Side track (native Windows build via static recompilation). No game code, data or executables are published.
