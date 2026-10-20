@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-10-20 - PC build: kickoff hitch reduced; threaded renderer rejected; sleep granularity is the new lead
+
+Side track (native Windows build via static recompilation). No game code, data or executables are published.
+
+**Kickoff hitch reduced.** Render targets are now pooled and prewarmed, so creating them at kickoff dropped from about 0.26 s to about 0.02 s.
+
+**A cheaper write-back tracking check** gives +1-2.5% frame rate, with fewer slow frames.
+
+**A multi-threaded render worker was tried and rejected.** It was about 4% slower and doubled input latency (about 190 ms to about 390 ms), so it stays out.
+
+**Slow-frame analysis.** Normal frames are bound by render-thread CPU. The worst hitches are mostly the game's own threads not producing frames. The GPU is never the bottleneck.
+
+**New lead: Windows sleep granularity.** The game's short polling sleeps (50-250 microseconds) actually take about 1 ms on Windows, so its loops run 4-20x slower than intended. A fix is being tested.
+
+**Frame rate depends heavily on other apps running:** about 23-28 fps versus 30-35 fps on the same build, depending on what else is open. Priority and scheduling options are being tested.
+
 ## 2026-10-19 - PC build: Q2 field stripes and the "2013" label fixed; smoothness measured directly; shadows matched
 
 Side track (native Windows build via static recompilation). No game code, data or executables are published.
