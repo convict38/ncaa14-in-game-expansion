@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-20 - PC port: near-camera geometry is clipped again (goalpost "wedge" fixed)
+
+Side track (native Windows build via static recompilation). No game code, data or executables are published.
+
+**Depth clipping restored.** On low gameplay cameras (offense near its own goal line) a large flat olive or yellow-and-black shape could cover the top edge of the screen, and dark-red slabs sometimes appeared at the frame edges near the camera. The cause: the renderer created every game pipeline with depth clipping switched off, so geometry closer to the camera than the near plane (the near goalpost right beside the camera, players next to it) was flattened onto the screen instead of being clipped. The PS3 graphics chip clips by default (as the RPCS3 emulator also does). The port now follows the game's depth-clip setting. Pre-snap test frames that showed the shape 7 times in 16 now show it 0 times in 14; an RPCS3 reference of the same camera angles is clean. `RSX_DEPTH_CLIP=0` reverts it.
+
+**Also measured, not adopted:** two more SPU physics/collision jobs (character pose, contact queries) now also have recompiled versions that were checked byte-for-byte against the code the game loads, but they did not make frames consistently faster, so they stay off by default. A capture of the hot animation-system SPU modules was recompiled as well; it ran wrong code (that module is patched while it runs) and froze the game in testing, so it stays off. The automated test driver now also handles the free kick after a safety.
+
+**Validation:** automated gameplay runs (no corruption, no hangs) and visual checks.
+
 ## 2026-10-20 - PC port: a character-physics SPU job now runs as native code
 
 Side track (native Windows build via static recompilation). No game code, data or executables are published.
