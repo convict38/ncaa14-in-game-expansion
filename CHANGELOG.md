@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-21 - PC port: fix for SPU code cut off mid-function, plus a current performance baseline
+
+Side track (native Windows build via static recompilation). No game code, data or executables are published.
+
+**Cut-off SPU functions are no longer run as native code.** The recompiler splits SPU code that the game loads at run time into chunks. When a chunk ended in the middle of a function, the recompiled copy of that last function simply stopped at the cut and returned early, skipping the rest of the real function (in one case the store of its result, which made an animation job wait forever). The safety check before running recompiled code could not catch it, because the bytes it compares all matched up to the cut. Such functions are now always run by the SPU interpreter instead. This affected about 100 small functions in the default sets (mostly the audio mixer) and was the cause of the freezes seen when testing a larger recompiled animation-system set. No frame-rate loss was measured and audio is unaffected. `SPU_VC_TRUNC=0` reverts it.
+
+**Current baseline (default settings, normal PC load, 9 minutes of live play):** 33.9 fps average; median frame time 27 ms, 90th percentile 39 ms, 99th percentile 91 ms; 4.0% of frames take longer than 50 ms. Input latency from pressing START to the pause screen appearing: about 176 ms (median).
+
+**Also measured, not adopted:** the larger recompiled animation-system set now runs (about 60% less interpreted SPU work) but did not make frames faster in same-session tests, so it stays off. The automated test driver no longer causes delay-of-game penalties at the play-call screen.
+
+**Validation:** automated gameplay runs (no corruption, no hangs), audio checks and visual checks.
+
 ## 2026-10-20 - PC port: near-camera geometry is clipped again (goalpost "wedge" fixed)
 
 Side track (native Windows build via static recompilation). No game code, data or executables are published.
