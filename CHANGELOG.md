@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-21 - PC port: borderless full-screen with G-SYNC/FreeSync, and a display settings file
+
+Side track (native Windows build via static recompilation). No game code, data or executables are published.
+
+**Smooth presentation on high-refresh displays.** The port used to open a fixed 1280x720 window that Windows stretched on high-DPI screens. Such a window is always composed by the desktop, so on a 144 Hz monitor every frame snapped to whole refreshes and variable refresh (G-SYNC/FreeSync) never engaged. There is now a borderless full-screen mode at the monitor's native resolution (a 4K screen gets the 2x internal render resampled straight to 4K) and a present mode without vsync waits. On a G-SYNC 144 Hz display, each frame now stays on screen for its own duration. Measured on screen: the gap between when a frame should appear (the game's own frame spacing) and when it does fell from 9-10 ms on average (90th percentile 17-21 ms) to 3-5 ms (90th percentile 9-12 ms). There is no frame-rate cost.
+
+**Settings file.** The player launcher now reads a small settings file: window mode (windowed / borderless / fullscreen), monitor, present mode (vsync / vrr / immediate), a frame-rate cap (60 = the game's own limit, or an even 30 or 20), and the internal resolution scale. New installs start in borderless + VRR mode; `window = windowed` restores the old behaviour.
+
+**What limits the frame rate (measured):** the game's live gameplay is not locked to 30 fps. It renders as fast as it can up to 60, and locks to 30 only in presentation screens such as the play call. The port reaches about 35-38 fps in gameplay because the emulated graphics command thread is fully busy (about 29 ms per frame). A "60 fps patch" therefore isn't needed; 60 fps is a throughput problem. Rates above 60 are not possible for the game logic. Frame generation would need motion data the game doesn't provide.
+
+**Validation:** automated gameplay runs in the new mode and with the 30 fps cap (no corruption, no hangs), visual checks, and an on-screen timing comparison against the old window and against the RPCS3 emulator.
+
 ## 2026-10-21 - PC port: fix for SPU code cut off mid-function, plus a current performance baseline
 
 Side track (native Windows build via static recompilation). No game code, data or executables are published.
