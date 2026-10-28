@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-28 - PC port: live gameplay now runs at full speed (it was in slow motion)
+
+Side track (native Windows build via static recompilation). No game code, data or executables are published.
+
+**Gameplay ran in slow motion; it now runs at real speed.** In live play the port's players, ball and game clock moved at only about 0.4-0.6x real speed, with dips lower in busy moments. The frame counter looked fine (30+ fps) because the game draws frames and advances the simulation on separate threads. The simulation uses a fixed step: each tick advances the game by exactly 1/30 s, whatever the wall clock says. The drawing thread kept producing frames at a normal rate, but the simulation thread spent most of its time waiting for the game's animation jobs (EA's "ANT" animation system on the emulated SPUs), so it managed only about 13-18 ticks per second instead of 30. Each frame therefore showed the game a little further along, but less than a real frame's worth: smooth frames of slow-motion play.
+
+**The fix:** the animation jobs now run much more of their code as recompiled native code (a captured set of the hot animation modules), and several exact-equivalence shortcuts in the SPU code dispatcher are now switched on (cached code lookups, faster code verification). Each animation job now takes about 2.4 ms instead of about 5 ms (median). The simulation now keeps up: about 29.5-29.8 ticks per second, i.e. 0.98-0.99x real speed (the RPCS3 emulator runs at about 1.0x on the same scenes), with no frame-rate cost (fps +3%). That figure is for a PC with nothing else busy: the animation jobs share the CPU with everything else, so heavy background work costs game speed. With other programs using a few cores on the same PC, the fast path measured about 0.7x, against 0.5x for the old path in the same session.
+
+**Off switch.** A rare freeze remains open: in testing, an animation job very occasionally reads inconsistent input and stops (0 times in 12 automated games with this setup, but seen with related partial setups). If the players ever freeze mid-play, set `speed_bundle = off` in `play_e\settings.ini` (see README_SETTINGS.txt) to go back to the old, slower path; a settings file without the line uses the fast path. Fixing that freeze is the next task.
+
+**Validation:** automated gameplay runs (no corruption, no hangs), visual checks, and a same-session measurement of the simulation tick rate during live play.
+
 ## 2026-10-21 - PC port: borderless full-screen with G-SYNC/FreeSync, and a display settings file
 
 Side track (native Windows build via static recompilation). No game code, data or executables are published.
