@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-29 (afternoon) - Game-load hang fixed; PC pages are back on by default
+
+PC port. No game code, data or images are published.
+
+**Cause found.** The game's in-game interface checks one small EA menu script (the one our PC pages edit) and needs its list of constant strings to be exactly the size EA shipped, 12 entries. Our rebuilt copy had a different list (11 entries at first, then dozens once the pages' text was added). Any other size left the in-game interface stuck and every game load sat on the LOADING screen. The script's code, its size, its position in the file and the function style it uses do not matter. We checked each: a copy with EA's exact 12 entries and an empty body loads; the same copy with one to a few dozen extra entries hangs; the same copy padded with 200 do-nothing instructions loads.
+
+**Fix.** The build now keeps EA's exact 12-entry list and writes every string of our own directly into the code instead of adding it to the list. The playoff quarterfinal and a regular-season game both load and play with the PC pages on.
+
+**Play_PC.** `ui_pages = on` (the default) serves the PC Controls & Display tile and the CFP Bracket page again. `ui_pages = force` still works and means the same as `on`. The temporary "start with the stock menus" workaround is removed.
+
+**Checked in game** (isolated copies of two saves): quarterfinal Play Game, Team Stats card, kickoff and a first play; week-10 regular-season game, kickoff and a first play; PC Controls & Display tile and its settings page; CFP Bracket page; and a game start through the real `play_pc.ps1` launcher with the setting left on.
+
 ## 2026-10-29 (late morning) - Game loads hang with the in-game PC pages; pages paused
 
 PC port. No game code, data or images are published.
