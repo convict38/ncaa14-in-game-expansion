@@ -40,3 +40,14 @@ previous round still has open slots is shown as TBD (those slots still hold last
 ## Assembler note
 The game's VM reads the one-byte and two-byte integer push opcodes as signed values (stock code pushes 150 with the
 two-byte form and -1 as byte 255). Our assembler now emits the byte form only for 0..127 and the short form up to 32767.
+
+## Bracket layout (10-29)
+The playoff page draws its bracket from `ion.part.linelook07.TextField` parts attached to the screen's spreadsheet clip
+(`attachMovie`, depths 30000 and up, placed in 1280x720 screen coordinates through `globalToLocal`). The spreadsheet's
+own cell, header and background holders are hidden (`_visible = false`), but the spreadsheet keeps the input focus, so
+the row-changed event still drives the header card and our highlight. `ion.part.linelook07.Box` attaches but does not
+draw, and TextField backgrounds are not supported by the runtime, so lines and boxes need another drawable symbol.
+
+Score lookups tried in a playoff week for a game played the week before: `Global_GetGameForWeekAndTeam` (by week type
+or week number, home or away team) and `Global_GetGameInfoForWeekAndGame` (by week number or week type). All return an
+unplayed placeholder or an object without scores; only the native header card shows the score.

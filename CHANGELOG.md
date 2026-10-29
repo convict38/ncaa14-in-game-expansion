@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-29 (late morning) - The playoff page is now a bracket
+
+Side track (EA's own menus, PC port). No game code, data or images are published.
+
+**Bracket layout.** Dynasty > Dynasty Setup > CFP Bracket now shows the 12-team playoff as a bracket: four columns (First Round, Quarterfinals, Semifinals, National Championship), each game with both teams and its result ("Miami won", "Scheduled", "TBD", or "USC - Champion" on the final). The selected game's teams turn gold, and the game's own header card above it shows both logos, the score and the bowl logo for that game. UP/DOWN still steps through the games. It is built at runtime from the text parts EA's spreadsheet already uses, on top of the hidden spreadsheet, so it needs no new art file.
+
+**Tested in game** on three saves: the quarterfinal week of a season where the user's team has a bye, the end of a season (every round played), and an off-season save. No crashes. The previous list page is kept and can be restored by copying one file back.
+
+**Limits.** There are no connector lines yet: the rectangle part EA's menus use does not draw when added this way. The stock row cursor still shows as a thin outline that moves in list order. Scores of finished playoff games are not readable from the page's script once their week has passed (all five lookups we tried return a placeholder), so earlier rounds read "X won" and the score is shown in the header card. During a playoff week, CPU games that were already simulated that week can still read "Scheduled".
+
+**Test saves.** Two new bowl-week test saves were made on the PC port (end of season, quarterfinal week). A save whose user team has no bowl game cannot stop in the playoff weeks: one Advance runs every bowl week.
+
 ## 2026-10-29 (morning) - In-game pages ship in Play_PC; CFP page names the champion
 
 Side track (EA's own menus, PC port). No game code, data or images are published.
