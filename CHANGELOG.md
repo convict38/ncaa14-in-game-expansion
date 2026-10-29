@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-29 (later) - PC Controls & Display works in game; CFP page shows winners
+
+Side track (EA's own menus, PC port). No game code, data or images are published.
+
+**PC Controls & Display works.** The native settings add-on is now built into the PC executable. The tab lists Keyboard Layout, Frame Rate, Render Scale and Speed Bundle with their current values. Changing the keyboard layout or the frame-rate cap and leaving the page takes effect at once (checked in game: the new keys work, the frame cap is active) and is written to `settings.ini`; the next start picks the values up again. Render scale and speed bundle apply at the next start. "Reset to default" now resets render scale to 2x, the PC default.
+
+**Settings tile icon.** The tile shows our own PC icon (a monitor and keyboard drawn to match the game's menu icons) instead of the Origin logo.
+
+**College Football Playoff page.** The header card now follows the selected game. The Result column shows who won each first-round, quarterfinal and semifinal game (taken from the next round of the bracket); scores are shown when the game still holds them. During the season the first round reads "Projected" and later rounds read "TBD" instead of showing last season's teams. Still open: the champion and final scores in the off-season (the game does not keep them where the page can read them), and a true bracket layout.
+
+**Tooling fix.** Our ActionScript assembler wrote numbers from 128 to 255 in a form the game reads as negative; it now uses the game's own encoding (this also fixed a squeezed column).
+
 ## 2026-10-29 - In-game pages: CFP page shows the playoff, PC settings tab added
 
 Side track (EA's own menus, title-update UI archive; PC port). No game code, data or images are published.
