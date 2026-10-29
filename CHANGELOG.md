@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-29 (morning) - In-game pages ship in Play_PC; CFP page names the champion
+
+Side track (EA's own menus, PC port). No game code, data or images are published.
+
+**On by default for players.** Play_PC now loads the in-game pages (the PC Controls & Display tile and tab, and the College Football Playoff page) every time, read-only, without changing any installed game file or save. A new `ui_pages = on | off` line in `settings.ini` switches them off again; off gives exactly the old menus. The PC Controls & Display tab saves into the player's own `settings.ini` and rewrites only its four lines (checked on a full settings file with comments and every key).
+
+**National champion.** After the season, the final row of the playoff page now reads "<team> - Champion". It comes from the same national-title data the game's Team History page shows. Final scores outside the bowl weeks are still not available: the game does not keep them anywhere the page can read.
+
+**Clean rebuild.** Every staged menu file was rebuilt with the fixed number encoding from the previous update.
+
 ## 2026-10-29 (later) - PC Controls & Display works in game; CFP page shows winners
 
 Side track (EA's own menus, PC port). No game code, data or images are published.
