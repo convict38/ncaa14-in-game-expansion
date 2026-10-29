@@ -1,58 +1,45 @@
 # NCAA Football 14: In-Game Expansion
 
-An experimental PS3/RPCS3 project targeting 138 active 2026 FBS schools and a 12-team playoff that runs entirely through normal gameplay. Preserve the 125 original schools still in the target FBS field; Idaho is deferred to future FCS support. Playable teams, conferences and persistence come first, with borrowed graphics until the systems work.
+A personal-use modding project for NCAA Football 14 (PS3). The goal is a complete, modern college football game built on the one the player already owns: all 138 real 2026 FBS schools in their 2026 conferences, a 12-team College Football Playoff that runs through normal Dynasty play, modern rules, and later realism features.
 
-**Development project — no public installable mod release yet.** The latest engine prototype (stock build) runs 138 active FBS teams, 12 of them placeholders. It does not yet include the real added schools, finished presentation, or a custom playoff.
+**Development project. There is no public installable release yet.** Installer and packaging work is deliberately last, after the game itself is complete.
 
-## What has been tested
+## What it is
 
-- The analyzed executable matches the module running in RPCS3. A controlled diagnostic patch passed an unpatched/patched/restored test.
-- One additional active Dynasty team coexists with all original teams, with roster, recruiting, schedules, statistics and save/load evidence.
-- The latest schedule experiment gives the added team 12 distinct FBS opponents, six home and six away. Every original FBS team still has 12 games; existing FBS-versus-FBS matchups and weeks are retained.
-- Candidate v6 enlarges selected save capacities at unchanged 127-team membership. It passed fresh creation, cold load, a simulated regular season and stock postseason, normal 2013-to-2014 rollover, and a separate cold reload. The prototype finished 1-11 with 13 class commitments; 13 recruits matched its next-year roster.
-- All 127 FBS teams retained complete next-year schedules without weekly collisions, and the checked championship metadata persisted. A recruited freshman was independently verified in the cold-loaded depth chart.
-- Separate record-history initialization and capacity gaps remain under repair. Passing these bounded tests does not establish complete history, larger active counts or repeated-season safety.
+- A set of small, documented changes to the game's code and data. Most are written as C "caves" (small compiled routines patched into the executable) plus data edits.
+- Built on the community CFB Revamped (CFBR) v21 base, tested on the RPCS3 emulator.
+- A second track runs the same modded game as a native Windows program (a static recompilation, "the PC port"). The PC port is the intended standalone modded version.
+- The repository contains only project-authored documentation and tools. It contains no game files, assets, executables, saves or decompiled code. Players supply their own game dump.
 
-The prototype borrows Idaho presentation. A separate stadium identity with the donor's stadium model passed field loading and a Super Sim game in an earlier candidate. These are bounded tests, not a finished release.
+## Current status (2026-10-28)
 
-The first added team identity inside the 138-team reserve now survives Dynasty creation, cold reload, a full season and rollover in the CFBR build (still 126 FBS); see the [changelog](CHANGELOG.md).
+Working and validated on the modded build:
 
-**New:** the stock build has run 138 active FBS teams (126 originals + 12 placeholders) through a full simulated season, postseason and rollover; see the [changelog](CHANGELOG.md). Real 2026 schools and conferences, the CFBR port and the playoff are next.
+- 138 real 2026 FBS teams with 2026 conferences, through multi-season Dynasty (full season, bowls, rollover).
+- A native 12-team playoff: seeding, byes, bracket, CFP round names and dates, user-played playoff games, recorded champion.
+- Modern clock and overtime rules, Dynasty starting in 2026, 60-season Dynasty length, original CFP logo art, several community team-art packs.
+- PC port: the whole mod stack runs natively. Audio, Super Sim, Dynasty, Road to Glory and Play Now are validated. Live gameplay now runs at real speed (it was in slow motion); borderless full-screen with variable refresh and a display settings file are in.
 
-**New:** a native 12-team College Football Playoff now runs in normal Dynasty play on the stock build: seeding, byes, fixed bracket, CFP round names and dates, and a recorded national champion through rollover. Combining it with the 138-team build is next.
+In progress: frame rate and stutter on the PC port. See the [roadmap](ROADMAP.md) for everything that follows.
 
-**New:** all 138 2026 FBS schools in their 2026 conferences completed a full Dynasty season, bowls and rollover on the stock build (borrowed graphics for the 13 additions). See the [changelog](CHANGELOG.md).
+Exact test evidence is in the [changelog](CHANGELOG.md). The [machine-readable status](reports/latest-status.json) lags the changelog; when they disagree, trust the changelog.
 
-**New:** the 138 real 2026 FBS teams and the native 12-team playoff now run together in one Dynasty on the stock build (full season, playoff, recorded champion, rollover). Multi-season testing, the CFBR port, graphics for the 13 added schools and an installer remain.
+## How the pieces fit
 
-**New:** a four-season Dynasty (2013-2016) ran with all 138 real 2026 FBS teams and the 12-team playoff, champion recorded each year, no crashes. CFB Revamped port and start-in-2026 are next.
+| Piece | Where to read |
+| --- | --- |
+| What was done, by date, with validation | [CHANGELOG.md](CHANGELOG.md) |
+| What is planned, in priority order | [ROADMAP.md](ROADMAP.md) |
+| Function names, table layouts, addresses, how mods are built | [docs/modding/](docs/modding/README.md) |
+| Findings, hypotheses and failures | [docs/RESEARCH_LOG.md](docs/RESEARCH_LOG.md) |
+| Test method and build identities | [docs/TESTING.md](docs/TESTING.md), [docs/SUPPORTED_BUILDS.md](docs/SUPPORTED_BUILDS.md) |
+| Roster, archive and CFBR compatibility | [docs/ROSTER_PIPELINE.md](docs/ROSTER_PIPELINE.md), [docs/ARCHIVE_ADAPTER.md](docs/ARCHIVE_ADAPTER.md), [docs/CFBR_COMPATIBILITY.md](docs/CFBR_COMPATIBILITY.md) |
+| Handoff for new contributors or agents | [docs/DEVELOPER_HANDOFF.md](docs/DEVELOPER_HANDOFF.md) |
+| Where files go | [CONTRIBUTING.md](CONTRIBUTING.md) |
+| Older README and roadmap (superseded) | [docs/README_HISTORY.md](docs/README_HISTORY.md), [docs/ROADMAP_HISTORY.md](docs/ROADMAP_HISTORY.md) |
 
-**New:** your own team now plays its playoff games: Advance stops at each round with Play Game against the right opponent.
+The tools folder holds small helpers: a game-identity check, an archive reader with tests, and `check_public.py`, which must pass before every commit.
 
-**New:** everything above also runs on CFB Revamped: 138 teams, the 12-team playoff and user-played playoff games.
+## Legal
 
-**New:** the modern clock rule is confirmed at runtime on CFB Revamped (Exhibition and Dynasty): the clock keeps running after first downs outside the final two minutes of a half and stays stopped until the snap inside it. Our own original CFP logo artwork is installed on the first-round playoff games; a bowl-results badge and the main logo screen still need a look.
-
-**New:** side track: on the native PC build, the Super Sim score corruption, a post-kickoff freeze, an intermittent Super Sim freeze under CPU load, Q2 overhead-view field stripes, and the School Records "2013" year label (main mod v26) are all fixed; audio is solid; several picture bugs are fixed (crushed blacks, crowd popping, helmet colour, shadow direction); player shadows match a reference RPCS3 session; and gameplay frame rate is up from about 9-10 fps to about 30-36 fps, with frame-time and input-lag measurements added alongside the average-fps counter (input latency is 150-180 ms). Dynasty, a fresh Dynasty, Road to Glory and Play Now Super Sim are all validated on the modded build. Remaining: further smoothness work (CPU-bound rendering, play-transition hitches, an optional multi-threaded renderer), a DualShock controller pass, and packaging, last.
-
-## Follow development
-
-- [Changelog](CHANGELOG.md): dated changes and validation results.
-- [Roadmap](ROADMAP.md): remaining work and release gates.
-- [Research log](docs/RESEARCH_LOG.md): confirmed findings, hypotheses and failures.
-- [Installation status](docs/INSTALLATION.md): supported setup and what remains before distribution.
-- [Testing](docs/TESTING.md) and [build identities](docs/SUPPORTED_BUILDS.md).
-- [Machine-readable status](reports/latest-status.json).
-- [Developer handoff](docs/DEVELOPER_HANDOFF.md): current scope, mapped systems, blockers and next steps for any contributor or coding agent.
-
-The repository contains project-authored documentation and tools. Game images, executables, game archives, assets, firmware, saves, emulator caches, raw memory dumps and decompiled game code are not included. Players will supply their own game dump.
-
-This is an independent community project. No affiliation with EA, the NCAA, RPCS3, or other NCAA Football mod projects is claimed. Public availability of the repository does not imply a tested installer or a completed mod.
-
-## Revamped integration
-
-The [archive adapter](docs/ARCHIVE_ADAPTER.md) now handles stock and CFBR archive layouts, with 16 public synthetic tests and a private reserve candidate that passes 34 offline checks. It is a development library; the candidate has not been installed or runtime-tested.
-
-CFBR v21 is a documented compatibility target. Its four-word ranking-storage patch now passes a normal 2014 season, stock postseason, 2015 rollover and separate cold reload at unchanged 126-team membership. The trial is rolled back. Expanded membership remains blocked on the CFBR-specific engine port and coordinated data inputs. [Measured conflicts and integration gates](docs/CFBR_COMPATIBILITY.md) cover its different executable, archives and historical team-slot replacements.
-
-A separate [roster pipeline test](docs/ROSTER_PIPELINE.md) proves BOOT source selection, native saving and cold auto-load at unchanged 126 teams. The saved USR exactly matches the intended source; 32 regression checks pass and the profile is restored. A follow-up capacity-only trial (48 checks) showed the game's own roster save keeps enlarged table capacities for the 138-team target (153 TEAM rows) and auto-loads them cold, still at 126 teams. A coordinated Dynasty-template follow-up then carried the same grown tables through fresh Dynasty creation, cold reload, a simulated 2013 season, postseason and rollover to 2014, still at 126 teams. Added identities, engine team limits and expanded CFBR membership remain untested.
+An independent community project. No affiliation with EA, the NCAA, RPCS3 or other NCAA Football mod projects is claimed. Public availability of this repository does not imply a tested installer or a completed mod, and does not grant any right to game assets.

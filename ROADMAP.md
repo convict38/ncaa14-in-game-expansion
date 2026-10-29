@@ -1,57 +1,34 @@
-# Roadmap and acceptance gates
+# Roadmap
 
-## Next development work
+Priority order, highest first. A complete game comes before any distribution work. Dated history of earlier plans is in [docs/ROADMAP_HISTORY.md](docs/ROADMAP_HISTORY.md).
 
-Update 2026-10-19: on the native PC build, Q2 Super Sim overhead-view field stripes (a readback racing the draw it copied) and the School Records "2013" year label (a packed date with 2013 baked in; main mod v26, existing v25-era save records keep the old label) are both fixed. Smoothness is now tracked by frame times and input lag, not just average fps, after a user report of choppiness despite a 25-30 fps counter: frames over 50 ms are down from about 13.6% to about 6-7% (a bigger render-target pool with LRU eviction, plus fixed vblank-tick drops holding the 30 Hz cadence); a pipeline prewarm at boot cut play-transition pipeline stalls from about 1 s to 0.05-0.3 s and cut frames over 100 ms by about 27%; the ANT animation job runs mostly native now (interpreted work down about 75%), shortening transition stalls by about 20%; and measured input latency is 150-180 ms including the game's own pipeline. Player shadows now match a reference RPCS3 session. Remaining, in order: (1) further smoothness work (CPU-bound rendering, play-transition hitches, an optional multi-threaded renderer); (2) a DualShock controller pass; (3) packaging, last.
+## Next
 
-Update 2026-10-18: on the native PC build, the Super Sim score corruption, the post-kickoff freeze, and a second intermittent Super Sim freeze under CPU load are all fixed; audio is solid; several picture bugs (crushed blacks, crowd popping, helmet colour, shadow direction) are fixed; and gameplay frame rate is up from about 9-10 fps to about 28 fps. Dynasty, a fresh Dynasty, Road to Glory and Play Now Super Sim are all validated on the modded build; v25 of the main mod adds community team art for four schools. Remaining, in order: (1) more frame rate (SPU job dispatch latency, and the volume of GPU-to-memory write-back data are the next two targets); (2) a check of helmet sheen/gloss, which looks probably fine but awaits user confirmation; (3) a cosmetic bug where the School Records page labels 2026 records as "2013"; (4) a DualShock controller pass; (5) packaging, last.
+1. **Frame rate and stutter (in progress).** The PC port now plays at real speed but is CPU-bound in heavy scenes, with play-transition hitches. Remaining: smoother frame pacing, an optional multi-threaded renderer, input-latency work.
+2. **In-game settings page with keyboard and keybindings.** Built into EA's own menus, not an external launcher: display options, frame cap, and rebindable keyboard and controller controls.
+3. **In-game Dynasty CFP bracket page.** A bracket view in Dynasty (seeds, byes, results by round) and a weekly playoff projection during the season.
+4. **Graphics check and long-run validation.** Compare PC-port graphics against RPCS3 for remaining differences. Run multi-season Dynasty and Road to Glory checks on the PC build.
+5. **Recruit realism.** Realistic names, and demographic and appearance distributions (skin tone and face matched to name) for rosters and generated recruits.
+6. **FCS as a separate league inside Dynasty.** Idaho and other FCS schools live in their own league rather than being absent from the FBS field.
+7. **More realism.** Transfer portal, real schedules and rivalries, coaching carousel, weather, roster rules (for example 105-man rosters).
+8. **Self-hosted online play and online Dynasty.** Players run their own server; no dependence on EA services.
+9. **Installer, last.** Portable installer and uninstaller that build the mod locally from the user's own files, preserve originals, verify outputs and support rollback. Needs a clean-machine install and removal test first.
 
-Update 2026-10-14: next on the native PC build, in order: (1) Super Sim correctness (impossible plays such as an 80-yard run with no touchdown still happen; the earlier fix note was premature), (2) a render worker thread to split rendering across two threads (estimated +25-40% frame rate, gameplay is about 9-10 fps today), (3) re-enabling the larger set of native SPU programs once the sim is verified, (4) a controller playtest, (5) packaging.
+## Done
 
-Update 2026-10-13: the native PC build is now the main side track. It runs the complete mod stack (138 teams, playoff, 2026 start, modern rules) through a full Dynasty season and rollover, and the Super Sim score bug (a recompiler vector byte-order fault) is fixed. Next on the PC build: frame rate (about 2-4 fps today, target 30), the occasional week-advance hang, then playtesting user-controlled games. Feature work continues to land in the shared patch set, which feeds both the RPCS3 install and the PC build.
+- 138 real 2026 FBS teams in 2026 conferences, through full multi-season Dynasty with rollover (stock and CFBR builds).
+- Native 12-team College Football Playoff: selection, byes, fixed bracket, round names and dates, conference-champion automatic bids, user-played playoff games, champion recorded through rollover.
+- Modern rules: running clock after first downs, modern overtime, runtime-confirmed in Exhibition and Dynasty.
+- Dynasty starting in 2026 with 60 seasons, record-book year fix, coach contract and coaching carousel fixes.
+- CFB Revamped port of the whole stack, original CFP logo art, community team-art packs.
+- Native Windows build (PC port) running the full mod: Super Sim, Dynasty, Road to Glory and Play Now validated; audio solid; score corruption and freeze fixes; picture fixes (blacks, crowd, helmets, shadows); gameplay speed fixed from slow motion to real time; borderless full-screen with variable refresh and a settings file.
+- Public modding knowledge base in [docs/modding/](docs/modding/README.md) and a pre-commit content check.
 
-Update 2026-10-12: the modern clock rule (item 8) is now runtime-confirmed in both Exhibition and Dynasty on CFB Revamped, no code changes needed. CFP first-round logo art (item 4) is installed and the first-round rows point at it; a small results-list bowl badge and an in-game check of the main logo screen remain open. Side track: the ps3recomp PC port fixed a GPU-to-main-memory readback bug so the field now renders correctly; on-field players are still not drawn.
-
-Update 2026-10-11: priority order is a complete game first, distribution last. (1) Done: users play their own playoff games. Remaining playoff polish: first round at the higher seed's home stadium (needs the campus-site Super Sim crash fixed) and CFP naming in trophies, news and the bowl-week header. (2) Done: CFB Revamped port (126-team storage, 138 real 2026 teams, playoff, champion auto bids and user-played games all runtime-passed). (3) Done: Dynasty starting in 2026 with all 60 seasons (2026-2085), menus showing 2026-based years. (4) Logos and art for the 13 additions and College Football Playoff UI branding. (5) "Choose Your First Job" showing the additions. (6) Super Sim fixes and a review of sim stat realism. (7) Realistic player names with matching appearance, for rosters and generated recruits. (8) Stretch goals: modern overtime rules (two-point attempts from the second overtime, alternating two-point plays from the third), modern clock rules (clock keeps running after first downs except the last two minutes of each half, two-minute timeout in each half), FCS alongside FBS, playoff format toggles, longer Dynasties and larger saves; 105-man rosters and the transfer portal after a brainstorm. (9) Last: licensing and attribution, installer and uninstaller, clean-machine test. Side track: native Windows build via static recompilation (feasibility spike positive, boot-to-menu attempt in progress).
-
-Update 2026-10-10 (late): goals 1 and 2 run together on the stock build (138 real 2026 FBS teams + native 12-team playoff, one full season and rollover). In progress: v4 data with ACC/Big Ten conference schedules and enlarged history tables, under a multi-season test. Then: the CFBR port, graphics for the 13 additions and CFP UI, champion-based auto bids, and a portable installer.
-
-Update 2026-10-10 (night): milestones 3 and 4 are runtime-proven separately on the stock build: the real 2026 lineup (138 FBS, 2026 conferences) through a full season and rollover, and the native 12-team playoff (at 126 teams). Next: fix ACC/Big Ten conference schedule counts, enlarge history tables for multi-season play, combine the playoff with the 138-team lineup, port to CFBR, then presentation (logos for additions, CFP UI) and an installer.
-
-Update 2026-10-10 (evening): the native 12-team playoff passed a full in-game season on the stock build (v2). The real 2026 lineup (125 retained + 13 additions, 2026 conferences) is built but crashed at season start; root-causing is in progress. Next: fix the real-2026 data issues, combine playoff + 138 teams, then port to CFBR and begin presentation assets (team logos and CFP UI).
-
-Update 2026-10-10 (later): 138 active FBS teams passed a full season and rollover on the stock build with the active-N v2 recipe (placeholder identities). Next: (a) enlarge TPHS/RBKS and run repeated seasons; (b) replace the 12 placeholders with real 2026 schools and realign the 47 conference changes; (c) port the recipe to CFBR; (d) native 12-team playoff, whose first in-game test is starting (offline-validated code hook, BOWL data and checker).
-
-Update 2026-10-10: the first added identity (a non-FBS team inside the 138-team reserve) passed fresh Dynasty, cold reload, a full season and rollover in the CFBR build, and the engine scheduled it on its own. The immediate engine step is a 138-team proof: the runtime-validated stock 127-team recipe appears to have only 71 count-dependent words, with storage already reserved for 160 teams. An active-N version is being built offline for a stock 138-team trial; the same recipe is then ported to CFBR.
-
-The four-word CFBR ranking patch has passed a season, rollover and cold reload at 126 teams. The immediate path is a CFBR-specific recruiting/storage port, coordinated BOOT and auto-loaded roster edits, then distinct team identities and football conferences. CFBR recruiting entries are 12 bytes where stock entries are 8; copying stock relocation values is unsafe. Offline archive and roster reserves do not close the engine or save-packaging gates. See [developer handoff](docs/DEVELOPER_HANDOFF.md).
-
-The source-only roster trial now proves BOOT selection, native saving and cold auto-load with unchanged capacities at 126 teams. A capacity-only follow-up then passed 48 checks: native roster saving and cold auto-load kept the minimal 138-team reserves (TEAM 153, PLAY 9,660, DCHT 12,144, COCH 439, CSKL 414, STAD 210) at 126 teams. A coordinated BOOT354 Dynasty-template reserve then carried those capacities through fresh Dynasty creation, cold reload, a full simulated 2013 season and rollover to 2014 (21, 28, 28 and 30 checks). The capacity-only ladder is complete; the next bounded gate is the first added identity rows inside the reserve. Engine storage and lifecycle limits remain open. See [roster pipeline](docs/ROSTER_PIPELINE.md).
-
-1. Extend the passed v6 reserve regression at 127 active teams to repeated seasons. Resolve missing prototype TPHS/RBKS initialization, record-type coverage and their full-membership bounds. Resolve remaining recruiting-reference semantics: commitment status plus board membership does not establish the destination team; position changes must be accounted for in identity matching.
-2. Resolve coach-selection filtering and remaining presentation consumers. Audit dependent consumers and repeated-season/full-FBS capacities, including contract lifetime, history tables and the opaque save-container trailer. Larger serialized reserves alone do not establish larger active counts.
-3. Add the target 138 active 2026 FBS identities: 125 original current-FBS schools plus 13 additions. Idaho is deferred to future FCS mechanics; preserve its original backups and historical mapping. Restore distinct New Mexico State, UConn, UMass and FIU identities alongside CFBR's replacement schools. Prioritize football conferences, schedules, recruiting, actual games and persistence; borrowed uniforms/logos/venues are acceptable during these tests. Complete school-specific graphics after the systems work. Membership, transition eligibility and conference rules require separate validation.
-4. Implement the in-game 12-team playoff: selection, seeding/byes, first-round sites, legal dates, four rounds/11 games, results-driven advancement, championship history, awards and normal season rollover.
-5. Last, after the game is complete: package and validate a portable installer and uninstaller against a clean supported user dump and isolated saves.
-
-## Release acceptance
+## Release gates (unchanged)
 
 - Exact supported executable identities; refuse unknown builds and unexpected patch preimages.
-- All 138 target identities appear exactly once, including the 125 original current-FBS schools. Added teams work in gameplay and simulation, recruiting, statistics, standings/rankings, save/load and repeated season rollover. Idaho remains an explicit deferred exception.
-- No schedule collisions, missing games or invalid team/stadium references; conference scheduling rules are tested.
-- Playoff selection and every round survive save/load. Re-entering a completed stage must not duplicate games, awards or championships.
-- No external save editor is required between rounds or seasons.
-- Installation builds changes locally from the user's own files, preserves originals, verifies outputs and supports rollback.
-- A clean-machine installation and removal test passes before a public installable release.
-- Distribution contains project-authored patch recipes/tools and reviewed documentation, with third-party attribution and licensing settled before release.
-
-## Later extensions
-
-- Playoff UI: a bracket view in Dynasty (seeds, byes and results by round) and a weekly CFP projection during the season.
-- Faster in-game simulation: a multi-week Advance takes about 10 minutes of emulation today. Investigate emulator settings, skipping presentation during sims, and profiling where sim time goes.
-- Super Sim reliability and realistic simulated stats (box scores and season totals against real college football averages).
-- Realistic player names, with skin tone and face matched to the name, for rosters and generated recruits.
-- Native Windows build via static recompilation (ps3recomp), as a side track or in collaboration with related projects.
-- Dynasty starting in 2026 while keeping all 60 seasons (two base-year constants identified; test pending). Optional: unlimited Dynasty length (grow history tables, widen season fields, roll off old history) and a larger save file.
-- Brainstorm before implementing: 105-man rosters (players are currently allocated about 70 per team), transfer portal and other modern-CFB rules.
-Configurable playoff formats, FCS league support and custom stadium work. These remain separate from the initial acceptance scope.
+- All 138 identities appear once; added teams work in gameplay, simulation, recruiting, statistics, standings, save/load.
+- No schedule collisions or invalid references; playoff rounds survive save/load without duplicating games or awards.
+- No external save editor needed between rounds or seasons.
+- Installation preserves originals and supports rollback; clean-machine install and removal pass.
+- Distribution contains project-authored recipes and tools only, with third-party attribution and licensing settled.
