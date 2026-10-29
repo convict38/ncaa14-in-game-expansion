@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-29 (afternoon) - Smoother gameplay: the renderer stops repeating identical work
+
+PC port. No game code, data or images are published.
+
+**What changed.** About 8 % more frames per second on an idle PC, and fewer long frames. When several things drawn in one frame reuse the same pixel-shader program, the renderer used to re-copy and re-check that program for every one of them. It now notices the program is identical to one it already handled in that frame and reuses the earlier result. The picture is meant to be exactly the same; only the repeated copying is gone. This is now on by default in the game and in Play_PC.
+
+**How it was checked.** Ten full test games with it on, plus one with it off for comparison: no corrupted frames, no hangs, the game clock advanced normally in every one, and the contact sheets (players, uniforms, scoreboard, field) matched the one with it off. `RSX_FPSNAP_DEDUP=0` turns it off if anything looks wrong.
+
+**Also looked at, no change.** The game waits in many short 1 ms sleeps while polling; Windows rounds each to about 1.5 ms. Switching those waits to a spin-then-sleep hybrid made no measurable difference in a same-session comparison, so the default stays.
+
 ## 2026-10-29 (afternoon) - Game-load hang fixed; PC pages are back on by default
 
 PC port. No game code, data or images are published.
