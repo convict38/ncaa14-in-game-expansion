@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-28 - Documentation reorganized
+
+README rewritten for newcomers (what it is, status, how the pieces fit). ROADMAP replaced with an ordered plan (frame rate, in-game settings page, Dynasty CFP bracket page, graphics and long-run checks, recruit realism, FCS league, more realism, online play, installer last) plus a Done list; the old versions are kept as docs/README_HISTORY.md and docs/ROADMAP_HISTORY.md. New docs/modding/ holds our function and table names, addresses and build method. New tools/check_public.py scans for local paths, emails, game-file types and binary content and must pass before every commit. CONTRIBUTING gained a docs-layout section. No game code, data or assets are published.
+
 ## 2026-10-28 - PC port: live gameplay now runs at full speed (it was in slow motion)
 
 Side track (native Windows build via static recompilation). No game code, data or executables are published.

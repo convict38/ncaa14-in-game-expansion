@@ -17,3 +17,6 @@
 !/.github/
 !/.github/ISSUE_TEMPLATE/
 !/.github/ISSUE_TEMPLATE/*.yml
+!/docs/modding/
+!/docs/modding/*.md
+!/tools/check_public.py
