@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-29 - In-game pages: CFP page shows the playoff, PC settings tab added
+
+Side track (EA's own menus, title-update UI archive; PC port). No game code, data or images are published.
+
+**College Football Playoff page (Dynasty > Dynasty Setup > CFP Bracket).** The page used to say "No Data": the game's bowl-games list only has data during the bowl weeks. The page now reads each playoff game from the game's league data instead and lists all 11 games in round order (first round, quarterfinals, semifinals, championship) with real teams. In the off-season it shows the playoff that was just played. Still to do: final scores, the team header above the list, and clearer labels during the season (the rows then hold partial or last-season data).
+
+**PC Controls & Display.** The Settings tile now opens System Settings with a third tab, "PC Controls & Display". Its options (keyboard layout, frame-rate cap, render scale, speed bundle) come from a small native add-on that is built and tested offline but not yet part of the PC executable, so the tab is empty for now. The PC side that applies a change at once and saves it to `settings.ini` is written and unit-tested. The temporary "[P]" test marker is gone.
+
+**Bigger UI code.** Our menu code had hit a 2 KB limit of the container it lives in; the container is now rebuilt with wider index fields, a layout the game already uses elsewhere (verified in game).
+
 ## 2026-10-28 - Documentation reorganized
 
 README rewritten for newcomers (what it is, status, how the pieces fit). ROADMAP replaced with an ordered plan (frame rate, in-game settings page, Dynasty CFP bracket page, graphics and long-run checks, recruit realism, FCS league, more realism, online play, installer last) plus a Done list; the old versions are kept as docs/README_HISTORY.md and docs/ROADMAP_HISTORY.md. New docs/modding/ holds our function and table names, addresses and build method. New tools/check_public.py scans for local paths, emails, game-file types and binary content and must pass before every commit. CONTRIBUTING gained a docs-layout section. No game code, data or assets are published.
