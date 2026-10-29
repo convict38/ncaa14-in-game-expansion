@@ -32,3 +32,12 @@ Conclusion (likely): the engineered ceiling is 160 teams (the activeN design cap
 
 ## Batch 1 (queued for the next runqueue gap)
 Output `analysis/mapping-cfbr-batch1/` (local). Functions: commit decision 0x4b9ffc, 0x4b8f40; progression 0x4ba384; visit evaluation 0x4af390; week-1 forced commit helper 0x4b9918; visit-score sub-scores 0x4acc78, 0x4ad1a0, 0x4ad36c; RCAT row loader 0x494954; name loader 0x494884; head/appearance setter candidate 0x491560; draft/request chain 0x47f758, 0x47fb8c, 0x4810a0, 0x489500, 0x4835a8; training pass 0x4934c8.
+
+## Item 5 update: FCS second league (2026-10-29)
+Full analysis in `docs/realism/fcs-league-feasibility.md` (limits table, designs, plan). Key data points:
+- The real walls are the u8 ranks TCRK/TMRK/TBRK (255; several rank queries have no TTYP filter: 0x1feb08, 0x45b590, 0x478a24, 0x2d9230, 0x4a4ddc), the 8-bit index loops (255), the SGNM sentinel 127 (about 127 games per week across all leagues), CGID 5 bits (31), PGID//70 (936 rostered teams), and USR-DATA 8,278,016 bytes. The bowl-week PC save uses 7,029,700, so headroom is 1,248,316 bytes.
+- The 160 cap is the activeN storage reserve (a design choice), not a field width.
+- FCS teams in Dynasty are rosterless TTYP-1/LGID-1 TEAM rows. LEAG (0 "1A", 1 "FCS") and nine FCS CONF rows ship in the DB. SuperSim reads TEAM-level ratings (0x12f7d0), and the week cursor 0x4a0434 has no team filter.
+- Capacities touched by an FCS league: TEAM 143/192, STTM 320/400, CONF 25/26, DIVI 22/22, TSCH 2268/2268 (full already), SGIN 53/70, STST 104/140, STAD 210/240, SCHD 926/2048 (fits).
+- ConferenceGenerator 0x10059c loops CGID 0..13 (`cmpwi 14` at 0x100618 / 0x1006f4).
+- 24 names (22 functions, 2 sites) were added to `cfbr_direct_names.psv`, tagged "FCS pass 10-29".

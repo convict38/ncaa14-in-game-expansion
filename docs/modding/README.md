@@ -21,6 +21,7 @@ Most early notes were made on STOCK. Each file says which space its addresses us
 | [04-building-mods.md](04-building-mods.md) | How to add a mod today (RPCS3 and the PC port) and the ranked list of known gaps |
 | [05-pc-port-hook-design.md](05-pc-port-hook-design.md) | Design sketch for a source-level mod-hook interface on the native PC build |
 | [06-appendices.md](06-appendices.md) | Archives a modder needs, community mods and licensing, ps3recomp facts, open items |
+| [fcs-league-feasibility.md](fcs-league-feasibility.md) | FCS as a second Dynasty league: team-count limits, designs, schedule/playoff changes, UI impact, phased plan |
 
 ## Honesty rules
 
