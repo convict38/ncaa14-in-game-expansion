@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-29 (late morning) - Game loads hang with the in-game PC pages; pages paused
+
+PC port. No game code, data or images are published.
+
+**What happened.** Choosing Play Game for the playoff quarterfinal sat on the LOADING screen forever. It is not a playoff problem: every game started from Play_PC with the in-game PC pages switched on hung the same way, regular-season games included. The pages arrived this morning and had only been tested in the menus, never through a game load.
+
+**Cause.** The game's in-game interface has to start up and report back before a game can begin. Our edited copy of one small EA menu script (the one that adds the PC Controls & Display tile and the CFP Bracket page) stops the in-game interface from reporting back. With the original script, the same quarterfinal and a regular-season game load and play normally. Step-by-step tests showed the trigger is how our rebuilt script is laid out, not anything it does. It still hangs even when its added code is removed entirely.
+
+**For now.** Play_PC starts with the stock menus, even when `settings.ini` says `ui_pages = on`, so games load again. The PC Controls & Display tile and the CFP Bracket page are hidden until a corrected script is ready. `ui_pages = force` brings them back (for testing only: games will not load).
+
+**Next.** Rebuild the script so its layout matches EA's original, then check that the quarterfinal, a regular-season game and both pages all work, and switch the pages back on.
+
 ## 2026-10-29 (late morning) - The playoff page is now a bracket
 
 Side track (EA's own menus, PC port). No game code, data or images are published.
