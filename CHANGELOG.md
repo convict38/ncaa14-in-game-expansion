@@ -32,6 +32,20 @@ PC port. No game code, data or images are published. Status: built and tested in
 
 **Not done yet.** The semifinal-week and final-week screenshots of the bracket with the last fix (a first test showed an unplayed semifinal wrongly carrying an earlier game's score, which is what the "only trust a score once the winner has moved on" rule fixes). A thin white divider left of the championship column belongs to the underlying list; a cover for it is in the build but not yet seen.
 
+## 2026-10-29 (evening) - Smoother gameplay: less repeated vertex work in the renderer
+
+PC port. No game code, data or images are published.
+
+**What changed.** About 8 % more frames per second during play (about +3 fps on top of the earlier gains, measured twice in same-session comparisons). Two pieces of repeated work are gone from the renderer:
+- It used to re-check the vertex program (the small program that places each corner of a shape on screen) before every single draw, even when the game had not changed it. It now remembers the last one and only re-checks after the game actually loads a new one.
+- Flat rectangles (the scoreboard and other HUD pieces, crowd cards, billboards) used to be sent to the graphics card as two triangles with 6 full corners each. They now go as their 4 real corners plus a short list saying which corners make each triangle, so a third less corner data is converted and copied.
+
+The picture is meant to be exactly the same. Both are on by default in the game and in Play_PC.
+
+**How it was checked.** Ten full test games with both on, plus one with both off for comparison: no corrupted frames, no hangs, the game clock advanced normally in every one, and the contact sheets (scoreboard, crowd, field, players, play log) matched the one with them off. One more test game on the final build with no settings at all confirmed they are on and clean. `RSX_VS_MEMO=0` and `RSX_ARRAY_IXD=0` turn them off if anything looks wrong.
+
+**Also looked at, no change.** Small one-triangle-pair draws are frequent (about a quarter of the unindexed draw calls) but carry only 6 corners each, so sending them the same way would save almost nothing; left as they are.
+
 ## 2026-10-29 (afternoon) - Smoother gameplay: the renderer stops repeating identical work
 
 PC port. No game code, data or images are published.
