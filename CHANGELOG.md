@@ -1,5 +1,31 @@
 # Changelog
 
+## 2026-10-30 (early morning) - FBS+FCS universe: Phase 1, first runtime pass
+
+This was done in a separate PC-port test build. Nothing changed for players: the normal game executable and saves are untouched. No game code, data or images are published.
+
+**What works.**
+- **Room for the full-universe save.** The temporary memory block that the game sets aside for each save and load is now 32 MB instead of 16 MB. That lets Dynasty saves grow to 25 MB, which is the plan's full-universe size with margin.
+  - A new Dynasty saved at 25 MB.
+  - It reloaded cold twice: once at creation and once at week 7. Weekly autosaves through week 12 stayed 25 MB.
+  - Every weekly autosave stayed that size.
+- **FCS schools in the same Dynasty.** 12 rostered FCS test schools joined the engine's active team list beside the 138 FBS teams, for 150 in all. Four of them have team ids above 255.
+  - The 5 built-in generic FCS rows are retired, so the list holds exactly FBS plus the real FCS teams.
+- **FCS teams keep their coaches.** A Dynasty-creation step was found that detaches the coaches of FCS-type teams; one word now exempts them. All 12 schools kept their head coach and coordinators through creation and the season weeks that were simulated.
+- **FBS-only rankings stayed FBS-only.** Through week 12:
+  - FBS poll ranks were exactly 1-138;
+  - every FCS school stayed unranked;
+  - no bowl row held an FCS team.
+- **Team-count limits must change together.** The engine has 72 team-count limits, set to 138 today. Raising only some of them corrupted memory right after Dynasty creation. Raising all of them together (to 150 for this test) ran cleanly, at about 35-70 s per simulated week.
+
+**Not working yet.**
+- **Depth charts.** Dynasty creation builds depth charts for the 138 FBS teams only, through a step that has not been found yet. Without depth charts the FCS schools take the field with nobody, lose every game by shutout and record no player stats. This is the next item.
+- **Schedules.** The season generator kept only some of the FCS-vs-FCS games from the preset schedule. Each FCS school got 7-9 games instead of 11, and a few played twice in one week. The planned FCS schedule step will fill this in.
+- **One stall.** One run stuck on an "Autosave in progress" news panel after week 7. After a reload the same weeks advanced normally.
+- **Not reached yet.** Bowls and the playoff, and the larger team-storage reserve (288 teams).
+
+Details: [FBS+FCS universe plan](docs/modding/fbs-fcs-universe-plan.md), section 3.2.
+
 ## 2026-10-29 (late night) - FBS+FCS universe: Phase 0 tested
 
 PC port, test build only. Nothing changed for players: the normal game executable and saves are untouched. No game code, data or images are published.

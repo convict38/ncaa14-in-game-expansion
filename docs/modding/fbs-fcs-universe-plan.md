@@ -434,6 +434,22 @@ Total: about 51-85 agent-days. Release and installer work comes after this, per 
 3. FCS teams need schedule rows (the Phase 3 cave) before progression and stats can be validated.
 4. Locate the 16 MB container request and the real save serialiser. Neither 0x335738 nor 0x336164 is on the live path.
 
+### 3.2 Phase 1, first runtime pass (2026-10-30, agent fcsp1)
+
+PC port, separate test executable only. The Play_PC executable and the user's saves were not touched. The test Dynasty had 12 rostered FCS test schools (cloned rosters, TGIDs 236-241, 255-257, 300, 350 and 399) beside the 138 FBS teams.
+
+| Goal | Result |
+|---|---|
+| Save headroom | **Works.** The transient save arena is created by a generic heap factory (0x43B2C4) from a config `size` (16 MB). The test build grows it to 32 MB, and the container is grown to match. Dynasty saves are now 25,055,232 bytes (17 size words, immediate 0x17E). Creation saved; a cold relaunch reloaded both the creation save and the week-7 autosave; every weekly autosave through week 12 stayed that size. |
+| Generic FCS rows | **Retired.** Converting the 5 built-in generic rows into real schools failed: their coaches were still detached by an unfound path. The test data deletes the 5 rows and their coaches instead, and every preset reference is remapped. The active list then holds exactly 150 = 138 FBS + 12 FCS. |
+| Cleanup exemption | **Coaches: works.** The detach is not 0x4F5BE8 (TTYP 2-8 only). It is 0x4F9018, which detaches the coaches of TTYP 1 and 5 teams. One word (bind 1 -> 5) exempts FCS, and all 12 test teams kept 3 coaches through creation and 12 weeks. **Depth charts: not yet.** Dynasty depth charts are built for the 138 FBS teams only, through a path that has not been found. |
+| FCS schedules | **Partly.** The preset schedule gives every FCS test team 11 games and every week at most 63 (the limit is 126). The engine's season generator kept the FBS-vs-FCS games and only some FCS-vs-FCS ones, so each team got 7-9 games. FCS teams do play: without a depth chart they lose every game by shutout and record no player stats. |
+| Team-count literals | **Rule found.** The engine's 72 team-count literals (activeN, 138 today) must be raised together. Raising only the 44 "league-wide" ones corrupted memory right after Dynasty creation. Raised together to 150 (only the 3 BCS-pool words stay at 138), 12 regular-season weeks ran at 33-70 s per week. One run stalled on a news/autosave panel after week 7; after a reload, weeks 7-12 ran clean. The 288-team reserve rebuild has not started. |
+| Consumer classification | 114 of 115 team-list readers are league-wide. The only FBS-only one is the bowl BCS pick loop (bound set to 138). The polls, BCS and bowl selectors use their own FBS-only team queries. |
+| FBS-only outputs | At creation and in weeks 1, 7 and 12: FBS poll ranks are exactly 1-138, every FCS team stays unranked, and no bowl row holds an FCS team. Conference championships, bowls and the CFP are not reached yet. |
+
+Also found: Dynasty creation renumbers team sort order (TORD) alphabetically over every team with a coach, FCS included. So the active list is not "FBS first, then FCS". Code must not rely on list position to find FBS teams.
+
 ## 4. Risks and effort
 
 | Risk | Likelihood | Mitigation |
