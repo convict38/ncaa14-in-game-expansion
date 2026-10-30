@@ -22,7 +22,7 @@ Evidence for this pass (all static; no game was launched):
 - FCS schools become ordinary TEAM rows with full rosters, depth charts, coaches and stadiums:
   - TTYP 1;
   - conferences with LGID 1;
-  - TGIDs in the free 236-609 range.
+  - TGIDs in the free 236-609 range, except 300 and 400 (reserved; section 3.3).
 - They stay in the same TDB, the same Dynasty and the same save.
 - The engine's **active team set** (the "FBS index" that recruiting, coaching, progression, depth charts and team rankings iterate) is widened from `TTYP = 0` to `TTYP <= 1`.
   - That is three query strings in `league_index_fill` / `league_index_init`.
@@ -449,6 +449,22 @@ PC port, separate test executable only. The Play_PC executable and the user's sa
 | FBS-only outputs | At creation and in weeks 1, 7 and 12: FBS poll ranks are exactly 1-138, every FCS team stays unranked, and no bowl row holds an FCS team. Conference championships, bowls and the CFP are not reached yet. |
 
 Also found: Dynasty creation renumbers team sort order (TORD) alphabetically over every team with a coach, FCS included. So the active list is not "FBS first, then FCS". Code must not rely on list position to find FBS teams.
+
+### 3.3 Phase 1b: depth charts and a full season (2026-10-30, agent fcsp1b)
+
+Separate test executable only, as before. Same 12 test schools, plus a second data set with six of them moved to team ids below 236.
+
+| Goal | Result |
+|---|---|
+| Depth charts | **Fixed.** Dynasty creation first wipes every team's depth chart. Then it copies each team slot's data back from the roster, and a per-slot callback (0x53C86C) removes the depth-chart table from the copy for FCS-type teams. One word (0x53C894, now a no-op) lets FCS slots copy it too. After creation all 150 teams have 88 depth-chart rows, and FCS team overalls are 67-74 instead of 0. (The full depth-chart rebuild that already covers 150 teams is skipped in a Dynasty's first season, so it did not help at creation.) |
+| Full season | **Works.** Regular season, conference championship week, bowls and the 12-team playoff all ran, using multi-week advances. Five autosaves were written, all 25 MB, with no faults. The earlier stall on the "Coach News / Autosave in Progress" panel did not come back. |
+| FBS-only postseason | **Holds.** 41 postseason games were played, all between FBS teams (58 distinct teams). An FBS-only control Dynasty also has 41, all FBS. No FCS team appeared in a bowl or playoff game, and none was ranked in any poll at any point. FBS poll ranks stayed exactly 1-138. |
+| FCS player stats | **Not yet.** FCS teams play and their team totals are kept, and FCS-vs-FCS games have winners. But against FBS teams they score 0-14 points, and their players get no box-score or season stat rows, while their FBS opponents' players do. The game is simulated, but the FCS side does not field its real roster. Moving six FCS schools to team ids below 236 changed nothing, so the trigger is the team type, not the id range. The next step is to find the check in the weekly game setup. |
+| Schedules | **Unchanged.** FBS teams get exactly 12 games. FCS teams get 7-9, and the season generator puts a few FCS teams in two games in one week. The planned FCS schedule step is still needed. |
+
+Also found:
+- Team ids 300 and 400 are reserved: a cleanup routine (0x4DAC6C) deletes everything belonging to those two ids. The FCS data pack must skip them.
+- The team-schedule table (TSCH) and one player-stats table reach full capacity in this test season. Both need larger template capacities before more teams are added.
 
 ## 4. Risks and effort
 

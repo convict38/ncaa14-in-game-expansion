@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-10-30 (pre-dawn) - FBS+FCS universe: FCS depth charts fixed, first full season
+
+This was done in a separate PC-port test build. Nothing changed for players: the normal game executable and saves are untouched. No game code, data or images are published.
+
+**What works now.**
+- **FCS teams keep their depth charts.** The step that dropped them was found. When a Dynasty is created, the game wipes every team's depth chart and then copies each team's data back from the roster. For FCS-type teams it skipped the depth chart. One changed instruction fixes this: all 12 test FCS schools now start the Dynasty with a full depth chart and a real team rating.
+- **A full season with FBS and FCS together.** A 150-team Dynasty played the regular season, conference championships, bowls and the 12-team playoff without a crash or a stall.
+- **The postseason stays FBS-only.** All 41 bowl and playoff games were between FBS teams, the same count as an FBS-only Dynasty. No FCS school was ranked or picked for a bowl.
+- **The earlier autosave stall did not come back.**
+
+**Not working yet.**
+- **FCS players in games.** FCS teams are on the schedule and FCS-vs-FCS games have winners, but against FBS teams they still lose by huge margins and their players record no stats. The game appears to swap in a stand-in roster for any FCS-type team, as it does for the built-in placeholder FCS teams. A test with different team ids showed the swap depends on the team type. Finding that check is the next item.
+- **Schedules.** FCS schools still get 7-9 games instead of 11-12, and a few play twice in one week. FBS schools keep 12 games.
+- **Room for more teams.** Two tables hit their limits in this test season and need larger capacities. Two team ids (300 and 400) are reserved by the game and must be skipped.
+
+Details: [FBS+FCS universe plan](docs/modding/fbs-fcs-universe-plan.md), section 3.3.
+
 ## 2026-10-30 (early morning) - FBS+FCS universe: Phase 1, first runtime pass
 
 This was done in a separate PC-port test build. Nothing changed for players: the normal game executable and saves are untouched. No game code, data or images are published.
