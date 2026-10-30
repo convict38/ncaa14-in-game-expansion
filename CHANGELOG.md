@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-10-29 (late night) - FBS+FCS universe: Phase 0 tested
+
+PC port, test build only. Nothing changed for players: the normal game executable and saves are untouched. No game code, data or images are published.
+
+**What was tested.** The first runtime step of the plan to put rostered FCS schools into the same Dynasty as the 138 FBS teams.
+- **Bigger save file.** Dynasty saves double to 16.7 MB. A new Dynasty saved at that size, reloaded, played a week, saved and reloaded again.
+- **Where the save buffer lives.** It is a temporary 16 MB block that the game reserves for each save and load. At the new size only about 105 KB of that block is left, so the save cannot grow further without moving the buffer.
+- **One test FCS team with a full roster.** It joined the engine's active team list and came through Dynasty creation, a simulated week and a reload. Dynasty creation removes its coaches and depth chart, as it does for the built-in generic FCS teams, and the generic teams join the list as well. Both are next on the list.
+
+Details: [FBS+FCS universe plan](docs/modding/fbs-fcs-universe-plan.md), Phase 0 runtime result.
+
 ## 2026-10-29 (night) - Full keyboard rebinding
 
 PC port. No game code, data or images are published.

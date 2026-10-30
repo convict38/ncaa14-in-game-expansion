@@ -51,6 +51,32 @@ Evidence for this pass (all static; no game was launched):
 
 **Effort:** about 50-80 agent-days (10-16 weeks) to a complete, validated universe. Section 4 has the breakdown.
 
+**Phase 0 runtime result (2026-10-29, tested on the PC port with a separate test executable; the normal Play_PC executable was not changed).**
+
+- **T0.1, save size: pass.**
+  - A new Dynasty saves a 16,666,624-byte USR-DATA (HED-DATA[0] = 0xFE52E8).
+  - The Dynasty-creation autosave and a menu save are byte-identical.
+  - A cold restart loads the save back to the same hub.
+  - Saving again after the reload changes only two TEAM fields (NCDP and INPO, which the game recomputes on load), one TSSE header word and the header hash.
+- **T0.2, buffer location: pass, with almost no spare room.**
+  - The save and load buffer does not come from a game heap. The two allocation sites read statically (0x335738 and 0x336164) never ran.
+  - The game takes a 16 MB block from memory container 1 around every save and load (guest 0x4A100000; USR-DATA buffer at 0x4A100D40).
+  - At S = 0xFE5000 the block has 107,200 bytes spare. S therefore cannot grow further unless that container request is enlarged or redirected to a mod arena.
+  - The measured database is 3.7 MB at Dynasty creation and 7.0 MB after week 1, well inside S.
+- **T0.3, one rostered FCS team: pass, with findings.**
+  - The team is a test team at TGID 300 (TTYP 1, visible, a Big Sky conference row, 69 players, depth chart, 3 coaches), added to a test roster and served read-only.
+  - The three league-index queries were switched to `TTYP <= 1`.
+  - The active index grows to 139 with the roster loaded. It reaches 144 after Dynasty creation, which makes the 5 generic FCS rows visible, so they enter too.
+  - The Dynasty created, simulated a week and reloaded without a fault, and FBS stayed at 138.
+  - The team kept its 69 players, and the weekly player update reached them.
+  - Dynasty creation detached its coaches and deleted its depth chart, as it does for the generic FCS rows.
+  - It had no games, because season-one schedules are presets.
+- **Phase 1 follow-ups:**
+  - retire or remap the generic FCS rows;
+  - exempt TTYP 1 from the coach and depth-chart cleanup;
+  - add schedule rows for FCS teams;
+  - locate the 16 MB container request and the save serialiser that really runs.
+
 ## 1. Architecture
 
 ### 1.1 Team identity and data
