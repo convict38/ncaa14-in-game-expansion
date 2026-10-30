@@ -466,6 +466,16 @@ Also found:
 - Team ids 300 and 400 are reserved: a cleanup routine (0x4DAC6C) deletes everything belonging to those two ids. The FCS data pack must skip them.
 - The team-schedule table (TSCH) and one player-stats table reach full capacity in this test season. Both need larger template capacities before more teams are added.
 
+### 3.4 Phase 1c: FCS rosters play and keep stats (2026-10-30, agent fcsp1c)
+
+Separate test executable only, as before. Same 12 test schools. Six test Dynasties or reloads, all in isolated test folders.
+
+| Goal | Result |
+|---|---|
+| FCS rosters in games | **Fixed.** The stock game treats team types 1 and 7 as rosterless placeholder opponents. When a game is set up (0x46F110), the two team-copy routines (0x43F990 players, 0x466B34 depth chart) take a stand-in roster and depth chart instead of the team's own for those types. After the game, two routines (0x507930, 0x4E4520) delete or remap the stand-ins' game stats, and a per-team pass (0x44FDF4) stops unless the team is FBS. Twelve compare instructions now test for type 7 only (or let type 1 through), so type-1 FCS teams are handled like FBS teams. In a new Dynasty, FCS teams averaged 16-22 points against FBS teams, won 7 of 58 such games and were shut out 3 times through week 7 (the test schools are copies of FBS rosters, so they are stronger than real FCS teams will be). FCS players now get box-score, season and career stat rows, 23 of them reached the national top-10 stat lists, and FCS teams get season team-stat rows. Seven weeks ran without a fault. The first week after loading an older save still uses stand-ins, because that week's game rosters were prepared before the save. |
+| Table capacities | **Partly done.** A data builder raises 22 table capacities in the Dynasty template, and a new Dynasty inherits all of them. But with the big box-score tables raised (about 0.8 MB more), the weekly ranking pass faults within 1-3 weeks; three runs showed it, and the same code without the raises ran 7 weeks clean. Raising only the team-schedule table (to 3,600 rows) and the conference stat-ranking table (to 3,750) ran clean. The likely cause is a fixed-size memory heap for the Dynasty database; finding and growing it is the next step. The national top-10 table that looked "full" is full by design (25 categories x 10 players). |
+| Schedules | **Partly done.** The season generator throws away preset games between two teams of the same conference when that conference is not one of the 14 FBS ones. Scheduling FCS-vs-FCS presets only across conferences gives every FCS team 11-14 games (7-9 before). A test-build step that rewrites schedule inserts when an FCS team is already busy that week cut the double-booked weeks from 12 to about 6. It cannot fix them all, because the generator moves games between weeks after inserting them. FBS teams keep exactly 12 games and no week holds more than 69 games. Next: one repair pass after the generator finishes, and a way to schedule FCS conference games. |
+
 ## 4. Risks and effort
 
 | Risk | Likelihood | Mitigation |
@@ -517,3 +527,4 @@ Effort: about 51-85 agent-days (10-16 weeks at 5 agent-days a week). The critica
   - The 12 unchanged lift chunks were pruned (logged in `PRUNED.json`).
   - To relink after a new main build: recompile nothing, just run `link.bat` (it links the current game_project objects plus the 4 fcsp0 objects). Do this only while the main tree is still the build that the fcsp0 chunks were lifted from (uiset ELF 3f494c77...).
   - **Next:** the Phase 1 items in 3.1, starting with the generic FCS retirement and the coach and depth-chart purge list.
+- **Phase 1c (2026-10-30, agent fcsp1c; section 3.4).** FCS teams now use their own rosters in every game and keep their stats (12 changed instructions). Next, in order: grow the Dynasty database memory so the box-score tables can be enlarged; replace the schedule rewrite with one repair pass after the season generator and add FCS conference games; run a full season with FCS stats to the bowls; then the 288-team storage reserve.

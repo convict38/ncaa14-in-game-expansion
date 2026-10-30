@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-10-30 (morning) - FBS+FCS universe: FCS teams play with their real rosters
+
+This was done in a separate PC-port test build. Nothing changed for players: the normal game executable and saves are untouched. No game code, data or images are published.
+
+**What works now.**
+- **FCS schools field their own players.** The game had three places where it treated any FCS-type team as a nameless placeholder: it swapped in a stand-in roster when setting up a game, threw away that side's game stats afterwards, and skipped one end-of-game step for non-FBS teams. Twelve changed instructions make FCS teams go through the same path as FBS teams.
+  - Scores look like real football now: in a new test Dynasty, FCS teams averaged about 16 points against FBS teams through week 7 (before: almost always 0), won 7 of 58 such games, and were shut out 3 times. The test FCS schools are copies of FBS rosters, so they are stronger than real FCS schools will be.
+  - FCS players get box scores, season and career stats, and show up in the national stat leaders. FCS teams get season team stats.
+  - Seven simulated weeks ran without a fault.
+- **More room in two tables.** The team-schedule table (full by conference championship week in the last test) and the conference stat-leader table now have about 50% more room in the test data, and a new Dynasty keeps the larger sizes.
+- **Better FCS schedules.** FCS schools now get 11-14 games instead of 7-9. The season generator turned out to drop preset games between two FCS teams of the same conference, so the test schedule now pairs FCS teams across conferences.
+
+**Not working yet.**
+- **Bigger box-score tables.** Enlarging the per-game stat tables makes the weekly ranking step crash within a few weeks. The likely cause is a fixed memory area for the Dynasty database, which has to be found and enlarged first.
+- **Double-booked weeks.** A few FCS schools still have two games in one week (about 6 per Dynasty, down from 12), and some have 13-14 games. A test-build step catches part of it; the real fix is one clean-up pass after the season generator finishes.
+- **FCS conference games** are not scheduled yet (see above).
+
+Details: [FBS+FCS universe plan](docs/modding/fbs-fcs-universe-plan.md), section 3.4.
+
 ## 2026-10-30 (early morning) - Tackles and pile-ups use less CPU
 
 PC port. No game code, data or images are published.
