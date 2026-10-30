@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-10-30 (evening) - FBS+FCS universe: three seasons with full FCS rosters, and a 266-team season reaches the bowls
+
+This was done in separate PC-port test builds. Nothing changed for players: the normal game executable and saves are untouched. No game code, data or images are published.
+
+**What happened.**
+- **Why the second season would not advance past week 1.** A log of every database query during the failed advance showed the game simulating 22 games and then giving up on the one game that involved an FCS school with no coaches (and no players) left. When any game in a week has a team without a coach, the game quietly abandons the whole week, saves, and goes back to the same week. Making sure every school has a coaching staff fixed it.
+- **FCS coaching staffs are refilled now.** The game's coaching carousel works in two steps. At the end of the season it posts an opening for every empty coaching job, and in the carousel stage it hires coaches into those openings. The posting step only looked at FBS schools, so FCS jobs emptied by the carousel were never filled again. The test build now posts FCS openings too. In the test, all 12 FCS schools had a full staff (head coach and both coordinators) after the carousel, where before they had 0 or 1 coaches. A second safety net fills any empty coaching job right before the off-season roster cuts.
+- **FCS rosters refill themselves.** The note from the last update was wrong: FCS schools already recruit, about 20 signees a year each, mostly lower-rated players than the FBS classes. Before the roster-cut fix those signees were cut along with everyone else. Now every FCS school starts each new season with 60-70 players, and FCS players improve in the off-season like FBS players do (about +4 overall per year).
+- **Three seasons in a row with 150 teams.** A test Dynasty played the 2026 season, the off-season, all of 2027 including the bowls and playoff, a second off-season, and the first five weeks of 2028. Every FCS school had 60-70 players and three coaches in both new seasons, every FCS school got 11-12 games with nobody playing twice in a week, and FCS players kept their stats. No crash and no autosave stall.
+- **The 266-team build gets through the regular season.** Its first advance had hung because the step that rates recruits uses a fixed pool of 4,410 small records, sized for about 150 teams. The pool is three times larger in the test build. A 266-team Dynasty then played every regular-season week up to conference championship week, about 1.4 minutes per week.
+- **FBS-only national stat leaders.** The filter that keeps FCS players out of the national stat leader lists had a wrong address in it and never removed anyone. It is fixed in the newest test build and now removes FCS players; checking the finished lists in a save is still to do.
+
+**Still open.**
+- With 266 teams, the advance from conference championship week to the end of the season plays the bowls and then stops at the coaching-carousel step. It also stops there with the new FCS change turned off, so the cause is in the game's own carousel step at that team count, most likely another fixed-size list. That is next.
+- FCS strength needs tuning. With the 150-team test data FCS schools win about a third of their games against FBS schools (real FCS teams win about 1 in 10); with the 266-team data they almost never win and average 8 points.
+- FCS conference title games and separate FCS stat leader lists are not started.
+
+Details: [FBS+FCS universe plan](docs/modding/fbs-fcs-universe-plan.md), section 3.8.
+
 ## 2026-10-30 (midday) - FBS+FCS universe: why FCS rosters vanished after a season, and the 266-team build starts
 
 This was done in separate PC-port test builds. Nothing changed for players: the normal game executable and saves are untouched. No game code, data or images are published.

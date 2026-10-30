@@ -520,6 +520,23 @@ Separate test executables only, as before, in isolated test folders. The normal 
 | Table CAPX (195 of 200) | **No change needed.** It is the fixed list of coach goals for the player's own coach and does not grow with the number of teams. |
 | Autosave stall | None in about 20 saves this session; the watcher ran in every test. |
 
+### 3.8 Phase 1g: full FCS rosters and staffs across three seasons, the 266-team build through a regular season (2026-10-30, agent fcsp1g)
+
+Separate test executables only, as before, in isolated test folders. The normal game executable and saves were not touched. Superseded test executables (about 7 GB) were removed when the disk got close to its safety floor.
+
+| Goal | Result |
+|---|---|
+| Why the second season stopped at week 1 | **Found and fixed.** A log of every database query during the failed advance shows 22 games simulated, then the setup of a game involving an FCS school with no coaches and no players. When any game in the week has a team without a coach, the game abandons the whole week, autosaves and returns to the same week. With every staff filled (below), the 2027 and 2028 seasons advance normally. |
+| Off-season coach fill | **Fixed.** At the end of the season the game posts an opening for every empty coaching job, and the carousel stage then hires into those openings. The posting step only visited FBS schools. The test build repeats it for FCS schools: after the carousel all 12 FCS schools had a head coach and both coordinators (before: 0-1 coaches). A safety net also fills any empty coaching job right before the CPU roster cuts. |
+| FCS roster refill | **Not needed as a separate feature.** FCS schools already recruit (about 20 signees each per year, lower rated than FBS classes); the earlier roster-cut fix now keeps those signees. Every FCS school starts each new season with 60-70 players. Off-season player progression runs for FCS players too (returning players about +4 overall, FBS about +5). |
+| Second and third season (150 teams) | **Pass.** One test Dynasty: 2026, off-season, all of 2027 (bowls and playoff included), off-season, and 2028 to week 5. Every FCS school had 60-70 players, a full depth chart and 3 coaches at the start of 2027 and of 2028, 11-12 games and no double weeks; FCS player and team stats were recorded. No crash, no autosave stall. |
+| 266-team first-advance hang | **Fixed.** The "rating teams" recruiting step keeps its work in a fixed pool of 4,410 small records, which runs out with 266 teams; the game then writes through an empty pointer forever. The pool is three times larger in the test build. |
+| 266-team season | **Regular season passes; end of season open.** A 266-team Dynasty played every week up to conference championship week (about 1.4 minutes per simulated week), all 128 FCS schools with 11-12 games and no double weeks. The advance to the end of the season plays the bowls and then stops in the game's own coaching-carousel step (it also stops with the FCS change switched off). Most likely another fixed-size list; this is the next item. |
+| FBS-only national stat leaders | **Bug found and fixed.** The filter that keeps FCS players out of the national leader lists looked players up with a wrong query address and never removed anyone. Fixed in the newest test build, which now removes FCS players; the finished lists still have to be checked in a save. |
+| Crowded-week schedule fallback | **Not needed so far.** The 266-team schedule pass reached zero double weeks without it, so it is still unexercised. |
+| FCS strength | **Needs tuning.** With the 150-team test data FCS schools win about a third of their games against FBS schools (real: about 1 in 10); with the 266-team data they win 2 % and average 8 points. |
+| FCS conference title games | Not started. |
+
 ## 4. Risks and effort
 
 | Risk | Likelihood | Mitigation |

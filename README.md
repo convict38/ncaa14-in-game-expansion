@@ -20,7 +20,7 @@ Working and validated on the modded build:
 - Modern clock and overtime rules, Dynasty starting in 2026, 60-season Dynasty length, original CFP logo art, several community team-art packs.
 - PC port: the whole mod stack runs natively. Audio, Super Sim, Dynasty, Road to Glory and Play Now are validated. Live gameplay now runs at real speed (it was in slow motion); borderless full-screen with variable refresh and a display settings file are in.
 
-In progress: frame rate and stutter on the PC port, and an FBS+FCS universe in a separate PC-port test build (150 teams in one Dynasty so far; FCS schools play with their real rosters and keep their stats, get clean 11-12 game schedules with conference games, a full season with enlarged stat tables runs to the end of the playoff, and FCS rosters now survive the off-season roster cuts; a first 266-team test build creates a full Dynasty). See the [roadmap](ROADMAP.md) for everything that follows.
+In progress: frame rate and stutter on the PC port, and an FBS+FCS universe in a separate PC-port test build (150 teams in one Dynasty so far; FCS schools play with their real rosters and keep their stats, get clean 11-12 game schedules with conference games, a full season with enlarged stat tables runs to the end of the playoff, and FCS schools keep full rosters and coaching staffs across seasons, with three seasons played in a row; a 266-team test build plays a full regular season). See the [roadmap](ROADMAP.md) for everything that follows.
 
 Exact test evidence is in the [changelog](CHANGELOG.md). The [machine-readable status](reports/latest-status.json) lags the changelog; when they disagree, trust the changelog.
 
