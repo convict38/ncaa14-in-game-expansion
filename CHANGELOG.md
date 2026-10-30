@@ -1,5 +1,28 @@
 # Changelog
 
+## 2026-10-30 (morning, later) - FBS+FCS universe: bigger stat tables work, cleaner FCS schedules, a full season
+
+This was done in a separate PC-port test build. Nothing changed for players: the normal game executable and saves are untouched. No game code, data or images are published.
+
+**What works now.**
+- **The bigger stat tables no longer crash the season.** The cause was found and confirmed. Each week the game sorts some database tables while it fills the recruiting boards, and the sort needs a few megabytes of working memory. That memory comes from the game's fixed-size database heap (about 12 MB), which the larger tables had filled. The game then stopped with its own "out of memory" marker. Every earlier crash log has that marker; no clean run has it. The heap sizes come from a small settings list the game reads at startup, and the test build makes the database heap 4 MB larger. With that, all 22 enlarged tables ran a whole season with no out-of-memory event.
+- **One clean-up pass for schedules.** The season generator still builds the schedule. Right after it finishes, one new pass reads the finished schedule, then:
+  - gives an FCS school playing twice in one week a different week or hands that FBS opponent another free FCS school;
+  - trims FCS schools with more than 12 games;
+  - adds FCS conference games;
+  - fills FCS schools with fewer than 11 games.
+
+  FBS-vs-FBS games are never touched and no week goes over 126 games. In four new test Dynasties, every FCS school had 11-12 games and every FBS school kept 12. Three had no double-booked weeks at all; one had two left in the first week, where the 12 test schools are too few to go around.
+- **FCS conference games are scheduled.** The clean-up pass makes them, because the game's own conference scheduler skips FCS conferences and its style tables are full.
+- **A full season with FCS stats.** One test Dynasty played the regular season, conference championships, the bowls and the 12-team playoff with all tables enlarged. FCS schools averaged 18 points against FBS teams and won 26 of 74 of those games. All 41 bowl and playoff games were between FBS teams. No FCS school or player was ranked, invited to a bowl, named a Heisman finalist or named an All-American.
+
+**Not working yet.**
+- **An end-of-season stall.** Once, advancing to the end of the season stopped on an "autosave in progress" panel and never saved. Reloading the earlier save and advancing one step at a time worked. It looks like an earlier unexplained stall and is next on the list.
+- **Stat leaders.** Three FCS players show up in the national stat-leader lists next to FBS players. FCS should get its own lists.
+- **Still to do:** the database memory size has to become a proper setting (the full 266-team universe needs about 16 MB more). The injury table needs to be larger. The 288-team storage reserve was not started.
+
+Details: [FBS+FCS universe plan](docs/modding/fbs-fcs-universe-plan.md), section 3.5.
+
 ## 2026-10-30 (morning) - Faster code checks tried for contact plays, withdrawn
 
 PC port. No game code, data or images are published. Nothing changed for players: the game build stays the same as the previous entry.
