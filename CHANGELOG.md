@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-29 (night) - Bracket and Key Bindings pages installed in Play_PC
+
+PC port. No game code, data or images are published. Status: installed; checked in game on copies of saves.
+
+**Playoff bracket, final fixes.** A test on a played semifinal week showed the bracket's score lookup is unreliable after the quarterfinals: the Alabama-Notre Dame semifinal said "Notre Dame 38-35" (a quarterfinal score) and the national championship said "Ohio State 24-21 CHAMPS" although Alabama won 34-17. The page now shows scores only for the first two rounds, where they were right. A played semifinal shows "<winner> WON", and the final shows "<winner> - Champion". A game not yet played still says "Scheduled" (no older score leaks in). The thin white divider left of the championship column is now covered. Final-week and end-of-season brackets were checked on saves made in game.
+
+**Installed.** The updated pages are now what Play_PC serves, together with the game build that has the Key Bindings tab (the fourth tab of System Settings, 24 controls plus "Reset All Keys"). Checked: that tab renders; a playoff semifinal, the national championship and a regular-season game all load and reach a play with the pages on.
+
+**Not done yet.** Real scores for semifinal and final rows (needs a different score source than the weekly recap lookup). A warning on the Key Bindings page when a key is already used elsewhere.
+
 ## 2026-10-29 (evening) - Playoff bracket polish and a Key Bindings page
 
 PC port. No game code, data or images are published. Status: built and tested in game on copies of saves; the updated pages are not installed in Play_PC yet (one last check on a semifinal-week save is pending).
