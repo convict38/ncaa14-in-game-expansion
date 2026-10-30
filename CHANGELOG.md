@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-10-29 (evening) - Playoff bracket polish and a Key Bindings page
+
+PC port. No game code, data or images are published. Status: built and tested in game on copies of saves; the updated pages are not installed in Play_PC yet (one last check on a semifinal-week save is pending).
+
+**Playoff bracket.** The Dynasty > Dynasty Setup > CFP Bracket page now looks like a bracket: every game sits in an outlined box and lines join each pair of games to the game their winner plays in the next round. Played games show the final score ("Alabama 31-15"), and a game that has not been played yet says "Scheduled" (before, a quarterfinal the computer had already simulated could still say "Scheduled"). The stray cursor frame and the extra scroll bar from the underlying list are hidden. The scores come from the same Dynasty data the weekly recap uses; the page only trusts a score once the winner has moved into the next round, so a game in the current week is never filled in with an older game's score.
+
+**Key Bindings page.** Settings > System Settings gets a fourth tab, "Key Bindings". It lists every PS3 control (the 16 buttons plus the eight stick directions) with the keyboard key it is on now. Slide a row to "Press a key...", leave the page, press the new key or mouse button, and that is the new binding; it is saved in the `[keys]` section of `settings.ini` and applied at once. "Reset All Keys" at the bottom clears every custom key. Esc is never bindable (it quits the game). A key already used elsewhere is still accepted; the page does not warn about it yet.
+
+**How it works.** The new tab reuses the settings page of the PC Controls & Display tab: a small piece of game code answers the list and the choice, and passes the request to the PC runtime through a few bytes of shared memory. The runtime does the key capture, the bookkeeping and the file write.
+
+**Checked in game** (copies of saves, never the real ones): the bracket page in the quarterfinal and semifinal weeks; both settings tabs; rebinding Cross to X with a simulated key press and seeing the page show X and the file gain `cross = X`; a playoff quarterfinal and a regular-season game both loading and reaching a play with the new pages on.
+
+**Not done yet.** The semifinal-week and final-week screenshots of the bracket with the last fix (a first test showed an unplayed semifinal wrongly carrying an earlier game's score, which is what the "only trust a score once the winner has moved on" rule fixes). A thin white divider left of the championship column belongs to the underlying list; a cover for it is in the build but not yet seen.
+
 ## 2026-10-29 (afternoon) - Smoother gameplay: the renderer stops repeating identical work
 
 PC port. No game code, data or images are published.
