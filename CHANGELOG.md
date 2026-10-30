@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-30 (early morning) - Tackles and pile-ups use less CPU
+
+PC port. No game code, data or images are published.
+
+**What changed.** Three of the game's physics helper programs now run as translated native code by default: the contact finder (which players touch), the capsule-overlap test and the current-pose lookup. Before, they ran in the slower SPU interpreter. They matter most when several players are in contact, such as a pile-up at the line.
+
+**Effect.** Each of the three now needs a half to a quarter of the processor time it needed before. All of that time sat inside the simulation's waits, so less of it lets the game clock keep up better during contact plays. Whether game speed rises by a measurable amount is not settled yet. Two pile-up test sessions disagreed. In the first, game speed went from 0.62 to 0.66 of real time (0.08 higher after allowing for how much contact each stretch had). In the second it went from 0.69 to 0.64 before that correction and was 0.035 higher after it. Game speed swings a lot from play to play, so two sessions cannot settle a difference this small. Frame rate was unchanged. Game speed still falls to about 0.5 to 0.8 of real time in heavy contact, and the next steps go after that.
+
+**How it was checked.** Ten automated test games with these programs translated: no corruption, no hangs, the game clock advanced in every one, and the screenshots (tackles, pile-ups, HUD) looked normal. To go back to the interpreter, set `SPU_CFBR_EXTRA=0`.
+
 ## 2026-10-30 (pre-dawn) - FBS+FCS universe: FCS depth charts fixed, first full season
 
 This was done in a separate PC-port test build. Nothing changed for players: the normal game executable and saves are untouched. No game code, data or images are published.
