@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-10-30 (midday) - FBS+FCS universe: why FCS rosters vanished after a season, and the 266-team build starts
+
+This was done in separate PC-port test builds. Nothing changed for players: the normal game executable and saves are untouched. No game code, data or images are published.
+
+**What happened.**
+- **Found why FCS players disappeared at the season rollover.** In the off-season the game puts every player on a cut list. Then, team by team, it takes off the players each school keeps, and releases whoever is left. That keep step only went through FBS teams, so every FCS player was released. The test build now runs the keep step for FCS schools too. In the test, 10 of 12 FCS schools started 2027 with 60-70 players and working depth charts. FBS teams were not affected.
+- **Still open from the rollover:**
+  - The two FCS schools that lost all their coaches in the carousel still lost all their players.
+  - The game's pass that fills empty coaching jobs skips FCS schools. A fix is in the test build, but that pass only runs when a Dynasty is created, so the off-season job filler still has to be found.
+  - FCS schools do not recruit yet, so their rosters will shrink each year until walk-ons or unsigned recruits fill them.
+  - The second test season does not advance past week 1 (no crash; it saves and returns to week 1).
+- **The 266-team build exists.** It was built only from the validated build 87 parts. It creates a new Dynasty with all 128 FCS schools, and every school gets a clean schedule (FCS 11-12 games, FBS 12, nobody playing twice in a week). The first advance hangs in the step that rates recruits for every team, because one of the game's fixed memory pools runs out. That pool is next.
+- **Checked:** the database memory setting works. A nearly full table (CAPX) turned out to be the fixed list of coach goals and does not need to grow. No autosave stall in about 20 test saves.
+
+Details: [FBS+FCS universe plan](docs/modding/fbs-fcs-universe-plan.md), section 3.7.
+
 ## 2026-10-30 (late morning) - FBS+FCS universe: the autosave stall pinned down, a first season rollover, the full FCS list
 
 This was done in separate PC-port test builds. Nothing changed for players: the normal game executable and saves are untouched. No game code, data or images are published.

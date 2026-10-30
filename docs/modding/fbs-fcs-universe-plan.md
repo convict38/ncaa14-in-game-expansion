@@ -504,6 +504,22 @@ Separate test executables only, as before. Isolated test folders. The normal gam
 
 **Disk.** Late in the session the PC's free disk space fell from about 26 GB to almost nothing. The page file grew while other memory-heavy jobs were running. This work stopped its compiles, gave back its game-run slot and removed about 9 GB of its own rebuildable files.
 
+### 3.7 Phase 1f: the FCS roster wipe found and mostly fixed, the 266-team build runs to its first advance (2026-10-30, agent fcsp1f)
+
+Separate test executables only, as before, in isolated test folders. The normal game executable and saves were not touched. Old build logs and superseded test files (about 12 GB) were removed first to get the disk back above its safety floor.
+
+| Goal | Result |
+|---|---|
+| Where the off-season loses FCS players | **Found.** A test Dynasty went through the off-season one stage at a time, with a save check after every stage and a log of every database query that touched an FCS school or player. Graduation removes FCS seniors normally. The loss happens at the CPU roster-cut stage ("holding team tryouts"). The game first puts every player and recruit on one cut list. Then, team by team, it takes off the list the players each school keeps, and finally releases everyone still on it. That team-by-team pass only visits FBS teams, so every FCS player stayed on the list and was released. |
+| Fix: FCS teams keep their players | **Works for 10 of 12 FCS schools.** A small piece of added code repeats the keep pass for FCS teams. In the test, 10 FCS schools went into the 2027 season with 60-70 players and valid depth charts, and FBS teams were unaffected. The two FCS schools that had lost every coach in the carousel still lost all their players. |
+| FCS coaches | **Not fixed yet.** The game's pass that fills empty coaching jobs only looks at FBS schools. The test build now repeats it for FCS schools, but that pass turned out to run only when a Dynasty is created, not in the off-season. The off-season job filler still has to be found. FCS coaches can still be hired away in the carousel, which is fine, as long as their jobs get filled again. |
+| Second season | **Blocked.** The 2027 regular season started (all 12 FCS schools got 11 games and no week had a school playing twice), but advancing past week 1 only saves and goes back to week 1. There is no crash. The cause is open; the two empty FCS schools are the first suspect. |
+| Refilling FCS rosters | **Not done.** FCS schools do not recruit yet, so graduation shrinks their rosters by about a quarter each year. The plan is to give FCS schools some of the recruits nobody signed, or walk-ons. |
+| 266-team build | **Built and started.** It creates a new Dynasty with all 266 teams, and the schedule check passes: every FCS school has 11-12 games, every FBS school 12, and no week has a team playing twice. The first advance hangs in the step that rates recruits for every team. A small memory request there fails, most likely because one of the game's fixed memory pools is too small for 266 teams. A larger database memory size did not help, so it is a different pool. |
+| Database memory setting | **Confirmed.** The setting works at startup on 150 and 266 teams. |
+| Table CAPX (195 of 200) | **No change needed.** It is the fixed list of coach goals for the player's own coach and does not grow with the number of teams. |
+| Autosave stall | None in about 20 saves this session; the watcher ran in every test. |
+
 ## 4. Risks and effort
 
 | Risk | Likelihood | Mitigation |
@@ -558,3 +574,9 @@ Effort: about 51-85 agent-days (10-16 weeks at 5 agent-days a week). The critica
 - **Phase 1c (2026-10-30, agent fcsp1c; section 3.4).** FCS teams now use their own rosters in every game and keep their stats (12 changed instructions). Next, in order: grow the Dynasty database memory so the box-score tables can be enlarged; replace the schedule rewrite with one repair pass after the season generator and add FCS conference games; run a full season with FCS stats to the bowls; then the 288-team storage reserve.
 - **Phase 1d (2026-10-30, agent fcsp1d; section 3.5).** The Dynasty database heap is identified and can be grown, so the larger stat tables now run a whole season. One repair pass after the season generator gives FCS teams 11-12 games, adds FCS conference games and keeps FBS teams at 12. A full season with FCS stats ended with an FBS-only postseason and awards. Next, in order: the end-of-season autosave stall; the database heap size as a proper runtime setting (about 16 MB more for 266 teams) and a larger injury table; separate FCS stat-leader lists; then the 288-team storage reserve.
 - **Phase 1e (2026-10-30, agent fcsp1e; section 3.6).** The autosave stall is narrowed to the step between reserving the save memory and writing the save, and a watcher now records thread stacks when it happens. The database memory size is a setting. The first rollover with FCS teams works but deletes FCS rosters. The 128-school FCS data pack and the 288/266 code changes are prepared. Next, in order: keep FCS rosters and coaches through the rollover; build and test the 266-team executable; confirm the memory setting; catch a stall with the watcher.
+- **Phase 1f (2026-10-30, agent fcsp1f; section 3.7).** The off-season loss of FCS players is traced to the CPU roster-cut step and fixed for FCS schools that still have a coach. The 266-team test build is built and creates a full Dynasty. Next, in order:
+  1. find out why the second season does not advance past week 1;
+  2. fill FCS coaching jobs in the off-season;
+  3. refill FCS rosters with recruits or walk-ons;
+  4. grow the memory pool that runs out at the first 266-team advance;
+  5. then a full 266-team season and rollover.
