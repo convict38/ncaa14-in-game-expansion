@@ -77,7 +77,12 @@ The 5 generic FCS rows (TGID 160-164) are retired: real FCS teams take their pla
   - 0x176d714 `TEAM where TGID <= ? and TVIS = ? and TTYP = ? order by TORD`;
   - 0x176d784 (the same without TVIS);
   - 0x176d81c `count(*) ... TTYP = ?`.
-- They feed the FBS index/count globals 0x1c8691c / **0x1c86922 (u16)**. Changing `TTYP = ?` to `TTYP <= ?`, and binding 1, makes the index FBS (TORD 0-137) followed by FCS (138-265). This needs new strings in code room and 2 words per string to repoint lis/addi (confirmed: query shapes; likely: binding site).
+- They feed the FBS index/count globals 0x1c8691c / **0x1c86922 (u16)**. Changing `TTYP = ?` to `TTYP <= ?`, and binding 1, makes the index FBS (TORD 0-137) followed by FCS (138-265). This needs new strings in code room and 2 words per string to repoint lis/addi.
+- **Binding sites (confirmed, decompile `f474260.c`):**
+  - The active count is `0x176d81c` bound as `(TGID <= 0x3ee, TTYP = 0)`, a literal 0 argument in `league_index_init` 0x474260. One `li` word changes to 1.
+  - The list fill is `league_index_fill` 0x473df8(TVIS flag), which binds TTYP for 0x176d714/0x176d784. Its `li` site is read in the next batch.
+  - The all-team count is `0x176d7e4` (`TGID <= 0x3ee`, no TTYP).
+- **Both index arrays are heap-allocated by count:** (count + 4) x 12 + 8 bytes from the `COMMON_LEAGUE_MANAGEMENT_MODULE` allocator. So the index itself scales to 266+ with no reserve. Only its consumers' fixed arrays need the 288 reserve.
 - Every consumer of that index that is roster-level then covers FCS:
   - RecruitMan and its boards and preferences;
   - pitches, TV exposure and pro potential;
@@ -108,7 +113,7 @@ Queries in roster-level owners that bind TTYP and must **include** FCS:
 - 0x4810a0 (transfer requests), 0x484508, 0x493928 (next to the training pass 0x4934c8), 0x47c190, 0x4ea13c / 0x4ea520, 0x4cb680, 0x4f9018, 0x4f2480;
 - the coach carousel 0x4d28a8 (`TTYP != ?`, `max(TORD) where TTYP != ?`, `LEAG ... TTYP = ? order by TDNA`).
 
-Each one is checked in Phase 1 (decompile batch queued, see 5) and either rebound to "<= 1" or given a second call. Dynasty creation runs `dynasty_create_nonfbs_coach_cleanup` 0x4f5be8, which deletes coaches of a TTYP list (0x178a560 / 0x178a5e8, 5-7 bound values). TTYP 1 must be taken out of that list, or FCS teams lose their coaches.
+Each one is checked in Phase 1 (decompile batch queued, see 5) and either rebound to "<= 1" or given a second call. Dynasty creation runs `dynasty_create_nonfbs_coach_cleanup` 0x4f5be8. The decompile (`analysis/mapping-cfbr-fcs-universe/f4f5be8.c`, 2026-10-30) shows it binds **TTYP 2, 3, 4** (query 0x178a5e8, or 0x178a560 when the hook at `*0x1c85dbc` returns nonzero), then deletes those teams' coaches with 0x178a688. **TTYP 1 is not in the list**, so this function does not strip FCS coaches. The study's "FCS coaches moved to TGID 1023" happens elsewhere, or because the roster file has none (likely the latter: it ships 0 FCS coaches). T0.3 confirms that coaches given to a TTYP-1 team in the roster survive Dynasty creation.
 
 ### 1.4 Runtime services (PC port only)
 
@@ -470,7 +475,7 @@ Effort: about 51-85 agent-days (10-16 weeks at 5 agent-days a week). The critica
   3. Give a manual GRANT (max_min 90) for T0.1/T0.2 on a copied profile.
   4. Expected: a new Dynasty's USR-DATA is 16,666,624 bytes and reloads. An old 8.27 MB save is expected to fail its check under this build: use it only to confirm the failure mode, never on the user's saves.
 - **Next for this workstream:**
-  1. Read the batch output when it exists. 0x474260 gives the TTYP binding site for the three strings; 0x4f5be8 gives the TTYP list.
+  1. Batch output exists (`analysis/mapping-cfbr-fcs-universe/`, 15 functions, 2026-10-30). 0x474260 and 0x4f5be8 are read and folded into 1.2/1.3. Still to read: 0x4cbab0 (BCS: does it use the index count?), 0x4cee28 (poll pass: how TTYP is bound, for the second call), the u8-loop functions (0x4ac5c0 ... 0x504cb0, to confirm counter-only use), 0x45cebc/0x4740a8 (LGID-1 standings) and 0x12f7d0. Then decompile 0x473df8 for the fill's TTYP `li`.
   2. Build the T0.3 one-team test roster and string repoints (`build_fcs_universe_p0.py` part C).
   3. Write the Phase 1 classifier for the 115 index consumers.
 - **Environment:** the run queue was busy all session (GRANT tcvalidate, 3 pending). C: had 63 GB free.
