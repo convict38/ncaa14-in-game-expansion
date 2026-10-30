@@ -23,6 +23,29 @@ This was done in a separate PC-port test build. Nothing changed for players: the
 
 Details: [FBS+FCS universe plan](docs/modding/fbs-fcs-universe-plan.md), section 3.5.
 
+## 2026-10-30 (mid-morning) - Where contact plays lose game speed
+
+PC port. No game code, data or images are published. Nothing changed for players: the game build stays the same as the previous entries.
+
+**Question.** In heavy contact (pile-ups) the game clock runs at about 0.5 to 0.8 of real time. Each simulation tick spends about half its time waiting for about 26 animation jobs on the five helper processors. Is the port slow to hand those jobs out, or is it the game's own job order?
+
+**How it was measured.** A test build recorded, inside the game, when every helper job started and ended, on which helper processor and on which PC core.
+
+**What it showed.**
+- **The port hands out jobs quickly.** When an animation job started, 84% of the time no other helper processor was sitting idle. When work was queued, the gap between one job ending and the next starting was about 30 microseconds.
+- **The waiting comes from the game's job order and from how long each job takes.** Each tick has one big batch of about 20 animation jobs. Most of the idle helper time is either the end of that batch (nothing left to run) or jobs waiting for an earlier job to finish.
+- **The PC's slower cores are not the problem.** About 45% of animation jobs started on the CPU's efficiency cores, and they ran as fast as on the performance cores.
+- **The simulation thread itself** spends about three quarters of its own time in the game's translated code and a quarter in the port's helpers. It never waits on locks. Its only waste is that a short 50-microsecond sleep in its job wait really lasts about half a millisecond.
+- Some earlier helper "busy" numbers were overstated, because the old outside measurement missed the end of most animation jobs.
+
+**Two fixes tried, neither kept.**
+1. Idle helper processors pause politely instead of spinning at full speed.
+2. The simulation wakes the moment its job finishes, instead of on the next timer tick.
+
+Over three pile-up test sessions, neither raised game speed. Both came out slightly lower, by 0.04 and 0.05 of real time, which is within the noise (plus or minus about 0.03). The second fix made the worst frame times about 15 ms better, but that is not enough to make it the default while game speed may be lower. The test build was removed again.
+
+**Next.** The remaining levers are the cost of each animation job itself, a sixth helper processor (a change to the game's own setup), and the very frequent locking of the shared job list by the render and simulation threads.
+
 ## 2026-10-30 (morning) - Faster code checks tried for contact plays, withdrawn
 
 PC port. No game code, data or images are published. Nothing changed for players: the game build stays the same as the previous entry.
