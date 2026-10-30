@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-10-30 (late morning) - FBS+FCS universe: the autosave stall pinned down, a first season rollover, the full FCS list
+
+This was done in separate PC-port test builds. Nothing changed for players: the normal game executable and saves are untouched. No game code, data or images are published.
+
+**What happened.**
+- **The end-of-season "autosave in progress" stall.** It is narrowed to one step. The game sets aside the memory for the save but never starts writing it. There is no error and no crash. Eleven more test saves from the same starting point all worked, so it is rare and the cause is still open. A watcher now records where every game thread is waiting if a save hangs, so the next one will show the cause. It has only been seen in the FCS test builds so far. If it ever shows up in normal play, quit and load the last autosave; that save is intact.
+- **Database memory is now a setting** in the test build (default +16 MB, the size the full 266-team universe needs). It is built but not yet run.
+- **First season rollover with FCS teams.** A test Dynasty went through the whole off-season into 2027 and played five weeks, and the schedule clean-up worked for the new season too. The problem it found: the rollover deletes every FCS player, and the coaching carousel hires most FCS coaches away. Fixing that is now first on the list.
+- **All 128 FCS programs.** A list of the real 2026 FCS schools and conferences (compiled from public sources) and a test data pack with generated FCS-level rosters, real conferences and tables sized for 266 teams.
+- **The 288-team reserve.** The code changes for 266 active teams are prepared and checked offline. Two more spots that count teams in a single byte were found and fixed. The test executable is not built yet: the PC ran out of disk space during the compile.
+- **Staged, not built:** FCS players are left out of the national stat-leader lists, and a last fallback for crowded schedule weeks.
+
+Details: [FBS+FCS universe plan](docs/modding/fbs-fcs-universe-plan.md), section 3.6.
+
 ## 2026-10-30 (morning, later) - FBS+FCS universe: bigger stat tables work, cleaner FCS schedules, a full season
 
 This was done in a separate PC-port test build. Nothing changed for players: the normal game executable and saves are untouched. No game code, data or images are published.
