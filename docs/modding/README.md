@@ -22,6 +22,7 @@ Most early notes were made on STOCK. Each file says which space its addresses us
 | [05-pc-port-hook-design.md](05-pc-port-hook-design.md) | Design sketch for a source-level mod-hook interface on the native PC build |
 | [06-appendices.md](06-appendices.md) | Archives a modder needs, community mods and licensing, ps3recomp facts, open items |
 | [fcs-league-feasibility.md](fcs-league-feasibility.md) | FCS as a second Dynasty league: team-count limits, designs, schedule/playoff changes, UI impact, phased plan |
+| [fbs-fcs-universe-plan.md](fbs-fcs-universe-plan.md) | Full FBS+FCS universe with rostered FCS (about 266 teams): every limit with its sites and fix, architecture (active set TTYP <= 1, per-league ranks), save-size and u8-loop Phase 0 patches, phased plan |
 
 ## Honesty rules
 
