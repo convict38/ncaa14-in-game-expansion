@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-30 (morning) - Faster code checks tried for contact plays, withdrawn
+
+PC port. No game code, data or images are published. Nothing changed for players: the game build stays the same as the previous entry.
+
+**What was tried.** When the game's SPU helper programs run as translated native code, the port keeps checking that the code in memory still matches the translation before it jumps into it. Profiles of pile-up plays showed this checking was about 15% of the helper processors' time. The cache that remembers "this code was already checked" was being thrown away on every memory transfer, even when the transfer only moved data. The test build kept the cache until a transfer actually wrote over code it depended on. It also skipped a slow lookup that ran on every transfer.
+
+**Result.** The checks themselves got much cheaper: about 9 in 10 became a single table lookup, and a built-in self-check found no wrong answers in about a billion checks. Game speed did not improve. Over two clean pile-up test sessions, game speed with the change was within 0.01 to 0.04 of real time of the speed without it. That is well inside the noise, and frame rate was about the same.
+
+**Why it was withdrawn.** In 2 of 7 test games with this build, one helper processor stopped with an error type never seen before, and the game froze. One of the two freezes happened while the new checks were switched off. That points at another part of the test build, a larger lookup cache that was always on, or at a timing change. The previous build had about 15 clean test games in a row, so the change was taken out and the previous build was put back. Game speed in heavy contact is still about 0.5 to 0.8 of real time.
+
+**Next.** The remaining options are smaller or riskier. Translating more of the animation helper code is worth at most about 1% of helper time. Trimming the main simulation thread's overhead is worth about 1-2% of its time. A sixth helper processor is a bigger change to the game's own setup and is only proposed for now.
+
 ## 2026-10-30 (morning) - FBS+FCS universe: FCS teams play with their real rosters
 
 This was done in a separate PC-port test build. Nothing changed for players: the normal game executable and saves are untouched. No game code, data or images are published.
