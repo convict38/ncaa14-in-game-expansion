@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-29 (late night) - Table capacity patch tested on a copy
+
+PC port. No game code, data or images are published. Status: tested on an isolated copy; not installed in Play_PC (it needs a new Dynasty, which is the user's decision).
+
+**What was tested.** The four per-season tables that overflow with 138 teams (team-week schedule, and three per-game stat tables) were given more room in the Dynasty template. A new Dynasty started from the patched template inherited the new sizes, the save stayed the same file size, reloaded cleanly and ran a full regular season. By the bowl stage the team-week schedule held rows for all 138 teams (the unpatched game keeps 60) and no played postseason game was missing stat rows.
+
+**Not proven yet.** The national championship game's stat rows, and a second season: the game resets those tables in the same step that plays the last playoff week, so a save of that moment needs a team that is in the playoff. A few playoff-round team-week rows are still missing for a reason that is not table size.
+
 ## 2026-10-29 (night) - Bracket and Key Bindings pages installed in Play_PC
 
 PC port. No game code, data or images are published. Status: installed; checked in game on copies of saves.
