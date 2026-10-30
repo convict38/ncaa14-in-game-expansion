@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-29 (night) - Full keyboard rebinding
+
+PC port. No game code, data or images are published.
+
+**What changed.** Every pad control can now be bound to any key: all 16 buttons plus the eight stick directions (left and right stick). Add a `[keys]` section to settings.ini with one `control = KEY` line per control, or `KEY+KEY2` for two keys. Mouse buttons (`MOUSE1` to `MOUSE5`) work too, and so do more key names (Insert, Home, Page Up, the numpad operators, punctuation spelled out as words and so on). Esc still quits the game and cannot be bound. Anything missing or misspelled falls back to the chosen layout (classic or WASD) and the log says which line was ignored. With no `[keys]` section the keyboard behaves exactly as before.
+
+**For the in-game page.** A small command area in the page's settings block lets the menu set, clear or reset one binding, or ask the game to take the next key you press ("press a key"). The key you press is held back from the game while it is captured, the change is written as a single line of the `[keys]` section (other lines and comments stay), and it applies at once. The interface is documented in the project notes. The menu rows themselves are the UI work still to come.
+
+**How it was checked.** In two test games with simulated key presses: all 24 default controls matched the old layout, bad lines were ignored, and set, press-a-key, mouse button, clear, reset, switching layout and reset-all each changed the input as expected and rewrote only the right line. A restart then picked the saved bindings back up (73 checks, 0 failures). Saves were unchanged.
+
 ## 2026-10-29 (late night) - Table capacity patch tested on a copy
 
 PC port. No game code, data or images are published. Status: tested on an isolated copy; not installed in Play_PC (it needs a new Dynasty, which is the user's decision).
