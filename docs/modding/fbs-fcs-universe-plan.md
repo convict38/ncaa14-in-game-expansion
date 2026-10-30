@@ -45,37 +45,14 @@ Evidence for this pass (all static; no game was launched):
 | Sim time | Measure, then accelerate the hot TDB cursor scans natively in the runtime | Phase 7 |
 | UI | League toggle on stock Top 25 / standings / team pickers (binding TTYP or LGID 1); FCS bracket page via the UI pipeline | Phase 6 |
 
-**Phase 0 result (this session, offline):** two code patches are staged with preimage gates against the pinned ELF. Both are rebuildable and refuse to overwrite a differing output. Builder: `scripts/build_fcs_universe_p0.py`. Results: `patches/fcs-universe-p0/checks.json` (all 29 checks pass).
-- The save-size patch proves the size is a code constant at exactly 17 instructions. No other `lis rX,0x7e` exists in the executable's text.
-- Neither patch is runtime tested. The run queue was busy the whole session (a 50-minute GRANT held and 3 requests pending), and the save patch needs a rebuild of the modded ELF.
+**Phase 0 result (offline, first session):** two code patches are staged with preimage gates against the pinned ELF. Both are rebuildable and refuse to overwrite a differing output. Builder: `scripts/build_fcs_universe_p0.py`. Results: `patches/fcs-universe-p0/checks.json` (all 29 checks pass).
+
+**Phase 0 runtime result (2026-10-29 22:53-23:25, one GRANT, separate exe; details in section 3.1): T0.1 PASS, T0.2 PASS (tight), T0.3 PASS with findings.**
+- A new Dynasty saves a 16,666,624-byte USR-DATA (HED-DATA[0] = 0xFE52E8) and reloads, before and after a simulated week.
+- The save buffer is not in a game heap. It sits in a transient 16 MB block that the game takes from memory container 1 for every save and load. At S = 0xFE5000 that block has 107,200 bytes to spare, so S cannot grow further without the fallback.
+- A TGID-300 rostered TTYP-1 team enters the active index (count 139, then 144 once Dynasty creation makes the 5 generic FCS rows visible), survives a week and a reload, and its players get the weekly player update. Dynasty creation strips its coaches and depth chart.
 
 **Effort:** about 50-80 agent-days (10-16 weeks) to a complete, validated universe. Section 4 has the breakdown.
-
-**Phase 0 runtime result (2026-10-29, tested on the PC port with a separate test executable; the normal Play_PC executable was not changed).**
-
-- **T0.1, save size: pass.**
-  - A new Dynasty saves a 16,666,624-byte USR-DATA (HED-DATA[0] = 0xFE52E8).
-  - The Dynasty-creation autosave and a menu save are byte-identical.
-  - A cold restart loads the save back to the same hub.
-  - Saving again after the reload changes only two TEAM fields (NCDP and INPO, which the game recomputes on load), one TSSE header word and the header hash.
-- **T0.2, buffer location: pass, with almost no spare room.**
-  - The save and load buffer does not come from a game heap. The two allocation sites read statically (0x335738 and 0x336164) never ran.
-  - The game takes a 16 MB block from memory container 1 around every save and load (guest 0x4A100000; USR-DATA buffer at 0x4A100D40).
-  - At S = 0xFE5000 the block has 107,200 bytes spare. S therefore cannot grow further unless that container request is enlarged or redirected to a mod arena.
-  - The measured database is 3.7 MB at Dynasty creation and 7.0 MB after week 1, well inside S.
-- **T0.3, one rostered FCS team: pass, with findings.**
-  - The team is a test team at TGID 300 (TTYP 1, visible, a Big Sky conference row, 69 players, depth chart, 3 coaches), added to a test roster and served read-only.
-  - The three league-index queries were switched to `TTYP <= 1`.
-  - The active index grows to 139 with the roster loaded. It reaches 144 after Dynasty creation, which makes the 5 generic FCS rows visible, so they enter too.
-  - The Dynasty created, simulated a week and reloaded without a fault, and FBS stayed at 138.
-  - The team kept its 69 players, and the weekly player update reached them.
-  - Dynasty creation detached its coaches and deleted its depth chart, as it does for the generic FCS rows.
-  - It had no games, because season-one schedules are presets.
-- **Phase 1 follow-ups:**
-  - retire or remap the generic FCS rows;
-  - exempt TTYP 1 from the coach and depth-chart cleanup;
-  - add schedule rows for FCS teams;
-  - locate the 16 MB container request and the save serialiser that really runs.
 
 ## 1. Architecture
 
@@ -245,11 +222,17 @@ No field widening is required by this design.
 
 **The HLE does not cap it** (confirmed, HLE). `process_file_op` in `cellSaveData.c` writes `min(fileSize, fileBufSize)` bytes and reads the same. The stat callback sizeKB is informational, and the HLE ignores free space.
 
-**Buffer storage class** (closes MODDING_REFERENCE gap 5.23):
-- The buffer is heap memory.
-- Both functions get the allocator from the singleton `*0x1C829C8` (getter 0x3f2240), select a sub-heap via 0x3f3790, and call its vtable allocate with S+0x260.
-- Growing S doubles a transient allocation (8 MB to 16.7 MB) during save and load. Phase 0 measures whether that heap has the room.
-- Fallback: a cave replaces the two vtable calls with a mod-arena allocation (4 words each).
+**Buffer storage class** (closes MODDING_REFERENCE gap 5.23; corrected by the Phase 0 runtime test):
+- Static reading: 0x335738 and 0x336164 get the allocator from the singleton `*0x1C829C8` (getter 0x3f2240), select a sub-heap via 0x3f3790, and call its vtable allocate with S+0x260.
+- **Runtime (T0.2, confirmed):** neither function ran during Dynasty creation, a menu save or a Dynasty load. Diagnostic probes after both vtable allocations never fired.
+  - The buffer the save utility receives is at guest 0x4A100D40 (USR-DATA) and 0x4A100A40 (HED-DATA), with fileBufSize = 16,666,624.
+  - That address lies in a 16 MB block (0x4A100000-0x4B100000) that the game takes with `sys_memory_allocate_from_container(0x1000000, cid 1)` around every save and load and frees afterwards.
+  - The USR-DATA buffer ends at 0x4B0E5D40, leaving **0x1A2C0 = 107,200 bytes** in that block. The stock 8.27 MB save used half of it.
+  - The 17 `lis` words still set the size: the slot descriptor (0x3b0cb0) and the serialiser that actually runs read them. The file is 16,666,624 bytes and the payload hash verifies on reload.
+- So S = 0xFE5000 is the largest size that fits without more work. The 25 MB option (0x17E5000) needs one of these:
+  1. a larger container request (the 0x1000000 constant and the container size); or
+  2. the fallback: the container-backed buffer is replaced by a mod-arena allocation in the runtime.
+- Locating the caller that requests the 16 MB block (and the serialiser that really runs) is a Phase 1 item. The old fallback note (a cave over the two vtable calls) does not apply, because those calls are not on the live path.
 
 **Old saves.** An 8,278,016-byte file is shorter than the new fileSize. The game would read it partially, and its FNV check would most likely fail (likely; not yet observed). The universe needs a new Dynasty anyway (template capacities are fixed per save), so this matters only for keeping the user's current saves alive. Option: a migration tool (zero-pad USR-DATA to S, update HED-DATA[0], recompute the hash) once Phase 0 pins the hashed byte range.
 
@@ -378,6 +361,74 @@ Each milestone runs on save copies in an isolated folder through the run queue (
 
 Total: about 51-85 agent-days. Release and installer work comes after this, per the project priority.
 
+### 3.1 Phase 0 runtime results (2026-10-29, agent fcsp0)
+
+**Build: a separate exe, never the Play_PC exe.**
+- Stage = the current `...-rec26-uiset` EBOOT (`vfs/.../EBOOT.elf`, sha256 3f494c77...) plus `save-grow-v0` and `u8-loops-v0`. That is 28 words, all preimage-checked.
+  - The overlay is built by `tools/ps3recomp-lane-e/work-fcsp0/mkelf.py`, which gives `work-fcsp0/elf/EBOOT.elf` (sha256 ce5374f9...).
+  - It is not added as a named stage in `cfbr_real2026_runtime_v28.py`, because the fcs-universe manifests do not use the installer's pin format.
+- The lift (into `work-fcsp0/recomp`) differs from the shipped lift in exactly 3 chunks:
+  - 001: 17 `0x7E -> 0xFE` immediates;
+  - 011: 9 immediates (the live save entry 0x336164);
+  - 002: 11 `rlwinm 24 -> 16`.
+- Those 3 chunks were compiled with the game_project flags, plus diagnostics that only this exe has:
+  - `[FCSP0]` heap probes after the two vtable allocations;
+  - an active-index log at the end of `league_index_fill`;
+  - `FCSP0_TTYP1=1` env-gated binds of the three league-index TTYP values;
+  - a copy of `cellSaveData.c` that logs the guest file-buffer address.
+- They were linked with the build-86 objects into `work-fcsp0/bin/MyGameRecomp_fcsp0.exe` (final sha256 9cd1f2b3...).
+- `game_project/build/MyGameRecomp.exe` stayed at build 86 (2c39f32b1f99...) throughout. Play_PC never sees the fcsp0 exe.
+- Launcher: `work-fcsp0/run_fcs.ps1`. It uses its own exe, an isolated cwd (it refuses cwd_e and play_e), `-Elf`, and `-Boot`, which serves a test `qkl_boot.ast` through a read-only overlay rule.
+
+**T0.1: PASS.** Runs `fcsp0-t01a` and `t01b`; cwd `work-fcsp0/cwd/t01`, which starts with only a profile copy.
+- Ran New Dynasty (Sam Houston HC) to the Pre-Season 2026 hub. Shots `runs/fcsp0-t01a/shots/a4..b3`.
+- Dynasty creation autosaved, and a menu save followed.
+  - Both saves: USR-DATA 16,666,624 B, HED-DATA[0] 0xFE52E8.
+  - HLE log: `file op=1 name='USR-DATA' size=16666624 buf=16666624`.
+  - The autosave and the menu save are byte-identical.
+- A cold relaunch loaded the save to the same hub (`runs/fcsp0-t01b/shots/c4`).
+- Saving again after the reload changed 275 bytes:
+  - TEAM.NCDP on all 143 rows and TEAM.INPO on 128 rows, both recomputed on load;
+  - the TSSE header;
+  - the HED-DATA hash.
+  - No other table changed.
+- Copies: `work-fcsp0/save_t01_auto`, `save_t01_menu`, `save_t01_reload`.
+
+**T0.2: PASS, but with almost no headroom.**
+- The save and load buffer is in a transient 16 MB container block. It is not in a game heap; the two static allocation sites never ran. Section 2.2 has the addresses.
+- Headroom at S = 0xFE5000 is 107,200 bytes.
+- Fallback decision:
+  - Not needed at this S.
+  - Required before any larger S (the plan's 25 MB contingency).
+  - Required if the universe DB ever exceeds about 16.6 MB, which is unlikely: the measured TDB is 3.7 MB at creation and 7.0 MB after week 1.
+- The fallback design changes: the vtable cave is replaced by a runtime-side redirect of that container request (Phase 1, once its caller is located).
+
+**T0.3: PASS, with findings.** Runs `fcsp0-t03a` and `t03b`; cwd `work-fcsp0/cwd/t03`.
+- Test BOOT: `work-fcsp0/t03/build_t03_boot.py`, 32 checks passed.
+  - Roster 355 gains TGID 300 "FCS Test", cloned from Navy 57: TTYP 1, TVIS 1, CGID 19 (Big Sky, LGID 1), DGID 30, TORD 138.
+  - It also gains 69 PLAY rows (PGID 21000-21068), 88 DCHT rows, 3 COCH rows (CCID 710-712) and 3 CSKL rows.
+  - Capacities: TEAM 154, DCHT 12232, COCH 442, CSKL 417.
+- ELF `elf/EBOOT_t03.elf`: the three league-index queries read `'PYTT'<= ?` instead of `'PYTT' = ?` (same length, data only). Run with `FCSP0_TTYP1=1`.
+- Active index:
+  - `act_n=139` while the roster is loaded;
+  - `act_n=144` after Dynasty creation, because Dynasty creation sets TVIS 1 on the 5 generic FCS rows (TGID 160-164), so they enter too.
+  - FBS TTYP-0 rows stay at 138.
+- The Dynasty created normally. Advance to Regular Season, then Week 1, then Week 2 (Sam Houston 0-1) ran without a fault. The save was 16,666,624 B. A cold reload landed on the Week 2 hub with `act_n=144` (`runs/fcsp0-t03b/shots/f3`).
+- Team 300 in the saves:
+  - all 69 players kept;
+  - PPRI was updated by the weekly pass for 44 players, the same count as Navy, so roster-level weekly code covers it;
+  - **0 coaches**: CCIDs 710-712 are kept but detached by `dynasty_create_nonfbs_coach_cleanup`, as predicted in 1.3;
+  - **0 DCHT rows**, deleted in the same way as for the generic FCS rows;
+  - TROV recomputed to 0, presumably because it has no depth chart;
+  - no games, because the season-0 schedules are presets, so there are no stats yet.
+- Not checked in one week: the CFP and BCS pool, which is only computed later in the season.
+
+**Consequences for Phase 1:**
+1. Retire or remap the 5 generic FCS rows before widening to TTYP <= 1. Otherwise rosterless teams enter the active index (144 instead of 139).
+2. Take TTYP 1 out of the coach-cleanup list (0x178a560 / 0x178a5e8), and find the DCHT purge for non-FBS teams.
+3. FCS teams need schedule rows (the Phase 3 cave) before progression and stats can be validated.
+4. Locate the 16 MB container request and the real save serialiser. Neither 0x335738 nor 0x336164 is on the live path.
+
 ## 4. Risks and effort
 
 | Risk | Likelihood | Mitigation |
@@ -385,7 +436,7 @@ Total: about 51-85 agent-days. Release and installer work comes after this, per 
 | A roster-level system uses TTYP 0 internally and silently skips FCS (progression, graduation, draft) | medium | Phase 0 T0.3 checks one rostered FCS team; Phase 1 owner review of every TTYP-bound query (`ttyp-owners.txt`) |
 | An index consumer misclassified (1A-only vs league-wide), e.g. FCS teams entering the BCS | medium | byte-compare of BCS/CFP pools against an FBS-only control on the same seed (Phase 1 exit) |
 | Hidden u8 team index in RecruitMan records (0x4c11e0, 0x4c23e0) | medium | Phase 1 decompile review; grow records as activeN did for CFBR's 12-byte first array |
-| Dynasty heap cannot take a 16.7 MB save buffer | medium | mod-arena allocation for the two save calls (8 words) |
+| Save buffer outgrows its 16 MB container block (T0.2: 107,200 B spare at S = 0xFE5000) | low at this S, certain for any larger S | keep S = 0xFE5000; for more, redirect the container request to the mod arena (runtime) |
 | BDEF near the u16 row cap (59k of 65,535) | low-medium | trim the margin; FCS games log fewer defenders; Phase 8 watches it |
 | Week time over target | medium-high | Phase 7 native acceleration; the FCS quick-result option |
 | Generator or UI list widgets with fixed capacities not yet seen | medium | Phase 6 probes per screen; fixes in the UI pipeline |
@@ -401,7 +452,7 @@ Effort: about 51-85 agent-days (10-16 weeks at 5 agent-days a week). The critica
 - Phase 0 builder: `scripts/build_fcs_universe_p0.py [--hi 0xFE] [--dry-run]`.
   - Outputs: `patches/fcs-universe-p0/save-grow-v0/{patch.yml,manifest.json}`, `u8-loops-v0/{patch.yml,manifest.json}`, `checks.json`.
   - None of the 28 addresses overlaps any existing patch in `patches/` or the installed `runtime/patches/patch.yml`.
-- Queued decompile batch: `scripts/wait_idle_decomp.sh analysis/mapping-cfbr-fcs-universe` with 474260, 4f5be8, 4cee28, 12f7d0, 4ac5c0, 4b0ac8, 4bab40, 4bee10, 4edf10, 504cb0, 4adeb0, 4c0ed4, 45cebc, 4740a8 and 4cbab0. Log: `analysis/batch-fcs-universe.log`.
+- Queued decompile batch: `scripts/wait_idle_decomp.sh analysis/mapping-cfbr-fcs-universe "f474260:474260,f4f5be8:4f5be8,..."` with 474260, 4f5be8, 4cee28, 12f7d0, 4ac5c0, 4b0ac8, 4bab40, 4bee10, 4edf10, 504cb0, 4adeb0, 4c0ed4, 45cebc, 4740a8 and 4cbab0. Log: `analysis/batch-fcs-universe.log`. **The spec must be `tag:addr` pairs.** Bare addresses are rejected by `run_cfbr_ghidra_decomp.ps1` ("Invalid spec"), with no output. That is why the earlier `mapping-cfbr-fcs` batch never produced anything.
 
 ## 6. Handoff
 
@@ -423,3 +474,9 @@ Effort: about 51-85 agent-days (10-16 weeks at 5 agent-days a week). The critica
   2. Build the T0.3 one-team test roster and string repoints (`build_fcs_universe_p0.py` part C).
   3. Write the Phase 1 classifier for the 115 index consumers.
 - **Environment:** the run queue was busy all session (GRANT tcvalidate, 3 pending). C: had 63 GB free.
+- **Phase 0 runtime done (2026-10-29 23:25, agent fcsp0; section 3.1).** T0.1-T0.3 pass. The workspace is `tools/ps3recomp-lane-e/work-fcsp0/`:
+  - scripts: `mkelf.py`, `mkelf_t03.py`, `probe_src.py`, `probe_idx.py`, `mkhle.py`, `mkcc.py`, `mklink.py`, `cc*.bat`, `link.bat`, `run_fcs.ps1`, `stop_fcs.ps1`, `chksave.py`, `t03/build_t03_boot.py`;
+  - save copies `save_t01_*` and `save_t03_*`.
+  - The 12 unchanged lift chunks were pruned (logged in `PRUNED.json`).
+  - To relink after a new main build: recompile nothing, just run `link.bat` (it links the current game_project objects plus the 4 fcsp0 objects). Do this only while the main tree is still the build that the fcsp0 chunks were lifted from (uiset ELF 3f494c77...).
+  - **Next:** the Phase 1 items in 3.1, starting with the generic FCS retirement and the coach and depth-chart purge list.
