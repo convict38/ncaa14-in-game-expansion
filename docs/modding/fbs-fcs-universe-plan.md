@@ -551,6 +551,18 @@ Separate test executables only, in isolated test folders. The normal game execut
 | Recruiting with 266 schools | **Needs work.** The yearly recruit class is a fixed 2,710 prospects, so with 266 schools each school signs fewer players (FBS about 19, FCS about 13.5; with 150 schools about 25-27). Some rosters drop into the low 50s after the first off-season. Next: scale the class size with the number of schools. |
 | FCS title games and playoff | **Designed, not in the game yet.** Real rules: of the FCS conferences only the SWAC plays a title game; the SWAC and MEAC champions meet in the Celebration Bowl; the Ivy League stays home; the playoff has 24 teams (10 automatic bids, 14 at-large, the top 8 seeded with a first-round bye; 23 games). A reference model picks the field from a save's standings and plays the bracket from team ratings. The plan: first write results at the end of the season (no played games, no risk to the bowl system), later play the games, starting with the SWAC title game. |
 
+### 3.10 Phase 1i: the 266-team Dynasty into its second season, recruit classes scaled, FCS postseason results (2026-10-31, agent fcsp1i)
+
+Separate test executables only, in isolated test folders. The normal game executable, the play build and saves were not touched.
+
+| Goal | Result |
+|---|---|
+| Coaches lost at the 266-team rollover | **Found and fixed.** The end-of-season contract step collects every coaching contract into a list with room for 768. The 266-school league had 798 contracts, and the 30 left off the list were exactly the three contracts of each of the 10 schools that lost their staffs, so those contracts were never closed and no openings were posted. (The "266 minus 256" match was a coincidence.) The test build gives this list, and two similar lists in the off-season step, room for 2,048 contracts. A test Dynasty then ran from week 7 of 2026 through the bowls, the end of season, the off-season and the first three weeks of 2027: all 266 schools had three coaches, no stale contracts, clean schedules, and separate FBS and FCS stat leader lists. |
+| Recruit class size | **Scaled.** The class size is the recruit table's size minus 1,595 (stock: 2,710). The test data enlarges that table and the tables that grow with it (interest, visits, boards, players), for 5,900 prospects: about 25 per FBS school and 19 per FCS school. The recruit rank field holds at most 4,095, so the test build stops ranks there. The 2027 class in the test had 5,900 prospects. The realistic recruit names, looks and home states from the play build are merged into the test data. Rosters only change at the next rollover, which is still to run. |
+| FCS strength over a full season | **Measured.** FCS schools won 7 of 112 games against FBS schools (6.2 %) and scored 14.0 points against 38.1; the strength tiers stayed in order. Points match real FCS results; wins are below the 8-12 % target, so a version with the top two tiers slightly stronger is prepared. |
+| FCS postseason | **Results written at the end of the season.** The test build works out the SWAC title game, the Celebration Bowl and the 24-team FCS playoff from the season's games (results decided from team strength, not played). The champions go into the save's conference-champion history and the bracket into a side file for a later screen. Checked against the reference model: same conference champions and same field. |
+| New problem | With 266 schools the bowl and playoff selection picks wrong teams: a 3-9 team was placed in a playoff quarterfinal and 11 of 68 bowl spots went to teams with losing records. The final top 25 looks right. |
+
 ## 4. Risks and effort
 
 | Risk | Likelihood | Mitigation |
@@ -616,3 +628,8 @@ Effort: about 51-85 agent-days (10-16 weeks at 5 agent-days a week). The critica
   2. scale the recruit class with the number of schools;
   3. FCS postseason results at the end of the season, then a played SWAC title game;
   4. a screen for the FCS stat leaders.
+- **Phase 1i (2026-10-31, agent fcsp1i; section 3.10).** The coaches lost at the 266-team rollover came from a 768-contract list in the end-of-season step; it is enlarged and the 266-team Dynasty now plays into 2027 with full staffs everywhere. The recruit class grows to 5,900. A full season of FCS results is measured, and the FCS postseason is written at the end of the season. Next, in order:
+  1. fix the 266-team bowl and playoff selection;
+  2. a second full season and the move into 2028 (rosters with the bigger classes, FCS tiers);
+  3. a test season with slightly stronger top FCS tiers if wins stay below 8 %;
+  4. a played SWAC title game and screens for the FCS bracket and stat leaders.

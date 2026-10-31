@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-10-31 (early morning) - FBS+FCS universe: the 266-team Dynasty plays into its second season, bigger recruit classes, and FCS playoff results
+
+This was done in separate PC-port test builds. Nothing changed for players: the normal game executable, the play build and the saves are untouched. No game code, data or images are published.
+
+**What happened.**
+- **Why ten FBS schools lost their coaches.** At the end of the season the game goes through every coaching contract once, to age contracts, fire coaches and close finished contracts. It collects the contracts into a fixed list with room for 768. A 150-school league has fewer contracts than that; the 266-school league had 798. The last 30 on the list were the contracts of the 10 schools whose staffs went missing (Air Force through Auburn, plus Appalachian State), so their contracts were never closed and their jobs were never posted. The earlier guess (a counter that stops at 256) was wrong; the match was a coincidence.
+- **The fix.** The test build gives that list, and two similar lists in the off-season step, room for 2,048 contracts (more than the contract ids can number). In the test the 266-team Dynasty played the rest of the 2026 season, the bowls and playoff, the end of season, the whole off-season and the first three weeks of 2027. Every one of the 266 schools has a full staff of three coaches, no old contract was left open, every schedule was clean, and the FBS and FCS stat leader lists stayed separate.
+- **Bigger recruit classes.** The class size is not a fixed number in the game: it is the size of the recruit table minus 1,595, so the stock table gives 2,710 prospects. The test data makes the table bigger, which gives 5,900 prospects (about 25 per FBS school and 19 per FCS school), and grows the related tables for recruiting interest, visits, boards and players. The recruit rank is stored in 12 bits (at most 4,095), so the test build stops the rank at 4,095 instead of letting the weakest recruits wrap around to the top of the list. The 2027 class in the test had 5,900 prospects. The realistic names, looks and home states from the play build are part of the test data too.
+- **A full season of FCS results.** Over the whole 2026 regular season FCS schools won 7 of 112 games against FBS schools (6.2 %) and scored 14 points against 38. The stronger FCS tiers won more often than the weaker ones. Points are where real FCS teams are; wins are a bit low (real: about 1 in 10), so a slightly stronger top two tiers are prepared for the next test.
+- **FCS postseason results.** At the end of the season the test build now works out the FCS postseason from that season's games: the SWAC title game, the Celebration Bowl between the SWAC and MEAC champions, and the 24-team FCS playoff (10 conference champions plus 14 at-large teams, top 8 seeded with a bye, 23 games). The Ivy League champion is listed but stays home. The results are decided from team strength, not played out. The champions are stored in the save's conference-champion history, and the full bracket is written to a small file for a future screen. A check against the reference model gave the same conference champions and the same 24-team field. In the test season Villanova beat Central Arkansas in the final, and Bethune-Cookman won the SWAC title and the Celebration Bowl.
+
+**Still open.**
+- Bowl and playoff picks are wrong with 266 schools. The user's 3-9 team was put into a College Football Playoff quarterfinal, and several bowls had teams with losing records. The season's top 25 itself looks right, so the problem is in how bowl and playoff teams are picked. This is next.
+- The bigger recruit class first shows up on rosters after the 2027 season. A second full season and the move into 2028 are still to run.
+- The FCS playoff and title games are results only; playing them as real games and a screen to show them come later.
+
+Details: [FBS+FCS universe plan](docs/modding/fbs-fcs-universe-plan.md), section 3.10.
+
 ## 2026-10-30 (night) - More realistic recruits and bigger season tables, now in the PC play build
 
 Both changes were tested on copies of saves first and are now switched on in the PC-port play build. No game code, data or images are published; the changes are data edits made on the owner's copy of the game.
