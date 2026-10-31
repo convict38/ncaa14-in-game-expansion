@@ -1,5 +1,32 @@
 # Changelog
 
+## 2026-10-31 (midday) - FBS+FCS universe: the third season finished, why team ratings keep rising, and a fixed rating scale
+
+This changes only a separate PC-port test build. The normal game, its saves and its data are untouched. No game code, data or images are published.
+
+**What changed.**
+- **The 2028 season ran to the end, and the Dynasty moved into 2029.**
+  - **Bowl and title games.** The user's bowl game was played. The SWAC title game result was used for the SWAC champion and the Celebration Bowl, and it was stored in the conference champion history like every other conference.
+  - **FBS teams play enough FCS teams.** The 2029 schedule has **106** FBS-vs-FCS games, close to real life. To reach that, 4 early-season FBS-vs-FBS games were turned into FBS-vs-FCS games. The schedule is still clean: 12 games for every FBS team, 11-12 for every FCS team, and no team plays twice in one week.
+  - **Rosters are full.** With the bigger recruit class (6,700 players), every school starts 2029 with 59-70 players (only 3 FCS schools at 59, down from 13).
+  - **Coaching staffs are complete.** Every one of the 266 schools has its 3 coaches.
+- **Why team ratings rise every year.**
+  - **Player growth.** Every player improves about 4.4 points a year, at every level.
+  - **First-season rosters.** The players in the first-season rosters were too close in strength from freshman to senior. As those players get older, the starting line-ups get stronger for about four seasons. After that, the ratings level off: they do not keep growing for ever.
+  - **FCS recruits.** New FCS recruits arrive at about the same strength whatever the school's level, so over time the strongest and weakest FCS conferences would end up about equal.
+  - **What it is not.** It is not a bonus applied every year, not something that happens during a season, and not the walk-ons.
+- **A fixed rating scale (new, switchable).**
+  - The test build now keeps the team overall shown in the game on a fixed scale every season: FBS from 65 to 97, FCS from 45 to 72, which is the scale the user asked for.
+  - The order of the teams is unchanged; only the numbers are rescaled, and the four limits can be changed in one setting.
+  - In the 2029 test it worked as designed: FBS teams averaged 82, and the FCS levels averaged 67, 61, 59, 58 and 52.
+- **But the rescaled number does not change who wins.**
+  - The computer works out CPU-vs-CPU games from the players themselves, not from the team overall. In the first five weeks of 2029, FCS teams won 19 of 103 games against FBS teams (18 %), more than the real-life 8-12 %, because FCS players keep getting stronger.
+  - Keeping results realistic needs a change at the player level (for example, recruit strength that depends on the FCS school's level). That is the next step.
+- **New Dynasties get the bigger recruit class.** The data for a new Dynasty now has room for the 6,700-player class (built and checked, not yet played).
+- Every change has its own switch and can be turned off.
+
+**Still open.** A player-level fix so FCS teams stay at about 8-12 % wins against FBS over many seasons; the rest of the 2029 season; the final rating scale (the user decides); screens for the FCS playoff and FCS stat leaders.
+
 ## 2026-10-31 (late morning) - Super Sim tackle stats: cause found, fix tested in a separate test version
 
 The normal game executable, the play build and the saves are untouched. The fix exists only in a separate test version and is off unless switched on. No game code, data or images are published.

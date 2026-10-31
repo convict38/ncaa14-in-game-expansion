@@ -575,6 +575,30 @@ Separate test executables only, in isolated test folders. The normal game execut
 | FCS strength | 2027: 6 of 40 wins (15 %), 18 points vs 41. 2026 + 2027: 13 of 152 (8.6 %), inside the 8-12 % target; no data change yet. New problem: only 40 FBS-vs-FCS games in the 2027 schedule (2026: 112). |
 | SWAC title game as a played game | **Data alone does not work**: an unused title-game slot pointed at the SWAC, with East/West divisions, was not scheduled; the list of conferences with a title game is decided in code. Next: a small code step that adds the SWAC title game to conference championship week. |
 
+### 3.12 Phase 1k: FBS-vs-FCS games after season 1, a played SWAC title game, short rosters explained (2026-10-31, agent fcsp1k)
+
+Separate test executables only, in isolated test folders. The normal game executable, the play build and saves were not touched.
+
+| Goal | Result |
+|---|---|
+| Few FBS-vs-FCS games after season 1 | **Found.** Season 1 takes its non-conference games from the data (112 FBS-vs-FCS). From season 2 the generator's FCS filler, sized for the 5 stock placeholder FCS teams, aims for only 35-50 games, and about 48 FBS teams are already full when it runs. The test build aims it at 100-120 and tries more weeks, and caps FCS teams at 2 FBS opponents. 2028: **90** FBS-vs-FCS games (was 38), schedules clean. A quota top-up to about 105 is built (FCS25). |
+| FCS strength | 2028 regular season: FCS won 11 of 90 (12.2 %). Three seasons: 24 of 242 (9.9 %). |
+| SWAC title game | **Played.** A code step adds the SWAC East vs West winners to week 16, and the game is played with the other title games (Jackson State 41, Prairie View A&M 9). The FCS postseason step uses that result. |
+| Rosters below 60 | **The class is too small.** The 5,900-prospect class is fully signed while the league is at 98.6 % of its roster spots. A save step raises the class to 6,700. |
+| Rating scale | The shown team overall (TROV) starts season 1 on the user's scale but rises each year (FCS about 4-5, FBS about 2). |
+
+### 3.13 Phase 1l: the third season finished, rating drift explained, a fixed team-rating scale (2026-10-31, agent fcsp1l)
+
+Separate test executables only, in isolated test folders. The normal game executable, the play build and saves were not touched.
+
+| Goal | Result |
+|---|---|
+| Bowl 2028 to Pre-Season 2029 | **Runs.** The SWAC title game result feeds the FCS postseason and is written to the conference champion history. The quota step turned 4 week-1 FBS-vs-FBS games into FBS-vs-FCS games: **106** FBS-vs-FCS games, schedules clean (FBS 12, FCS 11-12, no double weeks). With the 6,700 class, rosters are FBS 62-70 and FCS 59-70 (3 at 59). Every school has 3 coaches. |
+| Why ratings rise | Players gain about 4.4 overall a year at every level. FCS recruits arrive at about 60 at every level. Season-1 rosters were too flat from freshman to senior, so starters climb for about four seasons and then level off (FBS about 84-86, every FCS tier about 70-72). No yearly bonus and no in-season change; a Pre-Season save still shows last season's team overall. The team overall is a fixed linear map of the starters (about 1.85 per point of starter overall). |
+| Fixed scale (FCS26) | In the team-rating step, each team's raw overall is mapped per league from that league's min/max to FBS 65-97 and FCS 45-72, and the other team ratings get the same shift. The order is kept, and the four limits are one setting. 2029 in the game: FBS mean 82, FCS tiers 67 / 61 / 59 / 58 / 52. |
+| Game results | **Not controlled by the team overall.** CPU-vs-CPU games are played from the players: FCS won 19 of 103 (18 %) in 2029 weeks 1-5 with the scale fixed. A player-level step is next (FCS recruit strength by tier, or a rollover rescale). |
+| New Dynasties | Test data with the 6,700 class built and checked (not played yet). |
+
 ## 4. Risks and effort
 
 | Risk | Likelihood | Mitigation |
@@ -645,3 +669,11 @@ Effort: about 51-85 agent-days (10-16 weeks at 5 agent-days a week). The critica
   2. a second full season and the move into 2028 (rosters with the bigger classes, FCS tiers);
   3. a test season with slightly stronger top FCS tiers if wins stay below 8 %;
   4. a played SWAC title game and screens for the FCS bracket and stat leaders.
+- **Phase 1j (2026-10-31, agent fcsp1j; section 3.11).** Bowl and playoff picks are correct with 266 schools; the Dynasty rolled into 2028. Next: FBS-vs-FCS game count after season 1, short rosters, the SWAC title game.
+- **Phase 1k (2026-10-31, agent fcsp1k; section 3.12).** About 90 FBS-vs-FCS games from season 2, a played SWAC title game, the recruit class raised to 6,700.
+- **Phase 1l (2026-10-31, agent fcsp1l; section 3.13).** 2028 finished into 2029 with 106 FBS-vs-FCS games, full rosters and staffs. Rating drift explained, and a fixed team-rating scale added. Next, in order:
+  1. a player-level step so FCS win rates stay at 8-12 % over many seasons (tier-dependent FCS recruit strength, or a rollover rescale);
+  2. the rest of 2029 and the 2030 rollover, measured per tier per year;
+  3. the final rating scale (user decision; one setting);
+  4. a new Dynasty with the 6,700-class data;
+  5. screens for the FCS playoff and stat leaders.
