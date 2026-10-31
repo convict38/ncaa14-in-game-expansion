@@ -1,5 +1,42 @@
 # Changelog
 
+## 2026-10-30 (night) - More realistic recruits and bigger season tables, now in the PC play build
+
+Both changes were tested on copies of saves first and are now switched on in the PC-port play build. No game code, data or images are published; the changes are data edits made on the owner's copy of the game.
+
+**What changed for players.**
+- **Recruit names, looks and home states are more realistic.** New recruit classes draw first names from what US boys born 2005-2008 were actually named, and last names from US Census surname data, so a class has about 800 different first names and 1,750 last names instead of about 500 and 800, and fewer 1990s-style "Mike, Chris, Matt" classes. The mix of player appearances by position follows a real current roster, and home states now follow where FBS signees really come from: Texas about 14 percent, Florida 11, Georgia 9, and California down from 11 to about 6 percent.
+- **Bigger season tables for new Dynasties.** The tables for the team-by-week schedule and for per-game offensive line, offensive and defensive stats are larger, so late-alphabet teams keep their bowl and playoff lines and the last postseason box scores are no longer cut off.
+
+**How it was checked.**
+- Both of the user's existing Dynasties loaded with the new data, advanced to week 2, saved and reloaded. Not one existing player changed name or appearance, and their stats were written normally.
+- In both existing Dynasties and in a new one, the new recruit class used the new name lists (about 1,100 first names and 1,500 last names that only exist in the new lists, none that only exist in the old ones), with the planned appearance and home-state mix.
+- A finding along the way: a loaded Dynasty and a new Dynasty read the recruit lists from two different game archives, so both are updated.
+
+**Good to know.**
+- The bigger tables only apply to Dynasties started from now on. Existing Dynasties keep working with their old table sizes.
+- Recruits that already exist keep their names and looks; only new classes change.
+- Name, appearance and home state are still picked independently of each other. Linking them is the next step.
+- Everything can be switched off again by removing two files; the original game data was not overwritten.
+
+## 2026-10-30 (night) - FBS+FCS universe: the 266-team season now gets through the end of the season, and FCS stat leaders are kept separately
+
+This was done in separate PC-port test builds. Nothing changed for players: the normal game executable and saves are untouched. No game code, data or images are published.
+
+**What happened.**
+- **Why the 266-team end of season hung.** Every coaching contract has an id number, and the game stores it in 10 bits, so there can never be more than 1,023 contracts. The game keeps about 5 contract rows per school (current contracts, finished ones and open offers). With 150 schools that is about 780 rows; with 266 schools it is about 1,390. At the end of the season the game posts new coaching openings, and the routine that looks for a free id number searched forever. It had nothing to do with the FCS changes; the game's own openings for FBS schools were already too many.
+- **The fix.** The test data now stores the contract id in 11 bits (up to 2,046 contracts). The contract table had unused room in each row; the coach table's rows grow by 4 bytes. The test build lets the id routine use the bigger range and never hands out the number that means "no contract". A small tool converts existing test saves. In three test runs the 266-team Dynasty then played the bowls and the playoff, finished the end of season, and ran the whole off-season into 2027. Every FCS school has three coaches, and the postseason stayed FBS-only (41 games).
+- **More room for coaches.** After the first off-season about 700 coaches are out of work at once, more than the coach table could hold, so its size went from 974 to 2,000.
+- **Separate FCS stat leaders.** The game builds its national stat leader lists once a season. The test build now builds them twice: the normal lists without FCS players, then a second set with only FCS players, stored under their own category numbers so today's screens never mix them in. A test save had 250 FBS and 250 FCS leader rows (25 per category). There is no screen for the FCS lists yet; the data is ready for one.
+- **FCS strength retuned.** RESULT_CL
+- **FCS title games and playoff: designed.** Only the SWAC plays a conference title game among FCS conferences; the SWAC and MEAC champions meet in the Celebration Bowl; the Ivy League stays home; the playoff has 24 teams (10 automatic bids, 14 at-large, top 8 seeded with a bye, 23 games). A reference model picks the field from a season's standings and plays out the bracket. The first in-game step will be to write these results at the end of the season.
+
+**Still open.**
+- After the first 266-team off-season, the 10 FBS schools that come first in the team order are left without coordinators (two without any coach), because their old contracts are never closed when those coaches move. A school without a coach makes the next week's simulation give up, so 2027 does not get past week 1 yet. 266 minus 256 is exactly 10, so this looks like one more counter that only goes to 256. Two repair attempts in this session did not hire coaches outside the carousel stage.
+- The yearly recruit class is a fixed 2,710 prospects, so with 266 schools each school signs fewer players and some rosters shrink into the low 50s. The class size has to grow with the number of schools.
+
+Details: [FBS+FCS universe plan](docs/modding/fbs-fcs-universe-plan.md), section 3.9.
+
 ## 2026-10-30 (evening) - Contact plays run faster: quicker math in the translated animation code
 
 This changes the PC port's game executable. Saves and game data are untouched. No game code, data or images are published.
