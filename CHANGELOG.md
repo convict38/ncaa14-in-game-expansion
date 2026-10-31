@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-10-31 (morning) - Contact plays run faster again: all translated job code uses the quick math, and the code checks got lighter
+
+This changes the PC port's game executable. Saves and game data are untouched. No game code, data or images are published.
+
+**What changed.**
+- **The quicker math is now part of the normal build, for every background job.** Yesterday's speed-up (four numbers per instruction in the translated animation code, same results) only covered the 40 busiest pieces of job code, and it was stitched into the executable by hand because it had to keep a second, slow copy of each piece. Now the code translator writes every piece of job code (1,215 of them) in the fast form once, and the normal build produces it. The executable got smaller instead of bigger: 1.42 GB instead of 1.84 GB, well under the size Windows refuses to load.
+- **Same results, checked again.** The fast forms were compared with the original ones on a million random cases per operation, in every floating-point mode the game can use, including the PS3's special values. In the mode the game uses there were no differences at all.
+- **Game speed in pile-ups went up again.** In our pile-up test scene (the carrier run straight into the line every play), the game clock ran at 0.73 of real time with yesterday's build and 0.82 with all jobs in the fast form, measured in the same game sessions by switching between them (3 sessions, 33 periods of 40 seconds; the new code was ahead in every session). Frame rate stayed about the same (39-40 fps). The slowest frames got a little slower (99th percentile 65 -> 72 ms); that is being looked at.
+- **Lighter code checks.** Before the translated code jumps from one place to another, the port checks that the code it jumps to is still the code it translated (the game swaps code in and out of the job's memory). That check was the biggest cost inside an animation job. It now does the same check with less work: it remembers which memory pages each piece of code uses instead of walking a list every time. In a test run the old and new checks were run side by side on 9.75 billion jumps and never disagreed. In the same pile-up test, each animation job took 11 % less time (2.89 -> 2.57 ms) and the game clock went from 0.81 to 0.86 of real time (3 sessions, ahead in every session).
+- **Checked for side effects.** 10 full test games with all jobs in the fast form and 15 more with the lighter checks as well, 8 simulated plays each: no corrupt results, no hangs, the clock always advancing, and the screenshots looked normal. One of three quick test starts of the final build stopped at the opening kickoff; it is the exact same program as the tested one (byte for byte), and the same kind of stop has happened in older builds, so it is being tracked as an old, rare problem.
+- **How to turn things off** if anything looks wrong: `SPU_VCOK2=0` in the environment brings back the old code check. The fast math has no switch any more (it gives the same results); a build with the original math can still be made for testing.
+
+**Still slow, and what is next.**
+- Contact plays now run at about 0.86 of real time in our test scene (target 0.9 or more).
+- Inside an animation job, the translated game code itself is now only about 28 % of the time. The rest is the port's own work: the code check (still about 14 %), code that still runs in the slower interpreter (about 11 %), and checking newly loaded code (about 19 %). Next is moving the code check into the translated code itself, so most jumps skip it entirely.
+
 ## 2026-10-31 (morning) - Super Sim tackle stats: first look (no fix yet)
 
 This was a reading-only investigation. No game files were changed and nothing was built or run.
