@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-10-31 (morning) - FBS+FCS universe: bowl and playoff picks fixed for 266 schools, the Dynasty reaches its third season
+
+This was done in separate PC-port test builds. Nothing changed for players: the normal game executable, the play build and the saves are untouched. No game code, data or images are published.
+
+**What happened.**
+- **Why losing teams got bowl and playoff spots.** Bowls and the College Football Playoff are picked from the game's BCS-style ranking. Each week the game builds that ranking in a list sized for "the number of schools", and in the 266-school test build that number had been raised to 266. Only the 138 FBS schools go into the list, so 128 empty entries sat at the top and every FBS school's rank was pushed down by 128. Ranks are stored in a single byte (0-255), so the ten weakest FBS schools wrapped around to ranks 1-10 and were picked first. That is how the user's 3-9 team became a playoff "#4". The 150-school build had the same mistake, only smaller (every rank off by 12).
+- **The fix.** The test build now sizes that list for the FBS schools only (138). The setting can be switched back. Two full postseasons were checked: the ranking runs exactly 1 to 138 and matches the top 25; all 58 bowl and playoff teams each year are FBS schools with at least 6 wins; the 12-team playoff has the five best-ranked conference champions plus seven at-large teams.
+- **Into the third season.** The test Dynasty played the rest of 2027, the bowls and playoff, the end of season and the whole off-season, then started 2028. Every one of the 266 schools has a full staff of three coaches and the contract records are clean. The bigger recruit class (5,900 prospects) signed for the first time: about 26 freshmen per FBS school and 22 per FCS school. FBS rosters are 58-70 players and FCS rosters 56-70; 13 of 266 schools are still a little under 60 (a year earlier, with the old class size, 52 were). The FCS strength tiers stayed in order, and the 2028 schedule is clean.
+- **A second year of FCS postseason results.** The FCS playoff, SWAC title game and Celebration Bowl were worked out again at the end of 2027 and matched the reference rules exactly. Montana won the FCS title 41-27 over Villanova.
+- **FCS strength.** In 2027 FCS schools won 6 of 40 games against FBS schools (15 %). Over both seasons that is 13 of 152 (8.6 %), inside the 8-12 % target, so the stronger-tiers data was not needed yet.
+- **SWAC title game as a real game: tried, needs code.** Pointing an unused conference title-game slot at the SWAC and splitting the SWAC into East and West divisions in the save was not enough; the game decides in code which conferences get a title game. A small code addition that schedules the SWAC title game in conference championship week is designed.
+
+**Still open.**
+- In 2027 the schedule had only 40 FBS-vs-FCS games (2026: 112; real seasons have about 110). The second-season schedule maker needs a look, and FCS strength should be measured again on a full schedule.
+- 13 schools start 2028 with 56-59 players.
+- The SWAC title game is still result-only, and there is no screen yet for FCS playoff results or FCS stat leaders.
+
+Details: [FBS+FCS universe plan](docs/modding/fbs-fcs-universe-plan.md), section 3.11.
+
 ## 2026-10-31 (early morning) - FBS+FCS universe: the 266-team Dynasty plays into its second season, bigger recruit classes, and FCS playoff results
 
 This was done in separate PC-port test builds. Nothing changed for players: the normal game executable, the play build and the saves are untouched. No game code, data or images are published.

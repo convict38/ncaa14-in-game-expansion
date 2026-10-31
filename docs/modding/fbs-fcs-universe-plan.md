@@ -563,6 +563,18 @@ Separate test executables only, in isolated test folders. The normal game execut
 | FCS postseason | **Results written at the end of the season.** The test build works out the SWAC title game, the Celebration Bowl and the 24-team FCS playoff from the season's games (results decided from team strength, not played). The champions go into the save's conference-champion history and the bracket into a side file for a later screen. Checked against the reference model: same conference champions and same field. |
 | New problem | With 266 schools the bowl and playoff selection picks wrong teams: a 3-9 team was placed in a playoff quarterfinal and 11 of 68 bowl spots went to teams with losing records. The final top 25 looks right. |
 
+### 3.11 Phase 1j: bowl and playoff selection fixed, rollover into 2028, second FCS postseason (2026-10-31, agent fcsp1j)
+
+Separate test executables only, in isolated test folders. The normal game executable, the play build and saves were not touched.
+
+| Goal | Result |
+|---|---|
+| Bowl / playoff selection at 266 schools | **Found and fixed.** The weekly BCS-style ranking was built in a list sized for all 266 schools while only the 138 FBS schools are ranked, so every FBS rank was 128 too high and wrapped past 255: the ten weakest FBS schools held ranks 1-10 and were picked for the playoff and bowls. The 150-school build had the same mistake (+12). The test build sizes the list for 138 (switchable). Two postseasons checked: ranks exactly 1-138, all 58 postseason teams FBS with 6+ wins, playoff = 5 best conference champions + 7 at-large. |
+| 2027 -> 2028 rollover | **Runs.** Rest of 2027, postseason, end of season, off-season and 2028 week 1. All 266 schools have 3 coaches; contracts clean. The 5,900-prospect class signed (freshmen about 26 per FBS school, 22 per FCS school). Rosters FBS 58-70, FCS 56-70 (13 of 266 below 60; 52 a year earlier with the old class). Strength tiers stay in order; 2028 schedule clean. |
+| Second FCS postseason | **Matches the reference exactly** (conference champions, 24-team field, seeds, bracket). Montana champion. |
+| FCS strength | 2027: 6 of 40 wins (15 %), 18 points vs 41. 2026 + 2027: 13 of 152 (8.6 %), inside the 8-12 % target; no data change yet. New problem: only 40 FBS-vs-FCS games in the 2027 schedule (2026: 112). |
+| SWAC title game as a played game | **Data alone does not work**: an unused title-game slot pointed at the SWAC, with East/West divisions, was not scheduled; the list of conferences with a title game is decided in code. Next: a small code step that adds the SWAC title game to conference championship week. |
+
 ## 4. Risks and effort
 
 | Risk | Likelihood | Mitigation |
