@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-10-31 (late morning) - Super Sim tackle stats: cause found, fix tested in a separate test version
+
+The normal game executable, the play build and the saves are untouched. The fix exists only in a separate test version and is off unless switched on. No game code, data or images are published.
+
+**What happened.**
+- **The cause.** When you Super Sim inside a game, each simulated play is turned into stats by one routine. For every tackle it gives the tackler a solo tackle. It never gives an assisted tackle, because the simulated play only remembers one tackler. On a tackle for loss or a sack it also counts the solo tackle twice. Plays you play yourself are different: there the game decides tackle by tackle whether it was solo or assisted.
+- **Measured.** We looked at three bowl games that had been super-simmed in a test Dynasty. Both teams got 39 to 63 solo tackles and no assisted tackles (except 2, from one kickoff that was played live). In the computer-simmed games of the same week, 56 % of tackles were assisted. The total number of tackles was normal. But the game's tackle leader list counts solo tackles only, so after three super-simmed games the user team already had the national leader.
+- **A correction.** Our first report said a normal simmed game has about 41 % assisted tackles. That was a mix-up of the two stat columns in our reading tool. The real figure is about 59 %: the normal sim makes 6 of every 10 tackles assisted.
+- **The test fix.** With the switch on, Super Sim uses the same rule as the normal sim. Each tackle is assisted 6 times in 10 and solo otherwise. A tackle for loss or a sack counts once. A sack stays a full sack, because a super-simmed play never has a second sacker.
+- **Tested.** Two playoff games were super-simmed with the switch on. They came out at 54 % and 66 % assisted tackles in the first game and 55 % and 46 % in the second, about 55 % overall, in line with the computer-simmed games. Total tackles stayed normal, and the user team's players left the top 10 of the solo tackle list. A third game with the switch off gave 0 assisted tackles, the same as before. There were no crashes, and the saves read back cleanly.
+
+**Still open.** A whole season with the fix has not been played yet, and a fixed save has not been loaded back into the game. The fix is not in the normal build yet.
+
 ## 2026-10-31 (late morning) - FBS+FCS universe: more FBS-vs-FCS games after the first season, a played SWAC title game, and why some rosters were short
 
 This changes only a separate PC-port test build. The normal game, its saves and its data are untouched. No game code, data or images are published.
