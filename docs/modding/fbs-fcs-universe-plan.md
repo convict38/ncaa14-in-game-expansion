@@ -611,6 +611,22 @@ Separate test executables only, in isolated test folders. The normal game execut
 | 2029 finished | FCS won 19 of 106 games against FBS (18 %), before the new step took effect. |
 | Trade-offs (model) | Steady state, from the 2029 rosters: the exact asked-for scale (best FCS about 73, worst about 47) gives about 5 % FCS wins; the default about 8 % (FCS levels 70 / 67 / 63 / 59 / 56, best 76, worst 51); about 10 % needs the best FCS team near 78; without the step about 24 % with the levels merged. About +-4 points of model error. An existing Dynasty needs about three more seasons before the new classes reach the starting line-ups; a one-time adjustment of current FCS players would remove that wait (not built). |
 
+### 3.15 Phase 1n: realistic recruit classes, star-gated FCS recruiting, starting FCS rosters on one scale (2026-10-31, agent fcsp1n)
+
+Separate test executables only, in isolated test folders. The normal game executable, the play build and saves were not touched. **Built and checked offline; not yet run in the game.**
+
+| Goal | Result |
+|---|---|
+| User decision | Middle ground: FCS levels about 70 / 67 / 63 / 59 / 56, best FCS about 76, worst 51, FBS about 86 (worst about 65), FCS wins about 8 %. One shared rating scale. Strength should come from recruiting, not from a rescale after signing. |
+| What the game did (2029 class) | 6,700 recruits: 90 five-stars, 651 four-stars, 2,988 three-stars, 1,633 two-stars, 1,338 one-stars. Stars matched overall only loosely (some one-stars were rated 85). The national rank field overflows above 4,096 recruits, so the weakest third of the class looked like top recruits to the computer schools. FCS schools signed 82 four-stars and 4 five-stars, and every FCS level signed classes of about 61 overall. |
+| Real life (rounded, estimates) | About 30-35 five-stars, 300-400 four-stars and roughly 2,000 three-stars a class; FCS programs sign mostly two-stars and a few low three-stars, almost never a high-school four- or five-star. |
+| Realistic class (FCS29) | New star shares 0.5 / 5 / 28 / 35 / 31.5 % (five to one star), and each star level gets its own overall range (about 80 / 74 / 67 / 58.5 / 50 on average). The game's own order of the recruits is kept; a better recruit stays better. The rank overflow is fixed. Names, faces, bodies and hometowns are unchanged. All numbers are settings. |
+| Star-gated FCS recruiting (FCS30) | Every week, before commitments, FCS schools are moved to the bottom of a recruit's list of favourite schools unless a per-level chance lets them stay: never for five-stars, 1-3 % for four-stars at the top FCS levels, and fewer three-stars the lower the FCS level. Recruits commit to the top of their list, so top recruits go to FBS schools. All chances are settings. |
+| Older steps | The FCS recruit-strength step from Phase 1m is now only a light safety limit (it acts only if a level's class ends more than 1.5 away from its target). The separate FBS / FCS display scale is off by default. |
+| Model result | FBS classes about 67.6 (as before), FCS level classes about 60 / 58 / 55 / 53 / 51, no four- or five-star in FCS. Over many seasons: FCS levels 71 / 67 / 64 / 58 / 56, best FCS 77, worst 51, FBS 87 (worst 67), FCS wins about 9 % (model error about +-4 points). |
+| New Dynasties (test data v16) | The 128 FCS starting rosters are rebuilt so season 1 already sits on this scale (predicted 70 / 67 / 63 / 59 / 56), with a realistic spread from freshmen to seniors (about 13 points). FBS rosters and every other table are unchanged. |
+| Next | Run it in the game: one rollover and a recruiting season (stars by destination, FCS classes by level, FBS top classes and roster sizes), then a new Dynasty with v16. |
+
 ## 4. Risks and effort
 
 | Risk | Likelihood | Mitigation |

@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-10-31 (late afternoon) - FBS+FCS universe: realistic recruit classes, and top recruits skip FCS schools (built, not yet tested in the game)
+
+This changes only a separate PC-port test build. The normal game, its saves and its data are untouched. No game code, data or images are published.
+
+**What changed.**
+- **Recruit classes look more like real recruiting (new, switchable).**
+  - Before, a class of 6,700 recruits had about 740 four- and five-stars, and stars said little about how good a player was (some one-stars were rated 85).
+  - Now a class has about 34 five-stars, 335 four-stars, 1,900 three-stars and a large group of two- and one-stars, and each star level has its own overall range (five-stars about 80, one-stars about 50).
+  - A bug that made the weakest third of a big class look like top recruits to the computer schools is fixed.
+  - Names, faces, bodies and hometowns stay as they were.
+- **Top recruits all but ignore FCS schools (new, switchable).**
+  - Before, FCS schools signed 86 four- and five-stars a year, and every FCS level signed the same kind of recruits.
+  - Now FCS schools drop down the list of the schools a top recruit likes. Five-stars never pick an FCS school; a four-star does only very rarely, and only at the strongest FCS level. The best FCS schools land mostly two- and three-stars, the weakest mostly one- and two-stars.
+- **The earlier FCS strength step is now only a light safety limit**, and the separate FBS / FCS rating scale is off: one shared scale, as decided.
+- **New Dynasties:** the FCS starting rosters in the test data are rebuilt so the first season already matches the long-term balance, with freshmen to seniors spread like real rosters.
+
+**What it should do (a model, not yet seen in the game).** Over many seasons the FCS levels settle at about 71 / 67 / 64 / 58 / 56, the best FCS team about 77 and the weakest about 51, FBS teams about 87, and FCS teams win about 9 % of their games against FBS, close to real life. The model can be off by about 4 points.
+
+**Not tested yet:** the game run was not possible this session (the shared test queue was busy). It is the next step.
+
 ## 2026-10-31 (afternoon) - FBS+FCS universe: FCS recruits now depend on the school's level, and fewer broken real-life series
 
 This changes only a separate PC-port test build. The normal game, its saves and its data are untouched. No game code, data or images are published.
