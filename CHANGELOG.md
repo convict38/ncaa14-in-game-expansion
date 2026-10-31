@@ -1,5 +1,31 @@
 # Changelog
 
+## 2026-10-31 (afternoon) - FBS+FCS universe: FCS recruits now depend on the school's level, and fewer broken real-life series
+
+This changes only a separate PC-port test build. The normal game, its saves and its data are untouched. No game code, data or images are published.
+
+**What changed.**
+- **FCS recruit strength now depends on the level of the school (new, switchable).**
+  - Until now every FCS school signed recruits of about the same strength (about 60 overall), whether it was one of the best FCS programs or one of the weakest. Over a few seasons that made all FCS levels end up equal, and FCS teams kept getting stronger against FBS teams.
+  - Now, when the new recruits join their teams, each FCS level gets its own target: by default the new players average 60, 58, 56, 54 and 52 overall from the strongest level to the weakest (FBS recruits arrive at about 66 and are not changed). A better recruit stays better than a weaker one on the same team; only the level of the whole class moves.
+  - All five targets, and how spread out each class is, are settings, so the balance can be tuned without a new build.
+  - **Tested in the game:** at the change from 2029 to 2030 the five FCS levels' new classes went from about 61 each to 60.0, 58.0, 56.0, 53.9 and 52.0.
+- **FBS-vs-FCS schedules.**
+  - No FBS team gets more than 2 FCS opponents in a season (one FBS team had 3 in 2029).
+  - The step that adds FBS-vs-FCS games no longer replaces real scheduled series. The 4 FBS games it replaced in 2029 (Indiana-Ball State, Baylor-SMU, Ohio State-Tulsa, Michigan-Colorado) turned out to be real future series in the game's data. In 2030 it kept 77 such series and still reached 104 FBS-vs-FCS games, with a clean schedule.
+- **The 2029 season finished.** FCS teams won 19 of 106 games against FBS teams (18 %), well above the real-life 8-12 %. That was expected: the new recruit step only starts with the 2030 class.
+
+**What it means over many seasons (a model, not yet seen in the game).**
+- New players take three to four seasons to reach the starting line-ups, so in this test Dynasty FCS results should stay close to the 2029 level until about 2033 and then settle.
+- After that, the model expects the FCS levels to stay apart for as long as the Dynasty runs, because every year's class is set again.
+- **The choice that is left (for the user):** the rating scale asked for (best FCS team in the low 70s, worst FCS teams 40-50) and the real-life win rate (FCS wins 8-12 % against FBS) do not fully fit together:
+  - the exact asked-for scale gives FCS teams about 5 % wins;
+  - the default settings give about 8 %, with the best FCS team about 76 and the worst about 51;
+  - about 10 % needs the best FCS team near 78;
+  - without the new step, the model expects about 24 % wins and no difference between FCS levels.
+  - These model win rates can be off by about 4 points either way.
+- A one-time adjustment of the players already on FCS rosters would remove the three-season wait. It is not built yet.
+
 ## 2026-10-31 (midday) - FBS+FCS universe: the third season finished, why team ratings keep rising, and a fixed rating scale
 
 This changes only a separate PC-port test build. The normal game, its saves and its data are untouched. No game code, data or images are published.

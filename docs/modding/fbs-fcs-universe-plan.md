@@ -599,6 +599,18 @@ Separate test executables only, in isolated test folders. The normal game execut
 | Game results | **Not controlled by the team overall.** CPU-vs-CPU games are played from the players: FCS won 19 of 103 (18 %) in 2029 weeks 1-5 with the scale fixed. A player-level step is next (FCS recruit strength by tier, or a rollover rescale). |
 | New Dynasties | Test data with the 6,700 class built and checked (not played yet). |
 
+### 3.14 Phase 1m: FCS recruit strength by level, safer FBS-vs-FCS scheduling, model trade-offs (2026-10-31, agent fcsp1m)
+
+Separate test executables only, in isolated test folders. The normal game executable, the play build and saves were not touched.
+
+| Goal | Result |
+|---|---|
+| Why FCS levels merge | Recruits keep the ratings they were generated with, and FCS schools sign from what is left after FBS, so every FCS level gets recruits of about 60 overall. With the same yearly growth everywhere, the levels end up equal within about four seasons. |
+| FCS recruit strength by level (FCS27) | When recruits join their teams, each FCS level's new class is moved to its own target average (default 60 / 58 / 56 / 54 / 52 from the strongest level to the weakest). All rating attributes of a player move by the same amount and the player overall is recomputed from the game's own per-position formula (an exact linear formula, fitted on 18,290 players). Order inside a class is kept; FBS is not changed. Targets and class spread are settings. **In the game, 2029 to 2030:** class averages about 61 each became 60.0 / 58.0 / 56.0 / 53.9 / 52.0. |
+| Schedule fixes (FCS28) | No FBS team gets more than 2 FCS opponents. The quota step no longer replaces real future series from the game's data (the 4 games it replaced in 2029 were all such series). 2030 in the game: 104 FBS-vs-FCS games, clean schedule, 77 real series kept. |
+| 2029 finished | FCS won 19 of 106 games against FBS (18 %), before the new step took effect. |
+| Trade-offs (model) | Steady state, from the 2029 rosters: the exact asked-for scale (best FCS about 73, worst about 47) gives about 5 % FCS wins; the default about 8 % (FCS levels 70 / 67 / 63 / 59 / 56, best 76, worst 51); about 10 % needs the best FCS team near 78; without the step about 24 % with the levels merged. About +-4 points of model error. An existing Dynasty needs about three more seasons before the new classes reach the starting line-ups; a one-time adjustment of current FCS players would remove that wait (not built). |
+
 ## 4. Risks and effort
 
 | Risk | Likelihood | Mitigation |
