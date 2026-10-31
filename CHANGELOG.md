@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-31 (morning) - Super Sim tackle stats: first look (no fix yet)
+
+This was a reading-only investigation. No game files were changed and nothing was built or run.
+
+**What happened.**
+- **The bug.** If you play a Dynasty game and let the computer play your defensive snaps with Super Sim, your defenders get no assisted tackles. All of those tackles count as solo tackles, so your team ends up on top of the tackle leader lists.
+- **What the stats mean.** In the game's stat tables one field holds solo tackles and another holds assisted tackles. The total shown on screen is the two added together.
+- **How a normal simmed game does it.** When the computer sims a whole game (CPU vs CPU, or Advance Week), it picks one defender for each tackle and makes it an assisted tackle 6 times in 10 and a solo tackle 4 times in 10. Three test Dynasty seasons that were simmed this way all show about 41 % assisted tackles. No game in them is missing assists.
+- **Why Super Sim is different (likely, not proven yet).** Super Sim inside a game you are playing uses a separate play engine. That engine seems to choose a single tackler for each tackle and record it as a solo tackle every time.
+
+**Still open.** We still need to find the exact place where Super Sim records the tackle. After that, a test game with Super Sim on defence will measure the problem. The planned fix is an optional switch that uses the same 60/40 split as the normal sim, built only into a separate test version.
+
 ## 2026-10-31 (morning) - FBS+FCS universe: bowl and playoff picks fixed for 266 schools, the Dynasty reaches its third season
 
 This was done in separate PC-port test builds. Nothing changed for players: the normal game executable, the play build and the saves are untouched. No game code, data or images are published.
