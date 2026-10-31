@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-10-31 (late morning) - FBS+FCS universe: more FBS-vs-FCS games after the first season, a played SWAC title game, and why some rosters were short
+
+This changes only a separate PC-port test build. The normal game, its saves and its data are untouched. No game code, data or images are published.
+
+**What changed.**
+- **FBS teams play FCS teams again after the first season.** In the first season the schedule comes from the data, which has about 110 FBS-vs-FCS games, close to real life. From the second season on, the game makes the schedule itself. The part that adds FCS opponents was built for the original game's 5 placeholder FCS teams, so it only aims for 35-50 such games, and about 50 FBS teams already have full schedules by the time it runs. So 2027 had only 40 FBS-vs-FCS games.
+- The test build now aims that part at 100-120 games and tries more weeks. It also makes sure no FCS team gets more than 2 FBS opponents. The 2028 schedule then had **90** FBS-vs-FCS games (up from 38), and every schedule stayed clean: 12 games for each FBS team, 11-12 for each FCS team, nobody playing twice in a week.
+- A last step that tops the count up to about 105 is built but not tested yet. It turns a few early-season FBS-vs-FBS non-conference games into FBS-vs-FCS games.
+- **How strong FCS teams are.** In the 2028 regular season FCS teams won 11 of their 90 games against FBS teams (12 %). Over the three test seasons it is 24 of 242 (10 %); in real life it is about 8-12 %.
+- **The SWAC title game is now a real game.** At the start of conference championship week, the East and West division winners of the SWAC are put on the schedule and the game is played like the other title games. In the test, Jackson State beat Prairie View A&M 41-9. The FCS playoff code then uses that result for the SWAC champion and the Celebration Bowl. If the game has no result, it falls back to its earlier strength-based pick.
+- **Why 13 schools started a season with only 56-59 players.** It is not the off-season roster cut. The yearly recruit class (5,900 players) is all signed, and the league is already at 98.6 % of its roster spots, so the schools that recruit worst stay short. The test save now gets a bigger class (6,700). It takes effect with the next signing class, so it has not been measured yet.
+- **Team rating scale.** The team overall shown in the game starts the first season on a sensible shared scale: the worst FBS teams around the high 60s, the best FCS teams in the low 70s and the worst FCS teams around 50. After that, FCS ratings rise about 4-5 points a year (FBS about 2). Keeping FCS teams on that scale would make them win only about 2-6 % of their games against FBS teams, so this needs a decision before any change.
+- Every change has its own switch and can be turned off.
+
+**Still open.** The end of the 2028 season and the next off-season with the new build: check the topped-up FBS-vs-FCS count, the SWAC result in the FCS playoff, and rosters with the bigger recruit class. Also open: rating inflation from season to season. Real-life 2026 schedules are planned for later (design notes only).
+
 ## 2026-10-31 (morning) - Contact plays run faster again: all translated job code uses the quick math, and the code checks got lighter
 
 This changes the PC port's game executable. Saves and game data are untouched. No game code, data or images are published.
