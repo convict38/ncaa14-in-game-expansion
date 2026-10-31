@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-10-30 (evening) - Contact plays run faster: quicker math in the translated animation code
+
+This changes the PC port's game executable. Saves and game data are untouched. No game code, data or images are published.
+
+**What changed.**
+- **Players' animation work is now about 28 % cheaper per job.** During a play the game waits each tick for a batch of about 20-28 animation jobs. We measured inside one of those jobs: almost half of its time was the translated game code itself, and that code did every floating-point step one number at a time, with several checks per number. It now handles four numbers per instruction, with exactly the same results (checked on a million random test cases per operation, including the special values the PS3 handles differently from a PC). Reads and writes of the job's working memory also lost four debug checks each, and one math step no longer calls a slow library routine.
+- **Game speed in pile-ups went up.** In our pile-up test scene (the carrier run straight into the line every play), the game clock ran at 0.65 of real time before and 0.77 after, measured in the same game sessions by switching the new code on and off (3 sessions, 36 periods of 40 seconds; the new code was ahead in every session). Frame rate stayed the same (about 39 fps), and the slowest frames got slightly better (99th percentile 72 -> 69 ms).
+- **Checked for side effects.** 10 full test games with the new code, 8 simulated plays each: no corrupt results, no hangs, the clock always advancing, and the screenshots looked normal (tackles, pile-ups, players, scoreboard, crowd).
+- **How to turn it off** if anything looks wrong: start the game with `SPU_FASTOPS_DEFAULT=0` set in the environment.
+
+**Still slow, and what is next.**
+- Contact plays are still below full speed (target 0.9 or more). The biggest remaining cost inside an animation job is now the port's own bookkeeping that checks which translated code may run (about 44 % of the job). That is next, done carefully, because an earlier attempt there caused a freeze.
+- Extending the faster math to more of the game's background jobs did not fit yet: the executable would grow past the size Windows can load. The next build will compile those parts once in the faster form instead of keeping both versions.
+
 ## 2026-10-30 (evening) - FBS+FCS universe: three seasons with full FCS rosters, and a 266-team season reaches the bowls
 
 This was done in separate PC-port test builds. Nothing changed for players: the normal game executable and saves are untouched. No game code, data or images are published.
