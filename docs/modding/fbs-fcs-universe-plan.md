@@ -537,6 +537,20 @@ Separate test executables only, as before, in isolated test folders. The normal 
 | FCS strength | **Needs tuning.** With the 150-team test data FCS schools win about a third of their games against FBS schools (real: about 1 in 10); with the 266-team data they win 2 % and average 8 points. |
 | FCS conference title games | Not started. |
 
+### 3.9 Phase 1h: the 266-team end-of-season hang fixed, the first 266-team off-season, separate FCS stat leaders, FCS strength retuned (2026-10-30, agent fcsp1h)
+
+Separate test executables only, in isolated test folders. The normal game executable and saves were not touched.
+
+| Goal | Result |
+|---|---|
+| 266-team end-of-season hang | **Found and fixed.** Every coaching contract has an id, and the id field is 10 bits wide, so at most 1,023 contracts can exist. The game's contract table holds about 5 rows per school (current contracts, finished ones and open offers): about 780 with 150 schools, about 1,390 with 266. When the end-of-season step posted new coaching openings, the routine that looks for a free id never found one and looped forever. The fix widens the id to 11 bits in the Dynasty template (the contract table had unused bits; the coach table's rows grow by 4 bytes) and lets the id routine use the larger range, never handing out the value that means "no contract". A tool converts existing test saves. Three test runs then played the bowls and playoff and finished the end of season, with contract ids past 1,023 and no duplicate or broken links. |
+| 266-team off-season | **Runs, one problem left.** The whole off-season ran to Pre-Season 2027. Every FCS school has three coaches. The coach table needed more room (about 700 free-agent coaches exist after the first carousel), so it is raised to 2,000. **Open:** the 10 FBS schools first in team order keep stale contracts for coordinators who left, so nobody is hired into those jobs; a school with no coach makes the week-1 advance give up. 266 minus 256 is 10, so this looks like one more 256-entry team loop. Two repair attempts in this session did not hire coaches outside the carousel stage. |
+| Postseason | **FBS-only** (41 games, all 61 teams FBS) with 266 schools. |
+| Separate FCS stat leaders | **Done (stored, no screen yet).** The national leader lists are filled twice in the same step: once for FBS players (as before) and once for FCS players only. The FCS lists use their own category numbers, so the existing screens never show them. Checked in a save: 250 FBS rows and 250 FCS rows, 25 per category. A later page can read them. |
+| FCS strength | **Retuned and measured.** The first try (a full season with new 266-school data) had FCS schools winning 22 of 112 games against FBS (20 %) and scoring 14 points, while FBS teams scored only 31: FCS defenses were too strong. The second version weakens FCS defenders a bit more than the rest and lowers every tier slightly. Through week 6 (92 of the season's FBS-vs-FCS games) FCS schools won 7 (7.6 %), scored 14.9 points against 37.3, and the strongest tier won 2 of 12 while the weakest tiers won 5-7 %. That is close to the real picture (about 1 in 10 overall, 13-20 FCS points). A full season with it is still to run. |
+| Recruiting with 266 schools | **Needs work.** The yearly recruit class is a fixed 2,710 prospects, so with 266 schools each school signs fewer players (FBS about 19, FCS about 13.5; with 150 schools about 25-27). Some rosters drop into the low 50s after the first off-season. Next: scale the class size with the number of schools. |
+| FCS title games and playoff | **Designed, not in the game yet.** Real rules: of the FCS conferences only the SWAC plays a title game; the SWAC and MEAC champions meet in the Celebration Bowl; the Ivy League stays home; the playoff has 24 teams (10 automatic bids, 14 at-large, the top 8 seeded with a first-round bye; 23 games). A reference model picks the field from a save's standings and plays the bracket from team ratings. The plan: first write results at the end of the season (no played games, no risk to the bowl system), later play the games, starting with the SWAC title game. |
+
 ## 4. Risks and effort
 
 | Risk | Likelihood | Mitigation |
@@ -597,3 +611,8 @@ Effort: about 51-85 agent-days (10-16 weeks at 5 agent-days a week). The critica
   3. refill FCS rosters with recruits or walk-ons;
   4. grow the memory pool that runs out at the first 266-team advance;
   5. then a full 266-team season and rollover.
+- **Phase 1h (2026-10-30, agent fcsp1h; section 3.9).** The 266-team end-of-season hang was the 10-bit coaching contract id; it is widened and the whole first 266-team off-season runs. Separate FCS stat leader lists are stored. FCS strength is retuned in the 266-team data. Next, in order:
+  1. fix the 10 FBS coaching staffs lost at the 266-team rollover (likely one more 256-entry team loop);
+  2. scale the recruit class with the number of schools;
+  3. FCS postseason results at the end of the season, then a played SWAC title game;
+  4. a screen for the FCS stat leaders.
