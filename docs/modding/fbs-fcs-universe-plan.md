@@ -740,6 +740,28 @@ Two shared test sessions; every game was stopped by its own process id or its ow
 | Season 2 FCS wins vs FBS | 9 of 92 games (9.8 %); the team ratings predict only 3.8 %. The top FCS level played FBS teams almost even. The extra upsets therefore start at the first off-season even in a fresh Dynasty; they are part of the current design, not old data. |
 | Likely cause (not yet proven) | What FCS teams gain at the first off-season is coaching standing, not player ratings: FCS head coaches' prestige goes from 0 to 2-5 and their coach rating from about 44 to 65-83, built mostly from wins over other FCS teams. Paired replay tests with these values reset are prepared but not yet run. |
 
+### 3.24 Phase 1w: seasons 3 and 4 of the fresh Dynasty; the FCS win rate does not climb, so FCS balance is declared good enough (2026-11-01, agent fcsp1w)
+
+Two shared test sessions. Every game was stopped by its own process id. The normal game, the play build, the play saves and the installed data were not touched. No new build.
+
+| Season | FBS-vs-FCS games | FCS wins | FCS win rate | FBS rating | FCS ratings, levels 1-5 |
+|---|---|---|---|---|---|
+| 1 (2026) | 110 | 7 | 6.4 % | 80.7 | 68.4 / 65.1 / 61.7 / 57.7 / 54.5 |
+| 2 (2027) | 92 | 9 | 9.8 % | 83.9 | 68.4 / 63.8 / 59.7 / 57.1 / 53.9 |
+| 3 (2028) | 96 | 7 | 7.3 % | 86.4 | 67.1 / 64.4 / 61.5 / 57.0 / 53.0 |
+| 4 (2029) | 106 | 7 | 6.6 % | 86.4 | 68.8 / 65.9 / 61.3 / 57.8 / 53.7 |
+| all | 404 | 30 | 7.4 % | | |
+
+| Goal | Result |
+|---|---|
+| Does the FCS win rate keep climbing? | No. It peaked at 9.8 % in season 2 and was back to 7.3 % and 6.6 % in seasons 3 and 4. The target is a realistic 8-12 %; the four-season average is 7.4 %. The 25 % seen in an older long-running test Dynasty came from older data and settings. |
+| Ratings over three off-seasons | FCS levels stay within 2 points of season 1, in order. FBS teams level out at 86.4. Starting lineups changed by less than 1 point per level at the last off-season. |
+| FCS coaching | The top FCS level's head-coach prestige peaked once and then settled at about the FBS average. Lower levels stay well below it. Coach prestige is linked to about 1 extra point per game per prestige level, which is too small to push the win rate out of the target band. |
+| Rosters and staffs | About 69-70 players per team and three coaches per staff at every level, every season. FCS playoff results are written each year. |
+| Which FCS level wins | In seasons 3 and 4 the second FCS level won most often (18-22 %), the top level 7-8 %, the lower three 0-8 %. The top level plays only 12-13 FBS games a season, so this is likely chance; it will be watched. |
+| Automated new Dynasty | Verified end to end after one fix (closing the coach skill tree that stays open after the "Coach Skills" message): from launch to the first Pre-Season screen in about 3.5 minutes with no manual help. |
+| Decision | FCS balance is good enough for now. The planned coach-prestige limit is not needed and was not built. |
+
 ## 4. Risks and effort
 
 | Risk | Likelihood | Mitigation |
@@ -823,3 +845,8 @@ Effort: about 51-85 agent-days (10-16 weeks at 5 agent-days a week). The critica
   2. make the new recruiting settings the default and tune the FCS levels to target;
   3. follow the FCS win rate through the 2032 season;
   4. a new Dynasty with the new starting rosters.
+- **Phase 1w (2026-11-01, agent fcsp1w; section 3.24).** Four seasons of a fresh 266-team Dynasty: FCS teams beat FBS teams 6.4 / 9.8 / 7.3 / 6.6 % of the time, with no upward trend. FCS balance is declared good enough. The current test build, its settings and the v18 test rosters are the FCS universe release candidate. Remaining polish, in order:
+  1. watch whether the second FCS level keeps out-winning the top level over a longer run;
+  2. play one or two more off-seasons to confirm the rate;
+  3. build the test settings into the program, so no extra settings are needed;
+  4. bring the FCS universe into the main PC-port build, once the user approves it; its Dynasty saves are larger and do not load in the normal build.

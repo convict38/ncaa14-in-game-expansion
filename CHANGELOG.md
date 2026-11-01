@@ -1,5 +1,31 @@
 # Changelog
 
+## 2026-11-01 (afternoon) - FBS+FCS universe: four seasons played, the FCS upset rate stays realistic, FCS balance declared good enough
+
+This changes only separate PC-port test builds, test data and test folders. The normal game, its saves and its data are untouched. No game code, data or images are published.
+
+**Seasons 3 and 4 of the fresh 266-team Dynasty.**
+- FCS teams beat FBS teams in 7 of 96 games in season 3 (7.3 %) and 7 of 106 in season 4 (6.6 %).
+- Over four seasons the rate was 6.4 / 9.8 / 7.3 / 6.6 %, 30 wins in 404 games (7.4 %). It does not keep climbing. The target is a realistic 8-12 %.
+- The 25 % seen in an older long-running test Dynasty came from older data and settings, not from the current design.
+
+**Everything else holds over three off-seasons.**
+- FCS team ratings stay within 2 points of where they started, in order from the top FCS level to the bottom. FBS teams level out.
+- The top FCS level's head coaches gained prestige once, then settled at about the FBS average. This is too small an effect to need a fix, so the planned coach limit was not built.
+- Every team keeps about 69-70 players and a full three-coach staff. FCS playoff results are written every year.
+- The user's team played its own bowl game in season 3, and the season ran through the off-season into season 4 without problems.
+
+**Automated new Dynasty: verified.**
+- With one fix (closing the coach skill tree that stays open after the "Coach Skills" message), the script creates a 266-team Dynasty from launch to the first Pre-Season screen in about 3.5 minutes, with no manual help.
+
+**Status.**
+- FCS balance is good enough for now. The current test build, its settings and the latest test rosters are the FCS universe release candidate.
+- Still to polish:
+  - check whether the second FCS level keeps winning more often than the top level (likely chance so far);
+  - play more off-seasons;
+  - build the test settings into the program;
+  - bring the FCS universe into the main PC-port build once the user approves it.
+
 ## 2026-11-01 (morning) - FBS+FCS universe: a fresh Dynasty played through two off-seasons; ratings hold, extra FCS upsets start in season 2
 
 This changes only separate PC-port test builds, test data and test folders. The normal game, its saves and its data are untouched. No game code, data or images are published.
