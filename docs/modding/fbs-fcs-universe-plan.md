@@ -701,6 +701,20 @@ Offline work only: no game was run this phase (the shared test queue was busy). 
 | Recruiting settings as defaults | The test build now has the chosen FCS recruiting settings built in, and moves each FCS level's class to its target exactly (no rounding drift). Each change has a switch back to the old behaviour. Not yet checked in the game. |
 | Next | In the game: create a new Dynasty with the v17 data and read the first-season ratings and FCS win rate (target about 8 %); run the coaching-rating test; check the schedule spread and defaults through one off-season. Then a fix for the coaching gap, behind a switch. |
 
+### 3.21 Phase 1t: new FCS rosters in the game, coaching gap confirmed, schedule spread and recruiting defaults verified, first coach-rating fix (2026-11-01, agent fcsp1t)
+
+One shared test session of about 80 minutes; every game was stopped by its own process id. The normal game, the play build, the play saves and the installed data were not touched.
+
+| Goal | Result |
+|---|---|
+| New Dynasty with the v17 rosters | In-game FCS team ratings: 70.4 / 66.9 / 62.9 / 59.3 / 56.9 (target 70 / 67 / 63 / 59 / 56). Verified. |
+| Season-1 FCS wins (weeks 1-6) | 13 of 94 (13.8 %) against FBS. The rating model expects 10.6 % for these games; the target is about 8 %. Lowering every FCS level by about 1.5 rating points would bring it near 8 %. |
+| Coaching cause (A/B on the same games) | FCS coaches set back to their starting ratings: FCS margin 5.8 +- 1.8 points worse per game, FCS wins 17.9 % vs 23.2 %. Confirmed. Coach ratings are not recalculated at the start of the season. |
+| Schedule after an off-season | FBS-vs-FCS games in weeks 0-4: 22 / 32 / 20 / 12 / 5 % (before: 85 % in one week). Verified. |
+| Recruiting defaults after an off-season | FCS classes 59.4 / 57.5 / 55.4 / 52.9 / 51.3 (target 59.7 / 57.6 / 55.4 / 52.8 / 51.3); no four- or five-star recruits at FCS schools; staffs, contracts and rosters clean. Verified. |
+| Coach-rating bands (new, behind a switch) | At each season start, FCS coach ratings are squeezed into a band below FBS and low FBS coordinator ratings are raised. A first version that ran during the off-season had no effect, because the game rewrites coach ratings later in the off-season. The season-start version works and the values persist. With the first band settings the 2032 FCS win rate did not drop (25 % over 99 games), so FCS defensive coordinators look like the main lever. Next test: a tighter coordinator band (settings only). |
+| Starting FCS coordinator ratings | FCS defensive coordinators start far below FCS offensive coordinators (about 12 vs 28). Not changed yet: raising them would push season-1 FCS wins further above target, so this will be set together with the coordinator band and a small cut to the starting FCS rosters. |
+
 ## 4. Risks and effort
 
 | Risk | Likelihood | Mitigation |

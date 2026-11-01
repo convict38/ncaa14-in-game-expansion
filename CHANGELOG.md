@@ -1,5 +1,33 @@
 # Changelog
 
+## 2026-11-01 (early hours) - FBS+FCS universe: new FCS rosters checked in the game, coaching gap confirmed, schedule and recruiting defaults verified
+
+This changes only separate PC-port test builds, test data and test folders. The normal game, its saves and its data are untouched. No game code, data or images are published.
+
+**New Dynasty with the new FCS rosters: team ratings on target.**
+- In the game, FCS teams start at 70 / 67 / 63 / 59 / 57 from the top level to the bottom. The target was 70 / 67 / 63 / 59 / 56.
+- In the first six weeks FCS teams won 13 of 94 games against FBS teams (14 %). The team ratings predict about 11 % for these games, and the target was about 8 %. To get closer to 8 %, the FCS levels can be lowered by about 1.5 rating points.
+- FBS-vs-FCS games in the first season fall mostly in weeks 1-4, as in real schedules.
+
+**The coaching gap is confirmed.**
+- One test season replayed the same games with FCS coach ratings set back to the starting levels. FCS teams scored about 6 points worse per game, and their win share fell from 23 % to 18 %.
+- So the rise of FCS coach ratings over several off-seasons is a real cause of the extra FCS upsets.
+
+**Schedules and recruiting after an off-season: verified.**
+- FBS-vs-FCS games are now spread over the first five weeks (22 / 32 / 20 / 12 / 5 %). Before, 85 % fell in a single week.
+- Each FCS level's recruit class lands within 0.3 points of its target, and no four- or five-star recruit signs with an FCS school.
+- Coaching staffs, contracts and roster sizes all check out.
+
+**First coach-rating fix (test build, behind a switch).**
+- At the start of each season, FCS coach ratings are kept in a band below their FBS counterparts, and very low-rated FBS coordinators are raised.
+- The ratings are applied and stay in place. But with the first settings, FCS teams still won about 25 % of FBS games in a later season.
+- The test results point at the FCS defensive coordinators as the main factor. The next test lowers their band, which needs only a setting change, not a new build.
+
+**Still to do.**
+- Test the tighter coordinator band, then pick defaults.
+- Make the starting FCS coordinator ratings consistent (defensive coordinators currently start far below offensive ones), together with a small matching cut to the starting FCS rosters.
+- Move the autosave fix into the play build (in progress).
+
 ## 2026-11-01 (night) - FBS+FCS universe: why new Dynasties started with weak FCS teams, and why FCS teams win more after off-seasons
 
 This changes only separate PC-port test builds, test data and test folders. The normal game, its saves and its data are untouched. No game code, data or images are published. No game was run this time: the shared test queue was busy, so this update is analysis and preparation. The in-game checks come next.
