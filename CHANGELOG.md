@@ -1,5 +1,32 @@
 # Changelog
 
+## 2026-11-01 (pre-dawn) - FBS+FCS universe: coach-rating fix dropped, real cause of late-Dynasty FCS upsets narrowed down
+
+This changes only separate PC-port test builds, test data and test folders. The normal game, its saves and its data are untouched. No game code, data or images are published.
+
+**Tighter limits on FCS coordinator ratings: no effect.**
+- One test season was replayed from the same off-season save, with FCS defensive coordinator ratings cut by about 12 points and offensive coordinator ratings by about 4.
+- On the same 99 games, FCS teams won 24 % instead of 25 %. The scoring difference was 0.3 points per game, which is within noise.
+
+**Why: the game recalculates coach ratings every week.**
+- A coach's rating follows his prestige level and his win-loss record. Any value set at the start of the season is replaced within the first two weeks.
+- This also explains the low starting rating of FCS defensive coordinators: it rises to the level of the offensive coordinators within the first weeks of a new Dynasty, so no data change is needed.
+- The coach-rating fix is therefore switched off and will not become a default. The earlier result that pointed at coaching is now treated as unconfirmed.
+
+**The likely real cause: FCS team ratings drift upward over the years.**
+- In a new Dynasty, FCS levels start at about 70 / 67 / 63 / 59 / 57.
+- After six off-seasons they are at 74 / 72 / 70 / 69 / 66, and the three lower levels are almost equal.
+- FCS teams also still win more often than their ratings predict (about 25 % against an expected 11 %).
+
+**New test rosters (not yet checked in the game).**
+- The starting FCS rosters were rebuilt about 1.5 rating points lower, to bring first-season FCS wins nearer 8 %.
+- The in-game test did not run: the automated new-Dynasty steps lost sync with a slower-than-usual game, so no Dynasty was created.
+
+**Still to do.**
+- Test the new rosters in a new Dynasty.
+- Measure the rating drift season by season and hold each FCS level near its scale at every off-season.
+- Find what makes FCS teams beat their ratings after off-seasons.
+
 ## 2026-11-01 (early hours) - FBS+FCS universe: new FCS rosters checked in the game, coaching gap confirmed, schedule and recruiting defaults verified
 
 This changes only separate PC-port test builds, test data and test folders. The normal game, its saves and its data are untouched. No game code, data or images are published.

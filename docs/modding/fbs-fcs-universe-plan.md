@@ -715,6 +715,18 @@ One shared test session of about 80 minutes; every game was stopped by its own p
 | Coach-rating bands (new, behind a switch) | At each season start, FCS coach ratings are squeezed into a band below FBS and low FBS coordinator ratings are raised. A first version that ran during the off-season had no effect, because the game rewrites coach ratings later in the off-season. The season-start version works and the values persist. With the first band settings the 2032 FCS win rate did not drop (25 % over 99 games), so FCS defensive coordinators look like the main lever. Next test: a tighter coordinator band (settings only). |
 | Starting FCS coordinator ratings | FCS defensive coordinators start far below FCS offensive coordinators (about 12 vs 28). Not changed yet: raising them would push season-1 FCS wins further above target, so this will be set together with the coordinator band and a small cut to the starting FCS rosters. |
 
+### 3.22 Phase 1u: coach-rating bands have no effect (the game recalculates coach ratings weekly), rating drift found, new test rosters built (2026-11-01, agent fcsp1u)
+
+One shared test session of about 40 minutes; every game was stopped by its own process id. The normal game, the play build, the play saves and the installed data were not touched. No new build.
+
+| Goal | Result |
+|---|---|
+| Tighter FCS coordinator limits (setting change only) | Same off-season save, same 99 games: FCS wins 24 % vs 25 % with the earlier limits; margin difference +0.3 +- 1.9 points. No effect. |
+| Why | The game recalculates every coach rating each week from the coach's prestige level and win-loss record (745 of 798 coaches changed between week 1 and week 3). Values set at season start do not last. The coach-rating fix stays off and will not be a default. The earlier coaching A/B is treated as unconfirmed. |
+| Starting FCS coordinator ratings | FCS defensive coordinators start about 12 but reach the offensive coordinators' level (about 20-34) by week 7 on their own. No data change needed; a data change would not stick (the game regenerates these ratings when a Dynasty is created). |
+| Rating drift over rollovers | FCS team ratings: 70 / 67 / 63 / 59 / 57 in season 1, 74 / 72 / 70 / 69 / 66 after six off-seasons (FBS 81 -> 86). The lower three levels bunch together. FCS still wins about 25 % vs an expected 11 % at those ratings. These are the two open problems. |
+| New starting rosters (v18) | FCS rosters rebuilt about 1.5 points lower (predicted 68.0 / 65.6 / 61.8 / 57.2 / 54.1). All data checks pass. Not yet tested in the game: the automated new-Dynasty steps lost sync and no Dynasty was created. |
+
 ## 4. Risks and effort
 
 | Risk | Likelihood | Mitigation |
