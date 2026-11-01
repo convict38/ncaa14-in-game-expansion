@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-01 (late evening) - 105-player rosters: Phase R1 first steps, a converted Dynasty plays a week with the wider ID blocks
+
+This changes only a separate PC-port test build and a test copy of a save. The normal game, its saves and its data are untouched. No game code or data is published.
+
+- **Save converter:** gives every player a new ID in a block of 105 per team instead of 70, in every place the save stores a player ID (rosters, depth charts, injuries, stats, awards, records, team captains). It also makes room for more players and checks every ID afterwards.
+- **Automatic code patch:** every place in the game code that splits or builds a player ID with 70 now uses a setting (70 = the normal game). The patch checks the code before it changes each place, and a re-scan finds none left in Dynasty code. The scan also found 9 places the earlier study had missed.
+- **First test in the game:** a converted 266-team Dynasty (Conference Championship week 2029) loaded, showed its roster page, and played the week (13 championship games) into the bowl weeks. Every stat line went to a player on one of the two teams in that game, and the checker passed on the saved file.
+- Teams still have 70 players in this test. Raising the per-level limits (FBS 105, FCS 70) and widening the game-day tables come next.
+- Details: [docs/modding/rosters-105-plan.md](docs/modding/rosters-105-plan.md).
+
 ## 2026-11-01 (evening) - 105-player rosters: Phase R0 study done, plan set
 
 Study only: no game code, data or settings changed, nothing published from the game.

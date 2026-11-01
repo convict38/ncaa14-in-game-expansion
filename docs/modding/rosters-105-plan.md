@@ -53,3 +53,9 @@ Phase R1 (estimated 16-23 agent-days), every change behind an on/off switch:
 - **A new Dynasty is needed.** Every player ID changes, so old saves cannot be converted to the new layout by the game.
 - The biggest risk is one missed place that puts a player on the wrong team without any warning. The automatic check after each step is there to catch it.
 - Road to Glory, online play and Create-a-School keep their own 70-player assumptions. They are out of scope and will be checked once.
+
+## Progress, Phase R1 (2026-11-01)
+
+- Done: a save converter that moves every player ID to blocks of 105 and checks the result; an automatic patch of every 70-based ID calculation in the Dynasty code (switch: 70 = normal game); a re-scan that finds none left; a check that runs inside the game when switched on.
+- Tested in the game: a converted Dynasty loads, shows its roster page and plays a week, and the saved file passes the ID check.
+- Next: the per-level limits (FBS 105, FCS 70), the game-day tables (140 -> 210 players), the roster screens, then a new Dynasty with real 105-player FBS teams.
