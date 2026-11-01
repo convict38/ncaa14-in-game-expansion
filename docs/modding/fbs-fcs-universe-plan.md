@@ -673,6 +673,20 @@ Separate test executables only, in an isolated test folder. The normal game exec
 | Not done | A new Dynasty with the new starting rosters. |
 | Next | Move the autosave fix into the play build; make the new recruiting settings the default and pull the levels down to target; follow the FCS win rate through 2032. |
 
+### 3.19 Phase 1r: FCS recruit levels on target, first brand-new 266-team Dynasty, 2032 regular season (2026-11-01, agent fcsp1r)
+
+Separate test executable only (no new build), in isolated test folders. The normal game executable, the play build and saves were not touched; the installed recruit data was only read.
+
+| Goal | Result |
+|---|---|
+| New recruiting settings as the test default | The leftover two- and three-star step for FCS schools and "top FCS level skips leftover one-stars" are now used in every test run. Building them in as defaults needs one small build. |
+| FCS class levels to target (59.7 / 57.6 / 55.4 / 52.8 / 51.3) | An existing setting now moves each FCS level's whole new class by one amount to its target (no squeezing). Two tests: 60.7 / 57.5 / 55.4 / 52.5 / 51.6 and 58.8 / 56.8 / 55.7 / 53.1 / 50.3. Levels in order, full class sizes, rosters and staffs complete, contract numbers clean. Run-to-run noise is about +-0.7 because ratings move in whole numbers per player. |
+| New 266-team Dynasty: does it work? | Yes. It was created and started, and weeks 1-6 were simulated with no crash or hang. |
+| Realistic recruits in a new Dynasty | Verified. All 6,700 names come from the new lists, faces are mixed, home states follow the new weights. Class stars: 34 / 334 / 1,876 / 2,346 / 2,110 (five down to one). |
+| First-season FCS strength | Lower than planned. The game rates FCS teams at creation at 64.5 / 60.1 / 54.8 / 48.5 / 44.5 (planned about 70 / 67 / 63 / 59 / 56; FBS 80.7). Weeks 1-6: FCS won 2 of 92 games against FBS (2 %, target about 8 %), 10 points to 38. About 4 points stronger FCS starting rosters would give about 8 %; this is the user's choice (rating scale vs upsets). |
+| Long-running Dynasty, 2032 regular season | FCS won 26 of 107 games against FBS (24 %), about twice what the ratings predict (11 %). In the new Dynasty, ratings and results agree, so the gap appears only after off-seasons. Almost all FBS-vs-FCS games now land in the same early week after an off-season. |
+| Next | Find why FCS teams beat FBS teams more often after off-seasons; decide the first-season strength; build the settings in as defaults; spread FBS-vs-FCS games over the first weeks. |
+
 ## 4. Risks and effort
 
 | Risk | Likelihood | Mitigation |

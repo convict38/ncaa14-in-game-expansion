@@ -1,5 +1,30 @@
 # Changelog
 
+## 2026-11-01 (early morning) - FBS+FCS universe: FCS recruit levels on target, first brand-new 266-team Dynasty
+
+This changes only separate PC-port test builds and test folders. The normal game, its saves and its data are untouched. No game code, data or images are published. No new build was needed: everything below uses settings that already existed.
+
+**FCS recruit classes now land on their targets.**
+- The two new recruiting settings from the last update (FCS schools may pick leftover two- and three-stars in the last signing step; the top FCS level skips leftover one-stars) are now the standard test setup.
+- An existing setting now moves each FCS level's new class to its target strength as a whole, without squeezing the spread of players.
+- Result for the 2032 classes, top level to bottom (target 59.7 / 57.6 / 55.4 / 52.8 / 51.3): 60.7 / 57.5 / 55.4 / 52.5 / 51.6 in one test and 58.8 / 56.8 / 55.7 / 53.1 / 50.3 in another. The levels stay in order, classes are full size, and no four- or five-star went to an FCS school in the first test. The second test shows possibly one four-star at a second-level school, but that comes only from matching names and still has to be confirmed. Runs differ by about half a point to a point because each player's ratings move in whole numbers. A small code change can remove that later.
+
+**First brand-new Dynasty with all 266 teams and the new starting rosters.**
+- It creates, starts the season and plays weeks 1-6 with no crash or hang.
+- **Realistic recruits work in a new Dynasty.** All 6,700 recruits have names from the new name lists (none from the old ones). They have a varied mix of faces, and their home states follow the new weights (for example fewer from California and more from Georgia than the original game). The class has 34 five-stars, 334 four-stars, 1,876 three-stars, 2,346 two-stars and 2,110 one-stars.
+- **FCS teams are too weak in the first season of a new Dynasty.** The game rates FCS teams lower when it creates the Dynasty than our plan expected. From top level to bottom they are 64.5 / 60.1 / 54.8 / 48.5 / 44.5 instead of about 70 / 67 / 63 / 59 / 56. FBS teams average 80.7. In weeks 1-6, FCS teams won only 2 of 92 games against FBS (2 %, planned about 8 %) and scored 10 points a game to FBS's 38. Reaching about 8 % would need FCS starting rosters about 4 points stronger than the chosen scale. That choice (rating scale vs first-season upsets) is left to the user.
+
+**The long-running Dynasty, 2032 regular season.**
+- FCS teams won 26 of 107 games against FBS (24 %), about the same as in the first four weeks. That is about twice what the team ratings predict (11 %). In the new Dynasty the ratings predicted results well, so the gap shows up only after off-seasons. Finding out why is the next step.
+- After an off-season almost all FBS-vs-FCS games end up in the same early week. They should be spread over the first weeks.
+
+**Still to do.**
+- Build the new recruiting settings in as defaults (one small build when disk space allows).
+- Decide on the first-season FCS strength for new Dynasties.
+- Find why FCS teams beat FBS teams more often than their ratings predict after an off-season.
+- Spread the FBS-vs-FCS games over the first weeks.
+- Move the autosave fix into the play build (in progress).
+
 ## 2026-10-31 (late night) - PC port: the "Autosave in Progress" hang is found and fixed in a test build; FCS recruiting levels separated
 
 This changes only separate PC-port test builds. The normal game, its saves and its data are untouched. No game code, data or images are published.
