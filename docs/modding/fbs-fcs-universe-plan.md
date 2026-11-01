@@ -613,7 +613,7 @@ Separate test executables only, in isolated test folders. The normal game execut
 
 ### 3.15 Phase 1n: realistic recruit classes, star-gated FCS recruiting, starting FCS rosters on one scale (2026-10-31, agent fcsp1n)
 
-Separate test executables only, in isolated test folders. The normal game executable, the play build and saves were not touched. **Built and checked offline; not yet run in the game.**
+Separate test executables only, in isolated test folders. The normal game executable, the play build and saves were not touched. **Built and checked offline; run in the game in Phase 1o (3.16).**
 
 | Goal | Result |
 |---|---|
@@ -625,7 +625,22 @@ Separate test executables only, in isolated test folders. The normal game execut
 | Older steps | The FCS recruit-strength step from Phase 1m is now only a light safety limit (it acts only if a level's class ends more than 1.5 away from its target). The separate FBS / FCS display scale is off by default. |
 | Model result | FBS classes about 67.6 (as before), FCS level classes about 60 / 58 / 55 / 53 / 51, no four- or five-star in FCS. Over many seasons: FCS levels 71 / 67 / 64 / 58 / 56, best FCS 77, worst 51, FBS 87 (worst 67), FCS wins about 9 % (model error about +-4 points). |
 | New Dynasties (test data v16) | The 128 FCS starting rosters are rebuilt so season 1 already sits on this scale (predicted 70 / 67 / 63 / 59 / 56), with a realistic spread from freshmen to seniors (about 13 points). FBS rosters and every other table are unchanged. |
-| Next | Run it in the game: one rollover and a recruiting season (stars by destination, FCS classes by level, FBS top classes and roster sizes), then a new Dynasty with v16. |
+| Next | Run in the game in Phase 1o (section 3.16). |
+
+### 3.16 Phase 1o: the new recruiting run in the game for the first time (2026-10-31, agent fcsp1o)
+
+Separate test executable only, in an isolated test folder. The normal game executable, the play build and saves were not touched. No new build.
+
+| Goal | Result |
+|---|---|
+| Realistic class (FCS29) | Worked in the game, twice (2030 and 2031 classes): 34 five-stars, 334 four-stars, 1,876 three-stars, 2,346 two-stars, 2,110 one-stars; average overall about 80 / 74 / 67 / 59 / 50 by star; about 3.5 seconds. The class is created when the season starts. The rank overflow is fixed (the bottom of the class no longer looks like the top). |
+| Star gate (FCS30) | Runs every week in about one second. During the 2030 season 285 of 286 committed four- and five-stars went to FBS schools, and each FCS level signed its own kind of recruit (top level mostly two- and three-stars, bottom level mostly one- and two-stars). |
+| Top FBS programs | Still recruit at the top: the ten highest-rated programs had classes ranked 1st to 20th, each with several four-stars. The best FCS class ranked 95th. |
+| Final 2030 classes | FBS 68 average; FCS levels 59.1 / 58.8 / 57.0 / 55.4 / 53.8. FCS schools signed 8 four-stars and 1 five-star in total (before: 86). These signed after the season through a step the star gate does not cover yet; the top FCS level also signed more one-stars than planned. |
+| Rosters and staffs | After the 2030 to 2031 off-season every FBS roster has 70 players, FCS 68-70, and all 266 schools have full coaching staffs. |
+| Results on the field | FCS teams won 23 of 99 games against FBS in 2030 (about 23 %), as expected while the older, stronger FCS players are still on the rosters; the planned rate of about 8 % needs a few new classes. |
+| Found | Contract numbers for coaches have run out of room and are being reused (about 260 repeats so far, no visible effect yet). |
+| Next | Close the off-season gap for four- and five-stars (as a switch), look at the contract-number reuse, then a new Dynasty with the new starting rosters. |
 
 ## 4. Risks and effort
 

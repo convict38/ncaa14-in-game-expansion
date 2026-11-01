@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-10-31 (evening) - FBS+FCS universe: the new recruiting tested in the game
+
+This changes only a separate PC-port test build. The normal game, its saves and its data are untouched. No game code, data or images are published.
+
+**What was tested.** The test Dynasty was played from the 2029 off-season through the 2030 season, the bowls and signing day, and into the 2031 season, with the realistic recruit classes and the star-gated FCS recruiting from the previous update.
+
+**What works.**
+- **Recruit classes look like real recruiting.** Each new class has about 34 five-stars, 334 four-stars, 1,900 three-stars and about 4,500 two- and one-stars, and the stars now match how good a player is (five-stars about 80 overall, one-stars about 50). It takes about 3 seconds when the season starts.
+- **Top recruits go to FBS schools.** During the season 285 of 286 four- and five-star commitments went to FBS schools. The best FBS programs still sign top-20 classes; the best FCS class ranked 95th.
+- **Each FCS level recruits differently.** The final 2030 classes average 59 / 59 / 57 / 55 / 54 overall from the strongest FCS level to the weakest (FBS 68).
+- **Rosters and staffs stay full** through the off-season: FBS 70 players, FCS 68-70, every school with a full coaching staff.
+- The weekly check costs about one second.
+
+**Still to do.**
+- FCS schools still signed 9 four- and five-stars after the season (before: 86 a year), through a late signing step the new check does not cover yet. That gets its own switch next.
+- FCS teams still beat FBS teams about 23 % of the time in 2030, because the older FCS players were signed before this change. The planned rate of about 8 % should show after a few new classes.
+- Coach contract numbers have run out of room and are being reused. Nothing visible yet; it will be looked at.
+- A brand-new Dynasty with the new starting rosters has not been tested yet.
+
 ## 2026-10-31 (late afternoon) - FBS+FCS universe: realistic recruit classes, and top recruits skip FCS schools (built, not yet tested in the game)
 
 This changes only a separate PC-port test build. The normal game, its saves and its data are untouched. No game code, data or images are published.
