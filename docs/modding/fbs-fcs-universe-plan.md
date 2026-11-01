@@ -727,6 +727,19 @@ One shared test session of about 40 minutes; every game was stopped by its own p
 | Rating drift over rollovers | FCS team ratings: 70 / 67 / 63 / 59 / 57 in season 1, 74 / 72 / 70 / 69 / 66 after six off-seasons (FBS 81 -> 86). The lower three levels bunch together. FCS still wins about 25 % vs an expected 11 % at those ratings. These are the two open problems. |
 | New starting rosters (v18) | FCS rosters rebuilt about 1.5 points lower (predicted 68.0 / 65.6 / 61.8 / 57.2 / 54.1). All data checks pass. Not yet tested in the game: the automated new-Dynasty steps lost sync and no Dynasty was created. |
 
+### 3.23 Phase 1v: a fresh Dynasty through two off-seasons; first season on target, extra FCS upsets return in the second season (2026-11-01, agent fcsp1v)
+
+Two shared test sessions; every game was stopped by its own process id or its own timer. The normal game, the play build, the play saves and the installed data were not touched. No new build.
+
+| Goal | Result |
+|---|---|
+| Automated new-Dynasty steps | The earlier failure was not a timing problem: when a save slot already holds a Dynasty, one step to the right opens "What's New" instead of "New Dynasty". The new scripts compare each screen with a saved reference picture before every button press. The new loading script is verified; the new creation script still needs one full run. |
+| Season 1 ratings (v18 rosters) | FCS levels 68.4 / 65.1 / 61.7 / 57.7 / 54.5 against a predicted 68.0 / 65.6 / 61.8 / 57.2 / 54.1. |
+| Season 1 FCS wins vs FBS | 7 of 110 games (6.4 %); the team ratings predict 7.5 %. On target. |
+| Rating drift over two off-seasons | FCS levels stay on scale: 67.1 / 64.4 / 61.5 / 57.0 / 53.0 in season 3. FBS rises from 80.7 to 86.4. The upward FCS drift seen in the old long-running save does not happen with the current settings, so no rating hold is needed. |
+| Season 2 FCS wins vs FBS | 9 of 92 games (9.8 %); the team ratings predict only 3.8 %. The top FCS level played FBS teams almost even. The extra upsets therefore start at the first off-season even in a fresh Dynasty; they are part of the current design, not old data. |
+| Likely cause (not yet proven) | What FCS teams gain at the first off-season is coaching standing, not player ratings: FCS head coaches' prestige goes from 0 to 2-5 and their coach rating from about 44 to 65-83, built mostly from wins over other FCS teams. Paired replay tests with these values reset are prepared but not yet run. |
+
 ## 4. Risks and effort
 
 | Risk | Likelihood | Mitigation |

@@ -1,5 +1,31 @@
 # Changelog
 
+## 2026-11-01 (morning) - FBS+FCS universe: a fresh Dynasty played through two off-seasons; ratings hold, extra FCS upsets start in season 2
+
+This changes only separate PC-port test builds, test data and test folders. The normal game, its saves and its data are untouched. No game code, data or images are published.
+
+**Automated new-Dynasty steps fixed.**
+- The earlier failure was not caused by a slow game. When the save slot already holds a Dynasty, one step to the right lands on "What's New" instead of "New Dynasty".
+- The test scripts now compare the screen with a saved reference picture before every button press, so a slow game can no longer throw them off.
+
+**First season with the new FCS rosters: on target.**
+- FCS levels start at 68.4 / 65.1 / 61.7 / 57.7 / 54.5, within half a point of the prediction.
+- FCS teams won 7 of 110 games against FBS teams (6.4 %); their ratings predict 7.5 %, and the target is about 8 %.
+
+**Two off-seasons: FCS ratings do not drift.**
+- In the third season the FCS levels are 67.1 / 64.4 / 61.5 / 57.0 / 53.0, still in order and on scale. FBS teams rise from 80.7 to 86.4.
+- The upward FCS drift seen in the old long-running test Dynasty does not happen with the current settings, so no rating hold is needed.
+
+**Second season: the extra FCS upsets come back.**
+- FCS teams won 9 of 92 games against FBS teams (9.8 %), while their ratings predict only 3.8 %. The strongest FCS level played FBS teams almost even.
+- So this problem is part of the current design, not a leftover of old test data.
+- The most likely cause is coaching standing: after one season, FCS head coaches' prestige and ratings have climbed close to FBS levels, mostly from wins over other FCS teams. Tests that reset these values and replay the same games are prepared.
+
+**Still to do.**
+- Run the replay tests to find which coaching value the game uses in its results.
+- Hold that value per FCS level at each off-season, then replay the second season.
+- Play a third season to confirm the second-season rate.
+
 ## 2026-11-01 (pre-dawn) - FBS+FCS universe: coach-rating fix dropped, real cause of late-Dynasty FCS upsets narrowed down
 
 This changes only separate PC-port test builds, test data and test folders. The normal game, its saves and its data are untouched. No game code, data or images are published.
