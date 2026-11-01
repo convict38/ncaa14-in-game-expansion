@@ -642,6 +642,22 @@ Separate test executable only, in an isolated test folder. The normal game execu
 | Found | Contract numbers for coaches have run out of room and are being reused (about 260 repeats so far, no visible effect yet). |
 | Next | Close the off-season gap for four- and five-stars (as a switch), look at the contract-number reuse, then a new Dynasty with the new starting rosters. |
 
+### 3.17 Phase 1p: top recruits no longer reach FCS schools after the season, contract numbers are fine (2026-10-31, agent fcsp1p)
+
+Separate test executable only, in an isolated test folder. The normal game executable, the play build and saves were not touched.
+
+| Goal | Result |
+|---|---|
+| Where the leak was | The game signs recruits in three passes. The star gate from Phase 1n only reordered each recruit's list of schools. In the big signing pass after the season, a recruit whose FBS schools were already full simply moved down his list to the FCS schools at the bottom. A last "fill weak teams" pass hands out only one-stars, and it was the source of the extra one-stars at the top FCS level. |
+| Fix (new switch, on by default) | The same star check now also runs at the moment of each signing, in all three passes. A refused signing is treated like "that school has no room", so the school keeps filling from lower-rated recruits and every count stays right. |
+| In the game, 2031 season | From week 1 to the end of signing: **no four- or five-star recruit signed with an FCS school** (2030: 9). All 34 five-stars and 330 of 334 four-stars signed with FBS schools; 4 four-stars went unsigned. The check costs well under a tenth of a second. |
+| FCS classes by level | Overall averages from top level to bottom: 58.0 / 58.1 / 57.3 / 55.8 / 52.7. The bottom three levels are distinct; the top two are still level, because the top level signs few players during the season and the final fill gives it one-stars. Next step listed below. |
+| FCS class counting | The level-strength check now sees the whole incoming FCS class (2,215 players; before it missed about 40 % because players inherit their roster slot's id). |
+| Contract numbers | **Not being reused.** The game keeps deleted rows in its tables, and the checker counted them. Counting only live rows: every contract number is unique in every save, there is room for about twice the contracts that ever exist at once, and every school has its full staff of three coaches. A small safety pass (removes contracts whose coach no longer exists) was added; it found nothing to remove. |
+| Results on the field | FCS teams won 30 of 106 games against FBS in the 2031 regular season (28 %). The team ratings still come from the older rosters; this needs a re-check after the next season's ratings. |
+| Not finished | The save after the 2031 to 2032 off-season was not written (a known, rare autosave hang; the game was stopped and the earlier save is intact). The new off-season results above come from the game's own log. |
+| Next | Finish that off-season step; give the top FCS level more two- and three-stars (several options, some without a rebuild); re-check the FCS win rate after the ratings update; a new Dynasty with the new starting rosters. |
+
 ## 4. Risks and effort
 
 | Risk | Likelihood | Mitigation |

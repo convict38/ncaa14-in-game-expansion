@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-10-31 (night) - FBS+FCS universe: top recruits stay at FBS schools all year
+
+This changes only a separate PC-port test build. The normal game, its saves and its data are untouched. No game code, data or images are published.
+
+**What changed.**
+- **No more four- and five-star recruits at FCS schools after the season (new switch, on by default).** The star check from the last update now also runs at the moment each recruit signs, in every signing step. Before, a recruit whose FBS schools were full could still drop down to an FCS school in the big signing step after the season.
+- **The FCS strength check now sees the whole incoming class.** It used to miss about 40 % of the new FCS players.
+- **Coach contract numbers: no problem after all.** The earlier report of repeated numbers came from the checking tool counting deleted rows. Every live contract number is unique, and every school has a full coaching staff. The tool is fixed, and a small safety pass was added that removes any contract left without a coach; it found none.
+
+**Tested in the game (2031 season through signing).**
+- From week 1 to the end of signing, no four- or five-star recruit signed with an FCS school (2030: 9). All 34 five-stars and 330 of the 334 four-stars went to FBS schools.
+- FCS classes by level, strongest to weakest: 58 / 58 / 57 / 56 / 53 overall.
+
+**Still to do.**
+- The top two FCS levels sign classes of the same strength. The top level should get more two- and three-stars.
+- FCS teams won 28 % of their games against FBS in 2031. The ratings still come from older rosters, so this will be checked again after the next season.
+- The save after the 2031 to 2032 off-season was not written because of a known, rare autosave hang, so that step will be run again.
+- A brand-new Dynasty with the new starting rosters has not been tested yet.
+
 ## 2026-10-31 (evening) - FBS+FCS universe: the new recruiting tested in the game
 
 This changes only a separate PC-port test build. The normal game, its saves and its data are untouched. No game code, data or images are published.
@@ -120,6 +139,21 @@ This changes only a separate PC-port test build. The normal game, its saves and 
 - Every change has its own switch and can be turned off.
 
 **Still open.** The end of the 2028 season and the next off-season with the new build: check the topped-up FBS-vs-FCS count, the SWAC result in the FCS playoff, and rosters with the bigger recruit class. Also open: rating inflation from season to season. Real-life 2026 schedules are planned for later (design notes only).
+
+## 2026-10-31 (evening) - Super Sim tackles now include assists, a freeze detector, and why the slowest frames got slower
+
+This changes the PC port's game executable. Saves and game data are untouched. No game code, data or images are published.
+
+**What changed.**
+- **Super Sim tackles are fixed and switched on.** When you let the computer play your snaps with Super Sim, every tackle used to be recorded as a solo tackle, and tackles for loss and sacks were counted twice. That put your players at the top of the tackle leader lists. Now each Super Sim tackle has a 60 % chance of being recorded as an assisted tackle, the same split the game's own whole-game sim uses, and tackles for loss and sacks count once. A test run measured 50-60 % assists in Super Sim games and showed the stock behaviour (0 assists) with the fix turned off. To turn it off, set `SSTK=0` in the environment. `SSTK_AST` changes the assist share and `SSTK_DEDUP=0` keeps the old double count.
+- **Freeze detector.** In a few percent of test starts (4 of about 120 since late October), the game stopped at the opening kickoff: no picture, no crash, and nothing in the logs said why. The port now notices when the game has shown no new frame for 10 seconds. It then writes down what every game thread is waiting for and what every job processor is running, so the next time it happens we can see the cause. It only reads; it never changes the game. `PS3_HANGDUMP=0` turns it off.
+- **Why the slowest frames got a little slower.** After the last two speed-ups, the slowest 1 % of frames got about 6 ms longer. We checked whether that is real. It is real but small. Hitches did not become more frequent, and the time spent in long frames did not change in a measurable way. The game's own simulation steps became much more even (far fewer slow steps). The long frames are moments when the game's render thread waits for the background job processors to finish their work. A faster game puts more work on those processors per second, so those waits get a little longer. Making the job code faster shortens them too.
+- **Tried, not kept: skipping the code check inside the translated code.** We moved most of the "is this still the right code?" checks into the translated job code itself. Side by side with the old check on 7.7 billion jumps, it never disagreed, and it made animation jobs 7 % faster. But game speed rose only slightly (0.86 -> 0.88 of real time, within the noise), and one of 15 full test games froze inside an animation job, a kind of stop not seen in recent builds. Fluidity and stability come first, so it stays off and is not in the build.
+- **Checked for side effects.** 7 full test games with the tackle fix and the freeze detector (8 simulated plays each), plus 15 earlier test games that also had the detector: no corrupt results, no hangs, and the clock always advanced.
+
+**Still slow, and what is next.**
+- Contact plays still run at about 0.86 of real time in our pile-up test (target 0.9 or more).
+- About 11 % of animation-job time still runs in the slower interpreter. It is spread over many small pieces of code that the game loads at different places, not one hot spot. The next step is a capture run that records exactly which code that is, so it can be translated too.
 
 ## 2026-10-31 (morning) - Contact plays run faster again: all translated job code uses the quick math, and the code checks got lighter
 
