@@ -1,5 +1,29 @@
 # Changelog
 
+## 2026-10-31 (late night) - PC port: the "Autosave in Progress" hang is found and fixed in a test build; FCS recruiting levels separated
+
+This changes only separate PC-port test builds. The normal game, its saves and its data are untouched. No game code, data or images are published.
+
+**The autosave hang.**
+- **Cause.** The PC port keeps a fixed list of 64 game threads. The game starts a short-lived helper thread for every save, every load, every trophy and every video. When such a thread finished, the PC port never gave its place in the list back. After about 63 threads in one session the list was full, the next save could not start its helper, and the game waited forever on "Autosave in Progress".
+- **It is not caused by the bigger FBS+FCS universe** and it can also happen in the normal PC-port play build: after roughly 15-20 saves or loads in one sitting (fewer if trophies or videos come up). Until the fix is in the play build: if it happens, quit and restart; your last save is safe.
+- **Fix (new switch, on by default in the test builds).** Finished helper threads now give their place back when the list is full. Nothing changes before the list fills up. Tested by shrinking the list on purpose: without the fix the game hung on the next load, with it the game loaded, saved at each step and played into the new season with no hang. The fix still has to be moved into the play build.
+
+**The 2031 to 2032 off-season is finished.**
+- No four- or five-star recruit signed with an FCS school; every school has full rosters and a full coaching staff, and contract numbers are clean.
+- After the new season's ratings, the FCS levels are in order (team ratings 74 / 72 / 70 / 69 / 67 from top level to bottom; FBS 86).
+- In the first four weeks of 2032 FCS teams won 23 % of their games against FBS (2031: 28 %), and the top level wins far more often than the bottom one. This is still above the planned rate; the new recruit classes have only just started to reach the lineups.
+
+**Top FCS level separated from the second.**
+- The last signing step used to offer only one-stars, so hundreds of two- and three-stars went unsigned while the top FCS level filled up with one-stars. A new switch lets FCS schools pick from the leftover two- and three-stars in that step, and the top level no longer takes the leftover one-stars.
+- Result for the 2032 classes, top level to bottom: 61.0 / 59.5 / 57.9 / 56.2 / 53.5 overall (before: 58.0 / 58.5 / 57.3 / 55.7 / 52.9), with normal class sizes. All levels are now in order; they are about one point above the target and will be fine-tuned with existing settings.
+
+**Still to do.**
+- Move the autosave fix into the play build.
+- Make the new recruiting settings the default and fine-tune the level targets.
+- Keep watching the FCS win rate through the 2032 season.
+- A brand-new Dynasty with the new starting rosters has not been tested yet.
+
 ## 2026-10-31 (night) - FBS+FCS universe: top recruits stay at FBS schools all year
 
 This changes only a separate PC-port test build. The normal game, its saves and its data are untouched. No game code, data or images are published.

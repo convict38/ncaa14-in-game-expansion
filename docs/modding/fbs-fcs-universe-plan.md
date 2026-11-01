@@ -658,6 +658,21 @@ Separate test executable only, in an isolated test folder. The normal game execu
 | Not finished | The save after the 2031 to 2032 off-season was not written (a known, rare autosave hang; the game was stopped and the earlier save is intact). The new off-season results above come from the game's own log. |
 | Next | Finish that off-season step; give the top FCS level more two- and three-stars (several options, some without a rebuild); re-check the FCS win rate after the ratings update; a new Dynasty with the new starting rosters. |
 
+### 3.18 Phase 1q: the "Autosave in Progress" hang found and fixed, the 2032 off-season finished, the top FCS level separated (2026-10-31, agent fcsp1q)
+
+Separate test executables only, in an isolated test folder. The normal game executable, the play build and saves were not touched.
+
+| Goal | Result |
+|---|---|
+| Autosave hang: cause | The PC port's runtime keeps a fixed table of 64 game threads and frees a slot only when another thread waits for the finished one. The game starts its short-lived helpers (one per save or load, per trophy, per video) as threads nobody waits for, so each one used up a slot for good. After about 63 thread starts in one session the table was full, the next save could not start its helper, and the game waited forever. Every hang seen in earlier test runs happened right after the 63rd thread start. |
+| Does the normal play build have it? | Yes. It uses the same runtime and the same game code; the number of teams and the save size do not matter. Normal play has about 40 short-lived thread starts to spare per session (roughly 15-20 saves or loads, fewer with trophies and videos). If it happens: quit and restart, the last save is intact. |
+| Fix (new switch, on by default in the test builds) | When the table is full, slots of finished helper threads are given back (and their stack memory reused). Nothing changes before the table fills. Reproduced on purpose with a smaller table: without the fix the next load hung; with it the same load, the off-season, the new season start and four weeks ran with 19 slots recycled and no hang. Still to be moved into the play build. |
+| 2031 to 2032 off-season | Finished. No four- or five-star recruit signed with an FCS school (all 33 five-stars and 316 signed four-stars went to FBS). Rosters FBS 66-70, FCS 65-70; all 266 schools have three coaches; contract numbers clean. |
+| FCS levels: top vs second | The final "fill weak teams" signing step only offered one-stars. A new switch lets FCS schools take leftover two- and three-stars there (best first), and a setting keeps the top FCS level from taking leftover one-stars. Final 2032 classes, top level to bottom: before 58.0 / 58.5 / 57.3 / 55.7 / 52.9; setting only 61.0 / 58.3 / 57.2 / 55.8 / 52.8 (top level's class shrank to 11.6 a school); new switch only 58.8 / 59.5 / 58.0 / 56.0 / 53.5; **both 61.0 / 59.5 / 57.9 / 56.2 / 53.5 with normal class sizes**. Target 59.7 / 57.6 / 55.4 / 52.8 / 51.3: the order and the gaps are right, all levels about 1-2 points high (tunable with existing settings). |
+| Results on the field after the 2032 ratings update | Team ratings FBS 86; FCS levels 74 / 72 / 70 / 69 / 67, now in order. Weeks 1-4 of 2032: FCS won 27 of 116 games against FBS (23 %; by level 50 / 33 / 28 / 9 / 6 %). Still above the planned rate; most FCS starters were signed before the new recruiting. |
+| Not done | A new Dynasty with the new starting rosters. |
+| Next | Move the autosave fix into the play build; make the new recruiting settings the default and pull the levels down to target; follow the FCS win rate through 2032. |
+
 ## 4. Risks and effort
 
 | Risk | Likelihood | Mitigation |
@@ -736,3 +751,8 @@ Effort: about 51-85 agent-days (10-16 weeks at 5 agent-days a week). The critica
   3. the final rating scale (user decision; one setting);
   4. a new Dynasty with the 6,700-class data;
   5. screens for the FCS playoff and stat leaders.
+- **Phase 1q (2026-10-31, agent fcsp1q; section 3.18).** The "Autosave in Progress" hang is a thread-slot leak in the PC port's runtime that can also hit normal play; fixed behind a switch in the test builds. The 2032 off-season is finished, and the top FCS level now signs the strongest classes. Next, in order:
+  1. move the autosave fix into the play build;
+  2. make the new recruiting settings the default and tune the FCS levels to target;
+  3. follow the FCS win rate through the 2032 season;
+  4. a new Dynasty with the new starting rosters.
