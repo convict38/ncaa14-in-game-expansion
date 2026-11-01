@@ -687,6 +687,20 @@ Separate test executable only (no new build), in isolated test folders. The norm
 | Long-running Dynasty, 2032 regular season | FCS won 26 of 107 games against FBS (24 %), about twice what the ratings predict (11 %). In the new Dynasty, ratings and results agree, so the gap appears only after off-seasons. Almost all FBS-vs-FCS games now land in the same early week after an off-season. |
 | Next | Find why FCS teams beat FBS teams more often after off-seasons; decide the first-season strength; build the settings in as defaults; spread FBS-vs-FCS games over the first weeks. |
 
+### 3.20 Phase 1s: why new Dynasties started with weak FCS teams (fixed in new test data), why FCS teams win more after off-seasons (coaching staffs), schedule spread and built-in defaults (2026-11-01, agent fcsp1s)
+
+Offline work only: no game was run this phase (the shared test queue was busy). The normal game, the play build, saves and the installed data were not touched. Everything below is checked by analysis of earlier test saves; the in-game checks are the first step of the next phase.
+
+| Goal | Result |
+|---|---|
+| Disk space | Freed 11.7 GB of this agent's own rebuildable test files (old test builds, raw frame captures, old test saves); about 51 GB free. |
+| Why FCS teams were weak in a new Dynasty | When it creates a Dynasty the game rates every team from its starters' individual skills, read through the depth chart. The FCS starting rosters had overall ratings that were 2 to 6 points higher than their skills justify, and their depth charts were not sorted after the re-rating. A model of the game's own team rating reproduces the in-game numbers to within about 1 point. |
+| New starting rosters (test data v17) | FCS skills now match their overall ratings, depth charts are sorted, and each level is set so the in-game first-season team rating should land on the chosen middle ground: predicted 69.9 / 67.1 / 63.0 / 59.0 / 55.9 (target 70 / 67 / 63 / 59 / 56). Freshmen match the strength of later FCS recruit classes. Not yet checked in the game. |
+| Why FCS teams win more often after off-seasons | Ruled out: depth charts, injuries, freshmen starting, position mix and secondary skills. At the same starter strength, FCS teams do about 9.5 points better in later seasons than in a new Dynasty. The coaching staffs explain most of this: after several off-seasons FCS head coaches and defensive coordinators are rated much higher than at the start, while FBS coordinators are rated lower, so the coaching gap shrinks (defensive coordinators: 54 points apart at the start, 24 after six seasons). A test save with FCS coach ratings set back to the starting levels is ready for an in-game check. |
+| FBS-vs-FCS games after off-seasons | New switch in a test build: each game added after an off-season starts its search at a week chosen like the original schedules (mostly weeks 1-4, a few later), instead of always the same early week. Not yet checked in the game. |
+| Recruiting settings as defaults | The test build now has the chosen FCS recruiting settings built in, and moves each FCS level's class to its target exactly (no rounding drift). Each change has a switch back to the old behaviour. Not yet checked in the game. |
+| Next | In the game: create a new Dynasty with the v17 data and read the first-season ratings and FCS win rate (target about 8 %); run the coaching-rating test; check the schedule spread and defaults through one off-season. Then a fix for the coaching gap, behind a switch. |
+
 ## 4. Risks and effort
 
 | Risk | Likelihood | Mitigation |

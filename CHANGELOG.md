@@ -1,5 +1,26 @@
 # Changelog
 
+## 2026-11-01 (night) - FBS+FCS universe: why new Dynasties started with weak FCS teams, and why FCS teams win more after off-seasons
+
+This changes only separate PC-port test builds, test data and test folders. The normal game, its saves and its data are untouched. No game code, data or images are published. No game was run this time: the shared test queue was busy, so this update is analysis and preparation. The in-game checks come next.
+
+**Weak FCS teams in a new Dynasty: cause found, new test data made.**
+- When the game creates a Dynasty, it rates each team from its starters' individual skills. The FCS starting rosters showed overall ratings 2 to 6 points higher than their skills were worth, and their depth charts were not sorted. That is why FCS teams started 5 to 11 points below plan.
+- New test starting rosters fix both. They are set so that FCS teams should start at the chosen middle ground in the game itself (about 70 / 67 / 63 / 59 / 56 from top level to bottom).
+
+**Why FCS teams beat FBS teams more often after off-seasons.**
+- Depth charts, injuries, freshmen in the lineup, position mix and secondary skills were checked and ruled out.
+- The likely cause is the coaches. After several seasons FCS head coaches and defensive coordinators are rated much higher than at the start, while FBS coordinators are rated lower. A test to confirm this in the game is ready.
+
+**Schedules and recruiting defaults (test build).**
+- FBS-vs-FCS games added after an off-season are now spread over the first weeks like real schedules, instead of nearly all landing in one week.
+- The chosen FCS recruiting settings are built in as defaults, and each FCS level's class now lands exactly on its target. Each change can be switched back.
+
+**Still to do.**
+- Check all of the above in the game, starting with a new Dynasty on the new rosters (target: FCS teams win about 8 % against FBS in season one).
+- Fix the coaching gap after off-seasons, behind a switch, once the test confirms it.
+- Move the autosave fix into the play build (in progress).
+
 ## 2026-11-01 (early morning) - FBS+FCS universe: FCS recruit levels on target, first brand-new 266-team Dynasty
 
 This changes only separate PC-port test builds and test folders. The normal game, its saves and its data are untouched. No game code, data or images are published. No new build was needed: everything below uses settings that already existed.
