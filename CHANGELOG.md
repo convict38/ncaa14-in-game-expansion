@@ -28,6 +28,21 @@ This changes only separate PC-port test builds, test data and test folders. The 
 - Make the starting FCS coordinator ratings consistent (defensive coordinators currently start far below offensive ones), together with a small matching cut to the starting FCS rosters.
 - Move the autosave fix into the play build (in progress).
 
+## 2026-11-01 (morning) - PC port build 96: the "Autosave in Progress" hang is fixed, Super Sim tackles confirmed
+
+This changes the PC port's main build. No game code, data or images are published.
+
+**Autosave hang fixed (build 96, now the default).**
+- Cause (found by the FBS+FCS universe work): the PC port kept a fixed list of 64 game threads and only freed an entry when the game waited for that thread to end. The game never waits for its short save, load and movie threads, so after enough of them the list was full and the next save could never start. It could happen after about 15 to 20 saves or loads in one session.
+- Fix: when the list is full, entries of threads that have completely finished and that nobody can wait for are reused. Nothing changes before the list fills up. The old behaviour can be switched back.
+- Checked: the fix was reviewed for safety, then 13 test games ran clean, 7 of them with the list made artificially small so the reuse really happened (4 reuses per game, including the save thread). A quick check of the final build was also clean.
+
+**Super Sim tackles: confirmed in a real game.** A Dynasty playoff game was super-simmed from the opening kickoff on the current build. 58 % of its tackles were assisted (53 % and 65 % for the two teams), in line with normal simulated games (about 59 %). Before the fix it was 0 %.
+
+**Speed work (no change to the build yet).**
+- Measured why some special-processor code still runs in the slow fallback path: almost none of it is missing from the translated code. Nearly all of it is code that is already translated but is refused by the safety check, most often because a single instruction was patched when the code was loaded. That points to a different, cheaper fix than translating more code.
+- A safer version of an earlier speed-up (a faster safety check that froze once in 15 test games) is written but not yet built or tested.
+
 ## 2026-11-01 (night) - FBS+FCS universe: why new Dynasties started with weak FCS teams, and why FCS teams win more after off-seasons
 
 This changes only separate PC-port test builds, test data and test folders. The normal game, its saves and its data are untouched. No game code, data or images are published. No game was run this time: the shared test queue was busy, so this update is analysis and preparation. The in-game checks come next.
