@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-01 (evening) - 105-player rosters: Phase R0 study done, plan set
+
+Study only: no game code, data or settings changed, nothing published from the game.
+
+- Goal: FBS teams get up to 105 players on one roster page; FCS teams stay at 70.
+- The game gives each team a block of 70 player ID numbers. The study found 537 places in 236 game functions that depend on that 70.
+- Game day: the game copies both teams into a game table with room for exactly 140 players (2 x 70), and keeps a 70-per-position list. Both are size limits that can be widened.
+- Verdict: feasible. Plan: blocks of 105 for every team, the real limit per level (FBS 105, FCS 70), and an automatic, checked patch of every place. Estimated 16-23 agent-days. A new Dynasty will be needed.
+- Details: [docs/modding/rosters-105-plan.md](docs/modding/rosters-105-plan.md).
+
 ## 2026-11-01 (afternoon) - FBS+FCS universe: four seasons played, the FCS upset rate stays realistic, FCS balance declared good enough
 
 This changes only separate PC-port test builds, test data and test folders. The normal game, its saves and its data are untouched. No game code, data or images are published.
