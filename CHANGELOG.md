@@ -6,7 +6,9 @@
 - **Balance:** in the first test season with the portal, FCS teams beat FBS teams in 21 % of games (about 11 % before the portal). Most of that came from the bug above and from strong FBS players dropping down. Now only weaker FBS players (who would not start at an FBS school) can drop to FCS, and the best FCS starters can move up to FBS, as happens in real life. In a full test season FCS won 12 % of these games, back at the old level.
 - **Grad transfers:** fourth-year players who redshirted and have one season left can now enter the portal more often.
 - **Second portal off-season tested:** about 3,100 transfers, all carried out; old transfer records were cleared automatically; FBS rosters averaged 84 players, FCS stayed at 70 or below.
-- **Not done yet:** some schools receive too many transfers (one got 77); a cap per school is built but not tested. Renaming the "Transfer Requests" stage still needs a menu-text change. A second test season is still to be simulated.
+- **Per-school limit:** some schools were receiving too many transfers (one got 77). A limit of 35 arrivals per school now spreads them out without lowering the total.
+- **Second test season:** FCS won 15 % of games against FBS (12 % the season before; the long-run target is 8-12 %). One more setting (more FCS stars moving up) will be tried next.
+- **Not done yet:** renaming the "Transfer Requests" stage still needs a menu-text change.
 
 ## 2026-11-02 (mid-morning) - Transfer portal: FBS and FCS players both enter, move between levels, or leave with no school
 
