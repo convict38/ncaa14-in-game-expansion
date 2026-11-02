@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-02 (evening) - Transfer portal and 105-player rosters: release candidate (test build)
+
+This is a separate test build. The main PC-port build is unchanged. No game code, data or images are published.
+
+- **Balance is back in range:** with the final settings (a few more strong FCS starters move up to FBS each year), FCS teams beat FBS teams in 11 % and then 8.5 % of games over two simulated seasons (about 10 % overall; the target is 8-12 %).
+- **No extra fix was needed for the bigger rosters:** the same season before the portal, played at 70-player and 105-player rosters, had the same starters and team ratings; the earlier higher FCS win rate was chance, plus a year with a small senior class.
+- **Each off-season:** about 3,100-3,250 transfers, all carried out; at most 35 arrivals per school; FBS rosters 70-98 players, FCS at 70 or below; no player-ID errors.
+- **Release-candidate notes written:** the full set of switches, how to convert an existing Dynasty (and how to start a new one: create it normally, then convert), known limits (Road to Glory, online and Create-a-School stay at 70 players; the menu still says "Transfer Requests"), and a proposed plan to merge it into the main build, which waits for the owner's approval.
+- **Still to watch:** most FCS stars who move up come from the strongest FCS tier, so that tier is getting closer to the next one.
+
 ## 2026-11-02 (afternoon) - PC port build 98: the graphics callback check no longer takes a lock when nothing is waiting
 
 This changes the PC port's main build. Saves and game data are untouched. No game code, data or images are published.
