@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-11-01 (night) - 105-player rosters: FBS teams grow past 70 in a test Dynasty, play their games and show on the roster page
+
+This changes only a separate PC-port test build and test copies of saves. The normal game, its saves and its data are untouched. No game code or data is published.
+
+- **Per-level roster limits:** two new settings set the roster limit for FBS and FCS teams. Both default to 70, the normal game. They are used by the off-season cut, recruit enrollment, transfers and the roster screens. The test used FBS 105 and FCS 70.
+- **Game-day lists widened:** the game's per-position player lists for the two teams in a game now hold up to 105 players per position. The game-day player table in the save was raised to 210 (2 x 105).
+- **Tests in the game:**
+  - A converted Week 8 Dynasty played a week. The new ID check ran and found every player in his team's block, and every stat line went to the right team.
+  - A converted off-season Dynasty ran every off-season stage with the new limits. Afterwards 119 of 138 FBS teams had more than 70 players (largest 82), and every player ID stayed in its team's block.
+  - It then played its first two weeks: 95 simulated games, 92 of them with a team of more than 70 players. Every stat line went to the right team, and players beyond the old 70 slots appear in box scores.
+  - The roster page lists all 77 Air Force players.
+- **Problems found (being fixed next):**
+  - In the off-season test, 374 FCS players were enrolled without a roster slot. The FCS teams were not trimmed to 70 before enrollment.
+  - The safety check that refuses an unconverted save runs too late. It must move to the moment the Dynasty is loaded.
+- Not yet tested: playing a game by hand with a 105-man team, the depth chart page, and a second off-season.
+
 ## 2026-11-01 (late evening) - 105-player rosters: Phase R1 first steps, a converted Dynasty plays a week with the wider ID blocks
 
 This changes only a separate PC-port test build and a test copy of a save. The normal game, its saves and its data are untouched. No game code or data is published.
