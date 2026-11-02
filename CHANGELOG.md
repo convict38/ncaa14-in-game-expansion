@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-11-02 (just after midnight) - PC port build 97: game-thread indirect calls and atomics are cheaper
+
+This changes the PC port's main build. Saves and game data are untouched. No game code, data or images are published.
+
+- **What changed:** game-thread indirect calls and atomics are cheaper: about +2.5% game speed, +2 fps, no stutter change. Two places in the port's runtime got faster:
+  - When the game calls a function through a pointer, the port now looks the target up in a small, fast table first instead of a large one, and skips a set of debug checks. Anything the fast table does not know still goes the old way.
+  - The game's lock-free updates (the "atomics" its threads use to share data) now do the same work with fewer slow steps.
+- **Checked:** in 3 test games the fast lookup was compared with the old one on every call (about 3.8 billion calls per game) and never disagreed. 15 more full test games and 2 quick checks of the final build ran clean (no corrupt results, no hangs, the clock always advancing, screenshots normal).
+- **Measured** in the same game sessions by switching between old and new (3 sessions): game speed +2.6 % (ahead in every session), +1.9 fps, typical frame time 2.2 ms shorter; the slowest frames and stutter did not change.
+- **How to turn it off:** `PPU_ICALL_FAST=0` and `PPU_RESV_FAST=0` in the environment bring back the old paths. Play_PC picks up the new build on its next launch.
+
 ## 2026-11-01 (night, later) - 105-player rosters: loading-screen hang fixed, a second game-day limit found and patched
 
 This changes only a separate PC-port test build and test copies of saves. The normal game, its saves and its data are untouched. No game code or data is published.
