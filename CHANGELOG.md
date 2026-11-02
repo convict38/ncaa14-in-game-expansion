@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-11-02 (morning) - Transfer portal: how transfers work today, and why almost nobody transfers
+
+This is research plus one test game session on a separate PC-port test build and test copies of saves. Nothing in the normal game, its saves or its data changed. No game code or data is published.
+
+- **How many players transfer today:** about 10-20 players ask to transfer each off-season across all 266 schools, roughly 0.1 % of FBS players. They all come from the same 3-4 schools. In a test session that stepped through the off-season one stage at a time, 10 players asked to transfer and **none of them actually moved**. The same happens in every earlier test save, including ones made before the 105-player roster work.
+- **Why so few ask:** only FBS freshmen and sophomores who are not starters can ask, and only players whose hometown is on a short list of 227 cities. That last rule alone rules out about 93 % of players. FCS players never transfer, and nobody moves between FBS and FCS.
+- **Why nobody moves:** a player's "transferring" mark is cleared on the way into Recruiting, just before the step that moves players to their new school, so that step skips everyone. This is the first thing to fix.
+- **Other limits found for the portal:** the transfer list holds only 500 entries; a school can receive transfers even when its roster is full; and schools that lose transfers get smaller signing classes. All three will be handled behind settings that are off by default.
+- **Plan:** about 18 portal entries per FBS team and 10 per FCS team each year (roughly 17 % and 14 % of rosters). About 55 % of FBS entries land at another FBS school, about 25 % drop to FCS and about 20 % find no school. The best FCS players move up. Playing time and level (moving up or down) drive who enters. The existing "Transfer Requests" stage becomes the portal window, so old saves still load.
+- **Next:** fix the cleared mark so transfers really happen, log the game's own transfer settings, then raise the volume behind settings that are off by default.
+
 ## 2026-11-02 (early morning) - 105-player rosters: first stage complete (FBS up to 105 on one roster, FCS 70)
 
 This changes only a separate PC-port test build and test copies of saves. The normal game, its saves and its data are untouched. No game code or data is published.
