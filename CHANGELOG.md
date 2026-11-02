@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-02 (mid-morning) - Transfer portal: FBS and FCS players both enter, move between levels, or leave with no school
+
+- **What is new (test build, everything off unless switched on):** FCS players now enter the portal too (the game runs its transfer pass a second time for the FCS schools), players can move up or down a level, and some players find no school and leave the game. Juniors can enter as well as freshmen and sophomores.
+- **How the outcome is chosen:** each player who enters gets one outcome. An FBS player usually looks for another FBS school; a set share drops to FCS (weaker players more often) and a set share finds no school. An FCS player can move up only if he is good enough (overall 60 or more); the rest look for another FCS school or find none. A school only takes a transfer while its roster is under its limit (105 FBS, 70 FCS).
+- **Players with no school** are taken out of the game the same way graduating seniors are. The game's own "promise to stay" step keeps about a third of them, as it already does for normal transfer requests.
+- **Result of the best test (one off-season, in the game):** about 17 entries per FBS school (target 14-24; 101 of 138 schools in range) and about 10 per FCS school (target 7-14; 121 of 128 in range). FBS players: 58 % to FBS, 23 % to FCS, 19 % no school (target 55 / 25 / 20). FCS players: 16 % moved up, 44 % to another FCS school, 39 % no school (target 15 / 55 / 30; FCS rosters are almost full, so fewer FCS players find a new FCS school). All 2,704 transfers moved to their new schools with valid player ids, and none of the players with no school were left behind.
+- **Rosters after recruiting:** FBS 58-97 players (average 77), FCS 65-70; recruiting classes stayed normal (about 33 per FBS school, 26 per FCS school). A full regular season was then simulated with these rosters with no errors.
+- **Transfer history:** old transfer records can now be cleared at the start of each portal season so the list never fills up (about 2,000-3,000 records a year).
+- **Not done yet:** renaming the "Transfer Requests" stage. Changing the game's stage name did not change the menu text, which comes from the menu files, so this needs a menu-text edit. The second off-season with the portal on is still being run (the test team reached the playoffs, which the quick-advance cannot skip).
+
 ## 2026-11-02 (early morning, later) - Transfer portal: transfers spread across all FBS schools, about 2,000 moves in one off-season
 
 Tested on a separate PC-port test build with test copies of saves. Every new behaviour is behind settings that are off by default; with them off the game is unchanged. No game code or data is published.
