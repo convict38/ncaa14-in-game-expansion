@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-11-01 (late night) - 105-player rosters: off-season fixed, unconverted saves refused in time, played games tested
+
+This changes only a separate PC-port test build and test copies of saves. The normal game, its saves and its data are untouched. No game code or data is published.
+
+- **Off-season fixed:** the roster cut read the wrong value when it looked up a team's level, so FCS teams were treated like FBS teams and never trimmed to 70. With the fix, a full off-season leaves every player with a roster slot (374 were missing one before). Afterwards FCS teams have at most 70 players, and 118 of 138 FBS teams have more than 70 (largest 82). The test Dynasty then played four more weeks without a problem.
+- **Second fix:** a game-wide team-by-position player list was still sized for 70 players per team, so it silently dropped players once the league grew. It now grows with the roster size.
+- **Unconverted saves refused in time:** the safety check now runs before the first game of any week is played or simulated. In the test, an unconverted save was refused before any game ran, and the save file was left unchanged.
+- **Played games:**
+  - With the new player IDs, a game played by hand loads, kicks off and runs plays normally when both teams have 70 or fewer players.
+  - **New problem:** a played game against a team of more than 70 players (Louisville, 76) stays on the loading screen. Simulated games with such teams are fine. Comparison runs show the cause is the larger team, not this round's fixes, and the normal 70-player setup loads the same kind of game normally. Finding and fixing this is next.
+- Not yet tested: the depth chart page with more than 70 players (it needs the user's own team over 70) and a second off-season.
+
 ## 2026-11-01 (night) - 105-player rosters: FBS teams grow past 70 in a test Dynasty, play their games and show on the roster page
 
 This changes only a separate PC-port test build and test copies of saves. The normal game, its saves and its data are untouched. No game code or data is published.
