@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-11-02 (early morning) - 105-player rosters: first stage complete (FBS up to 105 on one roster, FCS 70)
+
+This changes only a separate PC-port test build and test copies of saves. The normal game, its saves and its data are untouched. No game code or data is published.
+
+- **Hand-played games work with big rosters:** the fix for the 140-slot field list from the last entry was tested in the game. Sam Houston (68 players) vs Louisville (76) now loads, plays the stadium intro, kickoff and several plays, and finishes with Super Sim (38-21). Louisville players that only a roster over 70 can have show up in the box score. A bowl game (Sam Houston vs Memphis, 31-27) also played through.
+- **Second off-season:** the test Dynasty finished the 2029 season and a full off-season into 2030. The save checker passes. FBS teams now average 77 players (largest 84, up from 82), and FCS teams stay at 70 or fewer. Rosters grow slowly, with no runaway.
+- **Depth chart and Edit Roster over 70:** with an 84-player user team (Connecticut, set up on a test copy), the depth-chart player list and the View & Edit Rosters page list all 84 players, including the 14 beyond the old 70 limit.
+- **Not caused by the roster work:** in bowl week, "Advance Week" does nothing while the user's bowl game is unplayed. The same happens with the roster settings off, so it is a separate issue. Playing or simming the bowl first works.
+- **Still limited:** Road to Glory, online play and Create-a-School keep the 70-player layout. A new Dynasty started directly at 105 is not tested yet (saves are converted instead). The balance between FBS and FCS teams will be re-checked with the bigger FBS rosters.
+- **Next:** the transfer portal (players leaving and moving between FBS and FCS teams), starting with the computer-controlled teams.
+
 ## 2026-11-02 (just after midnight) - PC port build 97: game-thread indirect calls and atomics are cheaper
 
 This changes the PC port's main build. Saves and game data are untouched. No game code, data or images are published.
