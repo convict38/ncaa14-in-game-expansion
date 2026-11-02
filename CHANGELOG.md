@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-01 (night, later) - 105-player rosters: loading-screen hang fixed, a second game-day limit found and patched
+
+This changes only a separate PC-port test build and test copies of saves. The normal game, its saves and its data are untouched. No game code or data is published.
+
+- **Loading-screen hang fixed:** when a game is played by hand, the game builds short on-screen names for each team's players in scratch lists that only had room for 70 players. Louisville's extra players overflowed them and damaged the game's memory, so the load never finished. The lists now grow with the roster size. With the fix, Sam Houston (68) vs Louisville (76) loads to the pre-game screen and the stadium intro starts.
+- **Second limit found:** a moment into the stadium intro the game then closed. A list of player slots used on the field holds 140 players (2 x 70), but this game has 144. The exact place that sets this size was found with memory watches and patched in a new test build, which is not tested in the game yet.
+- **Second season:** the test Dynasty simulated the rest of the 2029 regular season and the conference championships without a problem. Team sizes stay as before: FBS teams average 74 players (largest 82), and FCS teams stay at 70 or fewer. The save checker passes. The off-season itself is the next step.
+- Still to test: playing the Louisville game through to the box score, the depth chart page with more than 70 players, and a full second off-season.
+
 ## 2026-11-01 (late night) - 105-player rosters: off-season fixed, unconverted saves refused in time, played games tested
 
 This changes only a separate PC-port test build and test copies of saves. The normal game, its saves and its data are untouched. No game code or data is published.
