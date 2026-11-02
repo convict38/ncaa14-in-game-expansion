@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-02 (midday) - Transfer portal: transfers now actually play, and FCS-vs-FBS results are back to normal
+
+- **Bug found and fixed (test build, off unless switched on):** players who transferred never made their new team's depth chart. The game treats this year's transfers as "about to leave" when it sets depth charts at the end of the off-season, but by then they have already moved. The same bug exists in the original game. With the fix, transfers start when they are the best player at their position.
+- **Balance:** in the first test season with the portal, FCS teams beat FBS teams in 21 % of games (about 11 % before the portal). Most of that came from the bug above and from strong FBS players dropping down. Now only weaker FBS players (who would not start at an FBS school) can drop to FCS, and the best FCS starters can move up to FBS, as happens in real life. In a full test season FCS won 12 % of these games, back at the old level.
+- **Grad transfers:** fourth-year players who redshirted and have one season left can now enter the portal more often.
+- **Second portal off-season tested:** about 3,100 transfers, all carried out; old transfer records were cleared automatically; FBS rosters averaged 84 players, FCS stayed at 70 or below.
+- **Not done yet:** some schools receive too many transfers (one got 77); a cap per school is built but not tested. Renaming the "Transfer Requests" stage still needs a menu-text change. A second test season is still to be simulated.
+
 ## 2026-11-02 (mid-morning) - Transfer portal: FBS and FCS players both enter, move between levels, or leave with no school
 
 - **What is new (test build, everything off unless switched on):** FCS players now enter the portal too (the game runs its transfer pass a second time for the FCS schools), players can move up or down a level, and some players find no school and leave the game. Juniors can enter as well as freshmen and sophomores.
