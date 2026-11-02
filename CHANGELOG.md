@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-11-02 (early morning, later) - Transfer portal: transfers spread across all FBS schools, about 2,000 moves in one off-season
+
+Tested on a separate PC-port test build with test copies of saves. Every new behaviour is behind settings that are off by default; with them off the game is unchanged. No game code or data is published.
+
+- **Correction to the earlier entry:** transfers in the normal game *are* carried out. The earlier check read the wrong column after the move (after a move the game stores the school the player left, not the one he joined). In the same test saves, 10 of 10 requests moved, and so did every earlier one.
+- **Why every transfer went to the same 3-4 schools:** the list of possible new schools is built from a team list that names some schools several times (266 entries for 138 FBS schools), and the game counts that list in a number that only goes up to 255. The count wraps around to 10, so only the last 10 entries (4 schools) were ever offered. The test build skips the repeated schools, and transfers now spread over 136-137 schools.
+- **A second fix:** when a school's block of player ids was full, the game would have given a transferring player an id in the next school's block. The test build now stops at the end of the school's block and leaves that player where he is (seen 67 times in one test).
+- **More transfers (test settings):** juniors and seniors may ask, the short hometown list no longer limits who can ask, a school can receive transfers only while its roster is below its limit (105 FBS, 70 FCS), and the score and per-school limits can be set. The transfer list was enlarged from 500 to 8,000 entries in the test save.
+- **Result of the best test so far (one off-season):** 1,995 FBS players transferred, about 14.5 per FBS school (target 14-24; 69 of 138 schools inside that range). All 1,995 moved to their new school with valid player ids. After recruiting, FBS rosters were 62-96 players (average 82) and FCS rosters 64-70. So far only freshmen and sophomores score high enough to enter.
+- **Not done yet:** moves between FBS and FCS (the same 255 limit blocks a list of all 266 schools, so it needs two passes), players who find no new school, more juniors and seniors in the portal, and renaming the Transfer Requests stage.
+
 ## 2026-11-02 (morning) - Transfer portal: how transfers work today, and why almost nobody transfers
 
 This is research plus one test game session on a separate PC-port test build and test copies of saves. Nothing in the normal game, its saves or its data changed. No game code or data is published.
