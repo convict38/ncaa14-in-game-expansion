@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-02 (late night) - "Transfer Portal" on by default in the portal test build; FCS menus: one probe failed, bracket storage designed
+
+- **Transfer Portal by default:** the transfer portal test build now loads the renamed menus automatically, so its Advance pop-up and off-season hub say "Transfer Portal" without any extra step. Checked in the game. The normal build is unchanged.
+- **FCS stat leaders, quick route ruled out:** adding the FCS conferences to the Season Stats team/conference filter from the menu script alone does not work. The game's own list only knows FBS conferences and teams, and it has no entries the menus could point at FCS conferences. A small engine change is needed; it is scoped.
+- **FCS playoff bracket:** a home for the bracket inside the Dynasty save was chosen: a save table the game never uses, so older saves load as before. The change that writes the full field, seeds and all results there is written and checked offline against five simulated FCS postseasons (every seed, game and champion comes back exactly). It is switched off by default and not built yet. The bracket page itself comes next.
+
 ## 2026-11-02 (night) - Menus say "Transfer Portal" (portal test build)
 
 - **Renamed in the game's own menus:** with the transfer portal test build, the off-season stage now reads "Transfer Portal" instead of "Transfer Requests" in the three places it shows: the Advance pop-up, the off-season hub item, and the title of the stage screen. Checked in the game on a converted Dynasty save.
