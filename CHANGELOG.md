@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-03 (early) - FCS Playoff page polished; FCS conferences in the stats screens (test build)
+- The "FCS Playoff" page in the Dynasty Setup menu now has the right header ("FCS Playoff") and no longer shows the unused "Reset to Default" hint. Checked in the game with a Dynasty that has a stored FCS postseason: all 25 games, winners and the champion show, Back returns to the menu, the CFP Bracket page still draws.
+- The portal release candidate now includes the FCS postseason storage and this page (two switches, both on in the candidate's settings); the old menu files are kept for rollback.
+- FCS stat leaders, step 1: with a new switch (off by default) the conference picker in Stats and Records > Team Stats lists the FCS conferences after the FBS ones. Checked in the game: "Big Sky" shows its real teams and stats. FCS team logos are still placeholders there.
+- Not done yet: drawing the FCS playoff as a bracket (it is still a list); the idea is to reuse the CFP Bracket page's drawing parts and feed it from the saved FCS games.
+
 ## 2026-11-02 (late night, 2) - FCS Playoff page in the Dynasty menus (portal/FCS test build)
 
 - **The FCS playoff is now saved in the Dynasty:** at End of Season the test build also writes the whole FCS postseason (the 24-team field and seeds, all 23 playoff games with scores, the SWAC title game and the Celebration Bowl) into a save table the game never uses. Checked in the game: the stored games, seeds, scores and champion match the season's FCS results exactly, the save passes the save checker and loads again, and an older save without these rows loads as before. The last 20 seasons are kept.
