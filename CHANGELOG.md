@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-03 (PC port) - Freeze fix landed, smoother frame pacing by default
+
+- **Rare sim freeze fixed in the PC port:** a few percent of games used to hang in the physics/animation job (the sim stopped advancing after a kickoff). The cause was a wrong address in one memory-load step of the SPU interpreter; it is corrected. 42 test games in a row ran clean with no freeze signature, and two follow-up smoke games after the landing played normally.
+- **Graphics-callback shortcut switched back off by default:** build 98 added a faster check that skips a lock. Two same-session comparisons (66 games per mode) showed it gave no game-speed gain (-0.001 and -0.031 of real time) and made the slowest frames worse (95th-percentile frame time +20 ms and +6 ms). So the old locked path is the default again. It can still be turned on for testing with GCM_PUMP_FAST=1.
+- **Housekeeping:** the number of folder overlays the launcher can pass to the game doubled from 8 to 16 (capacity only, no behavior change).
+
 ## 2026-11-03 (afternoon) - FCS Playoff is now a drawn bracket (release candidate)
 
 - **Checked in the game and switched on in the release candidate:** Dynasty Setup > FCS Playoff now shows the whole FCS postseason as a five-column bracket (first round, second round, quarterfinals, semifinals, final) with seeds, scores, winners in gold and the connector lines, plus the SWAC title game and the Celebration Bowl above it. All 23 games match the saved season. Going back and re-opening works, and the College Football Playoff page and the stats pages still work.
