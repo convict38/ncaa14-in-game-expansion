@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-03 (midday) - FCS conference standings now show real records (release candidate)
+
+- **Checked in the game and switched on in the release candidate:** Stats and Records > Conference Standings now lists the FCS conferences (Big Sky, Big South-OVC, CAA, Missouri Valley, Southland, Northeast and the rest) after the FBS ones, with real wins, losses, percentage, conference record and points for and against. The test build before this showed those pages empty ("No data"); the cause was a second filter in the standings code that only let FBS teams through, and it is now skipped for FCS conferences.
+- **Also in the release candidate:** FCS conferences in Scores/Schedules, and the empty placeholder conferences (such as "Generic") are hidden in the pickers. FBS conferences and divisions are unchanged, no crashes, and the game data was identical before and after the test run.
+- **Small cosmetic note:** the division column shows dashes for FCS teams, since FCS conferences have no divisions.
+- **Still open:** the FCS Playoff page is still a list rather than a drawn bracket, and FCS teams still show the borrowed logos of the schools they were copied from; real logos wait for the data-service key.
+
 ## 2026-11-03 (morning) - New test build: FCS conferences for Standings and Schedules (not yet checked in the game)
 
 - **Built, waiting for its in-game check:** a new test build adds two switches, both off by default. One adds the FCS conferences to the Conference Standings list and to the Scores/Schedules conference list (they were FBS-only). The other hides the empty "Generic" entry (and the other empty placeholder conferences) in the Team Stats picker and the new lists. The build compiles and links; it has not been run yet, so the release candidate stays on the previous build until the check passes.
