@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-03 (afternoon) - FCS Playoff is now a drawn bracket (release candidate)
+
+- **Checked in the game and switched on in the release candidate:** Dynasty Setup > FCS Playoff now shows the whole FCS postseason as a five-column bracket (first round, second round, quarterfinals, semifinals, final) with seeds, scores, winners in gold and the connector lines, plus the SWAC title game and the Celebration Bowl above it. All 23 games match the saved season. Going back and re-opening works, and the College Football Playoff page and the stats pages still work.
+- **How it was possible:** a probe showed the menu page can add text parts to its own screen, so the bracket is drawn from the same saved rows the old list used. A small engine switch (off by default) puts those rows in bracket order. The old list page is kept as a one-step rollback.
+- **Known small things:** very long school names are cut with dots, and the highlight no longer moves because the list is hidden behind the bracket.
+- **Still open:** FCS team logos are the borrowed ones until the data-service key is added.
+
 ## 2026-11-03 (midday) - FCS conference standings now show real records (release candidate)
 
 - **Checked in the game and switched on in the release candidate:** Stats and Records > Conference Standings now lists the FCS conferences (Big Sky, Big South-OVC, CAA, Missouri Valley, Southland, Northeast and the rest) after the FBS ones, with real wins, losses, percentage, conference record and points for and against. The test build before this showed those pages empty ("No data"); the cause was a second filter in the standings code that only let FBS teams through, and it is now skipped for FCS conferences.
