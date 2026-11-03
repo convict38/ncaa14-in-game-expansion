@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-02 (night) - Menus say "Transfer Portal" (portal test build)
+
+- **Renamed in the game's own menus:** with the transfer portal test build, the off-season stage now reads "Transfer Portal" instead of "Transfer Requests" in the three places it shows: the Advance pop-up, the off-season hub item, and the title of the stage screen. Checked in the game on a converted Dynasty save.
+- **How:** a small menu-script change that renames the text while the menus are built. It is only loaded together with the portal test build; the normal build and its menu pages are unchanged.
+- **Planned, not built yet:** an FCS playoff bracket page (like the College Football Playoff page) and FCS stat leaders. The FCS playoff results are not yet stored where the menus can read them, so the bracket page needs a small engine change first. A design note is written.
+
 ## 2026-11-02 (evening) - Transfer portal and 105-player rosters: release candidate (test build)
 
 This is a separate test build. The main PC-port build is unchanged. No game code, data or images are published.
