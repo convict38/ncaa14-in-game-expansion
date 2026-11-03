@@ -30,7 +30,7 @@ This changes the PC port's main build. Saves and game data are untouched. No gam
 - **Checked:** 36 full test games on this code. 34 ran clean; the other 2 hit a known, older animation freeze that is not caused by this change (see below). In 3 self-check games no vertical-blank event was lost. Two quick checks of the final build are queued.
 - **Measured** in the same game sessions by switching between old and new (3 sessions): game speed **+4.7 %** (ahead in every session), animation jobs 0.24 ms shorter each. The trade-off: about 3 fps fewer in Super Sim and a few slower frames (95th-percentile frame time +10 ms), because the faster game leaves the renderer a little less time.
 - **How to turn it off:** `GCM_PUMP_FAST=0` in the environment brings back the old path. Play_PC picks up the new build on its next launch.
-- **Still open:** a rare freeze (about 1 game in 20 in tests) in which an animation job stops and the game clock stops, also in Super Sim. A likely cause has been found: the port could resume a part of an animation job after the game had already left it. A fix is being tested (off by default).
+- **Still open:** a rare freeze (about 1 game in 20 in tests) in which an animation job stops and the game clock stops, also in Super Sim. The cause has now been found: a small helper in the port that steps through short pieces of SPU code read one kind of memory address four times too far, so an animation job jumped into the wrong function. The fix is a one-line correction (switch `SPU_MSTEP_LQA=0` brings back the old behaviour) and is being checked in 42 test games before it goes into the main build.
 
 ## 2026-11-02 (midday) - Transfer portal: transfers now actually play, and FCS-vs-FBS results are back to normal
 
