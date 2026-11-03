@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-03 - FCS conferences in the stats screens are now part of the release candidate; bracket layout designed
+
+- **FCS conferences in the stats pickers: checked on more screens and switched on in the release candidate.** With the switch on, Stats and Records > Season Stats and Team Stats list the FCS conferences (Big Sky, Big South-OVC, CAA, Ivy League, MEAC, Missouri Valley and the rest) after the FBS ones, with their real teams and leaders. Also checked mid-season: Team Stats with division splits (ACC Div A / Div B), Conference Standings, Scores/Schedules and the Top 25 polls. No crashes, the FBS lists and numbers are unchanged. The Standings and Schedules pickers use a separate list and still show FBS conferences only.
+- **One cosmetic wart:** after the FCS conferences the Team Stats picker also has an empty "Generic" entry that shows "No data". Harmless.
+- **FCS team logos:** still the borrowed logos of the schools the FCS teams were copied from (for example Weber State shows Central Michigan's mark). Fixing this needs real logo images; the plan is to take them from a public college-football data service later, once the user adds an access key.
+- **FCS Playoff bracket drawing:** the layout is designed (five columns, 23 games, winners in gold) and checked on paper against a stored season, but it is not in the game yet; the Dynasty page still shows the list.
+
 ## 2026-11-03 (early) - FCS Playoff page polished; FCS conferences in the stats screens (test build)
 - The "FCS Playoff" page in the Dynasty Setup menu now has the right header ("FCS Playoff") and no longer shows the unused "Reset to Default" hint. Checked in the game with a Dynasty that has a stored FCS postseason: all 25 games, winners and the champion show, Back returns to the menu, the CFP Bracket page still draws.
 - The portal release candidate now includes the FCS postseason storage and this page (two switches, both on in the candidate's settings); the old menu files are kept for rollback.
