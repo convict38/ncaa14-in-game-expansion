@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-02 (late night, 2) - FCS Playoff page in the Dynasty menus (portal/FCS test build)
+
+- **The FCS playoff is now saved in the Dynasty:** at End of Season the test build also writes the whole FCS postseason (the 24-team field and seeds, all 23 playoff games with scores, the SWAC title game and the Celebration Bowl) into a save table the game never uses. Checked in the game: the stored games, seeds, scores and champion match the season's FCS results exactly, the save passes the save checker and loads again, and an older save without these rows loads as before. The last 20 seasons are kept.
+- **New "FCS Playoff" page:** Dynasty Setup now has an "FCS Playoff" item under "CFP Bracket". It opens a native list page with every game by round (first round, second round, quarterfinals, semifinals, final, then the SWAC title and the Celebration Bowl), with seeds, scores, the winner and the FCS champion. Checked in the game against the season's results, also after reloading the save. The CFP Bracket page still works.
+- **Separate test build only, off by default:** both parts are behind their own switches and are not in the normal build. Still open: the page header text, hiding the unused "Reset" hint, and a drawn bracket like the CFP page.
+- **FCS stat leaders:** the next step (a small engine change so the Season Stats filter can list FCS conferences) is narrowed down to one function; not built yet.
+
 ## 2026-11-02 (late night) - "Transfer Portal" on by default in the portal test build; FCS menus: one probe failed, bracket storage designed
 
 - **Transfer Portal by default:** the transfer portal test build now loads the renamed menus automatically, so its Advance pop-up and off-season hub say "Transfer Portal" without any extra step. Checked in the game. The normal build is unchanged.
