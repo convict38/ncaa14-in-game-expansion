@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-03 (morning) - New test build: FCS conferences for Standings and Schedules (not yet checked in the game)
+
+- **Built, waiting for its in-game check:** a new test build adds two switches, both off by default. One adds the FCS conferences to the Conference Standings list and to the Scores/Schedules conference list (they were FBS-only). The other hides the empty "Generic" entry (and the other empty placeholder conferences) in the Team Stats picker and the new lists. The build compiles and links; it has not been run yet, so the release candidate stays on the previous build until the check passes.
+- **FCS Playoff bracket drawing:** still a list in the game. The plan is to probe whether the list page can draw with text parts, then draw the bracket from the list rows.
+- FCS logos: unchanged, still waiting for the data-service key.
+
 ## 2026-11-03 - FCS conferences in the stats screens are now part of the release candidate; bracket layout designed
 
 - **FCS conferences in the stats pickers: checked on more screens and switched on in the release candidate.** With the switch on, Stats and Records > Season Stats and Team Stats list the FCS conferences (Big Sky, Big South-OVC, CAA, Ivy League, MEAC, Missouri Valley and the rest) after the FBS ones, with their real teams and leaders. Also checked mid-season: Team Stats with division splits (ACC Div A / Div B), Conference Standings, Scores/Schedules and the Top 25 polls. No crashes, the FBS lists and numbers are unchanged. The Standings and Schedules pickers use a separate list and still show FBS conferences only.
