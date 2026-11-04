@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-03 (late night, 2) - FCS Top 25 has its own menu page (release candidate)
+
+- **Checked in the game and switched on in the release candidate:** Dynasty Setup now has a separate "FCS Top 25" entry next to "FCS Playoff". The FCS Top 25 page lists the 25 best FCS teams with records and a short description each (computed on demand from the season's results, not a voter poll, nothing saved). The FCS Playoff page keeps the drawn bracket and no longer carries any Top 25 rows.
+- **Tested:** both pages open and go back to the menu; the College Football Playoff page still draws; the FBS Top 25 poll page is unchanged; after advancing one week the FCS list re-orders (in the test save a different team moved to number one and the games counted rose). The game data was identical before and after both test runs. In a mid-season save the FCS Playoff page shows only the empty bracket frame (no postseason stored yet), as before.
+- **Rollback:** the previous menu archive and settings are kept as one-step rollbacks.
+
 ## 2026-11-03 (late night) - FCS Top 25 works in the game (test switch, not in the release candidate yet)
 
 - **Schedule data checked first:** in a week-5 test save every played game has two teams and a score, and every team's win-loss record (FBS and FCS, 266 teams) matches what the game's own Standings show. The many 4-0 records are real: only a handful of FCS teams are unbeaten.
