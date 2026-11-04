@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-04 (midday) - PC port: speed measurements, simulation thread found on efficiency cores (nothing changed in the game yet)
+
+- **Finding:** new CPU-number logging shows that during gameplay the game's simulation thread (about 40-60 % of each game tick's critical path) runs on the slower efficiency cores of the test PC (i5-13600K) about 88 % of the time. The SPU worker threads sit on performance cores about 87 % of the time. Pinning the simulation thread to a performance core is now being A/B tested.
+- **Also under test:** a hot-code link order (the most-run functions packed together in the executable; no code change). Profile-guided optimisation is staged next.
+- **Tooling:** one fixed measurement session script (analysis runs before logs are compressed, frame captures off, no profiler during speed runs).
+
 ## 2026-11-04 - PC port: SPU recursion guard unwinds instead of halting (b116)
 
 - **Fix:** when a lifted SPU call chain leaks host stack frames and trips the depth guard, the SPU now unwinds back to its driver and keeps running instead of halting. The guest stack is intact, so this is exact. Env switch `SPU_DEPTH_UNWIND=0` restores the old halt; the debug call ring (`SPU_CALLRING=1`) is off by default.
