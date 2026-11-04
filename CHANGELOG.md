@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-03 (night) - All 14 FCS conferences now show standings (release candidate)
+
+- **Checked in the game and switched on in the release candidate:** Conference Standings now shows real records for the Ivy League, MEAC, Patriot League and SWAC as well, so every FCS conference has a standings page. Cause: the earlier fix only covered conferences stored under the newer ids; these four reuse old conference slots, so the "FBS teams only" filter still emptied them. The filter is now skipped for those four slots too. FBS conferences and divisions are unchanged, no crashes, and the game data was identical before and after the test run. The previous setting is kept as a one-step rollback.
+- **FCS Top 25 (research only):** a saved season shows no FCS poll or ranking is ever filled in (every FCS team keeps the same placeholder rank), so a Top 25 page would have to compute its own ranking from results and ratings. A paper test of such a ranking (record, margin, strength of schedule) on a saved season gives a sensible order; the in-game page is a bigger job and is planned, not built.
+
 ## 2026-11-03 (evening) - FCS Playoff bracket polish (release candidate)
 
 - **Checked in the game and switched on in the release candidate:** the stray text line above the FCS Playoff bracket is gone, and long school names are now shortened with a dot (for example "Abilene Christ.", "Stephen F. Aus.") instead of being cut off with dots, so the score on every line stays readable. The bracket still matches the saved season, going back works, and the game data was identical before and after each test run. The previous bracket page is kept as a one-step rollback.
