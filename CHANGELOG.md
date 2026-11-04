@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-04 - PC port: SPU recursion guard unwinds instead of halting (b116)
+
+- **Fix:** when a lifted SPU call chain leaks host stack frames and trips the depth guard, the SPU now unwinds back to its driver and keeps running instead of halting. The guest stack is intact, so this is exact. Env switch `SPU_DEPTH_UNWIND=0` restores the old halt; the debug call ring (`SPU_CALLRING=1`) is off by default.
+- **Checked:** 40 of 40 Super Sim oracle runs clean with no depth trips at the default limit; with the limit lowered to 200 and 64 the guard tripped (up to 8 times per run) and every run recovered with no hang or corruption. Two smoke runs of the landed build were clean.
+
 ## 2026-11-03 (night) - FCS class rankings and FCS awards pages (release candidate)
 
 - **Two new Dynasty Setup entries next to FCS Top 25:** "FCS Class Rankings" lists the 25 best FCS recruiting classes by class points (commits, four- and five-star counts, and the school's rank among all 266), and "FCS Awards" shows the best FCS offensive and defensive player of the year (top 5 and top 3 candidates) and an FCS All-America first team (QB, HB, 2 WR, TE, 4 DL, 3 LB, 4 DB). Award names are generic, no trophy names are used.
