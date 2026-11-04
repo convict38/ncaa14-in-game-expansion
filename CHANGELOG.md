@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-03 (late night) - FCS Top 25 works in the game (test switch, not in the release candidate yet)
+
+- **Schedule data checked first:** in a week-5 test save every played game has two teams and a score, and every team's win-loss record (FBS and FCS, 266 teams) matches what the game's own Standings show. The many 4-0 records are real: only a handful of FCS teams are unbeaten.
+- **How the ranking is made:** the game never fills in an FCS poll, and running the stock poll for FCS too would touch several FBS lists (the "dropped out" and "others receiving votes" texts, rank look-ups) that do not check the level. So the order is computed on demand from the season's results (a Colley-style rating over every played game, a small capped margin term, team strength as the final tie-break). Nothing is written to the save and FBS ranks are untouched.
+- **Checked in the game (two weeks):** a new switch (off by default) puts "FCS Top 25" rows, with records and a short description each, on the FCS page; after advancing one week the list updated (games counted rose from 407 to 499). The FBS paths were not changed.
+- **Not switched on yet:** the page is shared with the drawn FCS Playoff bracket, which needs exactly the bracket rows, so the Top 25 shows only with the older plain-list menu archive. A separate "FCS Top 25" menu entry is the next step.
+
 ## 2026-11-03 (night) - All 14 FCS conferences now show standings (release candidate)
 
 - **Checked in the game and switched on in the release candidate:** Conference Standings now shows real records for the Ivy League, MEAC, Patriot League and SWAC as well, so every FCS conference has a standings page. Cause: the earlier fix only covered conferences stored under the newer ids; these four reuse old conference slots, so the "FBS teams only" filter still emptied them. The filter is now skipped for those four slots too. FBS conferences and divisions are unchanged, no crashes, and the game data was identical before and after the test run. The previous setting is kept as a one-step rollback.
