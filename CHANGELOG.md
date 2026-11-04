@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-03 (night) - FCS class rankings and FCS awards pages (release candidate)
+
+- **Two new Dynasty Setup entries next to FCS Top 25:** "FCS Class Rankings" lists the 25 best FCS recruiting classes by class points (commits, four- and five-star counts, and the school's rank among all 266), and "FCS Awards" shows the best FCS offensive and defensive player of the year (top 5 and top 3 candidates) and an FCS All-America first team (QB, HB, 2 WR, TE, 4 DL, 3 LB, 4 DB). Award names are generic, no trophy names are used.
+- **How it works:** both pages are computed on demand from the saved recruiting and season-stat tables when the page opens, with a weighted stat score for the awards. It is not a vote and nothing is written to the save.
+- **Checked in the game** in an off-season save and a week-5 save: the lists match an offline recomputation from the save (same top schools and players), the pages open and go back, and the FBS Top 25 poll and Heisman Watch pages are unchanged. Not done: the stock Recruiting "Top Classes" page was greyed out in the week-5 test save, so it could not be compared.
+- **Rollback:** previous menu archive and settings kept as one-step rollbacks.
+
 ## 2026-11-03 (late night, 2) - FCS Top 25 has its own menu page (release candidate)
 
 - **Checked in the game and switched on in the release candidate:** Dynasty Setup now has a separate "FCS Top 25" entry next to "FCS Playoff". The FCS Top 25 page lists the 25 best FCS teams with records and a short description each (computed on demand from the season's results, not a voter poll, nothing saved). The FCS Playoff page keeps the drawn bracket and no longer carries any Top 25 rows.
