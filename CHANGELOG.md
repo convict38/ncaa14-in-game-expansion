@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-03 (evening) - FCS Playoff bracket polish (release candidate)
+
+- **Checked in the game and switched on in the release candidate:** the stray text line above the FCS Playoff bracket is gone, and long school names are now shortened with a dot (for example "Abilene Christ.", "Stephen F. Aus.") instead of being cut off with dots, so the score on every line stays readable. The bracket still matches the saved season, going back works, and the game data was identical before and after each test run. The previous bracket page is kept as a one-step rollback.
+- **Re-checked:** Team Stats lists all FBS conferences and divisions unchanged, then the 14 FCS conferences with real teams. Conference Standings: FBS unchanged.
+- **Found, not fixed yet:** in Conference Standings four FCS conferences (Ivy League, MEAC, Patriot League, SWAC) show "No data" in a mid-season test save while the other ten FCS conferences show real records. Their stats pages work. This needs a look at how those conferences are stored.
+- **Still open:** no highlight bar on the bracket page; FCS logos are still the borrowed ones until the data-service key is added. Next ideas: FCS Top 25, FCS recruiting rankings, FCS awards.
+
 ## 2026-11-03 (PC port) - Freeze fix landed, smoother frame pacing by default
 
 - **Rare sim freeze fixed in the PC port:** a few percent of games used to hang in the physics/animation job (the sim stopped advancing after a kickoff). The cause was a wrong address in one memory-load step of the SPU interpreter; it is corrected. 42 test games in a row ran clean with no freeze signature, and two follow-up smoke games after the landing played normally.
