@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-05 - PC port: stadium loader hook added to the main build (off by default)
+
+- **Landed:** the stadium loader hook from the stadium editor (stadium files taken from a plain folder instead of the main archive) is now part of the main PC-port build. It is off unless both of its switches are set, and with it off the file code takes exactly its old path.
+- **Checks so far:** the offline layout check passes (307 archive entries checked, 0 bad). An in-game run with the switch on (Houston at Troy) is still to be repeated on the main build.
+
 ## 2026-11-05 - PC port: FCS hang fix confirmed in the installed build; TeamBuilder uniforms work for all 128 FCS teams (test)
 
 - **Installed fix confirmed:** a new Dynasty made with the installed build gives all 128 FCS teams a uniform that has art, and that survives the 105-man conversion. A played (not simmed) game with an FCS team (Nicholls at Wake Forest) loads in under a minute and kicks off. Tested on scratch copies only.
