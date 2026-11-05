@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-05 - PC port: stadium editor v2 (FCS stadium names in game, format fully round-trips)
+
+- **FCS stadiums get their own identity:** the stadium data editor now gives each of the 128 FCS teams its own stadium record (before, four teams shared one FBS stadium) with the real venue name, capacity and city. In a test copy of the FCS build, Select Stadium listed the new FCS stadiums by name and the game ran normally. Still to fix: the small team/city label and the thumbnail still show the borrowed stadium's. Nothing was installed.
+- **Every stadium scene now rebuilds byte-for-byte (193 of 193):** the two little-endian scenes (used by TCU's stadium) are now read and written, and the material section is decoded field by field.
+- **First generator step:** a tool adds a generated end-zone bleacher with matching crowd seat rows to a high-school stadium, sized from a real FCS capacity (UC Davis, 10,743); checked in an offline render.
+- **Finding:** a stadium with a brand-new code placed loose in a DLC folder is not loaded; the game silently falls back to a stock model. New stadiums need a small loader hook in the PC port (next step) or space in the main archive.
+
 ## 2026-11-05 (early) - PC port: FCS teams get TeamBuilder-style uniforms (first in-game test)
 
 - **FCS teams can now be picked in Exhibition (test switch):** with a test-only switch, the Play Now team list shows the FCS schools instead of the FBS ones. This makes it quick to check what an FCS team looks like in a game.
