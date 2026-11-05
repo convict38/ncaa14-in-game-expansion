@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-05 - PC port: stadium editor v4 (generated stadiums at FCS schools, real city names)
+
+- **New stadiums at FCS home games:** with the FCS uniform fix, FCS home games now load, and stadiums served under brand-new codes show in game. Montana played in an edited Troy model, and UC Davis, Stonehill and Montana State played in generated stadiums. At Montana State a generated end-zone stand, sized so the stadium holds its real 17,000, sits behind the end zone full of crowd, as the offline preview showed. One test failed: a generated dome for Idaho State loaded a stock stadium instead. That is still open.
+- **Scene graph decoded:** the stadium scene graph is now fully read. Each drawable object is just a named link to its mesh, so the generator can add whole new objects (stands, pads) instead of attaching geometry to existing ones. It can also place stands on the ground at high-school venues.
+- **Generator v2:** builds a stadium from a short venue description: remove a stand, add stands sized to the real capacity, add crowd rows and trim the crowd to capacity. Pilots: a small bleacher venue (Stonehill, 2,400), a mid-size bowl (Montana State, 17,000) and a dome (Idaho State, 12,000).
+- **City line fixed:** Select Stadium now shows each FCS school's real home city (for example "San Luis Obispo, California" for Cal Poly). The city table was full, so it was grown and 60 cities were added. The other 68 FCS cities already existed and the teams now point at them.
+- **Survives a new Dynasty:** a new Dynasty keeps the FCS stadium names, capacities, models and cities.
+- Test files only. Nothing was installed.
+
 ## 2026-11-05 - PC port: stadium loader hook added to the main build (off by default)
 
 - **Landed:** the stadium loader hook from the stadium editor (stadium files taken from a plain folder instead of the main archive) is now part of the main PC-port build. It is off unless both of its switches are set, and with it off the file code takes exactly its old path.
