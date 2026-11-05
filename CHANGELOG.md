@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-05 - PC port: UI agent v28 (FCS colour fix checked in game; crowd colours fixed; jersey number path traced)
+
+- **Colour fix checked in game:** Idaho State at home now wears orange jerseys with black pants, Grambling State black with gold, Northern Arizona and Richmond the right trim on their white away kits (Montana State blue and gold was checked before). Graphics were clean and there were no faults. The fix is ready to install. It applies to Exhibition and to Dynasties started after the install.
+- **Crowd colours:** FCS crowds wore their old donor schools' colours. The cause is the team's crowd palette number, not the team colour fields. Each FCS school now uses the palette of the FBS school with the closest colours (Montana State uses Navy's, Montana uses Texas State's), and its menu, scorebug and banner colours are set from the real school colours. Checked in one Exhibition game: the Montana State crowd is now navy, maroon and white instead of red, blue and green. Test data only, not installed yet.
+- **Jersey numbers (TeamBuilder uniforms):** a trace shows the TeamBuilder jersey path never sets the number texture that normal jerseys get. Giving it one of the game's own TeamBuilder number textures still shows no numbers. The next step is the TeamBuilder uniform code itself.
+- **Midfield logo:** the home team id is now taken from the game-setup data, which holds the right team in Exhibition (traced). The logo itself still needs the loose-file loader fix.
+
 ## 2026-11-05 - PC port: stadium editor v6 (loader read race fixed in a test build; stadium branding tools)
 
 - **Read race fixed (test build):** the loose-stadium loader read the shared game archive with a seek followed by a read, and other threads could move the file position in between. An offline stress test with 16 threads gave 20,829 wrong reads out of 80,000 with the old code and none with the fix. The fix reads at a fixed position, with no shared file position left. In game, both setups that had corrupted earlier now render cleanly. One more clean repeat is needed before it goes in-tree. The hook stays off by default and is not in the installed game.
