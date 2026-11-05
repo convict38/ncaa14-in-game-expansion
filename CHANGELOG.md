@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-05 (early) - PC port: stadium editor proof of concept (geometry edit shown in game)
+
+- **Edited stadium geometry renders in the PC port:** the south scoreboard of Troy's stadium was raised 15 yards by editing the stadium scene in place (same size, bounds recomputed), re-packed into a scratch copy of the game archive and played in a Play Now game at Troy; the board moved exactly as the offline preview predicted, and a full simmed game finished with a clean log. Nothing was installed; the test copy was deleted afterwards.
+- **Loose DLC file does not replace an existing stadium:** the game scans a new DLC folder and probes the stadium file by name, but the archive copy wins. Serving brand-new stadium codes this way is the next test.
+- **Round-trip writer:** 191 of 193 stadium scenes rebuild byte-for-byte from the parsed model (the two others are little-endian files); the survey pinned the crowd seat-row layout, so a generator only has to supply seat rows.
+- **Stadium data editor (phase 0):** a create-only tool joins every team with its real venue (name, capacity, city) and writes a data variant with rollback; not installed yet.
+
 ## 2026-11-05 (early) - PC port: FBS + FCS release candidate installed into the play build
 
 - **Installed (with the user's approval):** a new play folder `play_rc` with the FCS release candidate: 266 teams (138 FBS + 128 FCS) and 11 FCS conferences, 105-man FBS rosters, the transfer portal, and the Dynasty Setup pages CFP Bracket, FCS Playoff, FCS Top 25, FCS Class Rankings and FCS Awards. The previous play build and its saves are untouched and still start with `Play_PC_Old.bat`; a full rollback copy was made first.
