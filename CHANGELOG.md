@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-05 (early) - PC port: FBS + FCS release candidate installed into the play build
+
+- **Installed (with the user's approval):** a new play folder `play_rc` with the FCS release candidate: 266 teams (138 FBS + 128 FCS) and 11 FCS conferences, 105-man FBS rosters, the transfer portal, and the Dynasty Setup pages CFP Bracket, FCS Playoff, FCS Top 25, FCS Class Rankings and FCS Awards. The previous play build and its saves are untouched and still start with `Play_PC_Old.bat`; a full rollback copy was made first.
+- **Freeze fixes included:** the release candidate exe was relinked against the current runtime, so it now carries the SPU load/store address fix (b107) and the SPU depth unwind (b116); frame-pacing option GPF is off by default. The Super Sim tackle fix (solo/assisted split, no double credit on tackles for loss and sacks) was merged into the release candidate game code and is on by default.
+- **A new Dynasty is required:** create it with the new-Dynasty launcher, then convert it (backup first) to 105-man rosters; the play launcher warns about an unconverted Dynasty.
+- **Checked:** the installed build booted to the main menu, loaded a converted FCS Dynasty to its hub, and showed all five Dynasty Setup entries, the FCS Top 25 and the FCS Class Rankings pages; a new Dynasty was created in the installed build on a scratch save folder. No fault in either run.
+- **Known limits:** Road to Glory, online Dynasty and Create-a-School are untested with 105-man rosters; "Advance Week" does nothing in bowl week until your own bowl is played; the FCS playoff is simulated, not played; FCS logos are placeholders.
+
 ## 2026-11-04 (late) - PC port: what actually limits game speed (measurement only, nothing changed in the game)
 
 - **Correction to the evening entry:** the graphics-record path is not what limits game speed. During gameplay the simulation thread waits only on its SPU animation jobs, never on graphics.
