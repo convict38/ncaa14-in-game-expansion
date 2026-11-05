@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-05 - PC port: played Dynasty games with an FCS team no longer hang (fix ready, not yet installed)
+
+- **Found:** in the FBS+FCS test build, playing (not simming) a Dynasty game that involves an FCS team never finished loading, whether the user's team was FBS (vs The Citadel) or FCS (as The Citadel). FCS teams had no uniform art of their own, and the game waited for it forever.
+- **Fixed in data, no code change:** each FCS team now borrows the uniform set of the FBS school it already borrows its logo from. In a test copy, both games then loaded in under 30 seconds and kicked off normally. One file update covers new Dynasties, and a small converter covers a Dynasty that already exists. Real FCS uniforms (the TeamBuilder route) will replace the borrowed ones later.
+
 ## 2026-11-05 - PC port: stadium editor v2 (FCS stadium names in game, format fully round-trips)
 
 - **FCS stadiums get their own identity:** the stadium data editor now gives each of the 128 FCS teams its own stadium record (before, four teams shared one FBS stadium) with the real venue name, capacity and city. In a test copy of the FCS build, Select Stadium listed the new FCS stadiums by name and the game ran normally. Still to fix: the small team/city label and the thumbnail still show the borrowed stadium's. Nothing was installed.
