@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-05 - PC port: stadium editor v3 (new and edited stadiums load from loose files)
+
+- **Stadium loader hook (test build, off by default):** a small PC-port switch lets the game take stadium files from a plain folder instead of the 3.6 GB main archive. It works where the game looks files up in the archive's index, so it can replace an existing stadium and also add a stadium under a brand-new code. Nothing else in the archive changes, and with the switch off the game behaves exactly as before. It is ready for the runtime owner to land; nothing was installed.
+- **Seen in game:** Troy's south scoreboard, lowered 6 yards and served from the folder, sat where the offline preview put it. A generated 44-yard end-zone bleacher (sized for UC Davis) showed up in game, full of crowd from its generated seat rows. For an FCS team (Montana), the game found and read a stadium under a new code that is not in the archive. That game then stopped on the loading screen, which is the known problem with FCS teams that have no uniform art yet, not the stadium.
+- **Stadium data editor:** Select Stadium now shows the right school name above each FCS stadium. The city line still shows the borrowed school's city; fixing it needs new city records.
+- No space in the main archive and no copy of it is needed any more, so generated stadiums no longer run into the 4 GB archive limit (about 80 extra stadiums fit with this hook).
+
 ## 2026-11-05 - PC port: two more CPU-scheduling ideas for game speed measured, neither helps
 
 - **Spinning instead of sleeping on short waits (2 variants): no gain.** Over 10 test boots, game speed moved +0.005 and +0.006 (noise is about 0.015-0.018). The spinning waits take CPU time away from the SPU job threads (SPU jobs about 0.19 ms slower each) and cost 1-2 fps.
