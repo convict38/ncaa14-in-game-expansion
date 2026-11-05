@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-05 - PC port: FCS hang fix confirmed in the installed build; TeamBuilder uniforms work for all 128 FCS teams (test)
+
+- **Installed fix confirmed:** a new Dynasty made with the installed build gives all 128 FCS teams a uniform that has art, and that survives the 105-man conversion. A played (not simmed) game with an FCS team (Nicholls at Wake Forest) loads in under a minute and kicks off. Tested on scratch copies only.
+- **TeamBuilder-style uniforms at scale (test files, not installed):** with 40 and then all 128 FCS schools on the create-a-school uniform template in their real colours, Exhibition games load and kick off. A new Dynasty made from the 128-school file saves, converts, reloads and plays an FCS game. Logos and fields are still borrowed from FBS teams.
+- **Known cosmetic bug narrowed:** the Dynasty pre-game team panel shows the user's team on both sides for any game, not only FCS games. Not fixed yet.
+
 ## 2026-11-05 - PC port: stadium editor v3 (new and edited stadiums load from loose files)
 
 - **Stadium loader hook (test build, off by default):** a small PC-port switch lets the game take stadium files from a plain folder instead of the 3.6 GB main archive. It works where the game looks files up in the archive's index, so it can replace an existing stadium and also add a stadium under a brand-new code. Nothing else in the archive changes, and with the switch off the game behaves exactly as before. It is ready for the runtime owner to land; nothing was installed.
