@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-05 (early) - PC port: FCS teams get TeamBuilder-style uniforms (first in-game test)
+
+- **FCS teams can now be picked in Exhibition (test switch):** with a test-only switch, the Play Now team list shows the FCS schools instead of the FBS ones. This makes it quick to check what an FCS team looks like in a game.
+- **What FCS teams look like today:** they still show a borrowed FBS school's logo and stadium in the menus. An Exhibition game between two FCS teams without their own uniform art never finishes loading. That has to be fixed before FCS games can be played.
+- **The game's built-in TeamBuilder (Create-a-School) uniform system can be driven from data:** marking a school as a TeamBuilder team and adding two uniform rows (colours, stripe patterns, number font) to the roster gives it the game's template uniforms recoloured in the school's real colours. We tested it on Montana State (navy and gold) and Montana (maroon and silver). The game loaded, kicked off and played normally, with no new textures.
+- **Logo space checked:** the game's logo library has 142 free slots, enough for all 128 FCS schools without a code change.
+- **Not working yet:** the TeamBuilder field (end-zone text and turf colour) did not switch on in this test, and helmet and midfield logos are not wired up. Nothing was installed; the play build is unchanged.
+
 ## 2026-11-05 (early) - PC port: stadium editor proof of concept (geometry edit shown in game)
 
 - **Edited stadium geometry renders in the PC port:** the south scoreboard of Troy's stadium was raised 15 yards by editing the stadium scene in place (same size, bounds recomputed), re-packed into a scratch copy of the game archive and played in a Play Now game at Troy; the board moved exactly as the offline preview predicted, and a full simmed game finished with a clean log. Nothing was installed; the test copy was deleted afterwards.
