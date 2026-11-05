@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-05 - PC port: faster SPU code lookup gives about +0.03 game speed (in final checks)
+
+- **Found:** when the port looks up which compiled SPU function to run and the fast cache misses (45-90 thousand times a second in heavy play), it walked a list of about 24 entries, one for every overlapping SPU program at that address. Most of those walks found nothing.
+- **Change (behind a switch):** a slightly larger two-way cache plus a direct table keyed by address and program, giving exactly the same answers. In check mode it was compared with the old lookup about 10.6 billion times with no difference.
+- **Measured:** over 10 test boots with the switch flipped live within each boot, game speed rose by +0.030 (noise about 0.015) and each SPU job got about 9 % faster. Both test sessions were positive. The 40-run stability check runs before it becomes the default.
+- **Tried and dropped:** inlining the code-guard check into every compiled SPU function was exact (11.6 billion checks, no difference) but cancelled the gain (-0.004 speed), so it stays out.
+
 ## 2026-11-05 - PC port: UI agent v26 (FCS fields work, uniform colour fix found)
 
 - **FCS custom field works in game:** at a Montana State home game the TeamBuilder turf is drawn with "BOBCATS" in the end zone, in gold letters with a navy outline. The fix was to edit all three copies of the stadium table. The field and end-zone values are now written for all 128 FCS schools' own stadium rows: grass or turf from the real venue, mascot and school name, and school colours. They wait for the stadium editor to apply them.
