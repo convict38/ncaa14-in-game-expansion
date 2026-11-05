@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-05 - PC port: UI agent v27 (cause of the broken-rendering runs found; installed game not affected)
+
+- **Installed game checked:** with the player's exact setup (release exe, installed data, normal settings), two FCS Dynasty games (Western Illinois at Presbyterian, Merrimack at Morgan State) ran through the coin toss, kickoff and live play with clean graphics and no faults.
+- **Cause found:** the huge flat triangles seen in earlier test runs come from the stadium loader hook (loose stadium files). It is off by default and not in the installed game. When it is on, the screen corrupts in 5 of 6 runs, even when it serves exactly the original data. The likely reason is two threads reading the same file at once without a lock. A one-lock fix is proposed. Until it is verified, loose stadium files and per-school midfield logos stay out of the installed game.
+- **TeamBuilder field is fine by itself:** the custom turf with "BOBCATS" in the end zone drew cleanly without the hook.
+- **Still open:** jersey numbers on TeamBuilder uniforms. The number textures exist in the game files, but the setting that turns them on is not found yet. The midfield logo hook still reads home team 0 in Exhibition. The uniform colour fix (solid Montana State blue and 35 corrected schools) is unchanged and waits for an Idaho State check before install.
+- Test files only. Nothing was installed.
+
 ## 2026-11-05 - PC port: faster SPU code lookup gives about +0.03 game speed (in final checks)
 
 - **Found:** when the port looks up which compiled SPU function to run and the fast cache misses (45-90 thousand times a second in heavy play), it walked a list of about 24 entries, one for every overlapping SPU program at that address. Most of those walks found nothing.
