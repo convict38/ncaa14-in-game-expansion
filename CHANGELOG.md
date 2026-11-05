@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-04 (evening) - PC port: three speed ideas measured, none helped enough to ship
+
+- **Hot-code link order:** no gain in two independent sessions (game speed difference 0.000 +- 0.016 over 5 + 5 boots). Not shipped.
+- **Pinning the simulation thread to a performance core:** it does move the thread off the efficiency cores and cuts the thread's own run time per tick by 2.6-3.4 ms, but game speed moved by only +0.008 and +0.037 in two sessions, with a worse worst-case frame time in the second. The saved time shows up as extra waiting, so something other than the simulation thread limits the game. Letting it run on any performance core was no better than the default. Not shipped.
+- **Profile-guided optimisation of the SPU code and runtime:** speed difference -0.020 +- 0.020 over 5 + 5 boots (no gain). Not shipped.
+- **Conclusion:** the remaining speed limit is the graphics-record path, not the SPU or simulation code. Next measurements target that path.
+
 ## 2026-11-04 (midday) - PC port: speed measurements, simulation thread found on efficiency cores (nothing changed in the game yet)
 
 - **Finding:** new CPU-number logging shows that during gameplay the game's simulation thread (about 40-60 % of each game tick's critical path) runs on the slower efficiency cores of the test PC (i5-13600K) about 88 % of the time. The SPU worker threads sit on performance cores about 87 % of the time. Pinning the simulation thread to a performance core is now being A/B tested.
