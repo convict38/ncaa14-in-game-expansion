@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-05 - PC port: UI agent v26 (FCS fields work, uniform colour fix found)
+
+- **FCS custom field works in game:** at a Montana State home game the TeamBuilder turf is drawn with "BOBCATS" in the end zone, in gold letters with a navy outline. The fix was to edit all three copies of the stadium table. The field and end-zone values are now written for all 128 FCS schools' own stadium rows: grass or turf from the real venue, mascot and school name, and school colours. They wait for the stadium editor to apply them.
+- **Black jerseys fixed (test file, not installed):** TeamBuilder jerseys showed a black front. The cause is the jersey stripe pattern the builder picked, not the colours. With no stripe pattern, Montana State wears a solid blue jersey with gold pants. The same file corrects the colours of 35 schools whose source colours were missing or wrong (for example Idaho State is now orange and black). Install steps with checksums and a rollback copy are written.
+- **Per-school midfield logos:** logo decals for all 128 FCS schools were made from local logo copies, which are not in this repo. The loader serves them correctly. The test hook still reads the wrong home team (team 0), so no school logo shows at midfield yet. A fix and landing steps are written and wait for a build.
+- Test files only. Nothing was installed.
+
 ## 2026-11-05 - PC port: UI agent v25 (FCS TeamBuilder uniforms pass the Dynasty soak)
 
 - **Soak passed:** with the 128-school TeamBuilder roster file, a new Dynasty was created, converted to 105-man rosters, an FCS game (Nicholls at Wake Forest) was played to the final whistle, and the season advanced 4 weeks with every other FCS game simmed. The save was then reloaded and advanced again. The uniform table (256 rows) and the TeamBuilder codes of all 128 FCS teams came through every save unchanged, with no faults, hangs or save errors. Bowl week and the off-season were not reached yet.
