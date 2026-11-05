@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-05 - PC port: two more CPU-scheduling ideas for game speed measured, neither helps
+
+- **Spinning instead of sleeping on short waits (2 variants): no gain.** Over 10 test boots, game speed moved +0.005 and +0.006 (noise is about 0.015-0.018). The spinning waits take CPU time away from the SPU job threads (SPU jobs about 0.19 ms slower each) and cost 1-2 fps.
+- **Keeping the SPU job threads off the efficiency cores (2 variants): slower.** The jobs did stop landing on E-cores (12 % to 0 %), but six busy threads then share the six P-cores' hyper-threads, so each job got about 0.35 ms slower and game speed fell by 0.02-0.04 (fps by up to 5.6). The second confirmation session was skipped because the first was already clearly negative.
+- **Where this leaves game speed (about 0.86 of full speed in the heavy pile-up test scene):** the deficit comes from heavy contact moments, where the game asks for twice the SPU work per tick. About 70 % of that SPU time is the port's own per-call overhead (code guard checks, dispatch, interpreter, code verification), not the game's code. Cutting that overhead is the next step. Nothing changed in the play build.
+
 ## 2026-11-05 - PC port: played Dynasty games with an FCS team no longer hang (fix ready, not yet installed)
 
 - **Found:** in the FBS+FCS test build, playing (not simming) a Dynasty game that involves an FCS team never finished loading, whether the user's team was FBS (vs The Citadel) or FCS (as The Citadel). FCS teams had no uniform art of their own, and the game waited for it forever.
