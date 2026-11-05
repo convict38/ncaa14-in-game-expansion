@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-05 - PC port: UI agent v25 (FCS TeamBuilder uniforms pass the Dynasty soak)
+
+- **Soak passed:** with the 128-school TeamBuilder roster file, a new Dynasty was created, converted to 105-man rosters, an FCS game (Nicholls at Wake Forest) was played to the final whistle, and the season advanced 4 weeks with every other FCS game simmed. The save was then reloaded and advanced again. The uniform table (256 rows) and the TeamBuilder codes of all 128 FCS teams came through every save unchanged, with no faults, hangs or save errors. Bowl week and the off-season were not reached yet.
+- **Install recipe written (not installed):** one data file is replaced, with checksums and a rollback copy. It only affects Dynasties created after the install.
+- **Per-school stadium logo (test build, not run yet):** found where the game picks the home team's stadium logo, and built an off-by-default test hook that gives each TeamBuilder school its own logo, plus a converter for the logo files. Logo images stay local and are not in this repo.
+- **Custom fields:** found that the stadium table exists in three copies; a test file sets the TeamBuilder field in all three for the next in-game check.
+- Test files only. Nothing was installed.
+
 ## 2026-11-05 - PC port: stadium editor v5 (dome cause found, generator v3, 10 more FCS venues, install plan)
 
 - **Home cities checked for all 128 FCS teams:** before the city fix every FCS team was placed in a borrowed school's city in another state, which recruiting uses for distance and home-state pitches. Now all 128 are in the right state, and 4 that pointed at the stadium's city instead of the campus (Harvard, Columbia, Rhode Island, Chicago State) now point at the campus city. 40 of the 60 new cities were also tied to the matching hometown on the recruiting map. This is an improvement; a recruiting week with the new cities is still to be watched.
