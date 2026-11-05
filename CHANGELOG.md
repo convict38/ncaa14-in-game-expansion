@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-04 (late) - PC port: what actually limits game speed (measurement only, nothing changed in the game)
+
+- **Correction to the evening entry:** the graphics-record path is not what limits game speed. During gameplay the simulation thread waits only on its SPU animation jobs, never on graphics.
+- **Speed is lost in heavy moments, not everywhere:** in normal play a game tick already takes about 31-34 ms (full speed is 33.3 ms). During pile-ups and other contact-heavy moments, about 18 % of ticks, a tick takes about 58 ms because the SPU animation work per tick doubles. Those moments account for nearly all of the gap to full speed.
+- **Where SPU time goes:** about 70 % of animation-job time is our runtime overhead (guard checks, call/return dispatch, code verification, interpreter) and about 30 % is the translated game code. The split is the same in heavy and normal moments, so cutting the overhead is the lever that can reach full speed.
+- **Smaller factors under live A/B test now:** animation jobs that land on efficiency cores run about 32 % slower (17 % of jobs), and the simulation thread wakes up about 0.3-0.5 ms late after each job wait.
+
 ## 2026-11-04 (evening) - PC port: three speed ideas measured, none helped enough to ship
 
 - **Hot-code link order:** no gain in two independent sessions (game speed difference 0.000 +- 0.016 over 5 + 5 boots). Not shipped.
