@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-05 - PC port: stadium editor v5 (dome cause found, generator v3, 10 more FCS venues, install plan)
+
+- **Home cities checked for all 128 FCS teams:** before the city fix every FCS team was placed in a borrowed school's city in another state, which recruiting uses for distance and home-state pitches. Now all 128 are in the right state, and 4 that pointed at the stadium's city instead of the campus (Harvard, Columbia, Rhode Island, Chicago State) now point at the campus city. 40 of the 60 new cities were also tied to the matching hometown on the recruiting map. This is an improvement; a recruiting week with the new cities is still to be watched.
+- **Why the dome failed:** the "Kibbie Dome" used for Idaho State in v4 was really the community pack's Arrowhead Stadium, which reuses Idaho's stadium code. The real Kibbie Dome comes from the original disc archive. A plain copy under a new code is ready for testing. If a dome needs its own lighting and camera files, those can now be added from the same loose folder by rebuilding the game's lighting and camera collections, with no change to the loader.
+- **Loader test build now uses the main-build hook:** the release-candidate build was relinked with the hook object from the main build. The test build is no longer a separate copy.
+- **Generator v3:** adds scoreboards and press boxes as new objects, and can add stands inside larger FBS-style stadiums (for example a stand closing the open end of a horseshoe). 10 more real FCS venues were generated offline: the Kibbie Dome and UNI-Dome, Sacred Heart, Duquesne, Eastern Washington, Elon, Weber State, South Dakota State, North Carolina A&T and Harvard. 15 of the 128 FCS schools now have a generated stadium. A per-school list tracks the rest.
+- **Install plan written (not installed):** the loader hook can add about 640 MB of stadiums, so roughly 85 schools can get their own stadium file. The rest would share a stadium file by venue type. The plan lists the exact files, the switch and the rollback.
+- Test files only. Nothing was installed.
+
 ## 2026-11-05 - PC port: stadium editor v4 (generated stadiums at FCS schools, real city names)
 
 - **New stadiums at FCS home games:** with the FCS uniform fix, FCS home games now load, and stadiums served under brand-new codes show in game. Montana played in an edited Troy model, and UC Davis, Stonehill and Montana State played in generated stadiums. At Montana State a generated end-zone stand, sized so the stadium holds its real 17,000, sits behind the end zone full of crowd, as the offline preview showed. One test failed: a generated dome for Idaho State loaded a stock stadium instead. That is still open.
