@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-11-05 - PC port: stadium editor v6 (loader read race fixed in a test build; stadium branding tools)
+
+- **Read race fixed (test build):** the loose-stadium loader read the shared game archive with a seek followed by a read, and other threads could move the file position in between. An offline stress test with 16 threads gave 20,829 wrong reads out of 80,000 with the old code and none with the fix. The fix reads at a fixed position, with no shared file position left. In game, both setups that had corrupted earlier now render cleanly. One more clean repeat is needed before it goes in-tree. The hook stays off by default and is not in the installed game.
+- **New stadium tools (own code):**
+  - A texture inventory per stadium model, classing each texture as branded, team colour or neutral and listing the objects that use it.
+  - A branding tool that recolours textures and adds the school's text and logo, re-encoded in the game's own texture formats with full mip chains.
+  - Generator v4, which removes trees and props, adds textured panels such as video boards and banners, and writes vertex layouts correctly. The old generator wrote some layouts wrong.
+  - A plan-view checker.
+- **Montana State rebuild:**
+  - First pass: trees and harbour props removed from the bowl, an end stand with corner stands, a video board, and "Bobcat Stadium" and "Bobcats" signage in navy and gold.
+  - It loads but renders broken in game, so it is being narrowed down with four partial builds.
+  - The donor model is a pit cut into high ground, which fights a bowl layout, so a mountain-bowl donor is planned next.
+- Test files only, kept local. Nothing was installed.
+
 ## 2026-11-05 - PC port: UI agent v27 (cause of the broken-rendering runs found; installed game not affected)
 
 - **Installed game checked:** with the player's exact setup (release exe, installed data, normal settings), two FCS Dynasty games (Western Illinois at Presbyterian, Merrimack at Morgan State) ran through the coin toss, kickoff and live play with clean graphics and no faults.
