@@ -6,6 +6,14 @@
 - **Faster SPU memory copies (behind a switch):** a faster path for the SPU's DMA and atomic transfers. A check mode compared it with the old path on about 7 billion transfers with no difference. Over 10 test boots with the switch flipped live within each boot, in-play speed rose by about +0.024 (0.716 against 0.693), with no change in hitches or field speed. Its own 40-run stability check is now running.
 - **Next speed lever found:** in long SPU animation jobs, 95.6 % of the interpreted (slow-path) work is code the port has already compiled, loaded at a different address. Work on running the compiled copy wherever the code sits has started.
 
+## 2026-11-06 - PC port: stadium editor v8 (all generated FCS venues rebuilt on better-matching shells; three checked in game)
+
+- **Rebuilt every generated outdoor FCS stadium** on a stock stadium picked by shape from plan views of every stock stadium. Montana is on a horseshoe with an open end and mountains, Weber State on a two-sideline stadium in the mountains, South Dakota State on a horseshoe-like shell with a new video board, and Harvard on a U-shaped shell. UC Davis, Elon, North Carolina A&T, Stonehill, Sacred Heart, Duquesne and Eastern Washington each got their own shell too. Donor trees, statues, lettering, sponsor boards and school colours were removed or replaced with each school's name, logo and colours. Montana State gets a much bigger video board.
+- **In game (fresh boot each):** Montana, Weber State and Harvard render cleanly with their own branding. Harvard still has the old shell's blue wall pads; that fix is next.
+- **New render problem found:** a stadium loaded after another one in the same session can draw broken (large dark shapes, or blocky textures), although each is clean when loaded first. It has been reported to the render owner, and it has to be fixed before stadiums go into the play build.
+- **Domes:** the Idaho State dome is broken as well, so the Idaho data row is ruled out. The suspect is the custom-turf field setting on dome stadiums; a test is ready.
+- **Install plan written for the coordinator** (stadium plan 15.4): the exe, the loose stadium files (about 78 MB for 12 venues, 12 % of the archive headroom), the data rows on top of the installed uniform and crowd data, and the rollback. Nothing is installed yet.
+
 ## 2026-11-05 - PC port: UI agent v29 (crowd colours pass on three more matchups; season soak clean to week 14; jersey numbers still open)
 
 - **Crowd colours:** the crowd-colour data now passes on three more matchups. Idaho State's home crowd is orange and white, North Carolina A&T's is blue and gold, and in an FBS-vs-FCS game (Houston at Abilene Christian) the crowd is purple with red away sections. Menus and scorebugs show the schools' colours. There were no faults, and the data is ready to install; it applies to new Dynasties only. Ten schools whose main colour is pure black show grey menu panels; a near-black value is the next try.
