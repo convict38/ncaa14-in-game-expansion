@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-06 - PC port: SPU code lookup failed its stability check (correction); faster SPU memory copies in their stability check
+
+- **Correction to the 2026-11-05 entry "faster SPU code lookup ... (in final checks)":** its 40-run stability check failed. 2 of 30 runs hung during boot, before the menus, so it was not made the default and stays off. The hangs look like an old, rare boot freeze seen before this change, so the next step is to measure how often boots hang without it, using the same exe with the switch off, and to log which thread stops the boot.
+- **Faster SPU memory copies (behind a switch):** a faster path for the SPU's DMA and atomic transfers. A check mode compared it with the old path on about 7 billion transfers with no difference. Over 10 test boots with the switch flipped live within each boot, in-play speed rose by about +0.024 (0.716 against 0.693), with no change in hitches or field speed. Its own 40-run stability check is now running.
+- **Next speed lever found:** in long SPU animation jobs, 95.6 % of the interpreted (slow-path) work is code the port has already compiled, loaded at a different address. Work on running the compiled copy wherever the code sits has started.
+
 ## 2026-11-05 - PC port: UI agent v29 (crowd colours pass on three more matchups; season soak clean to week 14; jersey numbers still open)
 
 - **Crowd colours:** the crowd-colour data now passes on three more matchups. Idaho State's home crowd is orange and white, North Carolina A&T's is blue and gold, and in an FBS-vs-FCS game (Houston at Abilene Christian) the crowd is purple with red away sections. Menus and scorebugs show the schools' colours. There were no faults, and the data is ready to install; it applies to new Dynasties only. Ten schools whose main colour is pure black show grey menu panels; a near-black value is the next try.
