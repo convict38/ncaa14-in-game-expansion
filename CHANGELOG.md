@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-06 - PC port: UI agent v30 (Dynasty soak clean through the off-season into 2027; fix for grey black-primary teams; jersey numbers narrowed)
+
+- **Off-season soak passed:** the 105-man Dynasty ran from week 14 through conference championship week, the end of the season and every off-season stage (coaching carousel, players leaving, draft results, transfer portal, signing day, position changes, training, cut players) into the 2027 preseason with no faults or hangs. The save then reloaded cleanly in a fresh game. The uniform table, the crowd colours stored in the save and the 105-roster check were unchanged.
+- **Black-primary schools:** ten FCS schools whose main colour is black showed grey menu panels and a grey scorebug. A near-black value did not help (the game lightens dark colours). Swapping the two team colours, as the game already does for Army and Vanderbilt, fixed it in game: Grambling's panel and scorebug are now gold, and uniforms are unchanged. The data is ready to install, but it only applies to new Dynasties.
+- **Jersey numbers (still open):** TeamBuilder-style schools build their number texture at runtime, and logging showed that step works for them. The digits are lost after that step, and copying a stock team's number texture onto these jerseys does not show digits. The next step is to trace how the built texture is applied to the player model.
+
 ## 2026-11-06 - PC port: SPU code lookup failed its stability check (correction); faster SPU memory copies in their stability check
 
 - **Correction to the 2026-11-05 entry "faster SPU code lookup ... (in final checks)":** its 40-run stability check failed. 2 of 30 runs hung during boot, before the menus, so it was not made the default and stays off. The hangs look like an old, rare boot freeze seen before this change, so the next step is to measure how often boots hang without it, using the same exe with the switch off, and to log which thread stops the boot.
