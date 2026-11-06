@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-05 - PC port: UI agent v29 (crowd colours pass on three more matchups; season soak clean to week 14; jersey numbers still open)
+
+- **Crowd colours:** the crowd-colour data now passes on three more matchups. Idaho State's home crowd is orange and white, North Carolina A&T's is blue and gold, and in an FBS-vs-FCS game (Houston at Abilene Christian) the crowd is purple with red away sections. Menus and scorebugs show the schools' colours. There were no faults, and the data is ready to install; it applies to new Dynasties only. Ten schools whose main colour is pure black show grey menu panels; a near-black value is the next try.
+- **Season soak:** a converted 105-man Dynasty ran from week 6 to week 14 on the new data with no faults or hangs. The uniform table, the 105-roster check and the crowd colours stored in the save are unchanged. Bowl week and the off-season are still to do.
+- **Jersey numbers for TeamBuilder uniforms:** a test build now gives these jerseys all three number layers. They load without errors, but no digits appear yet. A per-jersey log is ready for the next run, to compare with a stock jersey that does show numbers.
+- **Testing:** Play Now can now list FBS and FCS teams together (a two-byte change to the team-list query), so cross-division games can be tested.
+
 ## 2026-11-05 - PC port: stadium editor v7 (loader fix passes its gate; Montana State rebuilt and clean in game)
 
 - **Loader read-race fix:** a third repeat of the setup that used to corrupt rendered cleanly (3 of 3, against 5 of 6 corrupt before). The integrator has been asked to land it. The hook stays off by default.
