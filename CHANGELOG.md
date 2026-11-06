@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-05 - PC port: stadium editor v7 (loader fix passes its gate; Montana State rebuilt and clean in game)
+
+- **Loader read-race fix:** a third repeat of the setup that used to corrupt rendered cleanly (3 of 3, against 5 of 6 corrupt before). The integrator has been asked to land it. The hook stays off by default.
+- **Broken generated stadiums, cause found and fixed:** the generator attached new stadium objects to the wrong kind of scene node, so the game skipped setting their position and drew them as huge flat shapes (the brown walls and torn sky). Generator v5 attaches them where the game's own objects sit. The same Montana State build now renders cleanly.
+- **Montana State rebuilt on a better-matching shell:** a stock stadium with a sideline press box, a bowl joining both sidelines at one end, an open end with a building and video board, and a mountain backdrop, which is close to Bobcat Stadium's layout. All of the shell's trees and an out-of-place house were removed, and every school sign was replaced: scoreboard headers, banners, all sponsor boards (now Montana State, Bobcats, Go Cats, Bobcat Stadium, Sonny Holland Field), and the walls and rails in Montana State navy. Clean in game from the play-call, coin-toss, overhead and play cameras.
+- **Idaho dome:** still shows broken views with the fixed loader, even when it is the first stadium loaded, so the read race was not the cause. A camera or dome-data problem is the next suspect.
+- **Idaho State and Northern Iowa domes:** branded offline with their own school art. Not checked in game yet.
+- **New tools (own code):** an offline textured stadium preview, and branding operations that clear, inpaint and rotate text.
+
 ## 2026-11-05 - PC port: UI agent v28 (FCS colour fix checked in game; crowd colours fixed; jersey number path traced)
 
 - **Colour fix checked in game:** Idaho State at home now wears orange jerseys with black pants, Grambling State black with gold, Northern Arizona and Richmond the right trim on their white away kits (Montana State blue and gold was checked before). Graphics were clean and there were no faults. The fix is ready to install. It applies to Exhibition and to Dynasties started after the install.
