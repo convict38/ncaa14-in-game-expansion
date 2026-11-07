@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-07 - PC port: faster SPU memory copies are now the default; stadium loader passes its smoke test
+
+- **Faster SPU memory copies are on by default.** The faster path for the SPU's DMA and atomic transfers passed its 40-run stability check (40 clean, 0 failed) and a smoke test of the new build. In-play game speed rose by about 2.4 % (pooled over 10 test boots: +0.024 +- 0.011). Setting `SPU_MFC_FAST=0` turns it off.
+- **Boot-hang baseline:** those 40 runs, all with the faster SPU code lookup switched off, had no boot hangs. The lookup's own check had 2 hangs in 30 runs, so the lookup is now the main suspect. It stays off while it is diagnosed.
+- **Stadium loader (STAD_LOOSE) passed its 3-run smoke test** on the stadium test build. All three games reached the stadium and rendered cleanly through the kickoff and the first plays, with no faults and no change to saves. A one-line fix to the test driver was needed first: it had been reading the previous run's log.
+- **Second-stadium render problem:** not reproduced yet. Two unattended attempts failed to start a second game in the same session (the menu path after quitting differs), so the next attempt will be driven step by step. One finding so far: Windows write tracking does see file reads, so the texture cache's change tracking is not blind to newly loaded stadium files.
+- **Next:** two small stadium-loader rules (midfield logo decals and per-school field files) go into one build, still behind the off-by-default switch.
+
 ## 2026-11-06 - PC port: UI agent v30 (Dynasty soak clean through the off-season into 2027; fix for grey black-primary teams; jersey numbers narrowed)
 
 - **Off-season soak passed:** the 105-man Dynasty ran from week 14 through conference championship week, the end of the season and every off-season stage (coaching carousel, players leaving, draft results, transfer portal, signing day, position changes, training, cut players) into the 2027 preseason with no faults or hangs. The save then reloaded cleanly in a fresh game. The uniform table, the crowd colours stored in the save and the 105-roster check were unchanged.
