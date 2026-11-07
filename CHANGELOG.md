@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-07 - PC port: combined release-candidate build (House Rules, jersey numbers, Play Now list, seat colours) passes its smoke test
+
+- **One build now carries everything that is ready**, each piece behind its own off-by-default switch: faster SPU memory copies (on), the stadium loader with its rules, per-school jersey numbers, Recruiting House Rules v5, the full Play Now team list (it used to stop at Monmouth) and per-school empty-seat colours. A smoke test with every switch on and the stadium, jersey-number and seat data in place reached the kickoff and ran plays with no faults. The install is prepared with a single rollback; the per-school logo data still has to be rebuilt on top of the stadium data first.
+- **Play Now list and seat colours are also in the main build** (both off by default).
+- **Shared save-inspection tool fixed:** it no longer counts deleted table rows as live ones (they keep most of their old data). Earlier board counts made with it may have included deleted rows.
+- **Speed:** the first test of the AVX2 interpreter copy was void (a test-build mistake made both arms slow); it has been rebuilt and the test is queued again. The code-lookup stability check is 10 runs in with no hangs.
+
 ## 2026-11-07 - PC port: per-school jersey numbers in the main build (off by default); stadium render problem narrowed down
 
 - **Per-school TeamBuilder jersey numbers (CAS_NUMS) are in the main build**, off by default. With `CAS_NUMS=1` (plus the stadium loader switch and the numbers folder), each school's own number textures are served for the home and away team. This was proven in game by the UI agent (Idaho State home and away).
