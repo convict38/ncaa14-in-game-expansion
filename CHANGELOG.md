@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-07 - PC port: two stadium-loader rules in the main build; LOOKUP2 and interpreter checks started
+
+- **Two stadium-loader rules (STAD_LOOSE) are in the main build**, still behind the off-by-default switch: midfield logo decals and per-school field files are now served with the same flags as the stock game's own files. Nothing changes unless `STAD_LOOSE=1` is set.
+- **Faster SPU code lookup (LOOKUP2):** a new test build puts it on top of the current code, with a self-check that compares its answers against the old lookup and uses the old answer if they ever differ. It also logs which semaphore a hung boot waits on and who last signalled it. It is starting its 40-run stability check; it stays off until that check passes with no hangs.
+- **Next speed lever under test:** the SPU interpreter (the slow path that the long animation jobs spend most of their time in) is built for older CPUs, while the compiled SPU code already uses AVX2. A second copy of the interpreter built for AVX2 can now be switched on while the game runs, so the speed test compares both in the same session.
+
 ## 2026-11-07 - PC port: faster SPU memory copies are now the default; stadium loader passes its smoke test
 
 - **Faster SPU memory copies are on by default.** The faster path for the SPU's DMA and atomic transfers passed its 40-run stability check (40 clean, 0 failed) and a smoke test of the new build. In-play game speed rose by about 2.4 % (pooled over 10 test boots: +0.024 +- 0.011). Setting `SPU_MFC_FAST=0` turns it off.
