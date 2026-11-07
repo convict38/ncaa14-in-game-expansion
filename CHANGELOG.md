@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-07 - PC port: per-school jersey numbers in the main build (off by default); stadium render problem narrowed down
+
+- **Per-school TeamBuilder jersey numbers (CAS_NUMS) are in the main build**, off by default. With `CAS_NUMS=1` (plus the stadium loader switch and the numbers folder), each school's own number textures are served for the home and away team. This was proven in game by the UI agent (Idaho State home and away).
+- **Stadium render problem (dark planes, huge flat shapes, black triangles):** driven step by step with a screenshot after each step. A stock stadium loaded second in a session rendered cleanly. Duquesne's generated stadium broke on its first load again (3 of 3 boots), and loading it a second time in the same boot was much worse. Switching off every renderer cache live (texture, vertex, shader and render-target caches) did not fix either frame, so the renderer's caches are not the cause. After the broken loads the pause-menu tiles also showed noise, so the custom stadium load is damaging other game memory. The next step is to find what writes there.
+
 ## 2026-11-07 - PC port: two stadium-loader rules in the main build; LOOKUP2 and interpreter checks started
 
 - **Two stadium-loader rules (STAD_LOOSE) are in the main build**, still behind the off-by-default switch: midfield logo decals and per-school field files are now served with the same flags as the stock game's own files. Nothing changes unless `STAD_LOOSE=1` is set.
