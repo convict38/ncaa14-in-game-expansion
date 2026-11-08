@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-07 - PC port: main cause of the custom-stadium memory damage found and fixed; one rare case remains
+
+- **Cause found:** the game reads each archive's index into a fresh memory block. When that index's size lands on 1 to 4 bytes past a 16-byte boundary, the neighbouring memory block gets damaged. Adding custom stadiums grows the main archive's index (143 new entries gave exactly such a size), and the generated field and dome stadium files had the same problem in their own small indexes. That is why the damage looked random and depended on how many stadiums were installed: loading a byte-for-byte copy of a stock stadium through the loader broke the pause menu, while one added entry, or 144, did not.
+- **Fix (stadium loader, `STAD_LOOSE_ALIGN`, on whenever the loader is on):** the loader now pads both kinds of index with unused dummy entries, so their sizes always match what the stock game uses. The stadium files on disk do not change.
+- **Result:** in two test sessions with three custom-stadium games each (Duquesne, Idaho's dome, Montana), five of six games were clean, pause menu included. Idaho's dome now renders properly on its first load. One game (Idaho loaded second) still showed grey pause-menu tiles, so stadiums stay out of the release build until that is understood too. The build with the fix is ready; all of its new parts are behind switches.
+- **Speed:** a new candidate is being tested. When the SPU interpreter has just failed to find compiled code at an address, it now remembers that for the rest of the run instead of asking again at every loop. It is switched live in each test boot against the current code. The LOOKUP2 stability check is halfway (20 of 40 clean, no hangs).
+
 ## 2026-11-07 - PC port: AVX2 interpreter copy gives no speed gain (rejected)
 
 - **AVX2 build of the SPU interpreter: no gain.** Switched live within each of 5 test boots, in-play speed was 0.663 with it against 0.672 without (difference -0.009 +- 0.024), and hitches did not improve. It is not adopted. The interpreter's cost is not the CPU instruction level, so the way forward stays the same: run the long animation jobs as compiled code instead of interpreting them.
