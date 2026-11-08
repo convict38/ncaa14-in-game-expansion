@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-08 - PC port: full mod set passes its live test; pause-menu damage follows FCS teams, not stadiums
+
+- **The full mod set passed its live test** on a scratch copy of the player install. The set is the release-candidate core plus custom FCS stadiums, FCS logos, per-school jersey numbers and seat colours. The test covered a Dynasty load, the House Rules page, the FCS Awards page, and three FCS home games (Duquesne, Idaho, Montana) plus a fourth. Each school got its own field, midfield logo, end zones, seat colours and jersey numbers. There were no faults and no hangs. The installer is ready, with its own rollback.
+- **Two findings for the install:**
+  - The installed game file lists only FBS teams in Play Now. Picking an FCS team there needs a one-byte variant of that file.
+  - A grey "SU" logo shows over two menu tiles: the main-menu Ultimate Team tile and the Dynasty Setup art. It comes from the new logo files and is cosmetic.
+  - Idaho's dome still shows its known blue noise.
+- **Pause-menu tile damage: the trigger is FCS teams.** With the same build, 9 of 9 FBS games had clean pause menus. That held with the player's normal data and with the full release-candidate data. Games involving FCS teams show damage in about 2 of 3 loads, whatever the data set, stadiums or UI archive. The working theory is a per-team table sized for team numbers below 256: every FBS team is below 256, and most FCS teams are above it. The next test pairs two FCS teams that are both below 256.
+
 ## 2026-11-08 - PC port: release candidate rc63 with the faster SPU lookup; speed measured at +0.05; pause-menu hunt continues
 
 - **rc63 release-candidate build is ready to install.** It is the installed core build plus the faster SPU code lookup (LOOKUP2), and nothing else changes. In the smoke test, a Dynasty loaded, the House Rules page opened, the Play Now list went past Monmouth, about 20 plays ran, and the pause menu was clean. Three boots, no hangs and no faults. The installer swaps only the game executable and has its own rollback. `SPU_LOOKUP2=0` switches the new lookup off.
