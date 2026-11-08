@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-07 - PC port: AVX2 interpreter copy gives no speed gain (rejected)
+
+- **AVX2 build of the SPU interpreter: no gain.** Switched live within each of 5 test boots, in-play speed was 0.663 with it against 0.672 without (difference -0.009 +- 0.024), and hitches did not improve. It is not adopted. The interpreter's cost is not the CPU instruction level, so the way forward stays the same: run the long animation jobs as compiled code instead of interpreting them.
+
 ## 2026-11-07 - PC port: combined release-candidate build (House Rules, jersey numbers, Play Now list, seat colours) passes its smoke test
 
 - **One build now carries everything that is ready**, each piece behind its own off-by-default switch: faster SPU memory copies (on), the stadium loader with its rules, per-school jersey numbers, Recruiting House Rules v5, the full Play Now team list (it used to stop at Monmouth) and per-school empty-seat colours. A smoke test with every switch on and the stadium, jersey-number and seat data in place reached the kickoff and ran plays with no faults. The install is prepared with a single rollback; the per-school logo data still has to be rebuilt on top of the stadium data first.
