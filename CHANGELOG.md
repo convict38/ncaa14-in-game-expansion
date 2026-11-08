@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-08 - PC port: release candidate rc63 with the faster SPU lookup; speed measured at +0.05; pause-menu hunt continues
+
+- **rc63 release-candidate build is ready to install.** It is the installed core build plus the faster SPU code lookup (LOOKUP2), and nothing else changes. In the smoke test, a Dynasty loaded, the House Rules page opened, the Play Now list went past Monmouth, about 20 plays ran, and the pause menu was clean. Three boots, no hangs and no faults. The installer swaps only the game executable and has its own rollback. `SPU_LOOKUP2=0` switches the new lookup off.
+- **Speed:** measured in the same boots by switching between the old and new lookup, in-play speed with LOOKUP2 is **+0.050 +- 0.016** higher (0.714 against 0.664, 5 boots), and 95th-percentile frame time is about 5 ms lower. A second 5-boot session is running to confirm.
+- **Custom-stadium pause-menu damage:** a new diagnostic logs where the game's UI system allocates its memory. It shows that the UI system shares one memory pool with the stadium file buffers, and that a temporary UI work area moves around inside it from game to game. The failure reproduced again (Montana, third game: all tiles grey), and memory snapshots of the UI data were captured from clean and broken games for comparison. Custom stadiums stay out of the release build.
+
 ## 2026-11-08 - PC port: faster SPU code lookup in the main build; pause-menu damage narrowed to custom stadium loads
 
 - **Faster SPU code lookup (LOOKUP2) is in the main build and on by default** (`SPU_LOOKUP2=0` switches it off). It passed its 40-run stability check with no hangs and no wrong answers. Four early runs had accidentally tested the old build and were repeated. Its earlier same-session measurement was +0.033 +- 0.018 in-play speed. The release-candidate build players use does not have it yet.
