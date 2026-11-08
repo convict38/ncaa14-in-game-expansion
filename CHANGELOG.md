@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-08 - PC port: correction, the custom-stadium pause-menu damage is NOT fixed; stadiums stay out
+
+- **Correction to the 11-07 entry:** the index-size padding (`STAD_LOOSE_ALIGN`) does not fix the damage. A new startup-armed memory watch showed that the "damaged" neighbouring memory word is only the last two bytes of the archive index itself, and nothing in the game ever reads or writes that word afterwards. In three new test sessions with the padding on (Duquesne, Idaho's dome, Montana, in two orders), **4 of 9 games had broken pause-menu tiles** (grey tiles, a red and navy checker, or noise on the banner), on first, second and third loads alike.
+- **What is broken:** the tile textures in memory are intact. Switching off every renderer cache live does not help. The tiles are a grey material tinted per draw with the team colour, and that tint data, which the game's UI system builds in memory, is what goes wrong. So the next step is to find what damages the UI system's data, and to run the same test with stock stadiums to see whether the stadium loader is involved at all.
+- **Player builds are unaffected:** the installed core release-candidate build (House Rules, full Play Now list) does not use the stadium loader. Custom stadiums stay out of the release build.
+- **Speed:** the LOOKUP2 stability check is at 30 of 40 runs, all clean with no hangs. The remaining speed options other than compiled animation jobs (M3) were ranked: only a sync rework (waking on events instead of polling) is estimated above +0.03 in-play speed, and it needs a measurement first.
+
 ## 2026-11-07 - PC port: main cause of the custom-stadium memory damage found and fixed; one rare case remains
 
 - **Cause found:** the game reads each archive's index into a fresh memory block. When that index's size lands on 1 to 4 bytes past a 16-byte boundary, the neighbouring memory block gets damaged. Adding custom stadiums grows the main archive's index (143 new entries gave exactly such a size), and the generated field and dome stadium files had the same problem in their own small indexes. That is why the damage looked random and depended on how many stadiums were installed: loading a byte-for-byte copy of a stock stadium through the loader broke the pause menu, while one added entry, or 144, did not.
