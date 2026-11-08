@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-08 - PC port: faster SPU code lookup in the main build; pause-menu damage narrowed to custom stadium loads
+
+- **Faster SPU code lookup (LOOKUP2) is in the main build and on by default** (`SPU_LOOKUP2=0` switches it off). It passed its 40-run stability check with no hangs and no wrong answers. Four early runs had accidentally tested the old build and were repeated. Its earlier same-session measurement was +0.033 +- 0.018 in-play speed. The release-candidate build players use does not have it yet.
+- **Pause-menu damage: the game you can play today is not affected.** On the installed core build with stock stadiums, 6 of 6 games had clean pause menus.
+- **Narrowed down:** with every mod except the custom stadiums (logos, interface, seat colours) all 3 games were clean. With only the custom stadiums, 2 of 3 games and a later 3-game test went wrong (grey or see-through tiles, missing icons). So loading the custom stadiums is the trigger. A new check that flags file reads running past their memory block found only false alarms so far; the search continues. Custom stadiums stay out of the release build.
+
 ## 2026-11-08 - PC port: correction, the custom-stadium pause-menu damage is NOT fixed; stadiums stay out
 
 - **Correction to the 11-07 entry:** the index-size padding (`STAD_LOOSE_ALIGN`) does not fix the damage. A new startup-armed memory watch showed that the "damaged" neighbouring memory word is only the last two bytes of the archive index itself, and nothing in the game ever reads or writes that word afterwards. In three new test sessions with the padding on (Duquesne, Idaho's dome, Montana, in two orders), **4 of 9 games had broken pause-menu tiles** (grey tiles, a red and navy checker, or noise on the banner), on first, second and third loads alike.
