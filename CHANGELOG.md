@@ -7,7 +7,7 @@
   - The installed game file lists only FBS teams in Play Now. Picking an FCS team there needs a one-byte variant of that file.
   - A grey "SU" logo shows over two menu tiles: the main-menu Ultimate Team tile and the Dynasty Setup art. It comes from the new logo files and is cosmetic.
   - Idaho's dome still shows its known blue noise.
-- **Pause-menu tile damage: the trigger is FCS teams.** With the same build, 9 of 9 FBS games had clean pause menus. That held with the player's normal data and with the full release-candidate data. Games involving FCS teams show damage in about 2 of 3 loads, whatever the data set, stadiums or UI archive. The working theory is a per-team table sized for team numbers below 256: every FBS team is below 256, and most FCS teams are above it. The next test pairs two FCS teams that are both below 256.
+- **Pause-menu tile damage: the trigger is FCS teams.** With the same build, 9 of 9 FBS games had clean pause menus. That held with the player's normal data and with the full release-candidate data. Games involving FCS teams show damage in about 2 of 3 loads, whatever the data set, stadiums or UI archive. A follow-up test ruled out one theory, that a per-team table only holds team numbers below 256. Two FCS teams that are both below 256 still showed damage in 3 of 3 games. The next suspects are FCS-only team data and FCS-only game hooks.
 
 ## 2026-11-08 - PC port: release candidate rc63 with the faster SPU lookup; speed measured at +0.05; pause-menu hunt continues
 
