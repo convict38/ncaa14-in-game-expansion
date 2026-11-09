@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-08 - PC port: the 4 GB ceiling on custom stadiums is gone (test build, switch off by default)
+
+- **Where the limit was:** custom stadiums are served from a virtual copy of the game's largest asset archive, and that archive's index stores member offsets in 4 bytes. That capped the archive at 4 GB, which left room for only about 64 more stadiums after Youngstown State, while about 130 are planned.
+- **Fix:** the index width is a per-archive setting, and the game reads member positions as 64-bit values, so the loader can write the virtual index with 5-byte offsets (limit 1 TB). Only the in-memory index changes; no game file is written. It sits behind a new switch, `STAD_LOOSE_WIDE=1`, which is off by default, and it keeps the earlier index-size alignment fix.
+- **Proof in game:** the Youngstown State stadium was deliberately placed past the old 4 GB mark. It loaded and rendered (Stambaugh Stadium), and its pause menu was clean. Three more games in the same boot (two stock venues, plus one with a custom field and jersey numbers) also had clean pause menus. There were no faults, and the save data was unchanged. An offline check showed the virtual archive is byte-identical to the old loader's for every member compared.
+- **Install:** a test build plus one switch, with a one-step rollback, is ready for the player install. All other content of the current player build is unchanged.
+
 ## 2026-11-08 - PC port: "verify once per code change" speed lever measured and dropped; reloaded SPU code really is different code
 
 - **The premise behind the next speed lever did not hold.** The idea was to skip re-checking SPU code after a load that writes the same bytes back. A counter build measured this over 260 s of in-play time:
