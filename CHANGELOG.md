@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-11-08 - PC port: final check of the installed full set passes; SPU idle back-off tuning makes no difference
+
+- **Final check of the installed set passed (one boot).** The test ran a copy of the player install's game executable against the installed data, read-only. The main menu showed no grey "SU" logo, and neither did the Dynasty Setup art. An FCS home game from Play Now (Houston at Duquesne) had its own field, midfield logo, end zones, seat colours and jersey-number file. Its pause menu after the first play was clean. An FBS game (Army at Ohio State) was clean as well. A Dynasty loaded, and the Recruiting House Rules page opened. There were no faults, and the save data was unchanged.
+- **Speed: the SPU idle back-off settings are not a lever.** All three settings were switched live in the same boots (5 boots, 3 windows per setting in each), and none differed from the default by more than the noise in in-play speed:
+  - longer spinning with a shorter sleep: -0.017 +- 0.030;
+  - shorter sleep only: -0.030 +- 0.020;
+  - backing off sooner with a longer sleep: +0.013 +- 0.032.
+  The default (0.711 +- 0.020 in-play) stays.
+- **Where SPU job time goes now (fresh profile of the current build, about 34,000 samples):**
+  - code guards and verification: 29 %;
+  - interpreter: 13 %;
+  - compiled game code: 31 %.
+  The interpreter already caches its decoded instructions, so a further pre-decode step models at only about +0.015. Doing the guard and verification work once per code change models at about +0.03 to +0.06, so it is the next speed lever.
+
 ## 2026-11-08 - PC port: pause-menu damage is limited to the FCS Play Now test path; the installed full set is clean with FCS teams in Dynasty
 
 - **Installed full set, FCS team in Dynasty: 6 of 6 pause menus clean.** The test used a scratch copy of the player install with the stock Play Now list file, and The Citadel (FCS) as the user team at Sam Houston. There were no faults.
