@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-08 - PC port: pause-menu damage is limited to the FCS Play Now test path; the installed full set is clean with FCS teams in Dynasty
+
+- **Installed full set, FCS team in Dynasty: 6 of 6 pause menus clean.** The test used a scratch copy of the player install with the stock Play Now list file, and The Citadel (FCS) as the user team at Sam Houston. There were no faults.
+- **The earlier "FCS teams" result was confounded.** Every FCS game so far ran through the one-byte Play Now variant that lists FCS teams (a team-list query changed from `TTYP = ?` to `TTYP > ?`). Every clean FBS game ran without it. In that variant the damage still shows in about 2 of 3 games, so the trigger is that Play Now path, not FCS teams in general.
+- **Ruled out:** switching off all 13 FCS game hooks gave 2 of 3 games damaged, the same rate as before. FCS team colours are normal. In the core data, FCS logo and conference ids are in the stock range.
+- **Install advice:** the full set needs no change. Do not ship the FCS Play Now variant until the cause is found. FCS teams remain playable in Dynasty.
+- **Speed: the sync rework (waking on events instead of polling) was measured before building it.** At most 1.44 ms per tick (range 1.17 to 1.71) of in-play time is wake latency it could remove. That is about **+0.018 in-play speed (range +0.014 to +0.021)**; the upper bound is +0.048. Two earlier attempts at the same mechanism measured -0.04 to -0.05, so it is not the next thing to build.
+
 ## 2026-11-08 - PC port: full mod set passes its live test; pause-menu damage follows FCS teams, not stadiums
 
 - **The full mod set passed its live test** on a scratch copy of the player install. The set is the release-candidate core plus custom FCS stadiums, FCS logos, per-school jersey numbers and seat colours. The test covered a Dynasty load, the House Rules page, the FCS Awards page, and three FCS home games (Duquesne, Idaho, Montana) plus a fourth. Each school got its own field, midfield logo, end zones, seat colours and jersey numbers. There were no faults and no hangs. The installer is ready, with its own rollback.
