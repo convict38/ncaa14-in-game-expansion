@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-08 - PC port: "verify once per code change" speed lever measured and dropped; reloaded SPU code really is different code
+
+- **The premise behind the next speed lever did not hold.** The idea was to skip re-checking SPU code after a load that writes the same bytes back. A counter build measured this over 260 s of in-play time:
+  - 7 % of SPU data loads land on code pages, and only 23 % of those (15 % of their bytes) are byte-identical reloads;
+  - skipping the identical reloads would avoid only 0.3 % of the expensive code comparisons and 0.3 % of the lookup re-checks;
+  - ignoring loads that only touch data pages turns most cheap cache misses into hits, but it avoids none of the expensive comparisons. It models at about +0.007 in-play speed, below the +0.03 bar.
+  So the verification work is real: different plugins keep sharing the same local-store windows. Nothing was built into the game or the player install.
+- **Both shortcuts were still proven exact** in a checking boot: 0 wrong verdicts in 10.1 billion guard calls, 0 stale results in 42 million re-checked lookups.
+- **Next idea:** remember which known code image each load came from, so a check becomes a table lookup instead of a byte comparison.
+
 ## 2026-11-08 - PC port: final check of the installed full set passes; SPU idle back-off tuning makes no difference
 
 - **Final check of the installed set passed (one boot).** The test ran a copy of the player install's game executable against the installed data, read-only. The main menu showed no grey "SU" logo, and neither did the Dynasty Setup art. An FCS home game from Play Now (Houston at Duquesne) had its own field, midfield logo, end zones, seat colours and jersey-number file. Its pause menu after the first play was clean. An FBS game (Army at Ohio State) was clean as well. A Dynasty loaded, and the Recruiting House Rules page opened. There were no faults, and the save data was unchanged.
