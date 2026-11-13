@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-13 - PC port: black ground around the field fixed at custom FCS venues, four more stadium builds ready for review
+
+Covers 2026-11-12 and 2026-11-13.
+
+- **Render fix:** the texture-guard exclusion was widened and a second field-surround render target was added to it. This fixed the black ground and apron around the field in high cameras at the custom FCS venues (Youngstown State, Sam Houston, Tarleton State, and the new Yale and Illinois State builds). It was validated at 3 stock venues (Akron, UCLA, Toledo) plus 6 custom venues, by day and at dusk, with 0 faults and no rise in loading-screen hangs. It is now installed in the player build, with a one-step rollback.
+- **New stadium builds awaiting the owner's review:** #14 Liberty (re-shot and fixed on the new build), #16 Yale Bowl, #17 Illinois State (Hancock Stadium) and #18 Incarnate Word (Benson Stadium).
+- **In progress:** #19 Lehigh.
+- **Tooling:** a black-floor detector was added to the stadium smoke tests. Test boots now detect the offline "connection failed" title popup and retry automatically.
+- **Housekeeping:** archival build files were moved to a network share to free local disk.
+
 ## 2026-11-11 - PC port: rc66 with a field-safe texture guard, play-stall fix validated, 14 custom FCS stadiums installed
 
 Covers 2026-11-10 and 2026-11-11.
