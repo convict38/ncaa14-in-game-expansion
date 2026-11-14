@@ -50,7 +50,7 @@ ADDR_SYM = re.compile(r'(?:0x[0-9A-Fa-f]{6,8}\W+[A-Za-z_][A-Za-z0-9_:.]{3,}|[A-Z
 ADDR_TABLE_LIMIT = 200
 
 # Ghidra-style decompiler output; only checked in .c/.h files.
-DECOMP = re.compile(r'(?:undefined[1-8]?|FUN_[0-9A-Fa-f]{4,}|DAT_[0-9A-Fa-f]{4,}|LAB_[0-9A-Fa-f]{4,}|in_r\d+|in_f\d+|unaff_r\d+)')
+DECOMP = re.compile(r'\b(?:undefined[1-8]?|FUN_[0-9A-Fa-f]{4,}|DAT_[0-9A-Fa-f]{4,}|LAB_[0-9A-Fa-f]{4,}|in_r\d+|in_f\d+|unaff_r\d+)\b')
 
 # Narrow allowlist: {relative path: {rule names}} with the reason for each entry.
 ALLOW = {
