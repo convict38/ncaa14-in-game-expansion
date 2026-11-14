@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-11-13 (night) - PC port: rc68 candidate built (untested), native-gameplay first profile, stadium polish diagnosed
+
+- **rc68 candidate built, not yet tested.** It adds two fixes on top of rc67, both off by default:
+  - **Noise-safe render-target write-back guard (`RSX_WCB_GUARD_MODE=5`).** It closes a race where a guest texture load landing during the emulator's own write-back was lost or overwritten. A stress harness showed the old code losing about 2,450 rows over 12 runs; the new code lost 0.
+  - **Rare 2-7 s in-play freeze (`PS3_LOG_PIPE`).** The probable cause: the frame-clock/FIFO thread blocked on the C runtime stdout lock during slow log writes to a nearly full disk. Logging now drains on writer threads. A diagnostic and a simulation switch are also included.
+- **Native-gameplay lane: first profile.** Game speed is about 0.95 overall. About 11-12% of play runs near 0.73 (the "mud" moments). Host CPU is dominated by SPU emulation runtime (about 23%) and SPU idle polling (about 23%); lifted job code and recompiled PPU code are smaller shares.
+  - Planned order, with how each ships:
+    1. SPU runtime cleanup (generator/runtime tooling).
+    2. Native BodyBlendsHelper, the kickoff burst (behavioural code).
+    3. A whole-job native framework (generator).
+    4. Native animation (ANT) (behavioural code).
+    5. Lifter improvements (transform).
+- **Stadium polish diagnosed:**
+  - A legacy seat-colour table overrode aluminium seats at 13 custom venues; a fix is ready.
+  - A community Delaware helmet carried a MICHIGAN plate from its template; a repaint fix is ready.
+  - Montana's end-zone maroon reads pink in daylight; a candidate darkening is ready.
+  - Idaho's dome noise is a renderer issue, not a stadium asset problem.
+- **Stadium #21 Richmond (Robins Stadium)** is built and awaiting the owner's review.
+- **Housekeeping:** about 15 GB of archival work was moved to a network share.
+
 ## 2026-11-13 (evening) - PC port: shader cache preloaded into memory (rc67), six more FCS stadiums installed, native-gameplay lane started
 
 - **Stadiums:** six more custom FCS stadiums were approved and installed in the owner's build: Liberty (Williams Stadium), Yale Bowl, Illinois State (Hancock), Incarnate Word (Benson), Lehigh (Goodman) and William & Mary (Zable). That makes 20 custom FCS stadiums installed. #21 Richmond is next.
