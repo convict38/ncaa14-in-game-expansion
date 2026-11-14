@@ -4,7 +4,7 @@ Priority order, highest first. A complete game comes before any distribution wor
 
 ## Next
 
-1. **Frame rate and stutter (in progress).** The PC port now plays at real speed but is CPU-bound in heavy scenes, with play-transition hitches. Build 97 (2026-11-02) made game-thread indirect calls and atomics cheaper (about +2.5 % game speed, +2 fps). Remaining: smoother frame pacing, an optional multi-threaded renderer, input-latency work.
+1. **Frame rate and stutter (in progress).** The PC port now plays at real speed but is CPU-bound in heavy scenes, with play-transition hitches. Build 97 (2026-11-02) made game-thread indirect calls and atomics cheaper (about +2.5 % game speed, +2 fps). Remaining: smoother frame pacing, an optional multi-threaded renderer, input-latency work. Update 2026-11-13: the shader cache is now preloaded into memory (rc67), removing most loading pauses and kickoff hitches. The owner wants fully native, lag-free gameplay, so a native-gameplay lane has started: profile in-play host time, then port the hottest recompiled paths to readable native code behind switches, each checked by a dual-run equivalence checker. The ported logic stays private; tooling, measurements and behaviour documentation are published.
 2. **In-game settings page with keyboard and keybindings.** Built into EA's own menus, not an external launcher: display options, frame cap, and rebindable keyboard and controller controls.
 3. **In-game Dynasty CFP bracket page.** A bracket view in Dynasty (seeds, byes, results by round) and a weekly playoff projection during the season.
 4. **Graphics check and long-run validation.** Compare PC-port graphics against RPCS3 for remaining differences. Run multi-season Dynasty and Road to Glory checks on the PC build.

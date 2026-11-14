@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-11-13 (evening) - PC port: shader cache preloaded into memory (rc67), six more FCS stadiums installed, native-gameplay lane started
+
+- **Stadiums:** six more custom FCS stadiums were approved and installed in the owner's build: Liberty (Williams Stadium), Yale Bowl, Illinois State (Hancock), Incarnate Word (Benson), Lehigh (Goodman) and William & Mary (Zable). That makes 20 custom FCS stadiums installed. #21 Richmond is next.
+- **Speed: shader cache moved into memory (rc67, `RSX_SHC_MEM=1`).** Shader-cache files are now preloaded into memory, so the renderer no longer opens files mid-frame. In an A/B over 23 games, in-play hitches of 0.4 s or more fell from 1.9 to 1.2 per game, the worst hitch fell from 7.0 s to 0.9 s, and loading pauses of 1 s or more went from 11 of 11 games to 0 of 12. The kickoff hitch is gone in 13 of 13 games. It is being installed in the owner's build.
+- **Measurement fixes:**
+  - The recurring "loading-screen JOBHANG" was a watchdog false positive: a stale job stamp while the SPU sat idle in the SPURS kernel. An optional fix (`SPU_JOBHANG_IDLECHK`) exists.
+  - Most hitches previously counted came from the test harness's own screenshot captures. The metric now excludes them.
+- **Render: dark band at the far end of the field.** The render-target write-back guard counted the emulator's own write-backs as guest writes, and used a stale baseline for render targets drawn after their last label. A fix (`RSX_WCB_GUARD_MODE=4`) lights the field. It is held back (off) because 1 in 7 test games at noise-prone venues showed texture noise return. That is being investigated.
+- **New direction: fully native, lag-free gameplay.** A native-gameplay lane has started: profile in-play host time, then port the hottest recompiled paths (animation and physics SPU jobs and so on) to readable native code. Each port sits behind a switch, with a dual-run equivalence checker. The ported game logic stays private; only tooling, measurements and documentation of behaviour are published.
+- **Housekeeping:** archival build files were moved to a network share to keep local disk above the build floor.
+
 ## 2026-11-13 - PC port: black ground around the field fixed at custom FCS venues, four more stadium builds ready for review
 
 Covers 2026-11-12 and 2026-11-13.
