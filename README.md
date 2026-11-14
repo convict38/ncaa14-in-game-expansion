@@ -4,6 +4,15 @@ A personal-use modding project for NCAA Football 14 (PS3). The goal is a complet
 
 **Development project. There is no public installable release yet.** Installer and packaging work is deliberately last, after the game itself is complete.
 
+## Bring your own game / what this repo contains
+
+The end product is a tool that turns your own disc copy of NCAA Football 14 into the native PC game, with mods and add-ons on top. No game code is ever shared, and you need your own legally obtained disc copy.
+
+- This repo contains only our own tools, runtime, documentation, measurements and original assets.
+- It contains no EA code, decompiled or translated game code, game data, game-derived function tables, encryption keys or disc files. `tools/check_public.py` enforces this before every commit.
+- Planned workflow: you supply your own disc dump and your own keys and firmware (as with RPCS3). The tool generates the native PC build locally. Mods are applied as recipes or patches that rebuild from your own files.
+- Personal, non-commercial use only. Community packs are credited to their authors wherever they are used.
+
 ## What it is
 
 - A set of small, documented changes to the game's code and data. Most are written as C "caves" (small compiled routines patched into the executable) plus data edits.

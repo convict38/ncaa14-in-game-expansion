@@ -12,7 +12,7 @@ Priority order, highest first. A complete game comes before any distribution wor
 6. **FCS as a separate league inside Dynasty.** Idaho and other FCS schools live in their own league rather than being absent from the FBS field.
 7. **More realism.** Transfer portal, real schedules and rivalries, coaching carousel, weather, roster rules (for example 105-man rosters).
 8. **Self-hosted online play and online Dynasty.** Players run their own server; no dependence on EA services.
-9. **Installer, last.** Portable installer and uninstaller that build the mod locally from the user's own files, preserve originals, verify outputs and support rollback. Needs a clean-machine install and removal test first.
+9. **Packaged tool: your disc → native PC build + mods (last, after the game is complete).** One tool that takes the user's own disc dump and their own keys/firmware and generates the native PC build locally, then applies mods as recipes or patches rebuilt from the user's own files. No game code or data is ever distributed. Includes the portable installer and uninstaller: preserve originals, verify outputs, support rollback. Needs a clean-machine install and removal test first.
 
 ## Done
 

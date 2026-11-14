@@ -7,6 +7,9 @@ Scans every tracked or untracked-but-not-ignored file under the repo root for:
   - forbidden file extensions (EA archives, executables, dumps, media, saves)
   - binary content (NUL bytes) in files that are not an allowed image type
   - screenshots / image files in general
+  - game-derived address/function tables (over 200 hex-address+symbol lines in a file)
+  - key-like files (key/klic/rap names, long hex strings labelled key or klicensee)
+  - decompiler output (Ghidra FUN_/DAT_/LAB_/undefinedN, in_rN registers) in .c/.h files
 
 Run before every commit:  python tools/check_public.py
 Exit code 0 = clean, 1 = violations found.
@@ -37,6 +40,24 @@ CONTENT_PATTERNS = [
     ('any email address', re.compile(r'\b[\w.+-]+@[\w-]+\.(?:com|net|org|io|edu)\b', re.I)),
     ('private key / token', re.compile(r'(?:ghp_[A-Za-z0-9]{20,}|-----BEGIN [A-Z ]*PRIVATE KEY-----)')),
 ]
+
+# Key-like file names (common key / klicensee / rap naming).
+KEY_NAME = re.compile(r'(?:^|[/_.-])(?:klic(?:ensee)?|rap|rif|act\.dat|idps|keys?|disc_?key|eid_?root_?key)(?:[/_.-]|$)', re.I)
+KEY_HEX = re.compile(r"""(?:key|klic|klicensee|rap|idps)\w*["']?\s*[:=]?\s*["']?(?:0x)?[0-9A-Fa-f]{32,}""", re.I)
+
+# Address + symbol line, e.g. "0x00123456 FooBar" or "FooBar = 0x00123456".
+ADDR_SYM = re.compile(r'(?:0x[0-9A-Fa-f]{6,8}\W+[A-Za-z_][A-Za-z0-9_:.]{3,}|[A-Za-z_][A-Za-z0-9_:.]{3,}\W+0x[0-9A-Fa-f]{6,8})')
+ADDR_TABLE_LIMIT = 200
+
+# Ghidra-style decompiler output; only checked in .c/.h files.
+DECOMP = re.compile(r'(?:undefined[1-8]?|FUN_[0-9A-Fa-f]{4,}|DAT_[0-9A-Fa-f]{4,}|LAB_[0-9A-Fa-f]{4,}|in_r\d+|in_f\d+|unaff_r\d+)')
+
+# Narrow allowlist: {relative path: {rule names}} with the reason for each entry.
+ALLOW = {
+    # Hand-written modding reference: our own names and notes for functions we patch
+    # (207 lines, just over the limit). Not an exported table. Owner should review if it grows.
+    'docs/modding/02-functions.md': {'addr-table'},
+}
 
 SKIP_DIRS = {'.git', '__pycache__'}
 SELF = os.path.abspath(__file__)
@@ -81,11 +102,23 @@ def main():
         if os.path.abspath(path) == SELF:
             continue  # this file contains the patterns themselves
         text = data.decode('utf-8', errors='replace')
+        allowed = ALLOW.get(rel, set())
+        if KEY_NAME.search(low) and 'key-name' not in allowed:
+            problems.append(f'{rel}: file name looks like a key file')
+        addr_lines = sum(1 for ln in text.splitlines() if ADDR_SYM.search(ln))
+        if addr_lines > ADDR_TABLE_LIMIT and 'addr-table' not in allowed:
+            problems.append(f'{rel}: {addr_lines} address+symbol lines (looks like a game-derived table, limit {ADDR_TABLE_LIMIT})')
         for lineno, line in enumerate(text.split('\n'), 1):
             for label, pat in CONTENT_PATTERNS:
                 m = pat.search(line)
                 if m:
                     problems.append(f'{rel}:{lineno}: {label}: {m.group(0).strip()[:60]}')
+            if KEY_HEX.search(line) and 'key-hex' not in allowed:
+                problems.append(f'{rel}:{lineno}: long hex string labelled as a key')
+            if ext in ('.c', '.h') and 'decomp' not in allowed:
+                m = DECOMP.search(line)
+                if m:
+                    problems.append(f'{rel}:{lineno}: decompiler output token: {m.group(0)}')
     if problems:
         print('check_public: FAILED')
         for p in problems:
