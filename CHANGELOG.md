@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-11-15 - PC port: in-play freeze fix installed (rc68), first native-lane build, Richmond installed
+
+Covers 2026-11-14 and 2026-11-15.
+
+- **Rare 2-7 s in-play freeze fixed (rc68, installed).** Validated over 17 games with 0 faults. With slow disk writes simulated, the old build froze about once a minute (frame clock stopped, fence waits); with the log writer threads (`PS3_LOG_PIPE=1`) there were no freezes. Normal play at 6 venues had no freezes, and hitches of 0.4 s or more did not regress (1.67 per game, against 2.00 on rc67; worst 0.7 s; no loading pauses of 1 s or more). Frequent draw logging is also quieted (`RSX_DRAWLOG_QUIET=1`). It is installed in the owner's build with a one-step rollback.
+- **Noise-safe write-back guard (`RSX_WCB_GUARD_MODE=5`) not enabled.** It fixed the race it targeted, but stadium texture noise still returned in 1 of 5 games at a noise-prone venue, from a different render-target region. The noise remains an open renderer issue.
+- **Native lane, step 1: SPU runtime cleanup (rc69, built and validated, held).** Per-DMA overhead was trimmed and idle SPU kernels now park on an event instead of spinning. SPU runtime time fell about 21%, and process CPU fell about 3%. Frame times and the kickoff burst were unchanged, and idle polling did not fall (the kernels poll faster instead). It was validated at 5 venues with no regressions. It will ship together with the next native step instead of on its own.
+- **Native lane, step 2 started: native BodyBlendsHelper.** This animation job dominates the remaining 0.3-0.4 s kickoff burst. The method: capture the job's inputs in game, replay them offline to compare the native and lifted versions, then run both side by side behind a switch.
+- **Stadiums:** #21 Richmond (Robins Stadium) was approved and installed, making 21 custom FCS stadiums. #22 Kennesaw State is in progress (Jacksonville State already has its own venue). Seat-colour and Delaware helmet fixes were installed.
+- **Housekeeping:** finished test copies were pruned, and archival build folders moved to a network share with every file hash-verified.
+
 ## 2026-11-13 (night) - PC port: rc68 candidate built (untested), native-gameplay first profile, stadium polish diagnosed
 
 - **rc68 candidate built, not yet tested.** It adds two fixes on top of rc67, both off by default:
