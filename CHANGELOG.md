@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-11-17 - PC port: 13 more FCS stadiums installed (35 total), native-lane findings
+
+Covers 2026-11-16 and 2026-11-17.
+
+- **13 FCS stadiums approved and installed, making 35 custom FCS venues.** #23 Jacksonville State, #24 Missouri State, #25 Hawai'i (Ching Complex), #26 Tennessee State (Nissan Stadium), #27 Central Arkansas (with a new purple/gray striped field used only by UCA), #28 Mercer, #29 Penn (Franklin Field), #30 Princeton, #31 Holy Cross, #32 Florida A&M, #33 Southern, #34 Alabama State and #35 Grambling State. Each was smoke-tested by day and at dusk with no faults, and installs with its own rollback.
+- **Stadium kit lessons:**
+  - Some blue tints came from one metal texture format the game mis-samples; metal slots now point at a safer format.
+  - Leftover donor props that sample repainted texture regions are now found by an audit.
+  - Donor lettering that is modelled as geometry (not texture) is now checked for and hidden.
+  - Custom-built structures must not inherit the donor's texture tiling.
+  - A new terrain fix for lime-bright ground outside the stands is in progress.
+- **Native lane:**
+  - Builds now go to a separate drive, and the game boots from there.
+  - A frame profile of the slow "mud" moments shows the main game thread waiting on its own physics/contact jobs. About half of that job time is the SPU runtime's DMA and channel handling, not the job's own compute.
+  - Whole-job flattening hit compile-time limits, so the focus has moved to a runtime fast path for synchronous DMA, which would help every SPU job. It is being tested behind a switch that is off by default; nothing is installed yet.
+- **Housekeeping:** archival build folders, old test runs and install rollback copies moved to a network share, every file hash-verified.
+
 ## 2026-11-15 - PC port: in-play freeze fix installed (rc68), first native-lane build, Richmond installed
 
 Covers 2026-11-14 and 2026-11-15.
