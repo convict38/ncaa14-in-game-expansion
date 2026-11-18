@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-11-18 - PC port: 20 more FCS stadiums installed (55 total), compiler-flag speed tests
+
+- **20 FCS stadiums approved and installed, making 55 custom FCS venues.**
+  - The new venues are #36 Lafayette, #37 Eastern Kentucky, #38 Austin Peay, #39 SE Louisiana, #40 Nicholls, #41 Lamar, #42 McNeese, #43 Stephen F. Austin, #44 UT Martin, #45 Tennessee Tech, #46 Western Carolina, #47 East Tennessee State, #48 Samford, #49 Wofford, #50 The Citadel, #51 Cal Poly, #52 New Hampshire, #53 Rhode Island, #54 Maine and #55 Towson.
+  - Rhode Island uses Centreville Bank Stadium, its 2026 home while Meade Stadium is renovated.
+  - Holy Cross, Grambling State and Mercer got ground and turf fixes.
+  - Each venue was smoke-tested by day and at dusk with no faults, and installs with its own rollback.
+- **Stadium kit lessons:**
+  - Thin dashed lines along the far horizon came from far-ring cards sampling the very top row of their texture strip and picking up the neighbouring row. Sampling now starts a few rows down.
+  - The horizon is closed with the venue's own far cards wherever the donor shell leaves sky showing through.
+  - Per-team seat colours only matter where empty seats show; near-full crowds hide them.
+  - Some floating white dashes at dusk look like the game's light-glow effects left at the donor shell's old lamp positions. This is under investigation.
+- **Native lane: compiler-flag builds tested, no gain.**
+  - Two builds were compared in game against the current build: one for newer CPUs (AVX2-class, no stack cookies) and one with whole-program ThinLTO.
+  - Neither was faster beyond normal game-to-game variation.
+  - An audit found the real per-instruction cost in the translated game code: every guest memory store checks several global flags and forces values to be reloaded. Only the translator can fix this, and that work has started.
+  - Measurement lessons: booting a test build from a network share costs 5-7% in the slow moments, so test builds now run from the local disk. The overall game-speed figure drifts between sessions, so builds are only compared within one session, interleaved.
+
 ## 2026-11-17 - PC port: 13 more FCS stadiums installed (35 total), native-lane findings
 
 Covers 2026-11-16 and 2026-11-17.
