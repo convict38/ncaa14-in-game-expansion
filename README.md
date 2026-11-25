@@ -1,6 +1,6 @@
 # NCAA Football 14: In-Game Expansion
 
-A personal-use modding project for NCAA Football 14 (PS3). The goal is a complete, modern college football game built on the one the player already owns: all 138 real 2026 FBS schools in their 2026 conferences, a 12-team College Football Playoff that runs through normal Dynasty play, modern rules, and later realism features.
+A personal-use modding project for NCAA Football 14 (PS3). The goal is a complete, modern college football game built on the one the player already owns: all 138 real 2026 FBS schools in their 2026 conferences, a 12-team College Football Playoff that runs through normal Dynasty play, modern rules, FCS schools with their own stadiums, and later realism features.
 
 **Development project. There is no public installable release yet.** Installer and packaging work is deliberately last, after the game itself is complete.
 
@@ -20,16 +20,23 @@ The end product is a tool that turns your own disc copy of NCAA Football 14 into
 - A second track runs the same modded game as a native Windows program (a static recompilation, "the PC port"). The PC port is the intended standalone modded version.
 - The repository contains only project-authored documentation and tools. It contains no game files, assets, executables, saves or decompiled code. Players supply their own game dump.
 
-## Current status (2026-10-28)
+## Current status (2026-11-25)
 
 Working and validated on the modded build:
 
 - 138 real 2026 FBS teams with 2026 conferences, through multi-season Dynasty (full season, bowls, rollover).
 - A native 12-team playoff: seeding, byes, bracket, CFP round names and dates, user-played playoff games, recorded champion.
 - Modern clock and overtime rules, Dynasty starting in 2026, 60-season Dynasty length, original CFP logo art, several community team-art packs.
-- PC port: the whole mod stack runs natively. Audio, Super Sim, Dynasty, Road to Glory and Play Now are validated. Live gameplay now runs at real speed (it was in slow motion), and build 97 makes game-thread calls and atomics cheaper (about +2.5 % game speed); borderless full-screen with variable refresh and a display settings file are in.
+- PC port: the whole mod stack runs natively. Audio, Super Sim, Dynasty, Road to Glory and Play Now are validated. Play runs at real speed, with borderless full-screen, variable refresh and a display settings file.
 
-In progress: frame rate and stutter on the PC port, and an FBS+FCS universe in a separate PC-port test build (150 teams in one Dynasty so far; FCS schools play with their real rosters and keep their stats, get clean 11-12 game schedules with conference games, a full season with enlarged stat tables runs to the end of the playoff, and FCS schools keep full rosters and coaching staffs across seasons, with three seasons played in a row; a 266-team test build plays a full season including the bowls and playoff, runs its first off-season and plays into its second season with full coaching staffs, recruit classes grow with the number of schools, FCS stat leaders are kept in their own lists, FCS playoff results are worked out at the end of the season, bowl and playoff picks are correct with 266 schools, the Dynasty has reached its third season, FBS teams keep playing about 100 FCS opponents a season after the first, the SWAC title game is played on the field, the Dynasty has reached its fifth season with full rosters, team ratings can be kept on a fixed scale, FCS recruit strength depends on the school's level, real-life series are kept when FBS-vs-FCS games are added, and realistic recruit classes in which top recruits skip FCS schools now work in the game: through a full recruiting year no four- or five-star signed with an FCS school, each FCS level recruits its own kind of player, and the top FCS level now signs the strongest classes; the five FCS levels now sign classes at their target strength using existing settings, and a brand-new 266-team Dynasty starts and plays its first six weeks with the realistic recruit names, faces and hometowns; new test rosters now start FCS teams at their target ratings in a new Dynasty, FBS-vs-FCS games after an off-season are spread over the first weeks, and the extra FCS upsets after off-seasons are traced to FCS team ratings drifting upward over the years, not to coach ratings, which the game recalculates every week). A fresh 266-team Dynasty has now played four seasons: FCS ratings stay on scale, and FCS teams beat FBS teams 6-10 % of the time each season (7.4 % overall) with no upward trend, so FCS balance is declared good enough and the test build is the FCS universe release candidate. A rare "Autosave in Progress" hang of the PC port (also possible in normal play after many saves in one session) is found and fixed in a test build. See the [roadmap](ROADMAP.md) for everything that follows.
+Recent work:
+
+- **FBS+FCS universe (about 266 teams in one Dynasty).** A test build is the FCS universe release candidate. FCS schools have real rosters, stats, conference schedules and playoff results. Recruit classes scale with the number of schools, top recruits skip FCS schools, and each FCS level recruits its own kind of player. A fresh Dynasty played four seasons with FCS ratings on scale and FCS teams beating FBS teams 6-10 % of the time each season, so FCS balance is declared good enough.
+- **Custom stadiums for FCS, HBCU and Group of Five schools.** Venues are built one per school, with the real stadium's capacity, its own field and crowd colours, and school branding. They are built through queue rank 101 (about 100 venues); 55 were installed as of 2026-11-18 and installing the rest was approved on 2026-11-25. Each venue is checked in game by day, at dusk, and back to back with another venue, with no faults.
+- **PC-port speed and smoothness.** A frame-pacing fix and render-thread placement, tested but not yet default, gave about +8.5 fps on average in same-session A/B tests (see the changelog). A fix for a rare 2-7 second in-play freeze and a rare "Autosave in Progress" hang are in test builds.
+- **Football AI.** A private study of the game's AI logic was completed. Tuning toggles will come later.
+
+Still in progress: remaining frame-rate work on the PC port, finishing the stadium installs, and the in-game settings and playoff pages. See the [roadmap](ROADMAP.md) for everything that follows.
 
 Exact test evidence is in the [changelog](CHANGELOG.md). The [machine-readable status](reports/latest-status.json) lags the changelog; when they disagree, trust the changelog.
 

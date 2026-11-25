@@ -22,6 +22,8 @@ Priority order, highest first. A complete game comes before any distribution wor
 - Dynasty starting in 2026 with 60 seasons, record-book year fix, coach contract and coaching carousel fixes.
 - CFB Revamped port of the whole stack, original CFP logo art, community team-art packs.
 - Native Windows build (PC port) running the full mod: Super Sim, Dynasty, Road to Glory and Play Now validated; audio solid; score corruption and freeze fixes; picture fixes (blacks, crowd, helmets, shadows); gameplay speed fixed from slow motion to real time; borderless full-screen with variable refresh and a settings file.
+- Custom school-branded stadiums for FCS, HBCU and Group of Five schools: built through queue rank 101, 55 installed as of 2026-11-18, installing the rest approved 2026-11-25.
+- FBS+FCS universe (about 266 teams) release candidate: full Dynasty seasons, FCS recruiting, balance validated over four seasons.
 - Public modding knowledge base in [docs/modding/](docs/modding/README.md) and a pre-commit content check.
 
 ## Release gates (unchanged)
