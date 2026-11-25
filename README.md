@@ -32,11 +32,11 @@ Working and validated on the modded build:
 Recent work:
 
 - **FBS+FCS universe (about 266 teams in one Dynasty).** A test build is the FCS universe release candidate. FCS schools have real rosters, stats, conference schedules and playoff results. Recruit classes scale with the number of schools, top recruits skip FCS schools, and each FCS level recruits its own kind of player. A fresh Dynasty played four seasons with FCS ratings on scale and FCS teams beating FBS teams 6-10 % of the time each season, so FCS balance is declared good enough.
-- **Custom stadiums for FCS, HBCU and Group of Five schools.** Venues are built one per school, with the real stadium's capacity, its own field and crowd colours, and school branding. They are built through queue rank 101 (about 100 venues); 55 were installed as of 2026-11-18 and installing the rest was approved on 2026-11-25. Each venue is checked in game by day, at dusk, and back to back with another venue, with no faults.
+- **Custom stadiums for FCS, HBCU and Group of Five schools.** Venues are built one per school, with the real stadium's capacity, its own field and crowd colours, and school branding. They are built through queue rank 101, and 100 are installed (45 more on 2026-11-25), along with 29 dusk-light fixes and a seat-colour fix. Each venue is checked in game by day, at dusk, and back to back with another venue, with no faults.
 - **PC-port speed and smoothness.** A frame-pacing fix and render-thread placement, tested but not yet default, gave about +8.5 fps on average in same-session A/B tests (see the changelog). A fix for a rare 2-7 second in-play freeze and a rare "Autosave in Progress" hang are in test builds.
 - **Football AI.** A private study of the game's AI logic was completed. Tuning toggles will come later.
 
-Still in progress: remaining frame-rate work on the PC port, finishing the stadium installs, and the in-game settings and playoff pages. See the [roadmap](ROADMAP.md) for everything that follows.
+Still in progress: remaining frame-rate work on the PC port (the frame-pacing fixes await install approval), the remaining stadiums, and the in-game settings and playoff pages. See the [roadmap](ROADMAP.md) for everything that follows.
 
 Exact test evidence is in the [changelog](CHANGELOG.md). The [machine-readable status](reports/latest-status.json) lags the changelog; when they disagree, trust the changelog.
 

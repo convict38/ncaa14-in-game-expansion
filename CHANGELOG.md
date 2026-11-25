@@ -1,6 +1,6 @@
 # Changelog
 
-## 2026-11-25 - Stadiums built through queue rank 101 (install of all approved), new slot-code scheme, PC-port frame-pacing fixes, AI study done
+## 2026-11-25 - 45 more stadiums installed (100 total), built through queue rank 101, new slot-code scheme, PC-port frame-pacing fixes, AI study done
 
 Covers 2026-11-19 to 2026-11-25.
 
@@ -8,7 +8,8 @@ Covers 2026-11-19 to 2026-11-25.
   - Each stadium is a school-branded build (own field, crowd colours, retextured parts, capacity near the real figure) with FCS, HBCU and Group of Five schools among them. Examples from the last days: Alcorn State, Prairie View A&M, Texas Southern, Arkansas-Pine Bluff, Alabama A&M, Mississippi Valley State, Northwestern State, Houston Christian, East Texas A&M, UT Rio Grande Valley, Tulane, Charlotte, UMass, San Diego State, Colorado State, UAB and Georgia State.
   - Florida Atlantic was skipped on purpose: the stock venue is already faithful.
   - Every venue is checked in game by day, at dusk, and back to back with a partner venue on a different base shell, with no faults, hangs or texture damage.
-  - The owner approved installing everything built so far on 2026-11-25. The install is under way and will be logged in the next entry.
+  - **Installed 2026-11-25: 45 new FCS / G5 stadiums, 100 custom venues in total.** Stony Brook, Albany, Northern Colorado, Southern Utah, Utah Tech, Portland State, Western Illinois, Murray State, Indiana State, Eastern Illinois, SE Missouri State, Lindenwood, Dartmouth, Cornell, Brown, Columbia, Colgate, Bucknell, Fordham, Georgetown, Norfolk State, Hampton, Howard, Morgan State, NC Central, Delaware State, South Carolina State, Bethune-Cookman, Alcorn State, Prairie View A&M, Texas Southern, Arkansas-Pine Bluff, Alabama A&M, Mississippi Valley State, Northwestern State, Houston Christian, East Texas A&M, UT Rio Grande Valley, Tulane, Charlotte, UMass, San Diego State, Colorado State, UAB and Georgia State now play in their own home stadiums. Several also get their own field and end zones, and UMass gets correct crowd colours.
+  - The same update fixes floating dusk light glows at 29 custom stadiums and gives UT Martin its real navy seats. Smoke-tested in game at 11 venues with no regressions.
 - **New slot-code scheme (FCSW).** The 6-character venue codes `FCSV11..FCSV99` ran out at rank 99, so ranks 90 and up use `FCSWnn` (rank 90 is `FCSW00`). The length is unchanged, so the existing build, check and install tools needed no changes. The per-venue texture-clash check, the name-bleed check and the move helper were made generic and no longer depend on a fixed list of codes.
 - **Stadium kit fixes and rules.**
   - A shell (base stadium model) may be reused at most 6 times. Fourth and later uses get a full retexture so no stock texture names are left.
