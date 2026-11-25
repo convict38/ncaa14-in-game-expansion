@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-11-25 - Stadiums built through queue rank 101 (install of all approved), new slot-code scheme, PC-port frame-pacing fixes, AI study done
+
+Covers 2026-11-19 to 2026-11-25.
+
+- **Custom stadiums: built through queue rank 101.**
+  - Each stadium is a school-branded build (own field, crowd colours, retextured parts, capacity near the real figure) with FCS, HBCU and Group of Five schools among them. Examples from the last days: Alcorn State, Prairie View A&M, Texas Southern, Arkansas-Pine Bluff, Alabama A&M, Mississippi Valley State, Northwestern State, Houston Christian, East Texas A&M, UT Rio Grande Valley, Tulane, Charlotte, UMass, San Diego State, Colorado State, UAB and Georgia State.
+  - Florida Atlantic was skipped on purpose: the stock venue is already faithful.
+  - Every venue is checked in game by day, at dusk, and back to back with a partner venue on a different base shell, with no faults, hangs or texture damage.
+  - The owner approved installing everything built so far on 2026-11-25. The install is under way and will be logged in the next entry.
+- **New slot-code scheme (FCSW).** The 6-character venue codes `FCSV11..FCSV99` ran out at rank 99, so ranks 90 and up use `FCSWnn` (rank 90 is `FCSW00`). The length is unchanged, so the existing build, check and install tools needed no changes. The per-venue texture-clash check, the name-bleed check and the move helper were made generic and no longer depend on a fixed list of codes.
+- **Stadium kit fixes and rules.**
+  - A shell (base stadium model) may be reused at most 6 times. Fourth and later uses get a full retexture so no stock texture names are left.
+  - Venues now get their own field where the stock field has the wrong end-zone colours or a sponsor logo (Tulane, Charlotte, Arkansas-Pine Bluff).
+  - A crowd-colour fix for UMass (the crowd showed blue) and a name-bleed retexture fix for Brown.
+  - A UMass menu tile is documented but cannot be changed: that image lives in a UI archive with no install path.
+- **PC port: frame pacing and render-thread placement (tested, not yet the default).**
+  - Two switches, both off by default, were tested in the same game session against the default: a deterministic frame-swap fix (the game's vblank countdown is cleared when the flip is issued, instead of being polled) and pinning the render thread to its own CPU core.
+  - Same-boot A/B over 44 paired blocks at two venues: the two together gave about +8.5 fps on average (41 blocks better, 3 worse), with the 95th-percentile frame time about 19 ms lower and far fewer frames over 50 ms. Neither alone matched the combination.
+  - A five-venue check (three stock, two custom) showed the fixes faster at every venue, with correct kickoff and gameplay cameras and no new faults or hangs. Game time per wall-clock second did not change, so this is smoother play, not a speed hack.
+  - Other findings: the claim that the SPU job threads were about 98% busy was wrong (most of that was idle time attributed to the last job), and a 6th job thread, a hygiene knob for SPU idling and compiler-flag variants produced no reliable gain.
+- **Football AI study.** A private study of the game's AI logic was completed. Tuning toggles will come later. Nothing from it is published.
+
 ## 2026-11-18 - PC port: 20 more FCS stadiums installed (55 total), compiler-flag speed tests
 
 - **20 FCS stadiums approved and installed, making 55 custom FCS venues.**
